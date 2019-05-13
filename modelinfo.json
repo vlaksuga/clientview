@@ -1,0 +1,33 @@
+{
+      "model": [
+            {
+                  "id": "0",
+                  "mname": "",
+                  "kname": "",
+                  "cata": "",
+                  "sub1": "",
+                  "sub2": "",
+                  "thumb": "",
+                  "img": [
+                        {
+                              "url": ""
+                        }
+                  ]
+            },
+            {
+                  "id": "1",
+                  "grp": "mb",
+                  "mname": "LUXURY",
+                  "kname": "럭셔리",
+                  "cata": "Marble&Stone",
+                  "sub1": "sub1",
+                  "sub2": "sub2",
+                  "thumb": {
+                        "url": "img/mb/thumb1.jpg"
+                  },
+                  "img": [
+                        {
+                              "url": ""
+                        }
+                  ]
+            }
