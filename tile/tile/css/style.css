@@ -43,6 +43,10 @@ a[href^="tel:"] {
     color: white;
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 /*======================
     SECTIONS & LAYOUTS
  ====================== */
@@ -104,6 +108,10 @@ nav li {
     float: left;
 }
 
+nav li:first-child {
+    margin: -5px 0 0 15px;;
+}
+
 nav li a,
 .dropbtn {
     display: inline-block;
@@ -144,7 +152,7 @@ nav li.dropdown {
 }
 
 /*======================
-    INTRO BOX
+    INDEX
  ====================== */
 #intro_box {
     height: 100vh;
@@ -155,9 +163,19 @@ nav li.dropdown {
 #intro_box .bottom_art {
     width: 500px;
     height: 50px;
-    bottom: 20%;
+    bottom: 15%;
     right: 10%;
 }
+
+#intro_box .bottom_art div:nth-child(2) {
+    position: relative;
+    border: 1px white solid;
+    padding: 15px 20px;
+    font-size: 0.5em;
+    margin:15px auto;
+    width: 250px;
+}
+
 
 .bottom_art {
     position: absolute;
@@ -526,6 +544,141 @@ footer {
     width: 100%;
 }
 
+
+/*======================
+    PROJECT_DETAIL
+ ====================== */
+
+#half_project_detail {
+    background-image: url('../img/half/projects_detail.jpg');
+}
+
+#project_detail h2 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.slide img,
+.nav_column img {
+    vertical-align: middle;
+}
+
+.image_container {
+    position: relative;
+  }
+  
+  /* Hide the images by default */
+.slides {
+    margin-bottom: 30px;
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+/* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .nav_row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* 3 columns side by side */
+  .nav_column {
+    float: left;
+    width: 33.33%;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .thumb {
+    opacity: 0.6;
+  }
+  
+  .nav_active,
+  .thumb:hover {
+    opacity: 1;
+  }
+
+#related_project  {
+    margin-top: 300px;
+}
+
+#related_project .photos {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    width: 100%;
+}
+#related_project .photos .item {
+    position: relative;
+}
+
+#related_project .photos .item h2 {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+
+/*======================
+    PRODUCT DETAIL
+ ====================== */
+
+#product_detail {
+    text-align: center;
+    margin: 120px 0;
+}
+
+.tile_box .row {
+    grid-template-columns: 60% 40%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.tile_box .row .col_1 img {
+    vertical-align: middle;
+}
+
+.tile_box .row .col_2 {
+    padding-left: 10px;
+    line-height: 1.8em;
+    font-size: 0.9em;
+}
+
+.tile_box .row .col_2 h3 {
+    margin-top: 0;
+}
+
+.tile_box .row .col_2 .t_label {
+    color: gray;
+}
+
+
+
 /*======================
     SEARCH
  ====================== */
@@ -587,6 +740,3 @@ footer {
     background-color: lightgrey;
     color: grey;
 }
-
-
-
