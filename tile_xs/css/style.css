@@ -1,0 +1,865 @@
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/gothic.eot');
+    src: local('gothic'), url('../font/gothic.woff') format('woff'), url('../font/gothic.ttf') format('truetype');
+}
+
+/*======================
+    COMMON
+ ====================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'gothic' !important;
+    font-family: 'Didact Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #313131;
+    color: white;
+}
+
+div,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 100;
+}
+
+a,
+a:active,
+a:link,
+a:hover,
+a[href^="tel:"] {
+    text-decoration: none;
+    color: white;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+/*======================
+    SECTIONS & LAYOUTS
+ ====================== */
+
+
+.sec_gap {
+    margin: 100px 0;
+}
+
+/* xs-done */
+.half_box {
+    height: 50vh;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+/* xs-done */
+.half_box .bottom_art {
+
+    width: 200px;
+    height: 50px;
+    top: 30%;
+    right: 10%;
+}
+
+
+section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1240px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+}
+
+
+
+/*======================
+    NAV
+ ====================== */
+/* xs-done */
+ nav {
+    display:none;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li:first-child {
+    margin: -5px 0 0 15px;;
+}
+
+nav li a,
+.dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover,
+.dropdown:hover .dropbtn {
+    color: navy;
+}
+
+nav li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    margin-left: 20px;
+    font-size: 0.8rem;
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    border-left: white 1px solid;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* xs-done */
+#nav_top {
+    z-index:99;
+    position: fixed;
+    top:0;
+    padding:10px;
+    width: 100%;
+    background-color: black;
+    text-align: justify;
+}
+
+#nav_top .menu_logo {
+    float: left;
+}
+
+#nav_top .menu_toggle {
+    position: absolute;
+    right: 20px;
+
+}
+
+/* DON'T USE CURRENTLY FROM */
+/* xs */
+#nav_bottom {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    height: 60px;
+    background-color:black;
+    z-index:9999;
+}
+
+/* xs */
+#nav_bottom .grid {
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+}
+
+/* xs */
+#nav_bottom .grid .nav_item {
+    text-align: center;
+
+}
+
+/* xs */
+#nav_bottom .grid .nav_item p {
+    font-size:0.6em;
+}
+
+/* xs */
+#nav_bottom .grid .nav_item p i {
+    font-size:2em;
+}
+
+/* DON'T USE CURRENTLY END */
+
+
+/* xs-done */
+.menu_toggle i {
+    font-size:1.8em;
+}
+
+/* xs-done */
+.nav_page {
+    display: none;
+    position: fixed;
+    right:0;
+    top: 0;;
+    width:70%;
+    height: 100vh;
+    background-color:black;
+    z-index: 99999;
+    padding: 0 20px;
+    line-height: 60px;
+    font-size:0.8em;
+}
+
+/* xs-done */
+.nav_page .close {
+    text-align: right;
+}
+
+/* xs-done */
+.nav_page .menu {
+    border-bottom: 1px solid grey;
+}
+
+/* xs-done */
+.nav_page .menu .sub {
+    display: none;
+    line-height: 25px;
+    padding : 0 20px;
+    border-left: 2px solid navy;
+}
+
+
+/* xs-done */
+.nav_page .menu .sub p {
+    font-size: 0.8em;
+}
+
+/* xs-done */
+.nav_page .menu .sub-on {
+    display: block;
+}
+
+
+
+/*======================
+    INDEX
+ ====================== */
+
+ /* xs */
+#intro_box {
+    display: none;
+    width:100%;
+    height: 50vh;
+    background-image: url('../img/intro/intro_01.jpg');
+    background-repeat: no-repeat;
+}
+
+#intro_box .bottom_art {
+    width: 500px;
+    height: 50px;
+    bottom: 15%;
+    right: 10%;
+}
+
+#intro_box .bottom_art div:nth-child(2) {
+    position: relative;
+    border: 1px white solid;
+    padding: 15px 20px;
+    font-size: 0.5em;
+    margin:15px auto;
+    width: 250px;
+}
+
+
+.bottom_art {
+    position: absolute;
+    z-index: 15;
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2rem;
+}
+
+/*======================
+    INDEX BANNER
+ ====================== */
+
+ /* xs */
+#index_banner {
+    display: table;
+    width: 100%;
+}
+
+.banner_left {
+    height: 100%;
+    padding: 25px;
+}
+
+.banner_left h1 {
+    font-size: 6rem;
+}
+
+.banner_left p {
+    font-size: 1.5rem;
+}
+
+/* xs */
+.banner_right {
+    display: none;
+    background-image: url('../img/banner_right/banner_01.jpg');
+    width: 100%;
+}
+
+/*======================
+    INDEX TILES
+ ====================== */
+
+ /* xs */
+
+ #index_tiles {
+     width: 100%;
+     text-align: center;
+ }
+ /* xs */
+#index_tiles .grid {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 100%;
+}
+
+#index_banner::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*======================
+    TILES
+ ====================== */
+.tile {
+    position: relative;
+    margin: 15px;
+}
+
+.tile:hover img {
+    opacity: 0.7;
+}
+
+.tile img {
+    width: 100%;
+}
+
+.tile .detail {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.detail h2 {
+    color: black;
+}
+
+.detail p {
+    color: gray;
+}
+
+#index_tiles .more {
+    padding-right: 20px;
+    width: 100%;
+    text-align: right;
+}
+
+/*======================
+    INSTAGRAM
+ ====================== */
+
+#instagram {
+    margin-top: 200px;
+}
+
+/* xs */
+#instagram .photos {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 100%;
+}
+
+.insta_title {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.insta_title,
+.insta {
+    width: 100%;
+}
+
+
+/*======================
+    ABOUT 
+ ====================== */
+
+#half_about {
+    background-image: url('../img/half/about.jpg');
+}
+
+#history h2,
+#faq h2 {
+    text-align: center;
+}
+
+.history_box {
+    margin-top: 50px;
+}
+
+.history_box .row {
+    grid-template-columns: 30% 70%;
+}
+
+
+.row {
+    display: grid;
+    width: 100%;
+
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.history_box .row .col_1 {
+    text-align: center;
+}
+
+.history_box .row .col_1 h3 {
+    margin-bottom: 0;
+}
+
+.history_box .row .col_1 p {
+    margin-top: 0;
+}
+
+.history_box .row .col_1 img {
+    width: 45%;
+    padding: 2%;
+}
+
+.history_box .row .col_2 {
+    font-size: 0.9em;
+    line-height: 25px;
+}
+
+.history_box .row .col_2 p:nth-child(1) {
+    margin-top: 0;
+}
+
+.l_border {
+    padding-left: 20px;
+    border-left: 4px solid rgba(0, 0, 255, 0.8);
+}
+
+.accordion {
+    background-color: #313131;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+    color: black;
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.panel p {
+    line-height: 30px;
+}
+
+/*======================
+    CONTACT
+ ====================== */
+
+#half_contact {
+    background-image: url('../img/half/contact.jpg');
+}
+
+#welcome {
+    text-align: center;
+}
+
+#welcome p:nth-child(2) {
+    font-weight: bolder;
+    font-size: 2em;
+}
+
+.places_box .row {
+    grid-template-columns: 50% 50%;
+    margin-bottom: 50px;
+}
+
+.places_box .row .col_1 p:first-child,
+.places_box .row .col_2 p:first-child {
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+.places_box .row .col_1 p,
+.places_box .row .col_2 p {
+    font-size: 0.8em;
+}
+
+/*======================
+    PRODUCTS
+ ====================== */
+
+#half_products {
+    background-image: url('../img/half/products.jpg');
+}
+
+.half_box .bottom_art div {
+    text-align: right;
+}
+
+.half_box .bottom_art div p:nth-child(1) {
+    margin-bottom: 1px;
+}
+
+.half_box .bottom_art div p:nth-child(2) {
+    margin-top: 0;
+    font-size: 0.4em;
+}
+
+#products_tiles .group {
+    padding-bottom: 20px;
+    margin: 20px;
+    border-bottom: 1px gray solid;
+}
+
+
+#products_tiles .group ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#products_tiles .group li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 0.8em;
+}
+
+/* xs */
+#products_tiles .grid {
+    display: block;
+    width: 100%;
+}
+
+/* xs */
+.pagination {
+    display: none;
+}
+
+.pagination a {
+    margin: 5px;
+}
+
+/*======================
+    PROJECTS
+ ====================== */
+
+#half_projects {
+    background-image: url('../img/half/projects.jpg');
+}
+
+#projects_tiles .group {
+    padding-bottom: 20px;
+    margin: 20px;
+    border-bottom: 1px gray solid;
+}
+
+#projects_tiles .group ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#projects_tiles .group li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 0.8em;
+}
+
+
+#projects_tiles .grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+}
+
+
+/*======================
+    PROJECT_DETAIL
+ ====================== */
+
+#half_project_detail {
+    background-image: url('../img/half/projects_detail.jpg');
+}
+
+#project_detail h2 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.slide img,
+.nav_column img {
+    vertical-align: middle;
+}
+
+.image_container {
+    position: relative;
+  }
+  
+  /* Hide the images by default */
+.slides {
+    margin-bottom: 30px;
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+/* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .nav_row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* 3 columns side by side */
+  .nav_column {
+    float: left;
+    width: 33.33%;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .thumb {
+    opacity: 0.6;
+  }
+  
+  .nav_active,
+  .thumb:hover {
+    opacity: 1;
+  }
+
+#related_project  {
+    margin-top: 300px;
+}
+
+#related_project .photos {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    width: 100%;
+}
+#related_project .photos .item {
+    position: relative;
+}
+
+#related_project .photos .item h2 {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+
+/*======================
+    PRODUCT DETAIL
+ ====================== */
+
+#product_detail {
+    text-align: center;
+    margin: 120px 0;
+}
+
+.tile_box .row {
+    grid-template-columns: 31% 31% 31%;
+    grid-column-gap: 3.5%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.tile_box .row .col {
+    width: 100%;
+}
+
+.tile_box .row .col .img_box img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+.tile_box .row .col .txt_box {
+    font-size:0.8em;
+}
+
+.tile_box .row .col .txt_box .t_label {
+    color: gray;
+}
+
+
+
+/*======================
+    SEARCH
+ ====================== */
+
+#search .alpha {
+    border-bottom: 1px grey solid;
+    padding : 20px 0px;
+}
+
+
+#search ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#search li {
+    display: inline;
+    margin-right: 15px;
+    font-size: 0.8em;
+}
+
+#search_result .result {
+    text-align: right;
+    padding-bottom: 20px;
+    border-bottom: 1px gray solid;
+}
+
+#search_result .null {
+    display: none;
+}
+
+#search_result .grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+}
+
+#search .select {
+    display: grid;
+    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#search .select div {
+    padding : 10px;
+}
+
+#search .select div select {
+    color:white;
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px white solid;
+    background-color: transparent;
+}
+
+#search .select div select option {
+    background-color: lightgrey;
+    color: grey;
+}
+
+/*======================
+    FOOTER
+ ====================== */
+ footer {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+}
+
+footer .row {
+    grid-template-columns: 10% 90%;
+    
+}
+
+footer .row .footer_logo {
+    padding:15px 0;
+    text-align: center;
+}
+
+footer .add_box {
+    font-size: 0.7em;
+    grid-template-columns: 30% 30% 30%;
+}
+
+footer .add_box div {
+    padding-top: 5px;
+}
+

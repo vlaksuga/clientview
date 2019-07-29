@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CHINYOUNG | 프리미엄 타일 갤러리</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul id="scroll_fade">
+                <li><a href="#"><img src="img/logo.png" alt="LOGO"></a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">PRODUCTS</a>
+                    <div class="dropdown-content">
+                        <a href="#">KERLITE / BIG SLAB</a>
+                        <a href="#">MARBLE</a>
+                        <a href="#">STONE</a>
+                        <a href="#">CONCRETE</a>
+                        <a href="#">TERRACOTTA</a>
+                        <a href="#">WOOD</a>
+                        <a href="#">BRICK / DÉCOR</a>
+                        <a href="#">COLOUR</a>
+                        <a href="#">OUTDOOR</a>
+                    </div>
+                </li>
+                <li><a href="#">PROJECTS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">SEARCH</a></li>
+                <li style="float: right;"><a href="#"><i class="fa fa-cog"></i></a></li>
+                <li style="float: right;"><a href="#">CATALOG</a></li>
+            </ul>
+        </nav>
+
+        <!-- NAV OPACITY BY SCROLL -->
+
+        <script>
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    scrollPos = $(document).scrollTop();
+                    var opacityVal = 0 + (Math.min(scrollPos / 100, 1));
+                    var rgbaCol = 'rgba(0, 0, 0, ' + opacityVal + ')'
+                    $('#scroll_fade').css('background-color', rgbaCol);
+                })
+            })
+        </script>
+    </header>
+
+    <div class="container">
+
+
+        <!-- / PRODUCT_DETAIL / -->
+        <section id="product_detail" class="sec_gap">
+            <h2>GARDENA</h2>
+            <p>MARBLE</p>
+        </section>
+
+        <!-- / PRODUCT_IMAGE / -->
+        <section id="product_image" class="sec_gap">
+            <h2>IMAGES</h2>
+
+            <!-- SLIDESHOW GALLERY -->
+            <div class="image_container">
+                <div class="slides">
+                    <img src="img/project/project_01/img_01.jpg" style="width:100%">
+                </div>
+
+                <div class="slides">
+                    <img src="img/project/project_01/img_02.jpg" style="width:100%">
+                </div>
+
+                <div class="slides">
+                    <img src="img/project/project_01/img_03.jpg" style="width:100%">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+                <div class="nav_row">
+                    <div class="nav_column">
+                        <img class="thumb cursor" src="img/project/project_01/img_01.jpg" style="width:100%"
+                            onclick="currentSlide(1)" alt="01">
+                    </div>
+                    <div class="nav_column">
+                        <img class="thumb cursor" src="img/project/project_01/img_02.jpg" style="width:100%"
+                            onclick="currentSlide(2)" alt="02">
+                    </div>
+                    <div class="nav_column">
+                        <img class="thumb cursor" src="img/project/project_01/img_03.jpg" style="width:100%"
+                            onclick="currentSlide(3)" alt="03">
+                    </div>
+                </div>
+
+                <!-- SLIDES SCRIPT -->
+                <script>
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("slides");
+                        var dots = document.getElementsByClassName("thumb");
+                        if (n > slides.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = slides.length }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" nav_active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " nav_active";
+                    }
+                </script>
+
+            </div>
+
+        </section>
+
+        <!-- / TILE DETAIL / -->
+        <section id="tile_detail" class="sec_gap">
+            <h2>TILE DETAIL</h2>
+            <div class="tile_box">
+                <div class="row">
+
+                    <div class="col">
+                        <div class="img_box">
+                            <a href="#">
+                                <img src="img/tile/t_0001/td_01.jpg" class="modal_img">
+                            </a>
+                        </div>
+
+                        <div class="txt_box">
+                            <h3>GARDENA BIANCO</h3>
+                            <div class="row">
+                                <div class="t_label">CODE</div>
+                                <div class="t_data">GARDENA</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">DESIGN</div>
+                                <div class="t_data">MARBLE</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">COLOUR</div>
+                                <div class="t_data">001 BIANCO</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">TECHNOLOGY</div>
+                                <div class="t_data">KERLITE@</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">THICKNESS</div>
+                                <div class="t_data">8T</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">SIZE</div>
+                                <div class="t_data">400*800</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="img_box">
+                            <a href="#">
+                                <img src="img/tile/t_0001/td_02.jpg" class="modal_img">
+                            </a>
+                        </div>
+
+                        <div class="txt_box">
+                            <h3>GARDENA BIANCO</h3>
+                            <div class="row">
+                                <div class="t_label">CODE</div>
+                                <div class="t_data">GARDENA</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">DESIGN</div>
+                                <div class="t_data">MARBLE</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">COLOUR</div>
+                                <div class="t_data">001 BIANCO</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">TECHNOLOGY</div>
+                                <div class="t_data">KERLITE@</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">THICKNESS</div>
+                                <div class="t_data">8T</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">SIZE</div>
+                                <div class="t_data">400*800</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="img_box">
+                            <a href="#">
+                                <img src="img/tile/t_0001/td_03.jpg" class="modal_img">
+                            </a>
+                        </div>
+
+                        <div class="txt_box">
+                            <h3>GARDENA BIANCO</h3>
+                            <div class="row">
+                                <div class="t_label">CODE</div>
+                                <div class="t_data">GARDENA</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">DESIGN</div>
+                                <div class="t_data">MARBLE</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">COLOUR</div>
+                                <div class="t_data">001 BIANCO</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">TECHNOLOGY</div>
+                                <div class="t_data">KERLITE@</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">THICKNESS</div>
+                                <div class="t_data">8T</div>
+                            </div>
+                            <div class="row">
+                                <div class="t_label">SIZE</div>
+                                <div class="t_data">400*800</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                        <div class="col">
+                            <div class="img_box">
+                                <a href="#">
+                                    <img src="img/tile/t_0001/td_01.jpg" class="modal_img">
+                                </a>
+                            </div>
+    
+                            <div class="txt_box">
+                                <h3>GARDENA BIANCO</h3>
+                                <div class="row">
+                                    <div class="t_label">CODE</div>
+                                    <div class="t_data">GARDENA</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">DESIGN</div>
+                                    <div class="t_data">MARBLE</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">COLOUR</div>
+                                    <div class="t_data">001 BIANCO</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">TECHNOLOGY</div>
+                                    <div class="t_data">KERLITE@</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">THICKNESS</div>
+                                    <div class="t_data">8T</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">SIZE</div>
+                                    <div class="t_data">400*800</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col">
+    
+                            <div class="img_box">
+                                <a href="#">
+                                    <img src="img/tile/t_0001/td_02.jpg" class="modal_img">
+                                </a>
+                            </div>
+    
+                            <div class="txt_box">
+                                <h3>GARDENA BIANCO</h3>
+                                <div class="row">
+                                    <div class="t_label">CODE</div>
+                                    <div class="t_data">GARDENA</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">DESIGN</div>
+                                    <div class="t_data">MARBLE</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">COLOUR</div>
+                                    <div class="t_data">001 BIANCO</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">TECHNOLOGY</div>
+                                    <div class="t_data">KERLITE@</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">THICKNESS</div>
+                                    <div class="t_data">8T</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">SIZE</div>
+                                    <div class="t_data">400*800</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col">
+    
+                            <div class="img_box">
+                                <a href="#">
+                                    <img src="img/tile/t_0001/td_03.jpg" class="modal_img">
+                                </a>
+                            </div>
+    
+                            <div class="txt_box">
+                                <h3>GARDENA BIANCO</h3>
+                                <div class="row">
+                                    <div class="t_label">CODE</div>
+                                    <div class="t_data">GARDENA</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">DESIGN</div>
+                                    <div class="t_data">MARBLE</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">COLOUR</div>
+                                    <div class="t_data">001 BIANCO</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">TECHNOLOGY</div>
+                                    <div class="t_data">KERLITE@</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">THICKNESS</div>
+                                    <div class="t_data">8T</div>
+                                </div>
+                                <div class="row">
+                                    <div class="t_label">SIZE</div>
+                                    <div class="t_data">400*800</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- / RELATED PROJECT / -->
+    <section id="related_project">
+
+        <div class="container">
+            <h2>RELATED PROJECT</h2>
+        </div>
+
+        <div class="photos">
+
+            <div class="item">
+                <a href="#"><img class="insta" src="img/project/project_01/img_01.jpg"></a>
+                <h2>SEOUL CITY-HALL</h2>
+            </div>
+
+            <div class="item">
+                <a href="#"><img class="insta" src="img/project/project_01/img_02.jpg"></a>
+                <h2>SEO-CHO DAESUNG OFFICE</h2>
+            </div>
+
+            <div class="item">
+                <a href="#"><img class="insta" src="img/project/project_01/img_03.jpg"></a>
+                <h2>KANG-SEO BAUHAUS</h2>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- / FOOTER / -->
+    <footer>
+        <div>footer here</div>
+    </footer>
+
+</body>
+
+</html>
