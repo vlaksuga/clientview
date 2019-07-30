@@ -218,7 +218,7 @@ float: right;
 .nav_page {
     display: none;
     position: fixed;
-    left:0;
+    right:0;
     top: 0;;
     width:70%;
     height: 100vh;
@@ -231,6 +231,7 @@ float: right;
 
 /* xs-done */
 .nav_page .close {
+    font-size: 3em;
     text-align: right;
 }
 
