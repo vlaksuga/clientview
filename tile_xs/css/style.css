@@ -266,7 +266,7 @@ nav li.dropdown {
  /* xs */
 #intro_box {
     max-width:100%;
-    height: auto;
+    height: 100vh;
     background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
 }
