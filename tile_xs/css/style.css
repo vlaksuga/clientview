@@ -270,6 +270,8 @@ float: right;
     height: 100vh;
     background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
+    background-size: contain;
+
 }
 /* xs */
 #intro_box .bottom_art {
