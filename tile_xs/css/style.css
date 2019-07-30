@@ -846,6 +846,7 @@ float: right;
     height: 80px;
 }
 
+/*  */
 footer .row {
     grid-template-columns: 100%;
     
@@ -857,6 +858,7 @@ footer .row .footer_logo {
     text-align: center;
 }
 
+/*  */
 footer .add_box {
     font-size: 0.7em;
     grid-template-columns: 100%;
@@ -866,10 +868,12 @@ footer .add_box div {
     padding-top: 5px;
 }
 
+/*  */
 footer .add_box .add_view {
     text-align: center;
 }
 
+/*  */
 footer .add_box .add_none {
     display: none;
 }
