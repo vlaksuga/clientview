@@ -272,7 +272,7 @@ nav li.dropdown {
 }
 
 #intro_box .bottom_art {
-    width: 500px;
+    width: 15%;
     height: 50px;
     bottom: 15%;
     right: 10%;
@@ -284,7 +284,6 @@ nav li.dropdown {
     padding: 15px 20px;
     font-size: 0.5em;
     margin:15px auto;
-    width: 250px;
 }
 
 
