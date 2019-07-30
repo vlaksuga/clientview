@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -51,6 +52,62 @@
                 })
             })
         </script>
+
+
+        <!-- xs start -->
+        <div class="xs" id="nav_top">
+            <div class="menu_logo"><a href="#"><img src="img/logo.png" alt="LOGO"></a></div>
+            <div class="menu_toggle">
+                <a href="javascript:void(0)" onclick="openNav()"><i class="fas fa-bars"></i></a>
+            </div>
+        </div>
+        
+        
+                <div class="xs nav_page" id="mobile_nav">
+                    <div class="close"><a href="javascript:void(0)" onclick="closeNav()"><span>&times;</span></a></div>
+                    <div class="menu"><a href="#">ABOUT</a></div>
+                    <div class="menu"><a href="javascript:void(0)" onclick="togSub()">PRODUCTS</a>
+                        <div class="sub" id="sub">
+                            <p><a href="#">KERLITE / BIG SLAB</a></p>
+                            <p><a href="#">MARBLE</a></p>
+                            <p><a href="#">STONE</a></p>
+                            <p><a href="#">CONCRETE</a></p>
+                            <p><a href="#">TERRACOTTA</a></p>
+                            <p><a href="#">WOOD</a></p>
+                            <p><a href="#">BRICK / DÉCOR</a></p>
+                            <p><a href="#">COLOUR</a></p>
+                            <p><a href="#">OUTDOOR</a></p>
+                        </div>
+                    </div>
+                    <div class="menu"><a href="#">PROJECTS</a></div>
+                    <div class="menu"><a href="#">CONTACT</a></div>
+                    <div class="menu"><a href="#">SEARCH</a></div>
+                </div>
+        
+        
+                <script>
+                  
+                    function closeNav() {
+                    document.getElementById("mobile_nav").style.display = "none";
+                    }
+        
+                    function openNav() {
+                    document.getElementById("mobile_nav").style.display = "block";
+        
+                    }
+        
+                    function togSub() {
+                    var x = document.getElementById("sub");
+                        if (x.className === "sub") {
+                            x.className += " sub-on";  }
+                             else { 
+                            x.className = "sub";
+                        }
+        
+                  }
+        
+                </script>
+        
     </header>
 
     <!-- / HALF BOX / -->
@@ -178,8 +235,25 @@
 
     <!-- / FOOTER / -->
     <footer>
-        <div>footer here</div>
+        <div class="row">
+            <div class="footer_logo"><img src="img/logo.png"></div>
+            <div class="add_box row">
+                <div class="add_view">
+                    <p>PREMIUM TILE GALLERY TEL|02-416-0417 FAX|02-416-6292</p>
+                    <p>(주)진영코리아 | 서울시 송파구 삼전로2길 3,진영빌딩(삼전동 38-1)</p>
+                </div>
+                <div class="add_none">
+                    <p>논현 TILE PLAZA TEL|02-543-5117 FAX|02-543-5104</p>
+                    <p>서울특별시 강남구 논현동 127-7</p>
+                </div>
+                <div class="add_none">
+                    <p>이천 제1물류센터 TEL|031-631-0951 FAX|031-631-0952 경기도 이천시 모가면 송곡2리 166-5</p>
+                    <p>삼척 제2물류센터 경기도 남양주시 삼패동 445-4</p>
+                </div>
+            </div>
+        </div>
     </footer>
+
 
 </body>
 

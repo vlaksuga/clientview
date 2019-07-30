@@ -51,24 +51,22 @@ a[href^="tel:"] {
     SECTIONS & LAYOUTS
  ====================== */
 
-
+/*  */
 .sec_gap {
-    margin: 100px 0;
+    margin: 50px 0;
 }
 
 /* xs-done */
 .half_box {
-    height: 50vh;
+    height: 200px;
     background-repeat: no-repeat;
-    opacity: 0.2;
+    background-size: contain;
 }
 
 /* xs-done */
 .half_box .bottom_art {
-
-    width: 20%;
     height: 50px;
-    top: 30%;
+    top: 15%;
     right: 10%;
 }
 
@@ -83,8 +81,8 @@ section::after {
     margin-left: auto;
     margin-right: auto;
     max-width: 1240px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
 }
 
@@ -292,15 +290,16 @@ float: right;
     margin:15px auto;
 }
 
-
+/*  */
 .bottom_art {
+    color:white;
     position: absolute;
     z-index: 15;
     letter-spacing: 0.1em;
     margin: 0;
     text-align: center;
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 /*======================
@@ -437,8 +436,10 @@ float: right;
     margin-top: 50px;
 }
 
+
+/*  */
 .history_box .row {
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 100%;
 }
 
 
@@ -480,9 +481,9 @@ float: right;
     margin-top: 0;
 }
 
+/*  */
 .l_border {
     padding-left: 20px;
-    border-left: 4px solid rgba(0, 0, 255, 0.8);
 }
 
 .accordion {
