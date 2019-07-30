@@ -267,7 +267,7 @@ float: right;
  /* xs */
 #intro_box {
     max-width:100%;
-    height: 100vh;
+    height: 35vh;
     background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -278,8 +278,8 @@ float: right;
     font-size: 1em;
     width: 50%;
     height: 50px;
-    bottom: 15%;
-    left: 30%
+    top: 15%;
+    left: 25%
 }
 
 /* xs */
@@ -318,11 +318,12 @@ float: right;
 }
 
 .banner_left h1 {
+    margin: 5px 0;
     font-size: 4rem;
 }
 
 .banner_left p {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 /* xs */
@@ -846,21 +847,30 @@ float: right;
 }
 
 footer .row {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 100%;
     
 }
 
 footer .row .footer_logo {
+    display: none;
     padding:15px 0;
     text-align: center;
 }
 
 footer .add_box {
     font-size: 0.7em;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 100%;
 }
 
 footer .add_box div {
     padding-top: 5px;
+}
+
+footer .add_box .add_view {
+    text-align: center;
+}
+
+footer .add_box .add_none {
+    display: none;
 }
 
