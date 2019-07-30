@@ -825,9 +825,10 @@ float: right;
     display: none;
 }
 
+/*  */
 #search_result .grid {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 100%;
     width: 100%;
 }
 
