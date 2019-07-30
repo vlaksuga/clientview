@@ -632,7 +632,7 @@ float: right;
     font-size: 0.8em;
 }
 
-
+/*  */
 #projects_tiles .grid {
     display: grid;
     grid-template-columns: 100%;
@@ -651,6 +651,13 @@ float: right;
 #project_detail h2 {
     text-align: center;
     margin-bottom: 80px;
+}
+
+/*  */
+#projects_detail_tiles .grid {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 100%;
 }
 
 .slide img,
@@ -826,7 +833,7 @@ float: right;
 
 #search .select {
     display: grid;
-    grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    grid-template-columns: 100%;
     width: 100%;
     margin-top: 20px;
 }
@@ -891,3 +898,7 @@ footer .add_box .add_none {
     display: none;
 }
 
+/*  */
+.topsec_gap {
+    margin-top : 120px;
+}
