@@ -160,14 +160,15 @@ nav li.dropdown {
     padding:10px;
     width: 100%;
     background-color: black;
-    text-align: center;
+    }
+
+
+#nav_top .menu_logo {
+    float: left;
 }
 
-
 #nav_top .menu_toggle {
-    position: fixed;
-    left: 20px;
-    top: 12px;
+float: right;
 
 }
 
@@ -270,18 +271,20 @@ nav li.dropdown {
     background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
 }
-
+/* xs */
 #intro_box .bottom_art {
-    width: 15%;
+    font-size: 1em;
+    width: 50%;
     height: 50px;
     bottom: 15%;
-    right: 10%;
+    left: 30%
 }
 
+/* xs */
 #intro_box .bottom_art div:nth-child(2) {
     position: relative;
     border: 1px white solid;
-    padding: 15px 20px;
+    padding: 10px;
     font-size: 0.5em;
     margin:15px auto;
 }
