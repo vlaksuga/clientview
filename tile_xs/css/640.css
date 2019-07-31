@@ -271,6 +271,7 @@ float: right;
     background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
     background-size: contain;
+    background-attachment: fixed;
 
 }
 /* xs */
@@ -312,7 +313,6 @@ float: right;
     background-size: cover;
     overflow: hidden;
     position: relative;
-    background-attachment: fixed;
   }
 
   
@@ -350,10 +350,9 @@ float: right;
   }
   
   #intro h1 {
-    font-family: "Raleway", sans-serif;
     color: WHITE;
-    font-size: 56px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 300;
     text-transform: uppercase;
   }
   
