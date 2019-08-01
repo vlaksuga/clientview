@@ -713,8 +713,29 @@ nav li.dropdown {
 
 #product_detail {
     text-align: center;
-    margin: 120px 0;
+    margin: 80px 0 -40px 0;
 }
+
+#projects_detail_tiles .grid {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    width: 100%;
+}
+
+.tile_common {
+    margin : 20px 0;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+}
+
+.tile_common .row {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100%;
+    margin: 10px 0;
+}
+
+
 
 .tile_box .row {
     grid-template-columns: 31% 31% 31%;
@@ -736,8 +757,15 @@ nav li.dropdown {
     font-size:0.8em;
 }
 
-.tile_box .row .col .txt_box .t_label {
+
+.t_label {
     color: gray;
+}
+
+.tile_box .row .col .txt_box .row:nth-child(2),
+.tile_box .row .col .txt_box .row:nth-child(3),
+.tile_box .row .col .txt_box .row:nth-child(5) {
+    display: none;
 }
 
 
