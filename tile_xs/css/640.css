@@ -619,12 +619,11 @@ float: right;
 
 #welcome p:nth-child(2) {
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 .places_box .row {
-    grid-template-columns: 50% 50%;
-    margin-bottom: 50px;
+    grid-template-columns: 100%;
 }
 
 .places_box .row .col_1 p:first-child,
