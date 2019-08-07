@@ -504,6 +504,7 @@ nav li.dropdown {
 
 .places_box .row {
     grid-template-columns: 50% 50%;
+    grid-column-gap: 80px;
     margin-bottom: 50px;
 }
 
