@@ -507,6 +507,9 @@ float: right;
     width: 100%;
 }
 
+#instaarea .item img {
+    max-height: 120px;
+}
 
 /*======================
     ABOUT 

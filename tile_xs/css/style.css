@@ -385,6 +385,10 @@ nav li.dropdown {
     width: 100%;
 }
 
+#instaarea .item img {
+    max-height: 200px;
+}
+
 
 /*======================
     ABOUT 

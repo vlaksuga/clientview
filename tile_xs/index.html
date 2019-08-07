@@ -240,7 +240,34 @@
             <p>@CHINYOUNGKOREA_OFFICIAL</p>
         </div>
 
-        <div class="photos">
+	<script>
+        
+			$.ajax({
+					url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=2234372569.bdd3947.8d2694232968460190244e85d24b0b64&callback=?',        
+					error: function() {
+					alert('error');
+					},        
+					success: function(data) {
+						set1(data);
+						
+					},
+					type: 'GET',
+					dataType: "jsonp"
+				});
+			
+			function set1(dd){
+				var limit = 8 ;
+				for(var i = 0;i<dd.data.length && i<limit;i++){
+					var curitems = $("#instaarea .item");
+					var curitem = $(curitems.get(i));
+					$(".insta",curitem).attr("src",dd.data[i].images.standard_resolution.url);
+					$("a",curitem).attr("href",dd.data[i].images.standard_resolution.url);
+					
+				}
+			}
+    </script>
+    
+        <div class="photos" id="instaarea">
             <div class="item">
                 <a href="#"><img class="insta" src="img/thumb/thumb10.jpg" ></a>
             </div>
