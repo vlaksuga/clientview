@@ -882,6 +882,31 @@ float: right;
 }
 
 
+/* modal */
+
+#modal_container {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    top:0;
+    left: 0;
+    background-color:rgba(0,0,0,0.8);
+}
+
+#modal_container .bt {
+    width:100%;
+    font-size: 2.5em;
+    text-align: right;
+    padding: 15px 15px 0 0;
+}
+
+#modal_container img{
+    padding-top:25vh;
+}
+
 
 /*======================
     SEARCH
