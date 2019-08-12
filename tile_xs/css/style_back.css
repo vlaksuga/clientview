@@ -140,7 +140,7 @@ nav li.dropdown {
     display: none;
     position: absolute;
     min-width: 160px;
-    z-index: 99;
+    z-index: 1;
     border-left: white 1px solid;
 }
 
@@ -158,139 +158,126 @@ nav li.dropdown {
 /*======================
     INDEX
  ====================== */
- #intro {
-    display: table;
-    width: 100%;
+#intro_box {
     height: 100vh;
-    background: #000;
-  }
-  
-  #intro .carousel-item {
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+    background-image: url('../img/intro/intro_01.jpg');
     background-repeat: no-repeat;
-  }
-  
-  #intro .carousel-item::before {
-    content: '';
-    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#intro_box .bottom_art {
+    width: 500px;
+    height: 50px;
+    bottom: 15%;
+    right: 10%;
+}
+
+#intro_box .bottom_art div:nth-child(2) {
+    position: relative;
+    border: 1px white solid;
+    padding: 15px 20px;
+    font-size: 0.5em;
+    margin:15px auto;
+    width: 250px;
+}
+
+
+.bottom_art {
     position: absolute;
-    height: 100%;
+    z-index: 15;
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2rem;
+}
+
+
+/* INTRO  mob*/
+#intro {
+    display:none;
     width: 100%;
-    top: 0;
-    right: 0;
-    left: 0;
+    height: 100vh;
+    background: url(../img/intro/intro_01.jpg) top center;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    background-attachment: fixed;
+  }
+
+  
+  #intro:before {
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
     bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   
-  #intro .carousel-container {
+  #intro .intro-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 90px;
+    right: 0;
     display: -webkit-box;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
     -webkit-box-align: center;
-    -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  #intro .carousel-background img {
-    max-width: 100%;
-  }
-  
-  #intro .carousel-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     text-align: center;
+    padding: 0 15px;
   }
   
-  #intro h2 {
-    color: #fff;
-    margin-bottom: 30px;
-    font-size: 48px;
-    font-weight: 700;
+  #intro h1 {
+    font-family: "Raleway", sans-serif;
+    color: WHITE;
+    font-size: 56px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  #intro h1 span {
+    color: #f82249;
   }
   
   #intro p {
-    width: 80%;
-    margin: 0 auto 30px auto;
-    color: #fff;
+    color: #ebebeb;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 30px;
   }
   
-  #intro .carousel-fade {
-    overflow: hidden;
-  }
-  
-  #intro .carousel-fade .carousel-inner .carousel-item {
-    transition-property: opacity;
-  }
-  
-  #intro .carousel-fade .carousel-inner .carousel-item,
-  #intro .carousel-fade .carousel-inner .active.carousel-item-left,
-  #intro .carousel-fade .carousel-inner .active.carousel-item-right {
-    opacity: 0;
-  }
-  
-  #intro .carousel-fade .carousel-inner .active,
-  #intro .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
-  #intro .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
-    opacity: 1;
-    transition: 0.5s;
-  }
-  
-  #intro .carousel-fade .carousel-inner .carousel-item-next,
-  #intro .carousel-fade .carousel-inner .carousel-item-prev,
-  #intro .carousel-fade .carousel-inner .active.carousel-item-left,
-  #intro .carousel-fade .carousel-inner .active.carousel-item-right {
-    left: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  #intro .carousel-control-prev,
-  #intro .carousel-control-next {
-    width: 10%;
-  }
-  
-  #intro .carousel-control-next-icon,
-  #intro .carousel-control-prev-icon {
-    background: none;
-    font-size: 32px;
-    line-height: 1;
-  }
-  
-  #intro .carousel-indicators li {
-    cursor: pointer;
-  }
-  
-  #intro .btn-get-started {
-    font-family: "Montserrat", sans-serif;
+  #intro .about-btn {
+    font-family: "Raleway", sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 8px 32px;
-    border-radius: 50px;
+    padding: 12px 32px;
     transition: 0.5s;
+    line-height: 1;
     margin: 10px;
     color: #fff;
-    background: #18d26e;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    border: 2px solid white;
   }
   
-  #intro .btn-get-started:hover {
-    background: #fff;
-    color: #18d26e;
+  #intro .about-btn:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
   }
-
+  
 
 
 /*======================
@@ -907,207 +894,3 @@ footer .add_box div {
     padding-top: 5px;
 }
 
-/* Carousel From BS4 */
-
-
-.carousel {
-    position: relative;
-  }
-  
-  .carousel.pointer-event {
-    -ms-touch-action: pan-y;
-    touch-action: pan-y;
-  }
-  
-  .carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .carousel-inner::after {
-    display: block;
-    clear: both;
-    content: "";
-  }
-  
-  .carousel-item {
-    position: relative;
-    display: none;
-    float: left;
-    width: 100%;
-    margin-right: -100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: -webkit-transform 0.6s ease-in-out;
-    transition: transform 0.6s ease-in-out;
-    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
-  }
-  
-  @media screen and (prefers-reduced-motion: reduce) {
-    .carousel-item {
-      transition: none;
-    }
-  }
-  
-  .carousel-item.active,
-  .carousel-item-next,
-  .carousel-item-prev {
-    display: block;
-  }
-  
-  .carousel-item-next:not(.carousel-item-left),
-  .active.carousel-item-right {
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-  }
-  
-  .carousel-item-prev:not(.carousel-item-right),
-  .active.carousel-item-left {
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-  }
-  
-  .carousel-fade .carousel-item {
-    opacity: 0;
-    transition-property: opacity;
-    -webkit-transform: none;
-    transform: none;
-  }
-  
-  .carousel-fade .carousel-item.active,
-  .carousel-fade .carousel-item-next.carousel-item-left,
-  .carousel-fade .carousel-item-prev.carousel-item-right {
-    z-index: 1;
-    opacity: 1;
-  }
-  
-  .carousel-fade .active.carousel-item-left,
-  .carousel-fade .active.carousel-item-right {
-    z-index: 0;
-    opacity: 0;
-    transition: 0s 0.6s opacity;
-  }
-  
-  @media screen and (prefers-reduced-motion: reduce) {
-    .carousel-fade .active.carousel-item-left,
-    .carousel-fade .active.carousel-item-right {
-      transition: none;
-    }
-  }
-  
-  .carousel-control-prev,
-  .carousel-control-next {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    width: 15%;
-    color: #fff;
-    text-align: center;
-    opacity: 0.5;
-    transition: opacity 0.15s ease;
-  }
-  
-  @media screen and (prefers-reduced-motion: reduce) {
-    .carousel-control-prev,
-    .carousel-control-next {
-      transition: none;
-    }
-  }
-  
-  .carousel-control-prev:hover, .carousel-control-prev:focus,
-  .carousel-control-next:hover,
-  .carousel-control-next:focus {
-    color: #fff;
-    text-decoration: none;
-    outline: 0;
-    opacity: 0.9;
-  }
-  
-  .carousel-control-prev {
-    left: 0;
-  }
-  
-  .carousel-control-next {
-    right: 0;
-  }
-  
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: transparent no-repeat center center;
-    background-size: 100% 100%;
-  }
-  
-  .carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
-  }
-  
-  .carousel-control-next-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
-  }
-  
-  .carousel-indicators {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 15;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding-left: 0;
-    margin-right: 15%;
-    margin-left: 15%;
-    list-style: none;
-  }
-  
-  .carousel-indicators li {
-    box-sizing: content-box;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    width: 30px;
-    height: 3px;
-    margin-right: 3px;
-    margin-left: 3px;
-    text-indent: -999px;
-    cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    opacity: .5;
-    transition: opacity 0.6s ease;
-  }
-  
-  @media screen and (prefers-reduced-motion: reduce) {
-    .carousel-indicators li {
-      transition: none;
-    }
-  }
-  
-  .carousel-indicators .active {
-    opacity: 1;
-  }
-  
-  .carousel-caption {
-    position: absolute;
-    right: 15%;
-    bottom: 20px;
-    left: 15%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
-    text-align: center;
-  }

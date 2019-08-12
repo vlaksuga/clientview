@@ -8,12 +8,19 @@
     <meta name="format-detection" content="telephone=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/799568d786.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/owl.carousel.js"></script>
+    <script src="./js/main.js"></script>
+
     <link rel="stylesheet" media="(min-width: 640px)" href="css/style.css">
     <link rel="stylesheet" media="(max-width: 640px)" href="css/640.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
+
+    <!-- LIBs -->
+    <script src="./lib/owl.carousel.js"></script>
+    <script src="./lib/bootstrap.bundle.min.js"></script>
+    <script src="./lib/wow.min.js"></script>
+    <link rel="stylesheet" href="./lib/owl.carousel.css">
+    <link rel="stylesheet" href="./lib/ionicons.min.css">
+
 </head>
 
 <body>
@@ -114,22 +121,99 @@
         
     </header>
 
-    <!-- / INTRO BOX START/ -->
+    <!-- / INTRO BOX START/ 
     <section id="intro_box"> 
-        <div class="bottom_art">
-            <div>GRAYSTONE</div>
-            <div><a href="#">DETAILS</a></div>
-        </div>
+            <div class="bottom_art">
+                <div>GRAYSTONE</div>
+                <div><a href="#">DETAILS</a></div>
+            </div>
+
+
+        <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+          });
+        </script>
     </section>
 
-    <!-- / INTRO BOX ALT / -->
+    -->
+
+    <!-- / INTRO BOX ALT / 
 
     <section id="intro">
             <div class="intro-container" style="visibility: visible; animation-name: fadeIn;">
               <h1>GRAYSTONE</h1>
               <a class="about-btn" href="#">VIEW DETAIL</a>
             </div>
-    </section>
+    </section> 
+-->
+    <section id="intro">
+        <div class="intro-container">
+          <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+    
+            <ol class="carousel-indicators"></ol>
+    
+            <div class="carousel-inner" role="listbox">
+    
+              <div class="carousel-item active">
+                <div class="carousel-background">
+                  <img src="img/intro/intro_01.jpg" alt="">
+                </div>
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2>GRAYSCALE</span></h2>
+                    <div><a href="#">VIEW MORE</a></div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item">
+                <div class="carousel-background"><img src="img/intro/intro_02.jpg" alt=""></div>
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2>METAL</h2>
+                    <div><a href="#">VIEW MORE</a></div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item">
+                <div class="carousel-background"><img src="img/intro/intro_03.jpg" alt=""></div>
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2>WOODLAND</h2>
+                    <div><a href="#">VIEW MORE</a></div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="carousel-item">
+                <div class="carousel-background"><img src="img/intro/intro_04.jpg" alt=""></div>
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2>LIMESTONE</h2>
+                    <div><a href="#">VIEW MORE</a></div>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+    
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+    
+          </div>
+        </div>
+      </section>
+    
+
 
     <!-- / INDEX BANNER / -->
     <section id="index_banner"> 
@@ -145,6 +229,7 @@
         </div>
         <div class="banner_right"></div>
     </section>
+
 
 
 
