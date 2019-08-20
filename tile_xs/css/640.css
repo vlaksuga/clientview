@@ -108,8 +108,13 @@ nav li {
 }
 
 nav li:first-child {
-    margin: -5px 0 0 15px;;
+    margin: -5px 0 -10px 15px;
 }
+
+nav li .logo {
+    max-width: 150px;
+}
+
 
 nav li a,
 .dropbtn {
@@ -1002,7 +1007,7 @@ footer .add_box {
 }
 
 footer .add_box div {
-    padding-top: 5px;
+    padding-top: 5px; 
 }
 
 /*  */

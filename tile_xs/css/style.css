@@ -113,7 +113,11 @@ nav li {
 }
 
 nav li:first-child {
-    margin: -5px 0 0 15px;;
+    margin: -5px 0 -10px 15px;
+}
+
+nav li .logo {
+    max-width: 150px;
 }
 
 nav li a,
@@ -308,11 +312,27 @@ nav li.dropdown {
 }
 
 .banner_left h1 {
-    font-size: 6rem;
+    margin-left: 0;
+}
+
+.banner_left h1 img {
+    padding-left: -50px;
+    width: 100%;
 }
 
 .banner_left p {
     font-size: 1.5rem;
+}
+
+.banner_left div  {
+    float: right;
+    text-align: center;
+}
+
+.banner_left div .more {
+    width: 180px;
+    border: 2px solid white;
+    padding: 5px 10px;
 }
 
 .banner_right {
@@ -372,12 +392,12 @@ nav li.dropdown {
     float:right;
     border:2px solid white;
     margin-right: 15px;
-    padding: 15px 25px;
+    padding: 5px 30px;
     text-align: right;
 }
 
 #index_tiles .more:hover {
-    background-color: gray;
+    background-color: lightgray;
 }
 
 .new {
