@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADAND OMS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/user_list.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/c.js"></script>
+
+    <script>
+        drawFragment("#top", "./frag/top.html");
+        drawFragment("#aside", "./frag/aside.html");
+
+
+
+        oms.get("/adm/listUser.json", {}, function (head, body) {
+            wmap(body, $(".main-center"));
+
+        });
+
+    </script>
+
+
+
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="top">
+
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+
+            </div>
+
+            <div id="main">
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>USER</span>
+                        </div>
+
+                    </div>
+
+                    <div class="main-body">
+
+                        <div class="main-left">
+                            <div class="option-box">
+
+                                <div class="option-header active">
+                                    <div class="option-header-box">
+                                        <div class="option-title">
+                                            <span>FILTER</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="option-body">
+
+<!-- 
+                                    <div class="option-element">
+                                        <span>시작일</span>
+                                        <input class="tocar" id="datepicker_start">
+                                    </div>
+
+                                    <div class="option-element">
+                                        <span>종료일</span>
+                                        <input class="tocar" id="datepicker_end">
+                                    </div>
+-->
+
+                                    <div class="option-element">
+                                        <span>ID</span>
+                                        <input type="text" class="tocar">
+                                    </div>
+                                    <div class="option-element">
+                                        <span>NAME</span>
+                                        <input type="text" class="tocar">
+                                    </div>
+                                    <div class="option-element">
+                                            <span>KIND</span>
+                                            <select class="tocar">
+                                                <option value="0" selected>ALL</option>
+                                                <option value="1">AGENCY</option>
+                                                <option value="2">OWNER</option>
+                                                <option value="3">MK</option>
+                                            </select>
+                                        </div>
+                                        <div class="option-element">
+                                                <span>CHANNEL</span>
+                                                <input type="text" class="tocar">
+                                            </div>
+                                    
+
+                                </div>
+
+                                <div class="option-footer">
+                                    <div class="option-footer-box">
+                                        <button class="option-btn tocar apply">적용</button> <!-- onclick : 적용 -->
+                                        <button class="option-btn tocar reset">RESET</button> <!-- onclick : reset -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="main-center">
+
+                            <div class="account-box">
+
+                                <div class="account-header">
+
+
+                                    <div class="account-header-box">
+
+                                        <div class="header-element">
+                                            <a href="user_record_add.html">CREATE USER</a> <!-- userrecord를 새로 만듦 -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="account-body" bind="list:LIST">
+
+
+
+
+
+
+                                    <!-- user-list start -->
+                                    <bindtemplete>
+                                        <div id="userlist">
+                                            <div class="box-header"></div>
+                                            <div class="box-body">
+                                                <table id="usertable">
+                                                    <colgroup>
+                                                        <col width="6%">
+                                                        <col width="12%">
+                                                        <col width="12%">
+                                                        <col width="12%">
+                                                        <col width="12%">
+                                                        <col width="25%">
+                                                        <col width="12%">
+                                                        <col width="5%">
+                                                    </colgroup>
+                                                    <tr>
+                                                        <th>PK</th> <!-- default는 pk 내림차순 -->
+                                                        <th>ID</th> <!-- CLICK하면 오름차순/내림차순 -->
+                                                        <th>PW</th>
+                                                        <th>NAME</th> <!-- CLICK하면 오름차순/내림차순 -->
+                                                        <th>KIND</th>
+                                                        <th>CHANNEL</th>
+                                                        <th>REGDATE</th>
+                                                        <th>EDIT</th>
+                                                    </tr>
+                                                    <tr><!-- table : column -->
+                                                        <td>3</td> <!-- user : userpkey -->
+                                                        <td>tekiteki</td> <!-- user : userid -->
+                                                        <td>djfuavnt2@</td> <!-- user : pw -->
+                                                        <td>김태경</td> <!-- user : name -->
+                                                        <td>OWNER</td> <!-- user : kind -->
+                                                        <td class="chalist">
+                                                            <a href="channel_record_modify.html"><span>LOTTOGANG</span></a>
+                                                            <a href="channel_record_modify.html"><span>LOTTOGANG</span></a>
+                                                            <a href="channel_record_modify.html"><span>LOTTOGANG</span></a>
+                                                        </td> <!-- channel : name -->
+                                                        <td>2019-12-11</td> <!-- user : regdate -->
+                                                        <td><a href="user_record_modify.html"><i class="fas fa-edit"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><!-- table : column -->
+                                                        <td>2</td> <!-- user : userpkey -->
+                                                        <td>cksdfjcis</td> <!-- user : userid -->
+                                                        <td>dsdfasddf</td> <!-- user : pw -->
+                                                        <td>손흥민</td> <!-- user : name -->
+                                                        <td>AGENCY</td> <!-- user : kind -->
+                                                        <td><a href="channel_record_modify.html"><span>LOTTOGANG</span></a></td> <!-- channel : name -->
+                                                        <td>2019-12-11</td> <!-- user : regdate -->
+                                                        <td><a href="user_record_modify.html"><i class="fas fa-edit"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><!-- table : column -->
+                                                        <td>1</td> <!-- user : userpkey -->
+                                                        <td>fskjhfdsijhi</td> <!-- user : userid -->
+                                                        <td>dsdfasddf</td> <!-- user : pw -->
+                                                        <td>지송팍</td> <!-- user : name -->
+                                                        <td>MK</td> <!-- user : kind -->
+                                                        <td><a href="channel_record_modify.html"><span>LOTTOGANG</span></a></td> <!-- channel : name -->
+                                                        <td>2019-12-11</td> <!-- user : regdate -->
+                                                        <td><a href="user_record_modify.html"><i class="fas fa-edit"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </bindtemplete>
+
+
+                                    <!-- order END -->
+                                    <!-- 
+                                    <div class="account-pagination">
+                                        <div class="newer">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <span>NEWER</span>
+                                        </div>
+                                        <div class="older">
+                                            <span>OLDER</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                     -->
+                                     
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </main>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

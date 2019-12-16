@@ -1,0 +1,113 @@
+main .main-body .main-center {
+    width: 100%;
+}
+
+main .main-body .main-center .account-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+main .main-body .main-center .account-box .account-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+main .main-body .main-center .account-box .account-header .account-header-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    padding: 8px;
+}
+
+main .main-body .main-center .account-box .account-header .account-header-box .header-element {
+    margin-left: 20px;
+    border: 1px red solid;
+    padding: 5px 15px;
+    border-radius: 15%/50%;
+    background-color: white;
+    color: red;
+}
+
+main .main-body .main-center .account-box .account-body {
+    height: 80vh;
+    overflow-y: auto;
+}
+
+/* USERLIST */
+#userlist {
+    background-color: white;
+}
+
+#userlist .box-body {
+    width: 100%;
+    padding: 20px;
+}
+
+#usertable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+td {
+    padding: 10px;
+}
+
+td a:hover {
+    color: red;
+}
+
+
+.chalist a::after {
+    content: ",";
+    margin-right: 8px;
+}
+
+.chalist a:nth-last-child(1)::after {
+    content: "";
+}
+
+
+td:nth-last-child(1), th:nth-last-child(1){
+    text-align: center;
+}
+
+
+ .flex-da {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* pagination */
+main .main-body .main-center .account-box .account-body .account-pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    font-size: 0.8rem;
+    color: black;
+}

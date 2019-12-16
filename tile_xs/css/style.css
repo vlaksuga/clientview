@@ -62,12 +62,14 @@ a[href^="tel:"] {
 
 
 .half_box {
+    background-size: 100%;
     height: 75vh;
     background-repeat: no-repeat;
 }
 
 .half_box .bottom_art {
-    width: 200px;
+    position: absolute;
+    width: 100%;
     height: 50px;
     bottom: 35%;
     right: 10%;
@@ -113,7 +115,7 @@ nav li {
 }
 
 nav li:first-child {
-    margin: -5px 0 -10px 15px;
+    margin: -8px 0 -10px 15px;
 }
 
 nav li .logo {
@@ -122,6 +124,7 @@ nav li .logo {
 
 nav li a,
 .dropbtn {
+    margin-top: 2px;
     display: inline-block;
     color: white;
     text-align: center;
@@ -136,6 +139,11 @@ nav li a:hover,
 
 nav li.dropdown {
     display: inline-block;
+}
+
+
+nav li .logo {
+    max-width: 150px;
 }
 
 .dropdown-content {
@@ -179,7 +187,7 @@ nav li.dropdown {
   
   #intro .carousel-item::before {
     content: '';
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2); 
     position: absolute;
     height: 100%;
     width: 100%;
@@ -214,6 +222,9 @@ nav li.dropdown {
   }
   
   #intro .carousel-content {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
     text-align: center;
   }
   
@@ -262,7 +273,7 @@ nav li.dropdown {
   
   #intro .carousel-control-prev,
   #intro .carousel-control-next {
-    width: 10%;
+    width: 5%;
   }
   
   #intro .carousel-control-next-icon,
@@ -295,12 +306,27 @@ nav li.dropdown {
     color: #18d26e;
   }
 
+  .carousel-content {
+    text-align: center;
+}
+
+.carousel-content div {
+    position: absolute;
+    right:0;
+    margin : 0 auto;
+    border: 2px solid white;
+    width: 180px;
+    padding: 5px 0;
+}
+
 
 
 /*======================
     INDEX BANNER
  ====================== */
 #index_banner {
+    background-color: #eeeeee;
+    color: rgb(0,44,90);
     display: grid;
     grid-template-columns: 60% 40%;
     width: 100%;
@@ -311,35 +337,83 @@ nav li.dropdown {
     padding: 25px;
 }
 
-.banner_left h1 {
-    margin-left: 0;
-}
-
-.banner_left h1 img {
-    padding-left: -50px;
-    width: 100%;
-}
-
 .banner_left p {
     font-size: 1.5rem;
 }
 
-.banner_left div  {
-    float: right;
-    text-align: center;
+.banner_left .cotto_title {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
-.banner_left div .more {
+.banner_left .cotto_title div img {
+    width: 100%;
+}
+
+.banner_left .cotto_title div h1 {
+    margin: 0;
+    padding-left: 40px;
+    font-size: 3em;
+}
+
+.banner_left .cotto_eng p:first-child {
+    margin-bottom: 0;
+}
+
+.banner_left .cotto_eng p:nth-child(2) {
+    font-size: 1rem;
+    margin-top: 7px;
+}
+
+
+.banner_left .cotto_viewbox {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.banner_left .cotto_viewbox .cotto_kor h6 {
+    margin: 0;
+}
+
+.banner_left .cotto_viewbox .cotto_kor p {
+    margin-top: 2px;
+    font-size: 0.7rem;
+}
+
+.banner_left .cotto_view {
+    margin: 10px 0 0 0;
+    float: right;
+}
+
+.banner_left .cotto_view .more {
+    text-align: center;
     width: 180px;
-    border: 2px solid white;
+    border: 2px solid rgb(0,44,90);
     padding: 5px 10px;
 }
 
+.banner_left .cotto_view .more a {
+    font-weight: 500;
+    color:rgb(0,44,90);
+}
+
+
+
 .banner_right {
-    background-image: url('../img/banner_right/banner_01.jpg');
+    width: 100%;
+    background-size: cover;
     height: 100%;
 }
 
+
+.banner_right {
+    background-image: url('../img/banner_right/banner_01.jpg');
+}
+
+.banner_left .more {
+    right : 15%;
+    bottom: 5%;
+}
 /*======================
     INDEX TILES
  ====================== */
@@ -374,17 +448,22 @@ nav li.dropdown {
 }
 
 .tile .detail {
+    line-height: 10px;
     position: absolute;
-    bottom: 10%;
-    left: 10%;
+    width:100%;
+    bottom: 4px;
+    left: 0;
+    background-color: rgba(255,255,255,0.4);
 }
 
 .detail h2 {
+    padding-left: 5%;
     color: black;
 }
 
 .detail p {
-    color: gray;
+    padding-left: 5%;
+    color: #353535;
 }
 
 #index_tiles .more {
@@ -396,23 +475,11 @@ nav li.dropdown {
     text-align: right;
 }
 
-#index_tiles .more:hover {
-    background-color: lightgray;
+ .active {
+    padding-top: 2px;
+    border-top: 1px solid white;
 }
 
-.new {
-    position: absolute;
-    right:5px;
-    top:5px;
-    background-color: navy;
-    color:white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding-top: 15px;
-    text-align: center;
-    font-weight: bolder;
-}
 
 /*======================
     INSTAGRAM
@@ -451,7 +518,9 @@ nav li.dropdown {
 #half_about {
     background-image: url('../img/half/about.jpg');
 }
-
+#story .story_p {
+    line-height: 24px;
+}
 #history h2,
 #faq h2 {
     text-align: center;
@@ -509,7 +578,7 @@ nav li.dropdown {
     border-left: 4px solid rgba(0, 0, 255, 0.8);
 }
 
-.accordion {
+.faq_box .accordion {
     background-color: #313131;
     color: white;
     cursor: pointer;
@@ -522,11 +591,12 @@ nav li.dropdown {
     transition: 0.4s;
 }
 
-.active,
-.accordion:hover {
+.faq_box .active,
+.faq_box .accordion:hover {
     color: black;
     background-color: #ccc;
 }
+
 
 .panel {
     padding: 0 18px;
@@ -538,6 +608,13 @@ nav li.dropdown {
 .panel p {
     line-height: 30px;
 }
+
+.faq-notice {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.8em;
+}
+
 
 /*======================
     CONTACT
@@ -582,6 +659,9 @@ nav li.dropdown {
 }
 
 .half_box .bottom_art div {
+    letter-spacing: 3px;
+    font-size:2em;
+    font-weight: bold;
     text-align: right;
 }
 
@@ -617,7 +697,7 @@ nav li.dropdown {
 
 #products_tiles .grid {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     width: 100%;
 }
 
@@ -630,6 +710,28 @@ nav li.dropdown {
 
 .pagination a {
     margin: 5px;
+}
+
+.none {
+    display: none;
+}
+
+.new {
+    position: absolute;
+    right:5px;
+    top:5px;
+    background-color: rgba(43, 191, 252, 0.5);
+    color:white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding-top: 15px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.cotto {
+    display: none;
 }
 
 /*======================
@@ -662,8 +764,12 @@ nav li.dropdown {
 
 #projects_tiles .grid {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     width: 100%;
+}
+
+#projects_tiles .new {
+    display: none;
 }
 
 
@@ -700,7 +806,7 @@ nav li.dropdown {
 .next {
     cursor: pointer;
     position: absolute;
-    top: 40%;
+    top: 350px;
     width: auto;
     padding: 16px;
     margin-top: -50px;
@@ -765,6 +871,10 @@ nav li.dropdown {
     bottom: 10%;
 }
 
+#projects_tiles p {
+    color: black;
+    font-weight: bold;
+}
 
 /*======================
     PRODUCT DETAIL
@@ -803,6 +913,12 @@ nav li.dropdown {
     margin: 10px 0;
 }
 
+#tile_detail .tile_box .row .col .txt_box .row {
+    grid-template-columns: 30% 70%;
+    width: 100%;
+    margin: 10px 0;
+}
+
 .tile_box .row .col {
     width: 100%;
 }
@@ -820,13 +936,6 @@ nav li.dropdown {
 .t_label {
     color: gray;
 }
-
-.tile_box .row .col .txt_box .row:nth-child(2),
-.tile_box .row .col .txt_box .row:nth-child(3),
-.tile_box .row .col .txt_box .row:nth-child(5) {
-    display: none;
-}
-
 
 /* modal */
 
@@ -846,16 +955,49 @@ nav li.dropdown {
     width:100%;
     font-size: 2.5em;
     text-align: right;
-    padding: 15px 15px 0 0;
+    padding: 15px 35px 0 0;
 }
 
 #modal_container img{
-    padding-top:25vh;
+    max-width: 700px;
 }
 
+#modal_container .mobox {
+    width: 100vw;
+    text-align: center;
+}
 
+.tile_container {
+    width: 100vw;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    height: 800px;
+}
 
-/*======================
+.modal_l,
+.modal_r  {
+    font-size: 2em;
+    width: 30%;
+    position: absolute;
+    height: 800vh;
+    top: 50%;
+}
+
+.modal_l:hover,
+.modal_r:hover {
+ cursor: pointer;   
+}
+
+.modal_l {
+    left: 10%;
+}
+
+.modal_r {
+    right: 10%;
+}
+
+ /*======================
     SEARCH
  ====================== */
 
@@ -876,6 +1018,14 @@ nav li.dropdown {
     display: inline;
     margin-right: 15px;
     font-size: 0.8em;
+}
+
+#search li a:hover {
+    cursor: pointer;
+}
+
+#search .notice {
+    text-align: center;
 }
 
 #search_result {
@@ -899,7 +1049,7 @@ nav li.dropdown {
 
 #search_result .grid {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     width: 100%;
 }
 
@@ -927,6 +1077,10 @@ nav li.dropdown {
     color: grey;
 }
 
+#search .select div select option:first-child {
+    color: black;
+    font-weight: bold;
+}
 
 #btn_reset {
     margin: 0; 
@@ -935,16 +1089,17 @@ nav li.dropdown {
 }
 
 #btn_reset button {
-    background-color:white;
+    background-color: grey;
     border: none;
-    color:black;
+    color: white;
     border-radius: 3%;
-    padding: 15px 32px;
+    padding: 10px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
 }
+
 
 /*======================
     FOOTER
@@ -954,7 +1109,7 @@ nav li.dropdown {
     padding: 0;
     background-color: black;
     width: 100%;
-    height: 80px;
+    height: 150px;
 }
 
 footer .row {
@@ -974,6 +1129,14 @@ footer .add_box {
 
 footer .add_box div {
     padding-top: 5px;
+}
+
+.copyright {
+    line-height: 15px;
+    color: gray;
+    font-size: 0.7em;
+    padding-top: 30px;
+    text-align: center;
 }
 
 /* Carousel From BS4 */
@@ -1115,54 +1278,6 @@ footer .add_box div {
     height: 20px;
     background: transparent no-repeat center center;
     background-size: 100% 100%;
-  }
-  
-  .carousel-control-prev-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
-  }
-  
-  .carousel-control-next-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
-  }
-  
-  .carousel-indicators {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 15;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
-    padding-left: 0;
-    margin-right: 15%;
-    margin-left: 15%;
-    list-style: none;
-  }
-  
-  .carousel-indicators li {
-    box-sizing: content-box;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    width: 30px;
-    height: 3px;
-    margin-right: 3px;
-    margin-left: 3px;
-    text-indent: -999px;
-    cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    opacity: .5;
-    transition: opacity 0.6s ease;
-  }
-  
-  @media screen and (prefers-reduced-motion: reduce) {
-    .carousel-indicators li {
-      transition: none;
-    }
   }
   
   .carousel-indicators .active {

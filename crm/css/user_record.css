@@ -1,0 +1,157 @@
+main .main-body .main-center {
+    width: 100%;
+}
+
+main .main-body .main-center .account-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+main .main-body .main-center .account-box .account-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+main .main-body .main-center .account-box .account-header .account-header-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 50%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    padding-bottom: 10px;
+}
+
+
+
+main .main-body .main-center .account-box .account-header .mod-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+    margin: 0 20px;
+    font-size: 1.3rem;
+
+}
+
+main .main-body .main-center .account-box .account-header .mod-box div {
+    margin: 0px 0px 5px 10px;
+}
+
+main .main-body .main-center .account-box .account-header .mod-box .mod-plus {
+    color: green;
+}
+
+main .main-body .main-center .account-box .account-header .account-header-right .save-excel:hover {
+    background-color: darkgreen;
+}
+
+main .main-body .main-center .account-box .account-header .account-header-box .header-element span {
+    margin-left : 10px;
+}
+
+main .main-body .main-center .account-box .account-header .account-header-box .header-element .default {
+    color:green;
+}
+
+main .main-body .main-center .account-box .account-header .account-header-box .header-element .error {
+    color:#ed5c5c;
+}
+
+main .main-body .main-center .account-box .account-body {
+    height:80vh;
+    overflow-y: auto;
+}
+
+/* USERRECORD */
+#userrecord {
+    background-color: white;
+    padding-bottom: 1px;
+    
+}
+
+#userrecord .box-body {
+    width: 100%;
+    padding: 20px;
+}
+
+#userrecordtable {
+    width: 100%;
+    font-size: 13px;
+
+}
+
+th {
+    text-align: left;
+    padding:8px;
+    cursor: pointer;
+}
+
+
+td:first-child {
+    background-color: #efefef;
+    padding:8px;
+}
+
+td:nth-child(2) {
+    padding: 2px 10px;
+}
+
+td a:hover {
+    color: red;
+}
+
+td a::after {
+    content: ",";
+    margin-right: 8px;
+}
+
+td a:nth-last-child(1)::after {
+    content: "";
+}
+
+.body-footer {
+    margin: 20px;
+}
+
+.btn-box button {
+    width: 100px;
+    padding : 5px 10px;
+    margin-right: 20px;
+    background-color: gray;
+    color: white;
+    }
+
+.btn-box button:hover {
+    cursor: pointer;
+    border: 1px lightblue solid;
+}
+
+/* pagination */
+main .main-body .main-center .account-box .account-body .account-pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    font-size: 0.8rem;
+    color:black;
+}
+
+.recordinput {
+    width: 300px;
+    padding: 3px;
+}
+
+.recordinput:focus {
+    border: 1px lightblue solid;
+}

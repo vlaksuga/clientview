@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>STATISTICS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/chart-box.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div id="top">
+            <div class="nav-container">
+                <div class="user-container">
+                    <div class="channel-box unselected none">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="good">
+                            </div>
+                            <div class="user">
+                                <span>ALL CHANNEL</span>
+                                <span class="selected"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot none"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="channel-box selected">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="bad">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH1</span>
+                                <span class=""><i class="fas fa-angle-down"></i></span>
+                                <span class="dot none"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-box unselected none">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="bad">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH2</span>
+                                <span class="none"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-box unselected none">
+
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="good">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH3</span>
+                                <span class="none"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logo-top">
+                    <img src="../img/logomini.png"> <!-- 클릭 > reflesh -->
+                </div>
+
+                <div class="user-setting">
+                    <!-- 클릭 > "LOGOUT 할까요?" > LOGGOUT -->
+                    <div class="set-box">
+                        <div class="i-box">
+                            <i class="fas fa-power-off"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+                <aside>
+                    <div class="aside-box">
+                        <a href="event.html">
+                            <i class="fas fa-database"></i>
+                            <span>EVENT</span>
+                        </a>
+                    </div>
+                    <div class="aside-box active">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>STATS</span>
+
+                    </div>
+                    <div class="aside-box">
+                        <a href="config.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>CONFIG</span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+
+            <div id="main">
+
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>STATISTICS</span>
+                            <i class="fas fa-angle-double-right"></i>
+                            <span id="channer-name">LOTTORICH1</span>
+                        </div>
+
+                    </div>
+
+                    <div class="main-body">
+
+                            <div class="main-left active">
+                                    <div class="option-box">
+        
+                                        <div onclick="location.href='./index.html'" class="option-header selectable">
+                                            <div class="option-header-box">
+                                                <span>INDEX : 종합 차트</span>
+                                            </div>
+                                        </div>
+        
+                                        <div onclick="location.href='./event_sec1.html'" class="option-header selectable">
+                                            <div class="option-header-box">
+                                                <span>SECTION1 : 유효 / 무효</span>
+                                            </div>
+                                        </div>
+        
+                                        <div onclick="location.href='./event_sec2.html'" class="option-header selectable">
+                                            <div class="option-header-box">
+                                                <span>SECTION2 : 웹 / 모바일</span>
+                                            </div>
+                                        </div>
+        
+                                     
+                                        <div onclick="location.href='./event_sec3.html'" class="option-header selectable">
+                                            <div class="option-header-box">
+                                                <span>SECTION3 : 유입 경로</span>
+                                            </div>
+                                        </div>
+        
+                                        <div onclick="location.href='./event_sec4.html'" class="option-header selectable">
+                                            <div class="option-header-box">
+                                                <span>SECTION4 : 남 / 여</span>
+                                            </div>
+                                        </div>
+        
+                                        <div onclick="location.href='./event_sec5.html'" class="option-header selectable active">
+                                            <div class="option-header-box">
+                                                <span>SECTION5 : 진행 현황</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <div class="main-center" id="chart">
+
+                            <div class="filter-box">
+                                <div class="day-box">
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            신규
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            가망
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            결재
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            부재
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            결번
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            본인아님
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            거절
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            대기
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar active">
+                                            강제폐기
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn apply">
+                                        <button class="tocar">
+                                            적용
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="switch-box">
+                                    <div class="chart switch active">
+                                        <a><i class="fas fa-chart-pie"></i></a>
+                                    </div>
+                                    <div class="excel switch active">
+                                        <a><i class="fas fa-file-excel"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="title-box">
+                                <span>진행 현황</span>
+                            </div>
+
+                            <div class="chart-box">
+
+                                <!-- TABLE -->
+                                <div class="table-box">
+                                    <table class="order-table">
+                                        <colgroup>
+                                            <col class="col1">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                            <col class="col2">
+                                        </colgroup>
+
+                                        <thead>
+                                            <tr>
+                                                <th scope="row">DATE</th>
+                                                <th scope="row">신규</th>
+                                                <th scope="row">가망</th>
+                                                <th scope="row">결재</th>
+                                                <th scope="row">부재</th>
+                                                <th scope="row">결번</th>
+                                                <th scope="row">본인아님</th>
+                                                <th scope="row">거절</th>
+                                                <th scope="row">대기</th>
+                                                <th scope="row">강제폐기</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr class="channel">
+                                                <td>LOTTORICH1</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>4</td>
+                                                <td>6</td>
+                                            </tr>
+                                            <tr>
+                                                <td>손흥민</td>
+                                                <td>11</td>
+                                                <td>13</td>
+                                                <td>15</td>
+                                                <td>0</td>
+                                                <td>7</td>
+                                                <td>55</td>
+                                                <td>7</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>박지성</td>
+                                                <td>11</td>
+                                                <td>13</td>
+                                                <td>15</td>
+                                                <td>0</td>
+                                                <td>7</td>
+                                                <td>55</td>
+                                                <td>7</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>TOTAL</td>
+                                                <td>11</td>
+                                                <td>13</td>
+                                                <td>15</td>
+                                                <td>0</td>
+                                                <td>7</td>
+                                                <td>55</td>
+                                                <td>7</td>
+                                                <td>4</td>
+                                                <td>6</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+
+                                <div class="element-box">
+
+                                    <!-- 진행별 RADAR -->
+                                    <div class="chart-element">
+                                        <canvas id="chart_result_radar" width="50" height="50"></canvas>
+                                        <script>
+                                                var ctx = document.getElementById('chart_result_radar');
+                                                var chart_result_radar = new Chart(ctx, {
+                                                    type: 'radar',
+                                                    data: {
+                                                        labels: ['대기', '신규', '가망', '결재', '부재', '결번', '본인아님', '거절', '강제폐기'],
+                                                        datasets: [{
+                                                            label: '# 긍정적 진행 주문 ',
+                                                            data: [7, 4, 5, 7, 9, 0, 0, 0, 0],
+                                                            backgroundColor: [
+                                                                'rgba(54, 162, 235, 0.2)'
+                                                            ],
+                                                            borderColor: [
+                                                                'rgba(54, 162, 235, 1)'
+                                                            ],
+                                                            borderWidth: 1
+                                                        },
+                                                        {
+                                                            label: '# 부정적 진행 주문',
+                                                            data: [0, 0, 0, 0, 0, 10, 9, 22, 15],
+                                                            backgroundColor: [
+                                                                'rgba(255, 0, 0, 0.2)'
+                                                            ],
+                                                            borderColor: [
+                                                                'rgba(255, 0, 0, 1)'
+                                                            ],
+                                                            borderWidth: 1
+                                                        }],
+                                                    },
+                                                    options: {
+                                                        maintainAspectRatio: false,
+                                                        scales: {
+                                                            yAxes: [{
+                                                                ticks: {
+                                                                    beginAtZero: true
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                })
+                                            </script>
+                                    </div>
+
+                                    <!-- 진행별 BAR -->
+                                    <div class="chart-element">
+                                        <canvas id="chart_result_hbar" width="50" height="50"></canvas>
+                                        <script>
+                                            var ctx7 = document.getElementById('chart_result_hbar');
+                                            var chart_result_hbar = new Chart(ctx7, {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: ['대기', '신규', '가망', '결재', '부재', '결번', '본인아님', '거절', '강제폐기'],
+                                                    datasets: [{
+                                                        label: '# 주문 ',
+                                                        data: [7, 4, 5, 7, 9, 10, 9, 22, 15],
+                                                        backgroundColor: [
+                                                            'rgba(54, 162, 235, 0.2)',
+                                                            'rgba(125, 200, 105, 0.2)',
+                                                            'rgba(125, 231, 211, 0.2)',
+                                                            'rgba(254, 255, 46, 0.2)',
+                                                            'rgba(254, 70, 46, 0.2)',
+                                                            'rgba(254, 46, 80, 0.2)',
+                                                            'rgba(254, 88, 229, 0.2)',
+                                                            'rgba(249, 5, 4, 0.2)',
+                                                            'rgba(0, 0, 0, 0.2)'
+                                                        ],
+                                                        borderColor: [
+                                                            'rgba(54, 162, 235, 1)',
+                                                            'rgba(125, 200, 105, 1)',
+                                                            'rgba(125, 231, 211, 1)',
+                                                            'rgba(254, 255, 46, 1)',
+                                                            'rgba(254, 70, 46, 1)',
+                                                            'rgba(254, 46, 80, 1)',
+                                                            'rgba(254, 88, 229, 1)',
+                                                            'rgba(249, 5, 4, 1)',
+                                                            'rgba(0, 0, 0, 1)'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }],
+                                                },
+                                                options: {
+                                                    maintainAspectRatio: false,
+                                                    scales: {
+                                                        yAxes: [{
+                                                            ticks: {
+                                                                beginAtZero: true
+                                                            }
+                                                        }]
+                                                    }
+                                                }
+                                            })
+                                        </script>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </main>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

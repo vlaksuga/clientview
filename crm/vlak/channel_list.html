@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADAND OMS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/channel_list.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/c.js"></script>
+
+    <script>
+        drawFragment("#top", "./frag/top.html");
+        drawFragment("#aside", "./frag/aside.html");
+
+
+
+        oms.get("/adm/listUser.json", {}, function (head, body) {
+            wmap(body, $(".main-center"));
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="top">
+
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+
+            </div>
+
+            <div id="main">
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>CHANNEL</span>
+                        </div>
+
+                    </div>
+
+                    <div class="main-body">
+
+                        <div class="main-left">
+                            <div class="option-box">
+
+                                <div class="option-header active">
+                                    <div class="option-header-box">
+                                        <div class="option-title">
+                                            <span>FILTER</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="option-body">
+                                    <div class="option-element">
+                                        <span>CHANNELID</span>
+                                        <input type="text" class="tocar">
+                                    </div>
+
+                                    <div class="option-element">
+                                        <span>NAME</span>
+                                        <input type="text" class="tocar">
+                                    </div>
+
+                                </div>
+
+                                <div class="option-footer">
+
+                                    <div class="option-footer-box">
+                                        <button class="option-btn tocar apply">적용</button>
+                                        <button class="option-btn tocar reset">RESET</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="main-center">
+                            <div class="channel-box">
+
+                                <div class="channel-header">
+
+                                    <div class="channel-header-box">
+                                        <div class="header-element">
+                                            <a href="channel_record_add.html">CREATE CHANNEL</a>
+                                            <!-- channel record를 새로 만듦 -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="channel-body" bind="list:LIST">
+
+                                    <!-- bind templete -->
+                                    <bindtemplete>
+                                        <div id="channellist">
+                                            <div class="box-header"></div>
+                                            <div class="box-body">
+                                                <table id="channellisttable">
+                                                    <colgroup>
+                                                        <col width="10%">
+                                                        <col width="10%">
+                                                        <col width="10%">
+                                                        <col width="10%">
+                                                        <col width="30%">
+                                                        <col width="10%">
+                                                        <col width="10%">
+                                                        <col width="5%">
+                                                        <col width="5%">
+                                                    </colgroup>
+                                                    <tr>
+                                                        <th>CHANNELID</th> <!-- default는 pk 내림차순 -->
+                                                        <th>NAME</th> <!-- CLICK하면 오름차순/내림차순 -->
+                                                        <th>OWNER</th>
+                                                        <th>AGENCY</th>
+                                                        <th>MK</th>
+                                                        <th>FORMID</th>
+                                                        <th>REGDATE</th>
+                                                        <th>EDIT</th>
+                                                        <th>EVENT</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <!-- table : column -->
+                                                        <td>lottorich</td> <!-- channel : channelid -->
+                                                        <td>로또리치</td> <!-- channel : name -->
+                                                        <td><a href="user_record_modify.html"><span>강지형</span></a></td> <!-- user : name(owner) -->
+                                                        <td><a href="user_record_modify.html"><span>주제무리뉴</span></a></td> <!-- user : name(agency) -->
+                                                        <td class="flex-da"> <!-- user : name(mk) -->
+                                                            <a href="user_record_modify.html"><span>호날두</span></a> <!-- user : name(mk) -->
+                                                            <a href="user_record_modify.html"><span>호날두</span></a>
+                                                            <a href="user_record_modify.html"><span>호날두</span></a>
+                                                            <a href="user_record_modify.html"><span>호날두</span></a>
+                                                            <a href="user_record_modify.html"><span>마용성</span></a>
+                                                            <!-- maxdata 5 -->
+                                                        </td>
+                                                        <td>lotto1111</td> <!-- channel : formid -->
+                                                        <td>2019-12-11</td> <!-- channel : regdate -->
+                                                        <td>
+                                                            <a href="channel_record_modify.html"><i class="fas fa-edit"></i></a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="../app/event.html"><i class="fas fa-database"></i></a> <!-- user가 admin인데 event로 접근하는 문제 -->
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </bindtemplete>
+
+                                    <!-- order END
+                                    <div class="channel-pagination">
+                                        <div class="newer">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <span>NEWER</span>
+                                        </div>
+                                        <div class="older">
+                                            <span>OLDER</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

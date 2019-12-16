@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>STATISTICS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/chart-box.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div id="top">
+            <div class="nav-container">
+                <div class="user-container">
+                    <div class="channel-box unselected none">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="good">
+                            </div>
+                            <div class="user">
+                                <span>ALL CHANNEL</span>
+                                <span class="selected"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot none"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="channel-box selected">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="bad">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH1</span>
+                                <span class=""><i class="fas fa-angle-down"></i></span>
+                                <span class="dot none"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-box unselected none">
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="bad">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH2</span>
+                                <span class="none"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-box unselected none">
+
+                        <div class="user-box">
+                            <div class="avatar">
+                                <img class="good">
+                            </div>
+                            <div class="user">
+                                <span>LOTTORICH3</span>
+                                <span class="none"><i class="fas fa-angle-down"></i></span>
+                                <span class="dot"><i class="fas fa-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="logo-top">
+                    <img src="../img/logomini.png"> <!-- 클릭 > reflesh -->
+                </div>
+                <div class="user-setting">
+                    <!-- 클릭 > "LOGOUT 할까요?" > LOGGOUT -->
+                    <div class="set-box">
+                        <div class="i-box">
+                            <i class="fas fa-power-off"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+                <aside>
+                    <div class="aside-box">
+                        <a href="../app/event.html">
+                            <i class="fas fa-database"></i>
+                            <span>EVENT</span>
+                        </a>
+                    </div>
+                    <div class="aside-box active">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>STATS</span>
+
+                    </div>
+                    <div class="aside-box">
+                        <a href="../app/config.html">
+                            <i class="fas fa-cogs"></i>
+                            <span>CONFIG</span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+
+            <div id="main">
+
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>STATISTICS</span> 
+                            <i class="fas fa-angle-double-right"></i> 
+                            <span id="channer-name">LOTTORICH1</span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="main-body">
+
+                        <div class="main-left active">
+                            <div class="option-box">
+
+                                <div onclick="location.href='./index.html'" class="option-header selectable active">
+                                    <div class="option-header-box">
+                                        <span>INDEX : 종합 차트</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="location.href='./event_sec1.html'" class="option-header selectable">
+                                    <div class="option-header-box">
+                                        <span>SECTION1 : 유효 / 무효</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="location.href='./event_sec2.html'" class="option-header selectable">
+                                    <div class="option-header-box">
+                                        <span>SECTION2 : 웹 / 모바일</span>
+                                    </div>
+                                </div>
+
+                             
+                                <div onclick="location.href='./event_sec3.html'" class="option-header selectable">
+                                    <div class="option-header-box">
+                                        <span>SECTION3 : 유입 경로</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="location.href='./event_sec4.html'" class="option-header selectable">
+                                    <div class="option-header-box">
+                                        <span>SECTION4 : 남 / 여</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="location.href='./event_sec5.html'" class="option-header selectable">
+                                    <div class="option-header-box">
+                                        <span>SECTION5 : 진행 현황</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-center" id="chart">
+
+                            <div class="filter-box">
+                                <div class="day-box">
+                                    <div class="filter-element">
+                                        <span>시작일</span>
+                                        <input class="tocar" id="datepicker_start">
+                                    </div>
+                                    <div class="filter-element">
+                                        <span>종료일</span>
+                                        <input class="tocar" id="datepicker_end">
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            오늘
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            어제
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            이번주
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            이번달
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            지난주
+                                        </button>
+                                    </div>
+                                    <div class="filter-element btn">
+                                        <button class="tocar">
+                                            지난달
+                                        </button>
+                                    </div>
+
+                                    <div class="filter-element btn apply">
+                                        <button class="tocar">
+                                            적용
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="switch-box">
+                                    <div class="chart switch active none">
+                                        <a><i class="fas fa-chart-pie"></i></a>
+                                    </div>
+                                    <div class="table switch none">
+                                        <a><i class="fas fa-table"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="title-box">
+                                <span>INDEX</span>
+                            </div>
+
+                            <div class="chart-box index">
+
+                                <!-- 진행별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_result_radar" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_result_radar');
+                                        var chart_result_radar = new Chart(ctx, {
+                                            type: 'radar',
+                                            data: {
+                                                labels: ['대기', '신규', '가망', '결재', '부재', '결번', '본인아님', '거절', '강제폐기'],
+                                                datasets: [{
+                                                    label: '# 긍정적 진행 주문 ',
+                                                    data: [7, 4, 5, 7, 9, 0, 0, 0, 0],
+                                                    backgroundColor: [
+                                                        'rgba(54, 162, 235, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(54, 162, 235, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                },
+                                                {
+                                                    label: '# 부정적 진행 주문',
+                                                    data: [0, 0, 0, 0, 0, 10, 9, 22, 15],
+                                                    backgroundColor: [
+                                                        'rgba(255, 0, 0, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 0, 0, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }],
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">진행별 주문 통계</div>
+                                </div>
+
+                                <!-- 기기별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_device_polar" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_device_polar');
+                                        var chart_device_polar = new Chart(ctx, {
+                                            type: 'polarArea',
+                                            data: {
+                                                labels: ['WEB', 'MOBILE', 'ETC'],
+                                                datasets: [{
+                                                    label: '# 기기별 ',
+                                                    data: [37, 45, 5],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">기기별 주문 통계</div>
+                                </div>
+
+                                <!-- 요일별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_dotw_bar" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_dotw_bar');
+                                        var chart_dotw_bar = new Chart(ctx, {
+                                            type: 'bar',
+                                            data: {
+                                                labels: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+                                                datasets: [{
+                                                    label: '# 요일별 ',
+                                                    data: [7, 4, 5, 7, 9, 10, 9],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">요일별 주문 통계</div>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-box index">
+
+                                <!-- 일별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_date_line" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_date_line');
+                                        var chart_date_line = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['19-09-16', '19-09-17', '19-09-18', '19-09-19', '19-09-20', '19-09-21', '19-09-22'],
+                                                datasets: [{
+                                                    label: '# 일별 ',
+                                                    data: [7, 4, 5, 7, 9, 10, 9],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">일별 주문 통계</div>
+                                </div>
+
+                                <!-- 소스별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_src_pie" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_src_pie');
+                                        var chart_src_pie = new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ['VLAKSUGA', 'GDN', 'DABLE', 'ADIN', 'IMAD'],
+                                                datasets: [{
+                                                    label: '# 기기별 ',
+                                                    data: [37, 45, 5, 22, 10],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">소스별 주문 통계</div>
+                                </div>
+
+                                <!-- 연령별 주문 통계 -->
+                                <div class="chart-element">
+                                    <canvas id="chart_age_hbar" width="50" height="50"></canvas>
+                                    <script>
+                                        var ctx = document.getElementById('chart_age_hbar');
+                                        var chart_age_hbar = new Chart(ctx, {
+                                            type: 'horizontalBar',
+                                            data: {
+                                                labels: ['-10대', '20대', '30대', '40대', '50대', '+60대'],
+                                                datasets: [{
+                                                    label: '# 연령별 주문 통계',
+                                                    data: [7, 4, 5, 7, 9, 10],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                    </script>
+                                    <div class="caption">연령별 주문 통계</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </main>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

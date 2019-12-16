@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADAND OMS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/channel_record.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/c.js"></script>
+
+    <script>
+        drawFragment("#top", "./frag/top.html");
+        drawFragment("#aside", "./frag/aside.html");
+
+
+
+        oms.get("/adm/listUser.json", {}, function (head, body) {
+            wmap(body, $(".main-center"));
+
+        });
+
+    </script>
+
+
+
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="top">
+
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+
+            </div>
+
+            <div id="main">
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>CHANNEL</span>
+                        </div>
+
+                    </div>
+
+                    <div class="main-body">
+
+                        <div class="main-left">
+                            <div class="option-box">
+
+                                <div class="option-header active">
+                                    <div class="option-header-box">
+                                        <div class="option-title">
+                                            <span>CHANNEL RECORD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-center">
+
+                            <div class="channel-box">
+
+                                <div class="channel-header">
+
+
+                                    <div class="channel-header-box">
+                                        <div class="header-element">
+                                            <a href="channel_auth_user.html">USER 편집하기</a>
+                                            <!-- channel record를 새로 만듦 -->
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="account-body" bind="list:LIST">
+
+
+
+
+
+
+                                    <!-- user-list start -->
+                                    <bindtemplete>
+                                        <div id="channelrecord">
+                                            <div class="box-header"></div>
+                                            <div class="box-body">
+                                                <table id="channelrecordtable">
+                                                    <colgroup>
+                                                        <col width="10%">
+                                                        <col width="10%">
+                                                        <col width="80%">
+                                                    </colgroup>
+                                                    <tr>
+                                                        <td class="bg-gr" colspan="2">PK</td>
+                                                        <td colspan="2" class="inputtd">1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr" colspan="2">CHANNEL NAME</td>
+                                                        <td colspan="2"  class="inputtd"><input type="text" class="recordinput" value="lottorich"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr" rowspan="3">
+                                                            USER
+                                                        </td>
+                                                        <td class="bg-gr flex-even">
+                                                            <div><span>OWNER</span></div>
+                                                        </td>
+                                                        <td class="inputtd">김로또</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr flex-even">
+                                                            <div><span>AGENCY</span></div>
+                                                        </td>
+                                                        <td class="inputtd">강지형</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr flex-even">
+                                                            <div><span>MK</span></div>
+                                                        </td>
+                                                        <td class="inputtd">김태경</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr" colspan="2">FROMID</td>
+                                                        <td colspan="2" class="inputtd"><input type="text" class="recordinput" value="cnidkghd"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr" rowspan="8">COLUMN</td>
+                                                        <td class="bg-gr">NAME</td>
+                                                        <td colspan="2" class="inputtd">d.NAME</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">AGE</td>
+                                                        <td colspan="2" class="inputtd">d.AGE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">SEX</td>
+                                                        <td colspan="2" class="inputtd">d.SEX</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">PHONE</td>
+                                                        <td colspan="2" class="inputtd">d.PHONE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">ISMOBILE</td>
+                                                        <td colspan="2" class="inputtd">d.ISMOBILE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">AGCODE</td>
+                                                        <td colspan="2" class="inputtd">d.AGCODE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">INVENCODE</td>
+                                                        <td colspan="2" class="inputtd">d.INVENCODE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-gr">CUSTOMCODE</td>
+                                                        <td colspan="2" class="inputtd">CUSTOMCODE</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="body-footer">
+                                                    <div class="btn-box">
+                                                        <button class="tocar" onclick="savecheck()">저장</button> <!-- 레코드 저장하기 -->
+                                                        <button class="tocar" onclick="cancelcheck()">취소</button> <!-- 레코드 저장하기 -->
+    
+                                                        <script>
+                                                            function savecheck() {
+                                                            var save = confirm("저장할까요?");
+                                                            if(save){
+                                                                alert("저장하였습니다");
+                                                                location.href="user_list.html";
+                                                            } else {
+                                                                return false;
+                                                            }
+                                                        }
+    
+                                                            function cancelcheck() {
+                                                            var can = confirm("취소할까요?");
+                                                            if(can){
+                                                                alert("취소하였습니다");
+                                                                location.href="user_list.html";
+                                                            } else {
+                                                                return false;
+                                                            }
+                                                        }
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </bindtemplete>
+
+
+
+
+
+
+
+
+
+
+                                    <!-- order END -->
+                                    <!-- 
+                                    <div class="account-pagination">
+                                        <div class="newer">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <span>NEWER</span>
+                                        </div>
+                                        <div class="older">
+                                            <span>OLDER</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                     -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stickey">
+
+                        <div class="filter none">
+                            <span>FILTER</span>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

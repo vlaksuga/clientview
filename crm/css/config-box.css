@@ -1,0 +1,126 @@
+main .main-body .main-left .option-box .option-header.selectable:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+main .main-body .main-center .config-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    height: 87vh;
+    overflow-y: auto;
+}
+
+main .main-body .main-center .config-box .config-element {
+    width: 640px;
+    margin: 10px 10px 80px 10px;
+}
+
+main .main-body .main-center .config-box .config-element .config-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+main .main-body .main-center .config-box .config-element .config-head {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+main .main-body .main-center .config-box .config-element .config-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    font-size : 0.8rem;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item .item-body .item-value select {
+    width: 100px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item .item-body .item-value input {
+    border: 1px solid lightblue;
+    text-align: center;
+    width: 100px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul {
+    list-style-type: none;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    width: 250px;
+    background-color: lightblue;
+    border-radius: 7%/50%;
+    padding: 5px 15px;
+    margin: 5px 0;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box .rank-icon {
+    width: 20px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box .rank-mk {
+    width: 50px;
+}
+
+
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box:hover {
+    background-color: #ed5c5c;
+    cursor: pointer;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-option .footer-comment {
+    color: grey;
+    font-size: 0.7rem;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box button {
+    width : 70px;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .apply {
+    border: 1px solid lightblue;
+    background-color: lightblue;   
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .reset {
+color :white;
+background-color: darkgrey;
+border: 1px solid darkgrey;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .new {
+border: 1px solid black;
+background-color: white;
+}
+
+main .main-body .main-center .config-box .gapbox {
+    width: 100%;
+    height: 200px;
+}

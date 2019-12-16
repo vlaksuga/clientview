@@ -1,0 +1,624 @@
+main .main-body .main-center {
+    width: 100%;
+}
+
+main .main-body .main-center .event-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+main .main-body .main-center .event-box .event-header .event-header-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 50%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    padding-bottom: 10px;
+}
+
+
+
+main .main-body .main-center .event-box .event-header .mod-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+    margin: 0 20px;
+    font-size: 1.3rem;
+
+}
+
+main .main-body .main-center .event-box .event-header .mod-box div {
+    margin: 0px 0px 5px 10px;
+}
+
+main .main-body .main-center .event-box .event-header .mod-box .mod-excel {
+    color: green;
+}
+
+main .main-body .main-center .event-box .event-header .mod-box .mod-shrink-all {
+    color: #ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-right .save-excel:hover {
+    background-color: darkgreen;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element span {
+    margin-left : 10px;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element .default {
+    color:green;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element .error {
+    color:#ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-body {
+    height:80vh;
+    overflow-y: auto;
+}
+
+main .main-body .main-center .event-box .event-body .event-element {
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid lightgray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 180px;
+    height: 100%;
+    border-right: 1px solid lightgrey;
+    padding-top: 5px;
+    background-color: white;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header span {
+    margin-left: 5px;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .ev-stat {
+    display: none;
+    width: 90%;
+    color: white;
+    border-radius: 10%/50%;
+    text-align: left;
+    padding: 5px;
+    font-size: 0.6rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .error {
+    background-color: #ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .default {
+    background-color:green;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .ev-chname {
+    font-size: 0.6rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 5px;
+    background-color: white;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body:hover,
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer:hover {
+    cursor: pointer;
+
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 {
+    font-size: 1rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 span::after {
+    content: " / ";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 span:last-child::after,
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row2 span:last-child::after {
+    content: "";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row2 span::after {
+    content: ", ";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    padding: 0 10px;
+    background-color: white;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-title .title-btn {
+    text-align: center;
+    width: 80px;
+    padding:2px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-title .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div {
+    margin: 0 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div > select {
+    font-size: 0.8rem;
+    width : 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div > button {
+    background-color: lightgrey;
+    width : 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .manager {
+    display: none;
+    margin-right: 10px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .valid-date {
+    display: none;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .valid-date .alert {
+    color: red;
+    font-weight: bolder;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .warning {
+    color : red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result-comment input {
+    width: 100%;
+    height: 20px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail {
+    border-left: 1px solid lightgrey;
+    width: 220px;
+    height: 100%;
+    background-color: white;
+
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item {
+    width: 33%;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn {
+    line-height: 18px;
+}
+
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn svg {
+    font-size: 1.3rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn span {
+    font-size: 0.8rem;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .on {
+    display: none;
+    color : black;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .off {
+    display: none;
+    color : red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .suc {
+    display: none;
+    color : green;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .hold {
+    display: none;
+    color : lightgray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .back {
+    display: none;
+    color : blue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .delete {
+    display: none;
+    color:red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .active {
+    display: block;
+}
+
+
+/* event-expand */
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 180px;
+    height: 100%;
+    padding-top: 10px;
+       
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-header .ev-id {
+    width: 100%;
+    font-size:0.6rem;
+    color: grey;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 10px 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row .label {
+    text-align: center;
+    color:#555;
+    background-color: lightgray;
+    width: 15%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row .data {
+    width: 85%;
+    padding-left:5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 10px;
+    
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .item,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .item {
+    margin-right: 8px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-date,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .result-date {
+    width: 125px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-msg {
+    color: grey;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-name,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .result-name {
+    width: 40px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-name::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-kind,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-kind {
+    text-align: center;
+    width: 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .kind-option {
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-new {
+    display: none;
+    background-color: lightblue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-re {
+    display: none;
+    background-color: orange;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-select {
+    display: none;
+    background-color: violet;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-point {
+    display: none;
+    background-color: red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add {
+    padding: 5px 0;
+    width: 100%;
+    border-top: 1px solid lightgrey;
+}
+
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-select {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width:100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-select #result-opt {
+    font-size:0.7rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-title {
+    width : 73px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-notice {
+    padding-left: 10px;
+    color:gray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-msg-input {
+    margin-top: 10px;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-msg-input textarea {
+    font-size: 0.8rem;
+    padding: 5px;
+    border: 1px solid lightblue;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-send {
+    width: 100%;
+    text-align: right;
+    padding-top: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-send button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    width : 100px;
+    background-color: lightblue;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail {
+
+    width: 220px;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    padding: 10px 5px;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-history {
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .item {
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-return .title {
+    color: blue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-done .title {
+    color: red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .input textarea {
+    border: none;
+    font-size: 0.7rem;
+    width: 100%;
+    border: 1px solid lightblue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .btn {
+    text-align: center;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .btn button {
+    padding : 2px 5px;
+    margin: 0px 5px;
+    background-color: lightblue;
+    width: 30%;
+    font-size:0.7rem;
+    border: none;
+}
+
+
+
+
+main .main-body .main-center .event-box .event-body .event-pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    font-size: 0.8rem;
+    color:black;
+}

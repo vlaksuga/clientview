@@ -1,0 +1,102 @@
+main .main-body .main-center .chart-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 73vh;
+}
+
+main .main-body .main-center .chart-box.index{
+    height: 36vh !important;
+}
+
+main .main-body .main-center .chart-box .element-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+    width: 30%;
+}
+
+main .main-body .main-center .chart-box .table-box {
+    width: 70%;
+    background-color: white;
+    margin-right: 10px;
+    height: 73vh;
+    overflow-y: auto;
+}
+
+
+main .main-body .main-center .chart-box .table-box.only {
+    width: 100% !important;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table {
+    width: 100%;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    border-collapse: collapse;
+}
+
+
+main .main-body .main-center .chart-box .table-box .order-table thead th,
+main .main-body .main-center .chart-box .table-box .order-table tbody td,
+main .main-body .main-center .chart-box .table-box .order-table tfoot td {
+    padding: 10px;
+
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody td {
+    border-bottom: 1px solid lightgrey;
+}
+
+
+main .main-body .main-center .chart-box .table-box .order-table colgroup .col1 {
+    width: 100px;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table colgroup .col2 {
+    width: 50px;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table thead {
+    background-color: lightgrey;
+    border-bottom: 1px solid grey;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tfoot {
+    background-color: #ed5c5c;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody {
+    vertical-align: middle;
+    text-align: center;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody tr.channel {
+    background-color: lightyellow;
+}
+
+main .main-body .main-center .chart-box .element-box .chart-element {
+    padding: 0 20px 20px 20px;
+    width: 450px;
+    height: 300px;    
+}
+
+main .main-body .main-center .chart-box .chart-element {
+    padding: 0 20px 20px 20px;
+    width: 500px;
+    height: 300px;
+}
+
+main .main-body .main-center .chart-box .chart-element .caption {
+    width: 100%;
+    font-size: 0.7rem;
+    text-align: center;
+    color:grey;
+}

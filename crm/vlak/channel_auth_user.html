@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADAND OMS</title>
+    <meta charset="utf-8">
+
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/channel_auth_user.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://kit.fontawesome.com/799568d786.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manjari|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/c.js"></script>
+
+    <script>
+        drawFragment("#top", "./frag/top.html");
+        drawFragment("#aside", "./frag/aside.html");
+
+
+
+        oms.get("/adm/listUser.json", {}, function (head, body) {
+            wmap(body, $(".main-center"));
+
+        });
+
+    </script>
+
+
+
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="top">
+
+        </div>
+
+        <div id="below-top">
+
+            <div id="aside">
+
+            </div>
+
+            <div id="main">
+                <main>
+                    <!-- event -->
+                    <div class="main-top">
+
+                        <div class="title-box">
+                            <span>CHANNEL</span>
+                        </div>
+
+                    </div>
+
+                    <div class="main-body">
+
+                        <div class="main-left">
+                            <div class="option-box">
+
+                                <div class="option-header active">
+                                    <div class="option-header-box">
+                                        <div class="option-title">
+                                            <span>로또리치</span> <!-- channel : name -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-center">
+
+                            <div class="channel-auth-user-box">
+
+                                <div class="channel-auth-user-header">
+
+                                    <div class="channel-auth-user-header-box">
+                                        <div class="header-element">
+                                            <a onclick="savecheck()">저장하기</a>
+                                        </div>
+                                        <div class="header-element">
+                                            <a onclick="cancelcheck()">취소하기</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        function savecheck() {
+                                            var save = confirm("저장할까요?");
+                                            if (save) {
+                                                alert("저장하였습니다");
+                                                location.href = "channel_record_modify.html";
+                                            } else {
+                                                return false;
+                                            }
+                                        }
+
+                                        function cancelcheck() {
+                                            var can = confirm("취소할까요?");
+                                            if (can) {
+                                                alert("취소하였습니다");
+                                                location.href = "channel_record_modify.html";
+                                            } else {
+                                                return false;
+                                            }
+                                        }
+                                    </script>
+                            
+                                </div>
+
+                                <div class="channel-auth-user-body" bind="list:LIST">
+
+
+
+
+
+
+                                    <!-- user-list start -->
+                                    <bindtemplete>
+                                        <div id="channelauthuser">
+                                            <div class="box-header"></div>
+                                            <div class="box-body">
+                                                <table id="channelauthusertable">
+                                                    <colgroup>
+                                                        <col width="15%">
+                                                        <col width="2%">
+                                                        <col width="15%">
+                                                        <col width="2%">
+                                                        <col width="15%">
+                                                        <col width="2%">
+                                                        <col width="15%">
+                                                        <col width="2%">
+                                                        <col width="15%">
+                                                        <col width="2%">
+                                                        <col width="15%">
+                                                    </colgroup>
+                                                    <tr>
+                                                        <th class="bg-gr" colspan="3">OWNER</th>
+                                                        <th></th>
+                                                        <th class="bg-gr" colspan="3">AGENCY</th>
+                                                        <th></th>
+                                                        <th class="bg-gr" colspan="3">MK</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bg-in">IN</td>
+                                                        <td></td>
+                                                        <td class="bg-out">OUT</td>
+                                                        <td></td>
+                                                        <td class="bg-in">IN</td>
+                                                        <td></td>
+                                                        <td class="bg-out">OUT</td>
+                                                        <td></td>
+                                                        <td class="bg-in">IN</td>
+                                                        <td></td>
+                                                        <td class="bg-out">OUT</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <!-- OWNER -->
+                                                        <td class="userlisttd in">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="tekiteki"> <!-- id = user : userid -->
+                                                                    <label for="tekiteki"> <!-- for = user : userid --> <span>김태경</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="vlaksuga">
+                                                                    <label for="vlaksuga"><span>강지형</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="imr1234">
+                                                                    <label for="imr1234"><span>이명락</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="shifttd">                                                        
+                                                            <div class="shift-btn"><i class="fas fa-chevron-right"></i>
+                                                            </div>
+                                                            <div class="shift-btn"><i class="fas fa-chevron-left"></i>
+                                                            </div>
+                                                        </td>
+                                                        <td class="userlisttd out">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_1">
+                                                                    <label for="owner_out_1"><span>손흥민</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_2">
+                                                                    <label for="owner_out_2"><span>박지성</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_3">
+                                                                    <label for="owner_out_3"><span>이승우</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td></td>
+                                                        <!-- AGENCY -->
+                                                        <td class="userlisttd in">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="tekiteki"> <!-- id = user : userid -->
+                                                                    <label for="tekiteki"> <!-- for = user : userid --> <span>김태경</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="vlaksuga">
+                                                                    <label for="vlaksuga"><span>강지형</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="imr1234">
+                                                                    <label for="imr1234"><span>이명락</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="shifttd">                                                        
+                                                            <div class="shift-btn"><i class="fas fa-chevron-right"></i>
+                                                            </div>
+                                                            <div class="shift-btn"><i class="fas fa-chevron-left"></i>
+                                                            </div>
+                                                        </td>
+                                                        <td class="userlisttd out">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_1">
+                                                                    <label for="owner_out_1"><span>손흥민</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_2">
+                                                                    <label for="owner_out_2"><span>박지성</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_3">
+                                                                    <label for="owner_out_3"><span>이승우</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td></td>
+
+                                                        <!-- MK -->
+                                                        <td class="userlisttd in">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="tekiteki"> <!-- id = user : userid -->
+                                                                    <label for="tekiteki"> <!-- for = user : userid --> <span>김태경</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="vlaksuga">
+                                                                    <label for="vlaksuga"><span>강지형</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="imr1234">
+                                                                    <label for="imr1234"><span>이명락</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="shifttd">                                                        
+                                                            <div class="shift-btn"><i class="fas fa-chevron-right"></i>
+                                                            </div>
+                                                            <div class="shift-btn"><i class="fas fa-chevron-left"></i>
+                                                            </div>
+                                                        </td>
+                                                        <td class="userlisttd out">
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_1">
+                                                                    <label for="owner_out_1"><span>손흥민</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_2">
+                                                                    <label for="owner_out_2"><span>박지성</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="userlistdiv">
+                                                                <div class="customchbox">
+                                                                    <input type="checkbox" id="owner_out_3">
+                                                                    <label for="owner_out_3"><span>이승우</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                                                                         
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </bindtemplete>
+
+
+
+
+
+
+
+
+
+
+                                    <!-- order END -->
+                                    <!-- 
+                                    <div class="account-pagination">
+                                        <div class="newer">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <span>NEWER</span>
+                                        </div>
+                                        <div class="older">
+                                            <span>OLDER</span>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                     -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

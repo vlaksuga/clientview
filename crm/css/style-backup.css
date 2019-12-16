@@ -1,0 +1,1633 @@
+/* common */
+*{
+    box-sizing: border-box;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a:hover,
+a:link,
+a:active,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+html,
+body,
+#main,
+main {
+    width: 100%;
+    height: 100%;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#app {
+    margin: 0 auto;
+    max-width: 100vw;
+    height: 100vh;
+    background-color: #e5e5e5
+}
+
+/* custom rules */
+
+.btn-ready {
+    display: none;
+    color: white;
+    background-color: black;
+}
+
+.btn-new {
+    display: none;
+    background-color: lightblue;
+}
+
+.btn-wrong {
+    display: none;
+    background-color: orange;
+}
+
+.btn-missed {
+    display: none;
+    border: 1px solid lightgray;
+}
+
+.btn-discord {
+    display: none;
+    background-color:violet;
+
+}
+
+.btn-refuse {
+    display: none;
+    color:white;
+    background-color:red;
+}
+
+.btn-success {
+    display: none;
+    background-color:gold;
+}
+
+.btn-chance {
+    display: none;
+    background-color:cyan;
+}
+
+.btn-dump {
+    display: none;
+    color: white;
+    background-color:grey;
+}
+
+.tocar {
+    border: 1px solid white;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* login */
+
+
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: lightgrey;
+}
+
+
+
+#login .login-box {
+    width: 400px;
+    height: 250px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px 15px 0 0;
+    background-color: black;
+}
+
+
+#login .submit {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    justify-content: center;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 0.8rem;
+    border-radius: 0 0 15px 15px;
+}
+
+#login .submit:hover {
+    background-color: #4b4b4b;
+    cursor: pointer;
+}
+
+
+#login .login-box .login-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100px;
+}
+
+
+#login .login-box .login-label .logo-box img {
+    display: block;
+}
+
+#login .login-box .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+}
+
+#login .login-box .login-form .input-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#login .login-box .login-form .input-box input {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+
+/* PAGE */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#top {
+    width: 100%;
+    height: 6%;
+    min-height: 50px;
+    background-color: black;
+}
+
+#below-top {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    background-color: #e5e5e5;
+}
+
+#aside {
+    width: 70px;
+    height: 94vh;
+    ;
+    background-color: #555;
+}
+
+
+#top .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+#top .nav-container .user-container {
+    height: 100%;
+    z-index: 2;
+    
+}
+
+#top .nav-container .user-container .channel-box {
+    height: 100%;
+    background-color: black;
+}
+
+#top .nav-container .user-container .channel-box .user-box {
+    height: 100%;
+}
+
+#top .nav-container .user-container .channel-box .user-box .user span {
+    font-size: 0.8rem;
+}
+
+#top .nav-container .user-container:hover {
+    cursor: pointer;
+}
+
+#top .nav-container .dot {
+    color: black;
+}
+
+#top .nav-container .active .user-box .user .active {
+    color: white;
+}
+
+#top .nav-container .user-container .channel-box:hover .dot {
+    display: block;
+    color: #555;
+}
+
+#top .user-box {
+    display: flex;
+    justify-content: flex-start;
+    width: 350px;
+    border-right: 1px solid #4b4b4b;
+}
+
+#top .user-box .avatar {
+    width: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#top .user-box .avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#top .user-box .avatar .good {
+    background-color: lightblue;
+}
+
+#top .user-box .avatar .bad {
+    background-color: red;
+}
+
+#top .user-box .user {
+    width: 300px;
+    color: #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top .user-box .user span {
+    margin: 0 30px;
+}
+
+#top .logo-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100%;;
+}
+
+#top .logo-top img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+
+#top .user-setting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+}
+
+#top .user-setting .set-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 100%;
+    border-left: 1px solid #4b4b4b;
+}
+
+#top .user-setting .set-box .i-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e5e5;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#top .user-setting .set-box .i-box:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+#aside aside svg {
+    font-weight: bolder;
+    font-size: 1.5rem;
+
+}
+
+#aside aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+}
+
+#aside aside .aside-box,
+#aside aside .aside-box a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    min-height: 65px;
+    color: white;
+}
+#aside aside .aside-box span,
+#aside aside .aside-box a span {
+    font-size: 0.7rem;
+    margin-top: 4px;
+}
+
+#aside aside .active {
+    background-color: #e5e5e5;
+    color: black !important;
+}
+
+
+/* EVENT */
+
+main .main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 7vh;
+    min-height: 65px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+main .main-top .title-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 100%;
+}
+
+
+main .main-body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+}
+
+
+/* main-left */
+
+main .main-body .main-left {
+    height: 100%;
+}
+
+main .main-body .main-left .option-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 280px;
+    height: 100%;
+}
+
+
+main .main-body .main-left .option-box .option-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #eeeeee;
+
+
+}
+
+
+
+main .main-body .main-left .option-box .active {
+    background-color: lightblue;
+}
+
+main .main-body .main-left .option-box .menu:hover {
+    cursor: pointer;
+    background-color: lightcyan;
+}
+
+main .main-body .main-left .option-box .option-header .option-header-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 10px;
+}
+
+main .main-body .main-left .option-box .option-header .option-header-box .option-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 0.6rem;
+    border-radius: 15%/50%;
+    width: 60px;
+}
+
+main .main-body .main-left .option-box .option-header .option-header-box .option-close:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+
+main .main-body .main-left .option-box .option-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+main .main-body .main-left .option-box .option-body .option-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+}
+
+main .main-body .main-left .option-box .option-body .option-element>* {
+    margin: 0 10px;
+}
+
+main .main-body .main-left .option-box .option-body .option-element>*:nth-child(2) {
+    width: 100px;
+}
+
+main .main-body .main-left .option-box .option-footer {
+    width: 100%;
+    height: 100%;
+}
+
+main .main-body .main-left .option-box .option-footer .option-footer-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0;
+}
+
+main .main-body .main-left .option-box .option-footer .option-footer-box .option-btn {
+    width: 100px;
+    padding: 5px 10px;
+}
+
+main .main-body .main-left .option-box .option-footer .option-footer-box .option-btn:hover {
+    border: 2px solid lightblue;
+
+}
+
+main .main-body .main-left .option-box .option-footer .option-footer-box .apply {
+    border: 1px solid lightblue;
+    background-color: lightblue;
+}
+
+main .main-body .main-left .option-box .option-footer .option-footer-box .reset {
+    color :white;
+    background-color: darkgrey;
+}
+
+
+
+/* main-center */
+
+main .main-body .main-center {
+    width: 100%;
+}
+
+main .main-body .main-center .event-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+main .main-body .main-center .event-header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+main .main-body .main-center .event-box .event-header .event-header-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 50%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    padding-bottom: 10px;
+}
+
+
+
+main .main-body .main-center .event-box .event-header .mod-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 50%;
+    height: 100%;
+    margin: 0 20px;
+    font-size: 1.3rem;
+
+}
+
+main .main-body .main-center .event-box .event-header .mod-box div {
+    margin: 0px 0px 5px 10px;
+}
+
+main .main-body .main-center .event-box .event-header .mod-box .mod-excel {
+    color: green;
+}
+
+main .main-body .main-center .event-box .event-header .mod-box .mod-shrink-all {
+    color: #ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-right .save-excel:hover {
+    background-color: darkgreen;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element span {
+    margin-left : 10px;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element .default {
+    color:green;
+}
+
+main .main-body .main-center .event-box .event-header .event-header-box .header-element .error {
+    color:#ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-body {
+    height:80vh;
+    overflow-y: auto;
+}
+
+main .main-body .main-center .event-box .event-body .event-element {
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: 7vh;
+    min-height: 65px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid lightgray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 180px;
+    height: 100%;
+    border-right: 1px solid lightgrey;
+    padding-top: 5px;
+    background-color: white;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header span {
+    margin-left: 5px;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .ev-stat {
+    display: none;
+    width: 90%;
+    color: white;
+    border-radius: 10%/50%;
+    text-align: left;
+    padding: 5px;
+    font-size: 0.6rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .error {
+    background-color: #ed5c5c;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .default {
+    background-color:green;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-header .ev-chname {
+    font-size: 0.6rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 5px;
+    background-color: white;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body:hover,
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer:hover {
+    cursor: pointer;
+
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 {
+    font-size: 1rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 span::after {
+    content: " / ";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row1 span:last-child::after,
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row2 span:last-child::after {
+    content: "";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-body .data-row2 span::after {
+    content: ", ";
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    padding: 0 10px;
+    background-color: white;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-title .title-btn {
+    text-align: center;
+    width: 80px;
+    padding:2px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-title .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div {
+    margin: 0 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div > select {
+    font-size: 0.8rem;
+    width : 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-stat .ev-result-reset > div > button {
+    background-color: lightgrey;
+    width : 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .manager {
+    display: none;
+    margin-right: 10px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .valid-date {
+    display: none;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .valid-date .alert {
+    color: red;
+    font-weight: bolder;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .warning {
+    color : red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result .ev-result-detail .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-footer .ev-result-comment input {
+    width: 100%;
+    height: 20px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail {
+    border-left: 1px solid lightgrey;
+    width: 220px;
+    height: 100%;
+    background-color: white;
+
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item {
+    width: 33%;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn {
+    line-height: 18px;
+}
+
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn svg {
+    font-size: 1.3rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .item .itembtn .statbtn span {
+    font-size: 0.8rem;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .on {
+    display: none;
+    color : black;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .off {
+    display: none;
+    color : red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .suc {
+    display: none;
+    color : green;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .hold {
+    display: none;
+    color : lightgray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .back {
+    display: none;
+    color : blue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .delete {
+    display: none;
+    color:red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-summary .element-tail .tail-box .active {
+    display: block;
+}
+
+
+/* event-expand */
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 180px;
+    height: 100%;
+    padding-top: 10px;
+       
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-header .ev-id {
+    width: 100%;
+    font-size:0.6rem;
+    color: grey;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 10px 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row .label {
+    text-align: center;
+    color:#555;
+    background-color: lightgray;
+    width: 15%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-body .event-detail-row .data {
+    width: 85%;
+    padding-left:5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%;
+    padding: 10px;
+    
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .item,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .item {
+    margin-right: 8px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-date,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .result-date {
+    width: 125px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-msg {
+    color: grey;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-name,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .item-box .result-name {
+    width: 40px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-name::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .assign-kind,
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .result .result-kind {
+    text-align: center;
+    width: 80px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .kind-option {
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-new {
+    display: none;
+    background-color: lightblue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-re {
+    display: none;
+    background-color: orange;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-select {
+    display: none;
+    background-color: violet;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .kind-point {
+    display: none;
+    background-color: red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-history .assign .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add {
+    padding: 5px 0;
+    width: 100%;
+    border-top: 1px solid lightgrey;
+}
+
+
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-select {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width:100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-select #result-opt {
+    font-size:0.7rem;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-title {
+    width : 73px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-notice {
+    padding-left: 10px;
+    color:gray;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-msg-input {
+    margin-top: 10px;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-msg-input textarea {
+    font-size: 0.8rem;
+    padding: 5px;
+    border: 1px solid lightblue;
+    width: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-send {
+    width: 100%;
+    text-align: right;
+    padding-top: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .result-add form .result-send button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    width : 100px;
+    background-color: lightblue;
+    font-family: 'Manjari', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-footer .active {
+    display: block;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail {
+
+    width: 220px;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+    padding: 10px 5px;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 100%;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-history {
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .item {
+    margin-bottom: 5px;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-return .title {
+    color: blue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .off-done .title {
+    color: red;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .input textarea {
+    border: none;
+    font-size: 0.7rem;
+    width: 100%;
+    border: 1px solid lightblue;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .btn {
+    text-align: center;
+}
+
+main .main-body .main-center .event-box .event-body .event-element .event-expand .expand-tail .control-box .btn button {
+    padding : 2px 5px;
+    margin: 0px 5px;
+    background-color: lightblue;
+    width: 30%;
+    font-size:0.7rem;
+    border: none;
+}
+
+
+
+
+main .main-body .main-center .event-box .event-body .event-pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    font-size: 0.8rem;
+    color:black;
+}
+
+
+main .stickey {
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+}
+
+
+main .stickey .filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 20px;
+    background-color: black;
+    color:white;
+}
+
+main .stickey .filter:hover {
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+
+main .stickey .filter span {
+    font-size: 0.6rem;
+}
+
+/* STATS */
+
+main .main-body .main-center .chart-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 73vh;
+}
+
+main .main-body .main-center .chart-box.index{
+    height: 36vh !important;
+}
+
+main .main-body .main-center .chart-box .element-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+    width: 30%;
+}
+
+main .main-body .main-center .chart-box .table-box {
+    width: 70%;
+    background-color: white;
+    margin-right: 10px;
+    height: 73vh;
+    overflow-y: auto;
+}
+
+
+main .main-body .main-center .chart-box .table-box.only {
+    width: 100% !important;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table {
+    width: 100%;
+    overflow-y: auto;
+    font-size: 0.8rem;
+    border-collapse: collapse;
+}
+
+
+main .main-body .main-center .chart-box .table-box .order-table thead th,
+main .main-body .main-center .chart-box .table-box .order-table tbody td,
+main .main-body .main-center .chart-box .table-box .order-table tfoot td {
+    padding: 10px;
+
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody td {
+    border-bottom: 1px solid lightgrey;
+}
+
+
+main .main-body .main-center .chart-box .table-box .order-table colgroup .col1 {
+    width: 100px;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table colgroup .col2 {
+    width: 50px;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table thead {
+    background-color: lightgrey;
+    border-bottom: 1px solid grey;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tfoot {
+    background-color: #ed5c5c;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody {
+    vertical-align: middle;
+    text-align: center;
+}
+
+main .main-body .main-center .chart-box .table-box .order-table tbody tr.channel {
+    background-color: lightyellow;
+}
+
+main .main-body .main-center .chart-box .element-box .chart-element {
+    padding: 0 20px 20px 20px;
+    width: 450px;
+    height: 300px;    
+}
+
+main .main-body .main-center .chart-box .chart-element {
+    padding: 0 20px 20px 20px;
+    width: 500px;
+    height: 300px;
+}
+
+main .main-body .main-center .chart-box .chart-element .caption {
+    width: 100%;
+    font-size: 0.7rem;
+    text-align: center;
+    color:grey;
+}
+
+main .main-body .main-center .filter-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 7vh;
+    min-height: 65px;
+    border-bottom: 1px solid #eeeeee;
+    padding-left: 20px;
+}
+
+main .main-body .main-center .filter-box .day-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+
+main .main-body .main-center .filter-box .switch-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+}
+
+main .main-body .main-center .filter-box .switch-box .switch {
+    color: lightgrey;
+}
+
+main .main-body .main-center .filter-box .switch-box .switch.active {
+    color:black !important;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element {
+    color: grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    font-size: 0.8rem;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element.btn button {
+    border: none;
+    width: 80px;
+    padding : 1px 10px;
+    font-size: 0.8rem;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element.btn.apply button {
+    background-color: #ed5c5c;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element.btn button.active,
+main .main-body .main-center .filter-box .day-box .filter-element.btn button:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element span {
+    margin-right: 15px;
+}
+
+main .main-body .main-center .filter-box .day-box .filter-element select,
+main .main-body .main-center .filter-box .day-box .filter-element input {
+    text-align: center;
+    width: 100px;
+}
+
+main .main-body .main-center .title-box {
+    padding: 20px;
+    height: 7vh;
+    min-height: 65px;
+}
+
+main .main-body .main-center .title-box svg {
+    margin: 0 5px;    
+}
+
+main .main-body .main-center .title-box.effect-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+main .main-body .main-center .title-box.effect-box.only {
+    width: 100% !important;
+}
+
+
+main .main-body .main-center .title-box.effect-box .effect {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+main .main-body .main-center .title-box.effect-box .effect > div.active {
+    color: black;
+    text-decoration: none;
+}
+
+main .main-body .main-center .title-box.effect-box .effect > div,
+main .main-body .main-center .title-box.effect-box .effect > div:hover {
+    font-size : 0.8rem;
+    margin-left: 10px;
+    cursor: pointer;
+    color: red;
+    text-decoration-line: line-through;
+}
+
+
+/* CONFIG */
+
+main .main-body .main-left .option-box .option-header.selectable:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+main .main-body .main-center .config-box {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    height: 87vh;
+    overflow-y: auto;
+}
+
+main .main-body .main-center .config-box .config-element {
+    width: 640px;
+    margin: 10px 10px 80px 10px;
+}
+
+main .main-body .main-center .config-box .config-element .config-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+main .main-body .main-center .config-box .config-element .config-head {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+main .main-body .main-center .config-box .config-element .config-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    font-size : 0.8rem;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item .item-body .item-value select {
+    width: 100px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item .item-body .item-value input {
+    border: 1px solid lightblue;
+    text-align: center;
+    width: 100px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul {
+    list-style-type: none;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    width: 250px;
+    background-color: lightblue;
+    border-radius: 7%/50%;
+    padding: 5px 15px;
+    margin: 5px 0;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box .rank-icon {
+    width: 20px;
+}
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box .rank-mk {
+    width: 50px;
+}
+
+
+
+main .main-body .main-center .config-box .config-element .config-body .config-item ul li .rank-box:hover {
+    background-color: #ed5c5c;
+    cursor: pointer;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-option .footer-comment {
+    color: grey;
+    font-size: 0.7rem;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box button {
+    width : 70px;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .apply {
+    border: 1px solid lightblue;
+    background-color: lightblue;   
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .reset {
+color :white;
+background-color: darkgrey;
+border: 1px solid darkgrey;
+}
+
+main .main-body .main-center .config-box .config-element .config-footer .footer-btn-box .new {
+border: 1px solid black;
+background-color: white;
+}
+
+main .main-body .main-center .config-box .gapbox {
+    width: 100%;
+    height: 200px;
+}
+
+
+
+/* toggle */
+
+
+.none {
+    display: none !important;
+}
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.masked {
+    color:red;
+    background-color: red;
+}
+
+.masked::after {
+    content: "MASKED";
+    color:white;
+}
+
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch .slider.round {
+    border-radius: 34px;
+} 
+
+.switch .slider.round::before {
+    border-radius: 50%;
+}
+
+.switch .slider::before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch input:checked + .slider {
+    background-color: lightblue;
+}
+
+.switch input:focus + .slider {
+    box-shadow: 0 0 1px lightblue;
+}
+
+.switch input:checked + .slider::before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px)
+}
+
