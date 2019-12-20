@@ -18,7 +18,18 @@ img {border:0;}
 a {text-decoration:none;}
 ul, ol {list-style:none;}
 
-.page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
+.page_header {    height: 45px;
+    background-color: #000;
+    border-bottom: 1px solid #282828;
+    color: #fff;
+    overflow: hidden;
+    position: fixed;
+	top: 0;
+    width: 320px;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;}
 .page_header h1 {text-align:center;}
 .page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
 .page_header i {color:#fff; font-size:24px;}
@@ -178,14 +189,11 @@ ul, ol {list-style:none;}
 </style>
 </head>
 <body>
-<div style="max-width:320px; margin:0 auto;" id="mainpage">
+<div style="max-width:320px; margin:0 auto;" id="proposal_page">
         <div class="page_header">
-                <h1><a href="./"><img src="./img/logotype-colored.png">
-                <a href="javascript:void(0);" class="icon_search">
-                    <i class="material-icons">search</i>
-                </a>
-                <a href="javascript:void(0);" class="icon_alarms">
-                    <i class="material-icons">notifications_none</i>
+
+                <a href="javascript:window.close();" class="icon_times"> <!-- close this page -->
+                    <i class="material-icons">close</i></a>
         </div>
 
         <section class="page_body">
