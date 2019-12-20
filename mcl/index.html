@@ -21,13 +21,13 @@ ul, ol {list-style:none;}
 .page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
 .page_header h1 {text-align:center;}
 .page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
-.page_header i {color:#fff; font-size:17px;}
+.page_header i {color:#fff; font-size:24px;}
 .page_header a {color:#fff;}
 .page_header a.icon_search {position:absolute; top:13px; left:15px;}
 .page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
 
 .page_body {margin-top:60px;}
-.page_body .titlebar {position:relative; margin:50px 0 0 15px;}
+.page_body .titlebar {position:relative; margin:30px 0 0 15px;}
 .page_body .titlebar h2 {color:#fff; font-size:16px;}
 .page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
 
@@ -45,11 +45,11 @@ ul, ol {list-style:none;}
 
 
 
-.livepreview {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;height:155px}
-.livepreview .item_wrapper {width:100px; display:inline-block; margin:0 7px 0 0; min-height:155px; vertical-align:top;overflow:hidden}
+.livepreview {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;}
+.livepreview .item_wrapper {width:130px; display:inline-block; margin:0 7px 0 0; min-height:155px; vertical-align:top;overflow:hidden}
 .livepreview .thumbnail {position:relative;}
 .livepreview .thumbnail .centered img {width:100px; height:100px; object-fit:cover; border-radius:5px;}
-.livepreview .thumbnail .mask {width:100px; height:100px; z-index:1; position:absolute; display:block; top:0; left:0; right:0; bottom:0; margin:0; background-image:linear-gradient(180deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.1));}
+.livepreview .thumbnail .mask {width:130px; height:130px; z-index:1; position:absolute; display:block; top:0; left:0; right:0; bottom:0; margin:0; background-image:linear-gradient(180deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.1));}
 .livepreview .thumbnail .caption {z-index:2; position:absolute; top:8px; left:8px;}
 .livepreview .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
 .livepreview .item_wrapper .information {margin-top:5px;}
@@ -202,7 +202,9 @@ ul, ol {list-style:none;}
                 <div class="a2"><!-- livepreview -->
                         <div class="titlebar">
                                 <h2>라이브 미리보기</h2>
-                                <a href="javascript:void(0);" class="more" style="display:none;">더보기</a>
+                                <a href="javascript:void(0);" class="more" style="display:none;">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
                         </div>
                         <div class="livepreview">
                                 <div class="item_wrapper template" style="display:none"><a href="">
@@ -434,8 +436,8 @@ ul, ol {list-style:none;}
 					{"img":"https://dev.mycollabolife.com/images/sample/banner-05.jpg",
 					 "type":"link",
 					 "url":"http://www.naver.com",
-					 "date":"11월 3일",
-					 "time":"오후 3시",
+					 "date":"오늘",
+					 "time":"오후 3:00",
 					 "title":"제grtgtr목232",
 					 "influencer":"나는야 grt인플g언서 루루루룰"
 					},
