@@ -12,418 +12,79 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <style>
     
-body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000; color: white;}
 div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
 img {border:0;}
-a {text-decoration:none;}
+a {text-decoration:none; color: inherit;}
 ul, ol {list-style:none;}
 
-.page_header {    height: 45px;
-    background-color: #000;
-    border-bottom: 1px solid #282828;
-    color: #fff;
-    overflow: hidden;
-    position: fixed;
-	top: 0;
-    width: 320px;
-    z-index: 10;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;}
-.page_header h1 {text-align:center;}
-.page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
+.page_header {height: 45px;  background-color: #000; border-bottom: 1px solid #282828; color: #fff; overflow: hidden; position: fixed; top: 0; width: 320px; z-index: 10; display: flex; justify-content: flex-end; align-items: center;}
 .page_header i {color:#fff; font-size:24px;}
 .page_header a {color:#fff;}
-.page_header a.icon_search {position:absolute; top:13px; left:15px;}
-.page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
+.page_header a.icon_times {position:absolute; top:13px; right:10px;}
 
 .page_body {margin-top:60px;}
-.page_body .titlebar {position:relative; margin:30px 0 0 15px;}
-.page_body .titlebar h2 {color:#fff; font-size:16px;}
-.page_body .titlebar a.more {color:white; font-size:10px; position:absolute; top:0; right:15px;}
-
-
-.page_footer {height:45px; background-color:#000; color:#fff; overflow:hidden; position:fixed; bottom:0; width:320px; z-index:10;}
-.page_footer ul {width:100%; display:flex;}
-.page_footer ul li {width:25%; text-align:center;}
-.page_footer ul li img {width:auto; display:inline-block; height:24px; margin-top:9px;}
-
-
-.promotions {overflow:auto; white-space:nowrap;width:320px; height:300px;height:305px}
-.promotions .item_wrapper {width:300px;height:305px;display:inline-block; margin:0 4px;}
-.promotions .thumbnail .centered img {width:300px; height:300px; object-fit:cover; border-radius:5px;}
 
 
 
+.page_footer {height:45px; background-color:#FB57A7; color:#fff; position:fixed; bottom:0; width:320px; z-index:10;}
+.page_footer .submit_btn{display: flex; justify-content: center;align-items: center; height: 100%; font-weight: 700;}
 
-.livepreview {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;}
-.livepreview .item_wrapper {width:130px; display:inline-block; margin:0 7px 0 0; min-height:155px; vertical-align:top;overflow:hidden}
-.livepreview .thumbnail {position:relative;}
-.livepreview .thumbnail .centered img {width:130px; height:130px; object-fit:cover; border-radius:5px;}
-.livepreview .thumbnail .mask {width:130px; height:30px; z-index:1; position:absolute; display:block; top:0; left:0; right:0; bottom:0; margin:0; background-color: rgba(0,0,0,0.7);}
-.livepreview .thumbnail .caption {z-index:2; position:absolute; top:4px; left:8px;}
-.livepreview .thumbnail .caption span {color:#fff; font-size:10px; font-weight:bold; line-height:140%; margin-right: 6px;}
-.livepreview .item_wrapper .information {margin-top:5px; line-height:120%;}
-.livepreview .item_wrapper .information .title {color:#777777; font-size:10px;  font-weight:bold; white-space: normal;}
-.livepreview .item_wrapper .information .influencer {display:block; color:#FFF; font-size:12px; font-weight:bold; line-height:160%;}
+.headerbox {text-align: center;  margin: 100px auto 50px auto; }
+.headerbox h2 {line-height: 150%;}
+.headerbox p{color: #FB57A7;}
 
-
-
-
-.products {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;min-height:228px}
-.products .item_wrapper {width:160px; display:inline-block; margin:0 6px 0 0; min-height:200px; vertical-align:top;}
-.products .thumbnail {position:relative;}
-.products .thumbnail .centered img {width:160px; height:160px; object-fit:cover; border-radius:5px;}
-.products .thumbnail .mask {display:none;}
-.products .thumbnail .caption {z-index:2; position:absolute; top:13px; right:13px;}
-.products .thumbnail .caption img {width:20px; height:20px;}
-.products .thumbnail .caption span {display:block; color:#fb57a7; font-size:15px; font-weight:bold;}
-.products .item_wrapper .information {margin-top:5px;}
-.products .item_wrapper .information .title {color:#fff; font-size:10px; font-weight:bold; line-height:160%; white-space:normal;}
-.products .item_wrapper .information .price {color:#fff; font-size:10px; font-weight:bold; line-height:160%; white-space:normal;}
-.products .item_wrapper .information .price .discount {color:#fb57a7;}
-.products .item_wrapper .information .price del {margin:0 5px; color:#a0a0a5;}
-.products .item_wrapper .information .flags {margin-top:5px;}
-.products .item_wrapper .information .flags .icon_flags {border-radius:4px; padding:3px 5px; font-size:10px; margin-right:4px; color:#fff; border:1px solid #fff;}
-.products .item_wrapper .information .flags .free {color:white; border:1px solid white;}
-.products .item_wrapper .information .flags .recommend {color:#aaaaaa; border:1px solid #aaaaaa;}
-.products .item_wrapper .information .flags .best {color:#888888; border:1px solid #888888;}
-
-
-
-.episodes {width:290px; margin:15px auto 0 auto;}
-.episodes .item_wrapper {width:290px; display:inline-block; vertical-align:top; margin-bottom:15px;}
-.episodes .thumbnail {position:relative;width:290px;height:290px}
-.episodes .thumbnail .centered img {width:290px; height:290px; object-fit:cover; border-top-left-radius:5px; border-top-right-radius:5px;}
-.episodes .thumbnail .mask {width:290px;height:290px z-index:1; position:absolute; display:block; top:0; left:0; right:0; bottom:0; margin:0; background-image:linear-gradient(180deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.1) 50%);}
-.episodes .thumbnail .caption {z-index:2; position:absolute; top:8px; left:8px;}
-.episodes .thumbnail .caption span {display:inline-block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
-.episodes .thumbnail .caption .profile {width:40px; height:40px; margin:5px 0 0 5px;}
-.episodes .thumbnail .caption .profile img {width:40px; height:40px; object-fit:cover; border-radius:50%;}
-.episodes .thumbnail .caption .titlebox {position:absolute; top:5px; left:55px; width:150px; color:#fff; font-size:12px; font-weight:bold;}
-.episodes .thumbnail .caption .titlebox .count {display:inline-block;}
-.episodes .thumbnail .caption .titlebox .count .view {margin-right:15px;}
-.episodes .thumbnail.noinfo .centered img{ border-bottom-left-radius:5px; border-bottom-right-radius:5px;}
-.episodes .item_wrapper.noinfo .thumbnail .centered img{ border-bottom-left-radius:5px; border-bottom-right-radius:5px;}
-.episodes .item_wrapper.noinfo .information{display:none}
-.episodes .item_wrapper .information {margin-top:-3px; background-color:#fff; border-bottom-left-radius:5px; border-bottom-right-radius:5px; height:70px; position:relative;}
-.episodes .item_wrapper .information a {display:block; color:#000; font-size:10px; font-weight:bold; line-height:160%;}
-.episodes .item_wrapper .information .title {color:#000; font-size:10px; font-weight:bold; line-height:160%; white-space:normal; position:absolute; top:17px; left:70px; width:170px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-.episodes .item_wrapper .information .price {color:#000; font-size:10px; font-weight:bold; line-height:160%; white-space:normal; position:absolute; top:35px; left:70px;}
-.episodes .item_wrapper .information .price .discount {color:#fb57a7;}
-.episodes .item_wrapper .information .price del {margin:0 5px; color:#a0a0a5;}
-.episodes .item_wrapper .information .flags {width:48px; height:48px; position:absolute; top:10px; left:10px;}
-.episodes .item_wrapper .information .flags img {width:48px; height:48px; object-fit:cover;}
-.episodes .item_wrapper .information .icon {position:absolute; top:25px; right:15px;}
-.episodes .item_wrapper .information .icon img {width:20px; height:20px;}
-
-
-
-
-.a5 .titlebar {margin:0 0 0 0px;}
-.a5 .titlebar h2 {font-size:10px;}
-.products_sm {overflow:auto; white-space:nowrap; margin:0 0 0 0px;}
-.products_sm .item_wrappe {width:110px; overflow:hidden; display:inline-block; margin:0 1px; min-height:200px; vertical-align:top;}
-
-.products_sm .thumbnai {position:relative; width:110px;height:110px}
-.products_sm .thumbnai .centered img {width:110px; height:110px; object-fit:cover; border-radius:5px;}
-.products_sm .thumbnai .mask {display:none;width:110px;height:110px}
-.products_sm .thumbnai .caption {z-index:2; position:absolute; top:13px; right:13px;}
-.products_sm .thumbnai .caption span {display:block; color:#fb57a7; font-size:15px; font-weight:bold;}
-
-.products_sm .item_wrappe .informatio {margin-top:5px;background-color:#000;}
-.products_sm .item_wrappe .informatio .title {color:#fff; font-size:10px; font-weight:bold; line-height:160%; white-space:normal;}
-.products_sm .item_wrappe .informatio .price {color:#fff; font-size:10px; font-weight:bold; line-height:160%; white-space:normal;}
-.products_sm .item_wrappe .informatio .price .discount {color:#fb57a7;}
-.products_sm .item_wrappe .informatio .price del {margin:0 5px; color:#a0a0a5;}
-.products_sm .item_wrappe .informatio .price .total {display:block;}
-.products_sm .item_wrappe .informatio .flags {display:none;}
-.products_sm .item_wrappe .informatio .flags .icon_flags {}
-.products_sm .item_wrappe .informatio .flags .free {}
-.products_sm .item_wrappe .informatio .flags .recommend {}
-.products_sm .item_wrappe .informatio .flags .best {}
-
-
-.hotinfluencers {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;}
-.hotinfluencers .item_wrapper {width:90px; display:inline-block; margin:0 4px; vertical-align:top; margin-bottom:1px;}
-.hotinfluencers .thumbnail {position:relative;}
-.hotinfluencers .thumbnail .centered img {width:90px; height:90px; object-fit:cover; border-radius:50%;}
-.hotinfluencers .thumbnail .mask {display:none;}
-.hotinfluencers .thumbnail .caption {display:none;}
-.hotinfluencers .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
-.hotinfluencers .item_wrapper .information {margin-top:5px; text-align:center;}
-.hotinfluencers .item_wrapper .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
-.hotinfluencers .item_wrapper .information .subcount {color:#fb57a7; font-weight:normal; margin:0 3px; font-style:normal;}
-.hotinfluencers .item_wrapper .information .btn_subscribe {font-size:9px; margin-top:5px; border-radius:10px; padding:2px 7px 2px 7px; color:white; border:1px solid white; background-color: black;}
-
-
-.programs {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;}
-.programs .item_wrapper {width:100px; display:inline-block; margin:0 1px; margin-bottom:1px;}
-.programs .thumbnail {position:relative;}
-.programs .thumbnail .centered img {width:100px; height:140px; object-fit:cover; border-radius:5px;}
-.programs .thumbnail .mask {display:none;}
-.programs .thumbnail .caption {z-index:2; position:absolute; bottom:20px; left:50%; margin-left:-20px;}
-.programs .thumbnail .caption .inner_profile img {width:40px; height:40px; border-radius:50%; object-fit:cover;}
-.programs .thumbnail .caption span {}
-.programs .item_wrapper .information {display:none;}
-.programs .item_wrapper .information span {}
-.programs .item_wrapper .information .subcount {}
-.programs .item_wrapper .information .btn_subscribe {}
-
-
-.bullets {text-align:center; margin-top:15px;line-height:1.5em;height:1.5em}
-.bullets .dot {cursor:pointer; height:7px; width:7px; margin:0 2px; background-color:rgba(255,255,255,0.2); border-radius:50%; display:inline-block; transition:background-color 0.6s ease;}
-.bullets .active {background-color:rgba(255,255,255);}
-
-
-.banner_event {margin:50px 0 0 0; width:100%; height:120px; text-align:center;}
-.banner_event img {width:320px; height:120px;}
-
-
-.banner_info {width:290px; height:100px; margin:50px auto 0 auto; border-radius:5px;background-image:linear-gradient(110deg,#9375F4,#FB57A7,#FF8B6A);}
-.banner_info .banner_box {position: relative; padding:20px;}
-.banner_info .banner_box .title {color: white; font-weight: 700;}
-.banner_info .banner_box p {color: white; font-size: .75em;}
-.banner_info .banner_box a {position: absolute; right: 10px; font-size: 10px; display: inline-block; margin-top: 5px; padding: 3px 15px; border-radius: 2rem; background-color: #fff; text-align: center; color: #FB57A7; font-weight: 700;}
-
+.inputbox .box {margin-bottom: 30px;}
+.inputbox .box .title{color: #777777; font-size: 12px;}
+.inputbox .box .inputfield {width: 100%; height: 30px; border-bottom: 1px white solid;}
+.inputbox .box .inputfield input[type="text"] {width: 100%; background-color: black; border: none; outline: none; color: white; font-size: 16px;}
 </style>
 </head>
 <body>
 <div style="max-width:320px; margin:0 auto;" id="proposal_page">
         <div class="page_header">
 
-                <a href="javascript:window.close();" class="icon_times"> <!-- close this page -->
+                <a href="javascript:void(0);" class="icon_times"> <!-- close this page -->
                     <i class="material-icons">close</i></a>
         </div>
 
         <section class="page_body">
-                <div class="a1"><!-- promotions -->
-                        <div class="promotions">
-                                <div class="item_wrapper template" style="display:none">
-                                        <div class="thumbnail">
-                                                <div class="centered">
-                                                        <a href="javascript:void(0);">
-                                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt="">
-                                                        </a>
-                                                </div>
-                                        </div>
-                                </div>
-                               
-                        </div>
-                        <div class="bullets">
-                        </div>
-                </div>
 
-                <div class="a2"><!-- livepreview -->
-                        <div class="titlebar">
-                                <h2>라이브 미리보기</h2>
-                                <a href="javascript:void(0);" class="more" style="display:none;">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                        </div>
-                        <div class="livepreview">
-                                <div class="item_wrapper template" style="display:none"><a href="">
-                                        <div class="thumbnail">
-                                                <div class="mask"></div>
-                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
-                                        </div>
-                                        <div class="information">
-                                            <a href="javascript:void(0);" class="title">MCL리뷰맛집</a>
-                                            <a href="javascript:void(0);" class="influencer">BeautyCollabo</a></div></a>
-                                </div>
-                           </div>
-                        <div class="bullets" style="display:none">
-                        </div>
-                </div>
+				<div class="headerbox">
+					<h2>MCL 입점을 위해 <br> 연락처를 입력해주세요.</h2>
+					<p>사업자 등록증 필수</p>
+				</div>
 
-<script>
-	function showStore(){
-		alert("ss");
-		}
-</script>
-                <div class="a7"><!-- hotinfluencers -->
-                    <div class="titlebar">
-                            <h2>화제의 스타</h2>
-                            <a href="javascript:void(0);" class="more"><i class="fas fa-chevron-right"></i></a>
-                    </div>
-                    <div class="hotinfluencers">
-                            <div class="item_wrapper template" style="display:none">
-                                    <div class="thumbnail">
-                                            <div class="mask"></div>
-                                            <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                            <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
-                                    </div>
-                                    <div class="information">
-                                            <a href="javascript:void(0);" class="title"><span class="name">임지은</span><span class="subscribe">구독자<em class="subcount">1</em>명</span></a>
-                                            <button class="btn_subscribe">+ 구독하기</button>
-                                    </div>
-                            </div>
-                           
-                    </div>
-                    <div class="bullets" style="display:none;">
-
-                    </div>
-                </div>
-
-                <div class="banner_info"> <!-- banner to proposal -->
-                    <div class="banner_box">
-                    <div class="title">MCL에서 활동할 인플루언서를 찾습니다.</div>
-                    <p>본인이 좋아하는 제품을 라이브로 판매해보세요.</p>
-                    <a href="./proposal.html" target="_blank">문의하기</a>
-                    </div>
-                </div>
-
-
-
-                <div class="a3"><!-- products -->
-                        <div class="titlebar">
-                                <h2>추천 상품</h2>
-                                <a href="javascript:showStore()" class="more"><i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="products">
-                                <div class="item_wrapper template" style="display:none">
-										<a href="">
-                                        <div class="thumbnail">
-                                                <div class="mask"></div>
-                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <div class="caption">
-                                                        <span class="icon"><img src="img/icon_star.png"></span>
-                                                </div>
-                                        </div>
-                                        <div class="information">
-                                                <div class="title">[닥터플로라] 로즈꽃물 레드크림</div>
-                                                <div class="price"><span class="discount">17%</span><del>145,000</del><span class="total">120,500원</span></div>
-                                                <div class="flags">
-                                                        <span class="icon_flags free">무료배송</span><span class="icon_flags recommend">뷰콜추천</span><span class="icon_flags best">베스트</span>
-                                                </div>
-                                        </div>
-									</a>
-                                </div>
-                               
-                        </div>
-                        <div class="bullets" style="display:none">
-                        </div>
-                </div>
-
-		 
-                <div class="a4"><!-- episodes -->
-                        <div class="titlebar">
-                                <h2>추천 에피소드</h2>
-                                <a href="javascript:void(0);" class="more" style="display:none;"><i class="fas fa-chevron-right"></i></a>
-                        </div>
-                        <div class="episodes">
-                                <div class="item_wrapper  template" style="display:none">
-								<a>
-                                        <div class="thumbnail ">
-                                                <div class="mask"></div>
-                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <div class="caption">
-                                                        <span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
-                                                        <div class="titlebox">
-                                                                <div class="title">11월 05일</div>
-                                                                <div class="count"><span class="view">272,706</span><span class="like">0</span></div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="information">
-                                                <div class="title">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
-                                                <div class="price"><span class="discount">17%</span><del>145,000</del><span class="total">120,500원</span></div>
-                                                <div class="flags"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <span class="icon"><img src="img/icon_star.png"></span>
-                                        </div>
-									</a>
-                                </div>
-
-								 <div class="a5" style="display:none"><!-- products_sm -->
-										<div class="titlebar">
-												<h2>이 브랜드의 다른 상품</h2>
-												<a href="javascript:void(0);" class="more"><i class="fas fa-chevron-right"></i></a>
-										</div>
-										<div class="products_sm">
-												<div class="item_wrappe">
-														<div class="thumbnai">
-																<div class="mask"></div>
-																<div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-																<div class="caption">
-																		<span class="icon">
-																				<i class="far fa-star"></i>
-																				<!--찜(?)했을때--><i class="fas fa-star" style="display:none;"></i>
-																		</span>
-																</div>
-														</div>
-														<div class="informatio">
-																<div class="title">[닥터플로라] 로즈꽃물 레드크림</div>
-																<div class="price"><span class="discount">17%</span><del>145,000</del><span class="total">120,500원</span></div>
-																<div class="flags">
-																		<span class="icon_flags free">무료배송</span><span class="icon_flags recommend">뷰콜추천</span><span class="icon_flags best">베스트</span>
-																</div>
-														</div>
-												</div>
-												
-										</div>
-										
-								</div>
-                                
-                        </div>
-                </div>
-
-               
-
-       
-
-
-
-
-
-
-				  <div class="a6"><!-- episodes2 -->
-                        <div class="episodes">
-                                <div class="item_wrapper  template" style="display:none">
-								<a>
-                                        <div class="thumbnail ">
-                                                <div class="mask"></div>
-                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <div class="caption">
-                                                        <span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
-                                                        <div class="titlebox">
-                                                                <div class="title">11월 05일</div>
-                                                                <div class="count"><span class="view">272,706</span><span class="like">0</span></div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div class="information">
-                                                <div class="title">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
-                                                <div class="price"><span class="discount">17%</span><del>145,000</del><span class="total">120,500원</span></div>
-                                                <div class="flags"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <span class="icon"><img src="img/icon_star.png"></span>
-                                        </div>
-									</a>
-                                </div>
-										
-                                
-                        </div>
-                </div>
-
+				<div class="inputbox">
+					<div class="box">
+						<div class="title">브랜드/상호명</div>
+						<div class="inputfield">
+							<input type="text" name="brand">
+						</div>
+					</div>
+					<div class="box">
+						<div class="title">전화번호</div>
+						<div class="inputfield">
+							<input type="text" name="phone">
+						</div>
+					</div>
+					<div class="box">
+						<div class="title">이메일</div>
+						<div class="inputfield">
+							<input type="text" name="email">
+						</div>
+					</div>
+				</div>
         </section>
-
-
-
 
 
 
         
         <div class="page_footer">
-                <ul>
-                        <li><img src="img/icon_home_on.svg"></li>
-                        <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
-                        <li><img src="img/icon_collabo.svg"></li>
-                        <li><img src="img/icon_mypage.svg"></li>
-                </ul>
+			<div class="submit_btn"><a href="javascript:void(0)">다음</a><div> <!-- 제출하기 -->
         </div>
 
-</div>
-</body>
+</div> </body>
 
 <script>
 
