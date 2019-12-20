@@ -21,10 +21,15 @@
 .page .titlebar h2 {color:#fff; font-size:16px;}
 .page .titlebar a.more {color:#FB57A7; font-size:10px; position:absolute; top:0; right:15px;}
 
+.promotions {overflow:auto; white-space:nowrap;width:320px; height:155px}
+.promotions .item_wrapper {width:150px;height:150x;display:inline-block; margin:0 4px;}
+.promotions .thumbnail .centered img {width:150px; height:150px; object-fit:cover; border-radius:5px;}
 
-.promotions {overflow:auto; white-space:nowrap;width:320px; height:300px;height:305px}
-.promotions .item_wrapper {width:300px;height:305px;display:inline-block; margin:0 4px;}
-.promotions .thumbnail .centered img {width:300px; height:300px; object-fit:cover; border-radius:5px;}
+.banner_info {width:290px; height:100px; margin:30px auto 0 auto; border-radius:5px;background-image:linear-gradient(110deg,#9375F4,#FB57A7,#FF8B6A);}
+.banner_info .banner_box {position: relative; padding:20px;}
+.banner_info .banner_box .title {color: white; font-weight: 700;}
+.banner_info .banner_box p {color: white; font-size: .75em;}
+.banner_info .banner_box a {position: absolute; right: 10px; font-size: 10px; display: inline-block; margin-top: 5px; padding: 3px 15px; border-radius: 2rem; background-color: #fff; text-align: center; color: #FB57A7; font-weight: 700;}
 
 
 
@@ -75,9 +80,9 @@
 </style>
 </head>
 <body>
-<div style="max-width:320px; margin:0 auto;">
-    <div class="page_header">
-        <h1><a href="./"><img src="./img/logotype-colored.png">
+    <div style="max-width:320px; margin:0 auto;">
+        <div class="page_header">
+            <h3><a href="./">스토어</h3>    <!-- if text-title use h3 instead of h1 -->
         <a href="javascript:void(0);" class="icon_search">
             <i class="material-icons">search</i>
         </a>
@@ -88,7 +93,7 @@
 
 <style>
 
-.tab {width:100%; overflow:auto}
+.tab {width:100%; overflow:auto; margin-bottom: 20px;}
 .tab .tablinks {min-width:40px;padding:1px 1em;text-align:center; color:#fff; font-weight:bold; font-size:13px; height:25px; line-height:15px; border-bottom:1px solid rgba(255,255,255,0.2);}
 .tab .active {border-bottom:2px solid #FB57A7; color:#FB57A7;}
 
@@ -107,9 +112,9 @@
 	.products_md .item_wrapper .information .price del {margin:0 5px; color:#a0a0a5;}
 	.products_md .item_wrapper .information .flags {margin-top:5px;}
 	.products_md .item_wrapper .information .flags .icon_flags {border-radius:4px; padding:3px 2px; font-size:10px; margin-right:4px; color:#fff; border:1px solid #fff;}
-	.products_md .item_wrapper .information .flags .free {color:#3acf9d; border:1px solid #3acf9d;}
-	.products_md .item_wrapper .information .flags .recommend {color:#ff85ed; border:1px solid #ff85ed;}
-	.products_md .item_wrapper .information .flags .best {color:#ffa347; border:1px solid #ffa347;}
+	.products_md .item_wrapper .information .flags .free {color:white; border:1px solid white;}
+	.products_md .item_wrapper .information .flags .recommend {color:#aaaaaa; border:1px solid #aaaaaa;}
+	.products_md .item_wrapper .information .flags .best {color:#888888; border:1px solid #888888;}
 
 
 
@@ -132,7 +137,7 @@
 
 <section class="page_store page">
 
-				<div class="tab">
+				<div class="tab"> <!-- menutab -->
 					<div style="width:500px;display:flex;">
                         <div class="tablinks active" data-v="t">인싸템</div>
                         <div class="tablinks" data-v="be">뷰티</div>
@@ -143,7 +148,35 @@
 						<div class="tablinks" data-v="pe">반려동물</div>
 					</div>
                 </div>
-				 <div class="a3-1"><!-- products -->
+
+                <div class="a1"><!-- promotions -->
+                    <div class="promotions">
+                            <div class="item_wrapper template" style="display:none">
+                                    <div class="thumbnail">
+                                            <div class="centered">
+                                                    <a href="javascript:void(0);">
+                                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt="">
+                                                    </a>
+                                            </div>
+                                    </div>
+                            </div>
+                           
+                    </div>
+                    <div class="bullets">
+                    </div>
+                </div>
+
+                <div class="banner_info"> <!-- banner to proposal -->
+                    <div class="banner_box">
+                    <div class="title">MCL에서 활동할 인플루언서를 찾습니다.</div>
+                    <p>본인이 좋아하는 제품을 라이브로 판매해보세요.</p>
+                    <a href="./proposal.html" target="_blank">문의하기</a>
+                    </div>
+                </div>
+
+
+                
+                     <!-- products -->
 	
 	<div id="fort">
 					   <div class="titlebar">
@@ -416,6 +449,7 @@
                                 </div>
                         </div>
                 </div>
+
 
 
 
