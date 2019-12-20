@@ -59,19 +59,19 @@ ul, ol {list-style:none;}
 					<div class="box">
 						<div class="title">브랜드/상호명</div>
 						<div class="inputfield">
-							<input type="text" name="brand">
+							<input type="text" name="brand" id="input1">
 						</div>
 					</div>
 					<div class="box">
 						<div class="title">전화번호</div>
 						<div class="inputfield">
-							<input type="text" name="phone">
+							<input type="text" name="phone" id="input2">
 						</div>
 					</div>
 					<div class="box">
 						<div class="title">이메일</div>
 						<div class="inputfield">
-							<input type="text" name="email">
+							<input type="text" name="email" id="input3">
 						</div>
 					</div>
 				</div>
@@ -87,8 +87,14 @@ ul, ol {list-style:none;}
 </div>
 </body>
 <script>
-	$('input[type="text"]').blur(function() {
-  $(window).scrollTop(0,0);
+	$('#input1').on('focus', function() {
+   	document.body.scrollTop += this.getBoundingClientRect().top - 10
+});
+	$('#input2').on('focus', function() {
+   	document.body.scrollTop += this.getBoundingClientRect().top - 10
+	});
+	$('#input3').on('focus', function() {
+   	document.body.scrollTop += this.getBoundingClientRect().top - 10
 });
 </script>
 
