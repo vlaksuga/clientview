@@ -29,18 +29,19 @@ ul, ol {list-style:none;}
 
 
 
-.page_footer {height:45px; background-color:#FB57A7; color:#fff; position:fixed; bottom:0; width:320px; z-index:10; margin-bottom: 300px;}
-.page_footer .submit_btn{display: flex; justify-content: center;align-items: center; height: 100%; font-weight: 700;}
-
 .titlebox {text-align: center;  margin: 60px auto 30px auto; width: 70px;}
 .titlebox img{width: 100%; display: block;}
 
-.media {width: 250px; height: 250px;}
+.media {position: relative; width: 250px; height: 250px; margin: 0 auto; border-radius: 20px; display: flex; justify-content: center; align-items: center;}
+.media .icon_container {position: absolute;}
+.media img {width: 100%; border-radius: 10px; object-fit: cover;}
+.media i {font-size: 50px; color: #FB57A7;}
 
-.inputbox .box {margin-bottom: 30px;}
-.inputbox .box .title{color: #777777; font-size: 12px;}
-.inputbox .box .inputfield {width: 100%; height: 30px; border-bottom: 1px white solid;}
-.inputbox .box .inputfield input[type="text"] {width: 100%; background-color: black; border: none; outline: none; color: white; font-size: 16px;}
+.comment {text-align: center;}
+.comment p {font-size: 12px; color: #777777;}
+.comment p .influencer_name {color: #FB57A7; font-weight: 700;}
+.comment button {margin-top: 15px; color: white; background-color: black; border: none; padding: 5px 12px; border-radius: 15px; font-size: 12px; background-image:linear-gradient(110deg,#9375F4,#FB57A7,#FF8B6A);}
+
 </style>
 </head>
 <body>
@@ -53,36 +54,19 @@ ul, ol {list-style:none;}
 				</div>
 
 				<div class="media">
-					
-				</div>
-				<div class="inputbox">
-					<div class="box">
-						<div class="title">브랜드/상호명</div>
-						<div class="inputfield">
-							<input type="text" name="brand" id="input1">
-						</div>
-					</div>
-					<div class="box">
-						<div class="title">전화번호</div>
-						<div class="inputfield">
-							<input type="text" name="phone" id="input2">
-						</div>
-					</div>
-					<div class="box">
-						<div class="title">이메일</div>
-						<div class="inputfield">
-							<input type="text" name="email" id="input3">
-						</div>
+					<a href="javascript:void(0)"><img src="img/banner-05.jpg"></a> <!-- 앱에서 보기 앱이 없으면 앱설치 -->
+					<div class="icon_container">
+					<i class="material-icons">play_circle_outline</i>
 					</div>
 				</div>
+
+				<div class="comment">
+					<h3>방송 제목이 들어가는 곳이에요!</h3>
+					<p><span class="influencer_name">심은진</span>의 방송을 MCL에서 만나보세요!</p>
+					<button>APP에서 보기</button> <!-- 앱에서 보기 앱이 없으면 앱설치 -->
+				</div>
+				
         </section>
-
-
-
-        
-        <div class="page_footer">
-			<div class="submit_btn"><a href="javascript:void(0)">다음</a><div> <!-- 제출하기 -->
-        </div>
 
 </div>
 </body>
