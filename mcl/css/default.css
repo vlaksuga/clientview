@@ -10,3 +10,8 @@ a {text-decoration:none;}
 ul, ol {list-style:none;}
 
 .page_body {margin-top:60px;}
+
+.bullets {text-align:center; margin-top:15px;line-height:1.5em;height:1.5em}
+.bullets .dot {cursor:pointer; height:7px; width:7px; margin:0 2px; background-color:rgba(255,255,255,0.2); border-radius:50%; display:inline-block; transition:background-color 0.6s ease;}
+.bullets .active {background-color:rgba(255,255,255);}
+
