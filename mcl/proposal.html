@@ -87,14 +87,9 @@ ul, ol {list-style:none;}
 </div>
 </body>
 <script>
-	$('#input1').on('focus', function() {
-   	document.body.scrollTop += this.getBoundingClientRect().top - 10
-});
-	$('#input2').on('focus', function() {
-   	document.body.scrollTop += this.getBoundingClientRect().top - 10
-	});
-	$('#input3').on('focus', function() {
-   	document.body.scrollTop += this.getBoundingClientRect().top - 10
+$('input, textarea').focus(function () {
+    $('html, body').animate({ scrollTop: ($('input, textarea').offset().top - 10) }, 1);
+    return false;
 });
 </script>
 
