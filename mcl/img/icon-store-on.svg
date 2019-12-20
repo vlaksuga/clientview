@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 40 40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_3_);fill:url(#SVGID_4_);}
+	.st1{clip-path:url(#SVGID_7_);fill:url(#SVGID_8_);}
+	.st2{clip-path:url(#SVGID_10_);fill:url(#SVGID_11_);}
+	.st3{clip-path:url(#SVGID_13_);fill:url(#SVGID_14_);}
+</style>
+<g>
+	<defs>
+		<path id="SVGID_9_" d="M34,12.5l-2.7,11.9c-0.2,0.8-1,1.5-1.8,1.5H13.8c-0.8,0-1.6-0.6-1.8-1.5l-1.4-6.3c0,0,0,0,0,0l-0.7-3
+			l-0.6-2.6c0,0,0,0,0,0L8.6,9.6H6.2c-1,0-1.9-0.8-1.9-1.9s0.8-1.9,1.9-1.9h3.9c0.1,0,0.1,0,0.2,0c0,0,0.1,0,0.1,0
+			c0.1,0,0.1,0,0.2,0.1c0.1,0,0.1,0,0.2,0c0.1,0,0.1,0,0.1,0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,0.1,0,0.1,0.1c0.1,0.1,0.1,0.1,0.2,0.2
+			c0,0,0,0,0,0c0.2,0.2,0.4,0.5,0.5,0.9l0.6,2.7h19.8C33.5,10.1,34.3,11.2,34,12.5z M16.4,27.5c-1.8,0-3.3,1.5-3.3,3.3
+			c0,1.8,1.5,3.3,3.3,3.3c1.8,0,3.3-1.5,3.3-3.3C19.7,29,18.3,27.5,16.4,27.5z M26.9,27.5c-1.8,0-3.3,1.5-3.3,3.3
+			c0,1.8,1.5,3.3,3.3,3.3s3.3-1.5,3.3-3.3C30.2,29,28.7,27.5,26.9,27.5z"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
+	</clipPath>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-2.819" y1="15.9872" x2="42.8452" y2="24.039">
+		<stop  offset="0.15" style="stop-color:#837AFF"/>
+		<stop  offset="0.6041" style="stop-color:#FF545C"/>
+		<stop  offset="1" style="stop-color:#FF8B6A"/>
+	</linearGradient>
+	<rect x="0" style="clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);" width="40" height="40"/>
+</g>
+</svg>
