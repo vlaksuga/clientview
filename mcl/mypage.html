@@ -18,6 +18,8 @@
     .profile .photo img {width: 48px; height: 48px; object-fit: cover; border-radius: 50%; display: block;}
     .profile .information .name{font-size: 14px; font-weight: 700; margin-bottom: 5px;}
     .profile .information .point {font-size: 10px;}
+    .profile .config {display: none;}
+    .profile .config.active {display: block; text-align: right; font-size: 18px}
 
     .help_box {margin: 15px; }
 
@@ -35,6 +37,7 @@
     .ver {margin: 15px;}
     .version {border-radius: 5px; display: flex; flex-direction: row; background-color: #111111; height: 48px; align-items: center; margin-bottom: 1px; justify-content: space-between; padding: 0 15px;}
 </style>
+
 </head>
 
 <body>
@@ -51,6 +54,14 @@
                     <a href="javascript:(0)">회원가입하기</a>
                 </div>
             </div>
+            <div class="config active">
+                <a href="javascript:void(0)"><i class="fas fa-cog"></i></a>
+            </div>
+
+        </section>
+
+        <section class="mylist active">
+
         </section>
 
         <section class="help_center">
@@ -105,7 +116,7 @@
 
         <div class="page_footer">
             <ul>
-                    <li><a href="index.html"></a><img src="img/icon-home.svg"></li>
+                    <li><a href="index.html"><img src="img/icon-home.svg"></a></li>
                     <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
                     <li><a href="explore.html"><img src="img/icon_collabo.svg"></a></li>
                     <li><img src="img/icon-mypage-on.svg"></li>
