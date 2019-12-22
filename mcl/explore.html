@@ -106,8 +106,8 @@
             <div class="explore_container">
 
                 <div class="tab"> <!-- menutab -->
-                    <div class="tablinks active">인싸</div>
-                    <div class="tablinks">해시태그</div>
+                    <div class="tablinks inssa active"><a onclick="inssago()">인싸</a></div>
+                    <div class="tablinks hashtag"><a onclick="hashgo()">해시태그</a></div>
                 </div>
 
                 <!-- 인싸 -->
@@ -240,6 +240,18 @@
                 
                     </div>
                 </div>
+                
+                <script>
+                    function inssago() {
+                    $(".hashtag").removeClass("active");
+                    $(".inssa").addClass("active");
+                    }
+
+                    function hashgo(){
+                    $(".inssa").removeClass("active");
+                    $(".hashtag").addClass("active");  
+                    }
+                </script>
 
             </div>
 
