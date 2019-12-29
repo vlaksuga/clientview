@@ -1,0 +1,68 @@
+[
+    {
+        "productpkey": "10",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/F7546-N3587-C3030.jpg",
+        "productname": "[BLITHE] 안티폴루에이징 클렌징 워터",
+        "price": "26000",
+        "xprice": "0",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/F7546-N3587-C3030"
+    },
+    {
+        "productpkey": "20",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/B4429-P6759-B9855.jpg",
+        "productname": "[e.l.f] 블러쉬 팔레트",
+        "price": "14500",
+        "xprice": "18000",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/B4429-P6759-B9855"
+    },
+    {
+        "productpkey": "30",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/Y5570-O4708-U0701.jpg",
+        "productname": "[GRIN7] 히말라얀 울 드라이어볼 건조기 세탁볼",
+        "price": "9900",
+        "xprice": "16000",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/Y5570-O4708-U0701"
+    },
+    {
+        "productpkey": "40",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/M3557-U0356-R1244.jpg",
+        "productname": "[MUH 엠유에이치] 피니쉬 2종 세트(선비비+수분영양크림/샘플증정)",
+        "price": "61150",
+        "xprice": "96000",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/M3557-U0356-R1244"
+    },
+    {
+        "productpkey": "50",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/U0331-K5790-O5896.jpg",
+        "productname": "[SKINMISO][스킨미소] 아임에이헬퍼스팟",
+        "price": "28000",
+        "xprice": "28000",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/U0331-K5790-O5896"
+    },
+    {
+        "productpkey": "60",
+        "productthumb": "https://mcl2static.mycollabolife.com/predev/product/S8236-W8010-S5110.jpg",
+        "productname": "[겐조] 옴므 EDP 100ml",
+        "price": "77500",
+        "xprice": "104000",
+        "flag1": "1",
+        "flag2": "1",
+        "flag3": "1",
+        "url": "https://www.beautycollabo.com/product.view/S8236-W8010-S5110"
+    }
+]

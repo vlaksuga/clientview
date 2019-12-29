@@ -1,0 +1,129 @@
+
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
+<meta name="keywords" content="">			
+<meta name="description" content="">				
+<title></title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<style>
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
+div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none; color: inherit;}
+ul, ol {list-style:none;}
+
+.page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
+.page_header h1 {left: 35px; position: absolute; top: 8px;}
+.page_header h1 input {height: 22px; background-color: #000; border: none; color: white;}
+.page_header h1 input:focus {outline: none;}
+.page_header i {color:#fff; font-size:17px;}
+.page_header a {color:#fff;}
+.page_header a.icon_search {position:absolute; top:13px; left:15px;}
+.page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
+
+.page_body {margin-top:60px;}
+.page_body .titlebar {position:relative; margin:50px 0 0 15px;}
+.page_body .titlebar h2 {color:#fff; font-size:16px;}
+.page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
+
+.result {color: #fff; width: 100%;}
+.item_list {height: 60px;}
+.item_list .item {display: flex; justify-content: flex-start; align-items: center;}
+.item_list .item .img_box img {width:48px; height: 48px;}
+.item_list .item .img_box.caster img{border-radius: 50%;}
+.item_list .item .img_box.product img{border-radius: 5%;}
+.item_list .item .info_box {max-width: 240px;  margin-left: 10px;}
+.item_list .item .info_box .title {text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.item_list .item .info_box .info .xprice {color:#777777; text-decoration: line-through;}
+.item_list .item .info_box .info .sub_count {color: #ff545c;}
+</style>
+</head>
+<body>
+<div style="max-width:320px; margin:0 auto;">
+        <div class="page_header">
+                <h1><input type="text" placeholder="검색어를 입력해주세요"></h1>
+                <a href="javascript:void(0);" class="icon_search"><img style=" width:1.3em;height:1.3em" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAQAAABLCVATAAABPElEQVR4Ae3QAUSccRjH8TebO+NgMGaDmTFsISWUAgGCQwVBUFCAJAKCqigSRCgQUiCVKAgEdJBARF24iAr11icUuO71fy8C7gvw4+PxRO+tlpwO/YZ1+/9+pN6OGACXxmSqRTKmPXrbsaZqmKxDQOzIimm7SoBYV3poGbDvZ/SaOgNuwJ1/6ZhGwJS6suWPM7CdDtoEGxW3BjFoDDNfxXjwPWGfB7NhKA8OEvcOUAhDg2Ahcf8GSmFoBEwm7l/AfRjqA6uJ+19wFoaawWXiPgDWo3DOQU/F7ZMC6I3CGQVXflXY5kBJNgonpwiK2svevAAYjNKlzSN4sijvt5xWQ04BJ1H65F2rXBFsyaSlflhT3o0ZnwlTZWkx4cCFWwVLOl9ebAthKpysvRpVNTUWhQtT4YvSUeNhptYH9QzDmstiBLQWNgAAAABJRU5ErkJggg=="></a>
+        </div>
+
+        <section class="page_body">
+
+<style>
+.search {width:290px; margin:50px auto 0 auto;}
+.search .icon_search img {width:24px; height:24px;}
+.search .message {color:#a0a0a5; font-weight:bold;}
+.search .message .msg_title {font-size:14px; margin:7px 0 10px 0;}
+.search .message .msg_txt {font-size:10px;}
+</style>
+
+        <span class="page_search" style="margin:50px 0 100px 0;">
+                <div class="search">
+                        <span class="icon_search"><img src="img/icon_search2.png"></span>
+                        <div class="message">
+                                <p class="msg_title">당신이 찾는 모든 콜라보!</p>
+                                <p class="msg_txt">좋아하는 인플루언서가 있으세요? 찾는 상품이 있으신가요? 아니면 즐겨찾는 프로그램이 있으신가요? 마이콜라보라이프에서 원하는 콘텐츠를 찾아보세요!</p>
+                        </div>
+                        <div class="result">
+                                <ul>
+                                        <li class="item_list">
+                                                <a class="item_link" href="">
+                                                <div class="item caster product">
+                                                        <div class="img_box product">
+                                                                <img src="./img/banner-05.jpg">
+                                                        </div>
+                                                        <div class="info_box caster product">
+                                                                <div class="title">
+                                                                        <span class="name caster">강예빈</span>
+                                                                        <span class="name product">[라이브특가][닥터엘시아]벨벳 립 라커</span>
+                                                                </div>
+                                                                <div class="info">
+                                                                        <div class="detail">
+                                                                                구독자 <span class="sub_count">0</span>명
+                                                                                <span class="xprice">19000</span>
+                                                                                <span class="price">24900</span>원
+                                                                        </div>
+                                                                </div>
+                                                                <div class="info">
+                                                                        <div class="detail caster"></div>
+                                                                        <div class="detail product"></div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                </a>
+                                        </li>
+                                        <li class="item_list">
+                                                <a class="item_link" href="">
+                                                <div class="item caster product">
+                                                        <div class="img_box product">
+                                                                <img src="./img/banner-05.jpg">
+                                                        </div>
+                                                        <div class="info_box caster product">
+                                                                <div class="title">
+                                                                        <span class="name caster">강예빈</span>
+                                                                        <span class="name product">[라이브특가][닥터엘시아]벨벳 립 라커</span>
+                                                                </div>
+                                                                <div class="info">
+                                                                        <div class="detail">
+                                                                                구독자 <span class="sub_count">0</span>명
+                                                                                <span class="xprice">19000</span>
+                                                                                <span class="price">24900</span>원
+                                                                        </div>
+                                                                </div>
+                                                                <div class="info">
+                                                                        <div class="detail caster"></div>
+                                                                        <div class="detail product"></div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                </a>
+                                        </li>
+                                </ul>
+                        </div>
+                </div>
+        </section>
+</div>
+</body>
+</html>

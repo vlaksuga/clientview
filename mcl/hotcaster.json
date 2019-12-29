@@ -1,0 +1,38 @@
+[
+    {
+        "casterpkey": "33",
+        "url": "caster://33",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_33.jpg",
+        "name": "이재정"
+    },
+    {
+        "casterpkey": "17",
+        "url": "caster://17",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_17.jpg",
+        "name": "신민경"
+    },
+    {
+        "casterpkey": "5",
+        "url": "caster://5",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_5.jpg",
+        "name": "김대현"
+    },
+    {
+        "casterpkey": "1",
+        "url": "caster://1",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_1.jpg",
+        "name": "강예빈"
+    },
+    {
+        "casterpkey": "9",
+        "url": "caster://9",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_9.jpg",
+        "name": "김지영"
+    },
+    {
+        "casterpkey": "11",
+        "url": "caster://11",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_11.jpg",
+        "name": "배자영"
+    }
+]

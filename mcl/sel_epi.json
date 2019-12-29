@@ -1,0 +1,42 @@
+[
+    {
+        "videopkey": "1",
+        "title": "MCL리뷰맛집 1회",
+        "thumbnail": "https://mcl2static.mycollabolife.com/predev/video/v_1_thumb.jpg",
+        "viewcount": "0",
+        "likecount": "0",
+        "casterurl": "caster://33",
+        "profileurl": "https://mcl2static.mycollabolife.com/predev/caster/profile_33.jpg",
+        "videourl": "epi://1",
+        "product": [
+            {
+                "productpkey": "495",
+                "productthumb": "https://mcl2static.mycollabolife.com/predev/product/Z3372-C5434-R7405.jpg",
+                "productname": "[라이브특가][에이트타임] 인핸서 55ml x 4병",
+                "xprice": "54000",
+                "price": "35910",
+                "producturl": "https://www.beautycollabo.com/product.view/Z3372-C5434-R7405"
+            }
+        ]
+    },
+    {
+        "videopkey": "2",
+        "title": "MCL리뷰맛집 2회",
+        "thumbnail": "https://mcl2static.mycollabolife.com/predev/video/v_2_thumb.jpg",
+        "viewcount": "0",
+        "likecount": "0",
+        "casterurl": "caster://17",
+        "profileurl": "https://mcl2static.mycollabolife.com/predev/caster/profile_17.jpg",
+        "videourl": "epi://2",
+        "product": [
+            {
+                "productpkey": "480",
+                "productthumb": "https://mcl2static.mycollabolife.com/predev/product/J2040-F6116-P4819.jpg",
+                "productname": "[라이브특가][라비오뜨] 1+1 페탈 어페어 립컬러 에센스 볼륨핏/슬림핏",
+                "xprice": "14000",
+                "price": "7500",
+                "producturl": "https://www.beautycollabo.com/product.view/J2040-F6116-P4819"
+            }
+        ]
+    }
+]

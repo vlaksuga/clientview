@@ -1,0 +1,62 @@
+[
+    {
+        "casterpkey": "33",
+        "url": "epi://1",
+        "date": "오늘",
+        "time": "17:00",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_33.jpg",
+        "productpkey": "495",
+        "name": "이재정",
+        "title": "[라이브특가][에이트타임] 인핸서 55ml x 4병"
+    },
+    {
+        "casterpkey": "17",
+        "url": "epi://2",
+        "date": "오늘",
+        "time": "17:30",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_17.jpg",
+        "productpkey": "480",
+        "name": "신민경",
+        "title": "[라이브특가][라비오뜨] 1+1 페탈 어페어 립컬러 에센스 볼륨핏/슬림핏"
+    },
+    {
+        "casterpkey": "5",
+        "url": "epi://3",
+        "date": "오늘",
+        "time": "18:30",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_5.jpg",
+        "productpkey": "479",
+        "name": "김대현",
+        "title": "[라이브특가][닥터플로라] 클렌징 폼 & 클렌징오일"
+    },
+    {
+        "casterpkey": "1",
+        "url": "epi://4",
+        "date": "내일",
+        "time": "16:30",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_1.jpg",
+        "productpkey": "1816",
+        "name": "강예빈",
+        "title": "[뷰콜x아프리카tv][초특가] 콩블리♥ 탄수화물 컷"
+    },
+    {
+        "casterpkey": "9",
+        "url": "epi://10",
+        "date": "내일",
+        "time": "17:00",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_9.jpg",
+        "productpkey": "451",
+        "name": "김지영",
+        "title": "[라이브특가] [뮤즈앤코] NEW 에어핏 네일팁 겨울신상 12종"
+    },
+    {
+        "casterpkey": "11",
+        "url": "epi://11",
+        "date": "내일",
+        "time": "19:00",
+        "img": "https://mcl2static.mycollabolife.com/predev/caster/profile_11.jpg",
+        "productpkey": "488",
+        "name": "배자영",
+        "title": "[라이브특가][미쟝센] 퍼펙트세럼 70ml 4종"
+    }
+]

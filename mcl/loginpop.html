@@ -1,0 +1,48 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title></title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            width: 100%;
+            background-color: black;
+            margin: 0 auto;
+        }
+
+        .pop-container {margin: 0 auto; width: 90%; height: 200px; background-color: #FFF; border-radius: 5px;}
+        .pop-container .pop-header {display: flex; flex-direction: column; justify-content: center; align-items: center; height: 160px; font-size: 12px; font-weight: 700; color: black; border-bottom: 1px #eeeeee solid; line-height: 10px;} 
+        .pop-container .pop-body {display: flex; height: 38px; flex-direction: row;}
+        .pop-container .pop-body .parts {display: flex; width: 33%; justify-content: center; align-items: center; font-size: 12px;}
+        .pop-container .pop-body .parts:first-child {color: red; font-weight: 700;}
+        .pop-container .pop-body .parts:nth-child(2) {border-left: 1px #eeeeee solid; border-right: 1px #eeeeee solid; color: red; font-weight: 700;}
+        .pop-container .pop-body .parts a {text-decoration: none; color: inherit;}
+    </style>
+</head>
+
+<body style="max-width:320px; margin:0 auto;">
+    <div class="pop-container">
+        <div class="pop-header">
+            <p>이 기능을 사용하시기 전에</p>
+            <p>마이콜라보라이프의 회원이</p>
+            <p>되어주세요!</p>
+        </div>
+        <div class="pop-body">
+            <div class="parts regi-go">
+                <a href="">회원가입하기</a>
+            </div>
+            <div class="parts login-go">
+                <a href="">로그인하기</a>
+            </div>
+            <div class="parts exit-go">
+                <a href="">다음에</a>
+            </div>
+        </div>
+    </div>
+</body>
