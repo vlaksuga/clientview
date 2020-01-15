@@ -1,277 +1,258 @@
-<html lang="en">
-
+<!doctype html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
-    <meta name="keywords" content="">			
-    <meta name="description" content="">				
-    <title></title>
-    <script src="js/jquery-3.4.1.min.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
+<meta name="keywords" content="">			
+<meta name="description" content="">				
+<title></title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<style>
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
+div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none;}
+ul, ol {list-style:none;}
 
-    <!-- css -->
-    <link rel="stylesheet" href="./css/default.css">    
-    <style>
+.page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
+.page_header h1 {text-align:center; margin-top: 13px; font-size: 14px;}
+.page_header i {color:#fff; font-size:17px;}
+.page_header a {color:#fff;}
+.page_header a.icon_search {position:absolute; top:13px; left:15px;}
+.page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
 
-        #page_explore {position: absolute; display: block; top: 45px; width: 100%;}
-        .promotions {overflow:auto; white-space:nowrap; width:320px; height:200px}
-        .promotions .item_wrapper {width:100%; display:inline-block; margin:0}
-        .promotions .thumbnail .centered img {width:100%; height:200px; object-fit:cover;}
+.page_body {margin-top:60px;}
+.page_body .titlebar {position:relative; margin:50px 0 0 15px;}
+.page_body .titlebar h2 {color:#fff; font-size:16px;}
+.page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
 
 
-        .tab {width:100%; display: flex; flex-direction: row;}
-        .tab .tablinks {width:50%;padding:1px 1em;text-align:center; color:#fff; font-weight:bold; font-size:13px; height:25px; line-height:15px; border-bottom:1px solid rgba(255,255,255,0.2);}
-        .tab .active {border-bottom:2px solid #FB57A7; color:#FB57A7;}
+.page_footer {height:45px; background-color:#000; color:#fff; overflow:hidden; position:fixed; bottom:0; width:320px; z-index:10;}
+.page_footer ul {width:100%; display:flex;}
+.page_footer ul li {width:25%; text-align:center;}
+.page_footer ul li img {width:auto; display:inline-block; height:24px; margin-top:9px;}
 
-        .content {margin: 20px 0 50px 0;}
-        .content.inssa.active {display: flex; flex-direction: row; justify-content: center; align-items: center;}
-        .flex-container {display:flex; flex-direction: row; flex-wrap: wrap; width: 90%; justify-content: space-between;}
-        .content.inssa {display: none;}
-        .inssa .item{width: 48%; margin-bottom: 20px;}
-        .inssa .item .item_header {width: 100%;}
-        .inssa .item .item_header img {object-fit: cover; border-radius: 5px; width: 100%;}
-        .inssa .item .item_body {text-align: center;}
-        .inssa .item .item_body h4 {margin: 5px;}
-        .inssa .item .item_body p span {color:#FB57A7;}
-        .inssa .item .item_footer {text-align: center;}
-        .inssa .item .item_footer button {font-size:9px; margin-top:5px; border-radius:10px; padding:2px 7px 2px 7px; color:white; border:1px solid white; background-color: black;}
+.top_img {width:100%; height:180px;}
+.top_img img {width:100%; height:180px; object-fit:cover;}
+.tab {width:100%; display:flex;}
+.tab .tablinks {width:50%; text-align:center; color:#fff; font-weight:bold; font-size:10px; height:43px; line-height:43px; border-bottom:1px solid rgba(255,255,255,0.2);}
+.tab .active {border-bottom:2px solid #ff545c; color:#ff545c;}
+.tabcontent {margin-bottom:50px; margin-top: 20px}
 
-        .content.hashtag.active{display: block;}
-        .content.hashtag {display: none;}
-        .tab_hashtags {width:290px; margin:20px auto 10px auto; text-align:left;}
-        .tab_hashtags .item_wrapper {width:89px; display:inline-block; margin:0 2px; vertical-align:top;}
-        .tab_hashtags .thumbnail {position:relative;}
-        .tab_hashtags .thumbnail .centered img {width:89px; height:89px; object-fit:cover; border-radius:5px;}
-        .tab_hashtags .thumbnail .mask {display:none;}
-        .tab_hashtags .thumbnail .caption {display:none;}
-        .tab_hashtags .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
-        .tab_hashtags .item_wrapper .information {color:#fff; margin-top:0; font-size:10px; text-align:left; font-weight:bold;}
-        
-    </style>
 
+.tab_programs {width:290px; margin:0 auto 10px auto;}
+.tab_programs .item_wrapper {width:138px; display:inline-block; margin:0 2px; vertical-align:top; margin-bottom:15px;}
+.tab_programs .thumbnail {position:relative;width:138px;height:142px}
+.tab_programs .thumbnail .centered img {width:138px; height:138px; object-fit:cover; border-radius:5px;}
+.tab_programs .thumbnail .mask {display:none;}
+.tab_programs .thumbnail .caption {display:none;}
+.tab_programs .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
+.tab_programs .item_wrapper .information {margin-top:5px; text-align:center;}
+.tab_programs .item_wrapper .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
+.tab_programs .item_wrapper .information .name {font-size:14px;}
+.tab_programs .item_wrapper .information .subcount {color:#ff545c; font-weight:normal; margin:0 3px; font-style:normal;}
+.tab_programs .item_wrapper .information .btn_subscribe_off {font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-color:black; border:1px white solid;}
+.tab_programs .item_wrapper .information .btn_subscribe_on {font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-image: linear-gradient(-30deg, rgb(255, 139, 106), rgb(255, 84, 92), rgb(131, 122, 255)); border:none;}
+
+
+.tab_hashtags {width:290px; margin:0 auto 10px auto; text-align:center;}
+.tab_hashtags .item_wrapper {width:89px; display:inline-block; margin:3px; vertical-align:top;}
+.tab_hashtags .thumbnail {position:relative;}
+.tab_hashtags .thumbnail .centered img {width:89px; height:89px; object-fit:cover; border-radius:5px;}
+.tab_hashtags .thumbnail .mask {display:none;}
+.tab_hashtags .thumbnail .caption {display:none;}
+.tab_hashtags .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
+.tab_hashtags .item_wrapper .information {color:#fff; margin-top:0; font-size:10px; text-align:left; font-weight:bold;}
+.tab_hashtags .item_wrapper .information a {}
+
+</style>
+<script>
+	function showStore(){
+		window.location.href="store.html";
+		}
+
+		function search(){ 		window.location.href="search.html";		}
+</script>
 </head>
-
 <body>
-    <div style="max-width:320px; margin:0 auto;">
+<div style="max-width:320px; margin:0 auto;" id="mainpage">
         <div class="page_header">
-            <h3><a href="./">콜라보</a></h3> <!-- if text-title use h3 instead of h1 -->
-            <a href="javascript:void(0);" class="icon_search">
-                <i class="material-icons">search</i>
-            </a>
-            <a href="javascript:void(0);" class="icon_alarms">
-                <i class="material-icons">notifications_none</i>
-            </a>
+                <h1>콜라보</h1>
+                <a href="javascript:search();" class="icon_search"><img style=" width:1.8em;height:1.8em" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAQAAABLCVATAAABPElEQVR4Ae3QAUSccRjH8TebO+NgMGaDmTFsISWUAgGCQwVBUFCAJAKCqigSRCgQUiCVKAgEdJBARF24iAr11icUuO71fy8C7gvw4+PxRO+tlpwO/YZ1+/9+pN6OGACXxmSqRTKmPXrbsaZqmKxDQOzIimm7SoBYV3poGbDvZ/SaOgNuwJ1/6ZhGwJS6suWPM7CdDtoEGxW3BjFoDDNfxXjwPWGfB7NhKA8OEvcOUAhDg2Ahcf8GSmFoBEwm7l/AfRjqA6uJ+19wFoaawWXiPgDWo3DOQU/F7ZMC6I3CGQVXflXY5kBJNgonpwiK2svevAAYjNKlzSN4sijvt5xWQ04BJ1H65F2rXBFsyaSlflhT3o0ZnwlTZWkx4cCFWwVLOl9ebAthKpysvRpVNTUWhQtT4YvSUeNhptYH9QzDmstiBLQWNgAAAABJRU5ErkJggg=="></a>
+                <a href="notification.html" class="icon_alarms"><img  style=" width:1.8em;height:1.8em" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAABs0lEQVR4Ae3Os5peURiG4XfMKuYZxK5i1bFtG02cKjiKvwmOIDb6QRfbdvJEM7PWeO+5vj1cd/3hURAEQQMwlg1sYKyaA9pzhnJn6KCmxgl8x9W06E1VfdSUWE5Vy9WU2ENVe0LQfxQynRN8oqqPnGQmhWpM5LCNd9TlLTvJVeNgHPeI4iETlTyW8oOofrJUyWI3cR1UcphPdV84R4rDHCbFOb5Q3Uolg1H8oLIbTKVAHgqZyg0q+8kY2SOLO/jesYw01YA0lvEO322yZI2N+D4yVHVgGB/xbZYtcnmF85MRqgcj+InzllxZYg6+A4qAg/jmyRKncUrJVARkUoJzRnboxC+chYqIRTi/6CwrTMZ5QbYiIofnOJNlhaM4KcVACuewrHARZ6liYCnORVmhBGegYmAATqms8Binp2KgJ84TWeEXTr5ioADnl6zgkPhuCApBISgEhaAQFIJCELutgthtkbMFzIJgi2mOQRBsMc0xscU4x8CWJs8xSCJhiiAEBQEfqMkHNRVuUJObaiosoiaL1VRI5xpVXSNdTYduFOMrppuaFjms5g4Ad1hNjpq5IAh+A+EbYnMvHiJAAAAAAElFTkSuQmCC"></a>
         </div>
 
-        <div id="page_explore">
-            
+       
 
-
-            <div class="a1"><!-- promotions -->
-                <div class="promotions">
-                        <div class="item_wrapper template">
-                                <div class="thumbnail">
-                                        <div class="centered">
-                                                <a href="javascript:void(0);">
-                                                    <img src="./img/banner-05.jpg" alt="">
-                                                </a>
+        <section class="page_explore" style="margin:50px 0 100px 0;">
+                <div class="top_img"><img id="topbanner" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                <div class="tab">
+                        <div class="tablinks active" data-t="#tab02">인싸</div>
+                        <div class="tablinks" data-t="#tab03">해시태그</div>
+                </div>
+               
+                <div id="tab02" class="tabcontent" style="margin-top:10px">
+                        <div class="tab_programs">
+                                <div class="item_wrapper template" style="display:none">
+									<a bind="href:casterpkey:casterurl">
+                                        <div class="thumbnail">
+                                                <div class="mask"></div>
+                                                <div class="centered"><img bind="img:posterurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
                                         </div>
+                                        <div class="information">
+                                                <a class="title"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount" bind="text:cnt">1</em>명</span></a>
+												<button class="btn_subscribe_off">+ 구독하기</button>
+												<!--button class="btn_subscribe_on">구독중</button-->
+                                        </div>
+									</a>
+                                </div>
+                               
+                        </div>
+                </div>
+
+                <div id="tab03" class="tabcontent" style="display:none">
+                        <div class="tab_hashtags">
+                                <div class="item_wrapper template" style="display:none">
+									<a bind="href:url">
+                                        <div class="thumbnail">
+                                                <div class="mask"></div>
+                                                <div class="centered"><img bind="img:profileimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
+                                        </div>
+                                        <div class="information"><span style="color:#ff545c; margin-right:2px;">#</span><span  bind="text:txt">지성</span></div>
+									</a>
                                 </div>
                         </div>
-                        <div class="item_wrapper template">
-                            <div class="thumbnail">
-                                    <div class="centered">
-                                            <a href="javascript:void(0);">
-                                                <img src="./img/banner-05.jpg" alt="">
-                                            </a>
-                                    </div>
-                            </div>
-                    </div>
-                    <div class="item_wrapper template">
-                        <div class="thumbnail">
-                                <div class="centered">
-                                        <a href="javascript:void(0);">
-                                            <img src="./img/banner-05.jpg" alt="">
-                                        </a>
-                                </div>
-                        </div>
                 </div>
-                       
-                </div>
-                <div class="bullets">
-                </div>
-            </div>
-
-            <div class="explore_container">
-
-                <div class="tab"> <!-- menutab -->
-                    <div class="tablinks inssa active"><a onclick="inssago()">인싸</a></div>
-                    <div class="tablinks hashtag"><a onclick="hashgo()">해시태그</a></div>
-                </div>
-
-                <!-- 인싸 -->
-                <div class="content inssa active">
-                    <div class="flex-container">
-                        <div class="item template">
-                        <div class="item_header">
-                            <a href="javascript:void(0)"><img src="./img/banner-05.jpg"></a>
-                        </div>
-                        <div class="item_body">
-                            <h4><a href="javascript:void(0)">엄지은</a></h4> <!--  -->
-                            <p>구독자 <span>2</span>명</p>
-                        </div>
-                        <div class="item_footer">
-                            <button class="btn_subscribe">+ 구독하기</button>
-                        </div>
-                        </div>
-
-                        <div class="item">
-                        <div class="item_header">
-                            <a href="javascript:void(0)"><img src="./img/banner-05.jpg"></a>
-                        </div>
-                        <div class="item_body">
-                            <h4><a href="javascript:void(0)">엄지은</a></h4> <!--  -->
-                            <p>구독자 <span>2</span>명</p>
-                        </div>
-                        <div class="item_footer">
-                            <button class="btn_subscribe">+ 구독하기</button>
-                        </div>
-                        </div>
-
-                        <div class="item">
-                        <div class="item_header">
-                            <a href="javascript:void(0)"><img src="./img/banner-05.jpg"></a>
-                        </div>
-                        <div class="item_body">
-                            <h4><a href="javascript:void(0)">엄지은</a></h4> <!--  -->
-                            <p>구독자 <span>2</span>명</p>
-                        </div>
-                        <div class="item_footer">
-                            <button class="btn_subscribe">+ 구독하기</button>
-                        </div>
-                        </div>
-
-                        <div class="item">
-                        <div class="item_header">
-                            <a href="javascript:void(0)"><img src="./img/banner-05.jpg"></a>
-                        </div>
-                        <div class="item_body">
-                            <h4><a href="javascript:void(0)">엄지은</a></h4> <!--  -->
-                            <p>구독자 <span>2</span>명</p>
-                        </div>
-                        <div class="item_footer">
-                            <button class="btn_subscribe">+ 구독하기</button>
-                        </div>
-                        </div>
-
-                        <div class="item">
-                        <div class="item_header">
-                            <a href="javascript:void(0)"><img src="./img/banner-05.jpg"></a>
-                        </div>
-                        <div class="item_body">
-                            <h4><a href="javascript:void(0)">엄지은</a></h4> <!--  -->
-                            <p>구독자 <span>2</span>명</p>
-                        </div>
-                        <div class="item_footer">
-                            <button class="btn_subscribe">+ 구독하기</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 해시태그 -->
-                <div class="content hashtag">
-                    <div class="tab_hashtags">
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                        <div class="item_wrapper">
-                            <div class="thumbnail">
-                                <div class="mask"></div>
-                                <div class="centered"><img
-                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-                                        alt=""></div>
-                            </div>
-                            <div class="information"><span style="color:#FB57A7; margin-right:2px;">#</span>지성</div>
-                        </div>
-                
-                    </div>
-                </div>
-                
-                <script>
-                    function inssago() {
-                    $(".hashtag").removeClass("active");
-                    $(".inssa").addClass("active");
-                    }
-
-                    function hashgo(){
-                    $(".inssa").removeClass("active");
-                    $(".hashtag").addClass("active");  
-                    }
-                </script>
-
-            </div>
+        </section>
 
 
 
+
+
+
+        
+        <div class="page_footer">
+                <ul>
+                        <li><a href="index.html"><img src="img/icon_home.svg"></a></li>
+                        <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
+                        <li><img src="img/icon_collabo_on.svg"></li>
+                        <li><a href="mypage.html"><img src="img/icon_mypage.svg"></a></li>
+                </ul>
         </div>
 
-        <div class="page_footer">
-            <ul>
-                    <li><a href="index.html"><img src="img/icon-home.svg"></a></li>
-                    <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
-                    <li><img src="img/icon-collabo-on.svg"></li>
-                    <li><a href="mypage.html"><img src="img/icon_mypage.svg"></a></li>
-            </ul>
-    </div>
-    </div>
-
-
-
+</div>
 </body>
 
 
+<script>
+
+function casterurl(v){
+
+	return "https://mcl2.mycollabolife.com/influencer.html?casterpkey="+v;
+}
+
+
+function adddomain(v){
+
+	return "https://mcl2static.mycollabolife.com"+v;
+}
+
+function doBadge(v,ele){
+	for(i=0;i<v.length;i++){
+		if(v[i].tag=="free"){$(".free",ele).show()}	
+		if(v[i].tag=="best"){$(".best",ele).show()}
+		if(v[i].tag=="select"){$(".recommend",ele).show()}
+	}
+}
+function videourl(v){
+
+	return "epi://"+v;
+}
+var isDataLoading = false;
+function loadData(){
+	if(isDataLoading) return;
+	isDataLoading = true;
+	ele = $(".tab_programs",$("#tab02"));
+	ele2 = $(".tab_hashtags",$("#tab03"));
+
+	$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?m=explore",
+			type: "GET",
+			ok: function(head,body){
+
+				var topbannsr = body["collabotop"];
+				$("#topbanner").attr("src",topbannsr[0].img).on("click",function(){window.location.href=topbannsr[0].url});
+
+				var templete = $(".template",ele);
+				for(var i = 0;i<body["caster"].length;i++){
+					var curEle = templete.clone();
+					curEle.css("display","");
+					curEle.removeClass("template");
+
+					wmap(body["caster"][i],curEle);
+					
+					ele.append(curEle);
+				}
+
+
+				var hashtag = body["hashtag"];
+
+				var templete = $(".template",ele2);
+				for(var i = 0;i<hashtag.length;i++){
+					var curEle = templete.clone();
+					curEle.css("display","");
+					curEle.removeClass("template");
+
+					wmap(hashtag[i],curEle);
+					
+					ele2.append(curEle);
+				}
+				isDataLoading = false;
+			}
+		});
+
+
+	
+}
+
+
+loadData();
+
+
+$(function(){
+	$(window).scroll(function(){
+	//	var aTop = $('.a6').height()+$(".a6").offset().top-800;
+	//	if($(this).scrollTop()>=aTop){
+	//		loadData();
+	//	}
+	});
+	
+});
+
+
+
+$(function(){
+
+	$(".tablinks").on("click",function(){
+		lastpkey = 9999999999999999999999;
+		var aaa =$(this).data("t");
+		
+		$(".tabcontent").hide();
+
+
+		$(aaa).show();
+
+		$(".tablinks").removeClass("active");
+		$(this).addClass("active");
+
+		
+	});	
+});
+
+
+
+</script>
 </html>

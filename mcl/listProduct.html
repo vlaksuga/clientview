@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>MCL ADMIN</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+	<nav>
+        <ul class="nav-bar">
+            <li class="menu"><a href="index.html">에피소드</a></li>
+            <li class="menu active"><a href="listProduct.html">상품</a></li>
+            <li class="menu"><a href="listCaster.html">인플루언서</a></li>
+			<li class="menu dropdown"><a href="./edit/edita1.html">EDIT</a>
+				<div class="dropdown-content">
+					<a href="./edit/edita1.html">메인 배너</a>
+					<a href="./edit/edita2.html">라이브 미리보기</a>
+					<a href="./edit/edita3.html">추천 상품</a>
+					<a href="./edit/edita4.html">추천 에피소드</a>
+					<a href="./edit/edita7.html">화제의 스타</a>
+				</div>
+			</li>
+            <li class="menu logout"><a href="login.html">LOGOUT</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="wrap">
+            <h3>상품</h3>
+            <div class="topbox">
+			<script>
+				function doSearch(){
+					var q = $("#q").val();
+					if(q=="") return;
+					$(".item").each(function(){
+						if($(this).hasClass("template")) return;
+						$(this).remove();
+					});
+					 $.wcall({
+						url: admindomain + "?m=searchProduct",
+						type: "GET",
+						data: { "q": q },
+						ok: function (head, body) { 
+							 wmap(body, $("main"));
+						}
+					});
+
+				}
+			</script>
+                <div class="btn"><button onclick="location.href='uploadProduct.html'">등록하기</button></div>
+                <div class="search"><input id="q" type="text" placeholder="상품명 또는 상품코드"><button onclick="doSearch()">검색</button></div> <!-- 검색 대상 : productname, beautycollabolink 1글자 이상 -->
+            </div>
+            <table class="listtable" bind="list:listproduct">
+                <colgroup>
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="35%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="5%">
+                </colgroup>
+                <thead>
+                    <th>NO</th>
+                    <th>상품이미지</th>
+                    <th>상품명</th>
+                    <th>카테고리</th>
+                    <th>할인가</th>
+                    <th>기존가</th>
+                    <th>상품코드</th>
+                    <th>플래그</th>
+                    <th>편집</th>
+                </thead>
+                <tr class="item template" style="display:none">
+                    <td bind="text:productpkey">1</td>
+                    <td><div class="product_img"><img bind="img:productthumb:productdomain" src="https://mcl2static.mycollabolife.com/predev/product/N9651-N7632-S6731.jpg"></div></td>
+                    <td bind="text:productname" style="text-align: left;">[24초 가루식초] 바나나 1set/2set/3set</td>
+                    <td>푸드</td> <!-- bind="text:tag" tagkind가 btcate fo=푸드 fa=패션 ba=베이비 be=뷰티 li=리빙 -->
+                    <td bind="text:price">34000</td> 
+                    <td bind="text:xprice">34000</td>
+                    <td bind="text:beautycollabolink">N9651-N7632-S6731</td>
+                    <td class="flag"><span>무료배송</span><span>뷰콜추천</span><span>베스트</span></td> <!-- tagkind p_badge -->
+                    <td><a bind="href:productpkey:goedit"><button>편집</button></td>
+                </tr>
+            </table>
+            <div class="pagination" style="display: none;"><span><button>이전</button></span><span><button>다음</button></span></div>
+        </div>
+    </main>    
+    <footer>
+        
+    </footer>
+</body>
+
+<script>
+//https://mcl2.mycollabolife.com/admin.php?m=listProduct
+
+
+function goedit(v){
+		return "./editProduct.html?productpkey=" + v;
+	}
+
+
+
+    function adddomain(v) {
+
+        return "https://mcl2static.mycollabolife.com/" + v;
+    }
+
+    function productdomain(v) {
+
+        return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+    }
+
+    var admindomain = "https://mcl2.mycollabolife.com/admin.php";
+    function getList() {
+        $.wcall({
+            url: admindomain + "?m=listProduct",
+            type: "GET",
+            data: { "videopkey": $.getP("videopkey") },
+            ok: function (head, body) { draw(body); }
+        });
+    }
+
+    function draw(d) {
+        wmap(d, $("main"));
+    }
+
+    getList();
+</script>
+</html>

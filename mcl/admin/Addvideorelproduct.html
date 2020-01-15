@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>MCL ADMIN</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body style="width: 700px; height: 700px;">
+    <header class="control_header" style="display: flex; justify-content: space-between; align-items: center; width: 700px; height: 100px; position: fixed; bottom: 0;z-index: 2; background-color: white;">
+        <div class="control" style="padding: 10px;">
+            <span><button>닫기</button></span> <!-- 적용하지 않고 창닫기 -->
+            <span><input type="text"><button>검색</button></span> <!-- 검색 -->
+        </div>
+    </header>
+   <main>
+        <div class="wrap">
+            <table class="listtable" bind="list:listproduct">
+                <colgroup>
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="10%">
+                    <col width="60%">
+                    <col width="20%">
+                    <col width="10%">
+                </colgroup>
+                <thead>
+                    <th>선택</th>
+                    <th>NO</th>
+                    <th style="text-align: left;">사진</th>
+                    <th>상품명</th>
+                    <th>상품코드</th>
+                </thead>
+
+                <tr class="item template" style="display:none">
+                    <td><button>선택</button></td>
+                    <td bind="text:productpkey">1</td>
+                    <td><div class="product_img" style="width: 30px; height: 30px;"><img style="width: 30px; height: 30px;" bind="img:productthumb:productdomain" src="https://mcl2static.mycollabolife.com/predev/product/N9651-N7632-S6731.jpg"></div></td>
+                    <td style="text-align: left;" bind="text:productname">[24초 가루식초] 바나나 1set/2set/3set</td>
+                    <td bind="text:beautycollabolink">N9651-N7632-S6731</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+</body>
+
+<script>
+//https://mcl2.mycollabolife.com/admin.php?m=listProduct
+
+
+function goedit(v){
+		return "./editProduct.html?productpkey=" + v;
+	}
+
+
+
+    function adddomain(v) {
+
+        return "https://mcl2static.mycollabolife.com/" + v;
+    }
+
+    function productdomain(v) {
+
+        return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+    }
+
+    var admindomain = "https://mcl2.mycollabolife.com/admin.php";
+    function getList() {
+        $.wcall({
+            url: admindomain + "?m=listProduct",
+            type: "GET",
+            data: { "videopkey": $.getP("videopkey") },
+            ok: function (head, body) { draw(body); }
+        });
+    }
+
+    function draw(d) {
+        wmap(d, $("main"));
+    }
+
+    getList();
+</script>
+</html>

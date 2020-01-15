@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>MCL ADMIN</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+	<nav>
+        <ul class="nav-bar">
+            <li class="menu active"><a href="index.html">에피소드</a></li>
+            <li class="menu"><a href="listProduct.html">상품</a></li>
+            <li class="menu"><a href="listCaster.html">인플루언서</a></li>
+			<li class="menu dropdown"><a href="./edit/edita1.html">EDIT</a>
+				<div class="dropdown-content">
+					<a href="./edit/edita1.html">메인 배너</a>
+					<a href="./edit/edita2.html">라이브 미리보기</a>
+					<a href="./edit/edita3.html">추천 상품</a>
+					<a href="./edit/edita4.html">추천 에피소드</a>
+					<a href="./edit/edita7.html">화제의 스타</a>
+				</div>
+			</li>
+            <li class="menu logout"><a href="login.html">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="wrap">
+        <h3>에피소드</h3>
+        <div class="topbox">
+            <div class="btn"><button onclick="location.href='uploadVideo.html'">등록하기</button></div>
+            <div class="search"  style="display: none;"><input type="text" placeholder="인플루언서 또는 제목"><button>검색</button></div> <!-- 검색 대상 : caster.name, video.title 1글자이상-->
+        </div>
+        <table class="listtable" bind="list:listvideo">
+            <colgroup>
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="20%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+                <col width="10%">
+            </colgroup>
+            <thead>
+                <th>NO</th>
+                <th>인플루언서</th>
+                <th>에피소드 제목</th>
+                <th>배포시간</th>
+                <th>블러이미지</th>
+                <th>썸네일이미지</th>
+                <th>비디오</th>
+                <th>5초비디오</th>
+                <th>편집</th>
+            </thead>
+            <tr class="item template" style="display:none">
+                <td bind="text:videopkey">1</td>
+                <td bind="text:name">이재정</td>
+                <td bind="text:title">MCL리뷰맛집 1회</td>
+                <td bind="text:wdate">0000-00-00 00:00:00</td>
+                <td>
+                    <div class="blur_img">
+                        <img bind="img:posterurl:adddomain"
+                            src="https://mcl2static.mycollabolife.com/predev/video/v_1_blur.jpg"></div>
+                </td>
+                <td>
+                    <div class="thumb_img"><img bind="img:thumburl:adddomain"
+                            src="https://mcl2static.mycollabolife.com/predev/video/v_1_thumb.jpg"></div>
+                </td>
+                <td><a bind="href:videourl:adddomain" target="_blank">LINK</a></td>
+                <td><a bind="href:previewurl:adddomain" target="_blank">LINK</a></td>
+                <td><a bind="href:videopkey:goedit"><button>편집</button></a></td>
+            </tr>
+        </table>
+        </div>
+    </main>
+</body>
+
+
+<script>
+
+	function goedit(v){
+		return "./editVideo.html?videopkey=" + v;
+	}
+
+    function adddomain(v) {
+        return "https://mcl2static.mycollabolife.com" + v;
+    }
+    var admindomain = "https://mcl2.mycollabolife.com/admin.php";
+    function getList() {
+        $.wcall({
+            url: admindomain + "?m=listvideo",
+            type: "GET",
+            data: { "pkey": "3" },
+            ok: function (head, body) { draw(body); }
+        });
+    }
+
+    function draw(d) {
+        wmap(d, $("main"));
+    }
+
+    getList();
+</script>
+
+</html>

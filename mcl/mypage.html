@@ -8,121 +8,270 @@
 <meta name="description" content="">				
 <title></title>
 <script src="js/jquery-3.4.1.min.js"></script>
-
-<!-- css -->
-<link rel="stylesheet" href="./css/default.css">
-
 <style>
-    .profile {display: flex; flex-direction: row; justify-content: flex-start; align-items: center; width: 100%; height: 120px;} 
-    .profile .photo {margin: 0 10px 0 20px;}
-    .profile .photo img {width: 48px; height: 48px; object-fit: cover; border-radius: 50%; display: block;}
-    .profile .information .name{font-size: 14px; font-weight: 700; margin-bottom: 5px;}
-    .profile .information .point {font-size: 10px;}
-    .profile .config {display: none;}
-    .profile .config.active {display: block; text-align: right; font-size: 18px}
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
+div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none; color: inherit;}
+ul, ol {list-style:none;}
 
-    .help_box {margin: 15px; }
+.page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
+.page_header h1 {text-align:center;}
+.page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
+.page_header i {color:#fff; font-size:17px;}
+.page_header a {color:#fff;}
+.page_header a.icon_search {position:absolute; top:13px; left:15px;}
+.page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
 
-    .help {display: flex; flex-direction: row; background-color: #111111; height: 48px; align-items: center; margin-bottom: 1px;}
-    
-    .help_box a:first-child .help {border-top-left-radius: 5px; border-top-right-radius: 5px;}
-    .help.notice .icon i {color: #9375F4;}
-    .help.faq .icon i {color: #FB57A7;}
-    .help.policy .icon i {color: #FF8B6A;}
-    .help_box a:nth-last-child(1) .help {border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
-    .help .icon {width: 30px; margin-left: 20px;}
-    .help .title {flex-grow: 8;}
-    .help .chev {flex-grow: 1; text-align: center;}
+.page_body {margin-top:60px;}
+.page_body .titlebar {position:relative; margin:50px 0 0 15px;}
+.page_body .titlebar h2 {color:#fff; font-size:16px;}
+.page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
 
-    .ver {margin: 15px;}
-    .version {border-radius: 5px; display: flex; flex-direction: row; background-color: #111111; height: 48px; align-items: center; margin-bottom: 1px; justify-content: space-between; padding: 0 15px;}
+
+.page_footer {height:45px; background-color:#000; color:#fff; overflow:hidden; position:fixed; bottom:0; width:320px; z-index:10;}
+.page_footer ul {width:100%; display:flex;}
+.page_footer ul li {width:25%; text-align:center;}
+.page_footer ul li img {width:auto; display:inline-block; height:24px; margin-top:9px;}
+  
+
+
+.search {width:290px; margin:50px auto 0 auto;}
+.search .icon_search img {width:24px; height:24px;}
+.search .message {color:#a0a0a5; font-weight:bold;}
+.search .message .msg_title {font-size:14px; margin:7px 0 10px 0;}
+.search .message .msg_txt {font-size:10px;}
+
+.mypage {width:290px; margin:50px auto 0 auto;}
+.mypage .item_wrapper {width:290px; display:inline-block; vertical-align:top; margin-bottom:15px;}
+.mypage .thumbnail {position:relative;}
+.mypage .thumbnail .centered img {display:none;}
+.mypage .thumbnail .mask {display:none;}
+.mypage .thumbnail .caption {z-index:0; position:inherit;}
+.mypage .thumbnail .caption span {display:inline-block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
+.mypage .thumbnail .caption .profile {width:48px; height:48px; margin:0;}
+.mypage .thumbnail .caption .profile img {width:48px; height:48px; object-fit:cover; border-radius:50%;}
+.mypage .thumbnail .caption .titlebox, .mypage .thumbnail .caption .login {position:absolute; top:5px; left:65px; width:170px; color:#fff; font-size:15px; font-weight:bold;}
+.mypage .thumbnail .caption .titlebox .count {display:inline-block;}
+.mypage .thumbnail .caption .titlebox .count .signin {margin-right:15px;}
+
+.mypage .help_center ul {background-color:#1a1a1a; border-radius:5px; margin-top:15px;}
+.mypage .help_center ul li {height:48px; line-height:48px; color:#fff; position:relative; border-bottom:1px solid rgba(255,255,255,0.1);}
+.mypage .help_center ul li:last-child {border-bottom:0;}
+.mypage .help_center ul li .lists {display:flex; flex-direction:row; align-items:center; font-size:11px;}
+.mypage .help_center ul li .lists .lists_count{margin-left: 15px; font-weight: 700;}
+.mypage .help_center ul li .icon_left {display: none;}
+.mypage .help_center ul li .icon_left img {width:23px; height:23px; vertical-align:middle; margin-left:10px;}
+.mypage .help_center ul li .icon_right {position:absolute; top:0; right:10px;}
+.mypage .help_center ul li .icon_right img {width:17px; height:17px; vertical-align:middle;}
+.mypage .help_center ul li .label {margin-left:15px;}
 </style>
 
+<script>
+	function showStore(){
+		window.location.href="store.html";
+		}
+		function search(){ 		window.location.href="search.html";		}
+</script>
 </head>
-
 <body>
-    <div style="max-width:320px; margin:0 auto;">
+<div style="max-width:320px; margin:0 auto;" id="mainpage">
+      
+        <section class="page_mypage" style="margin:50px 0 100px 0;">
+                <div class="mypage">
+                        <div class="item_wrapper">
+                                <div class="thumbnail">
+                                        <div class="mask"></div>
+                                        <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                        <div class="caption">
+                                                <span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
+                                                <div class="titlebox">
+                                                        <div class="title">아직 회원이 아니신가요?</div>
+                                                        <div class="count"><span class="signin"><a href="login.html">로그인하기</a></span><span class="signup"><a href="register.html">회원가입하기</a></span></div>
+												</div>
 
-        <section class="profile">
-            <div class="photo">
-                <img src="./img/banner-05.jpg">
-            </div>
-            <div class="information">
-                <div class="name">아직 회원이 아니신가요?</div>
-                <div class="point">
-                    <a href="javascript:(0)">로그인하기</a>
-                    <a href="javascript:(0)">회원가입하기</a>
+												<!-- login -->
+												<div class="login">
+													<div class="title"><span style="font-size: 15px;" id="loggedinuser">김흑당</span>님</div> <!-- bind="text:user.name" -->
+													<div class="count"><span class="point" style="margin-right: 5px;">MCL 포인트</span><span class="point_count">0P</span></div>
+													<div class="icon_setting"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+											</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="help_center">
+							<!-- login -->
+							<ul class="login">
+								<li><a href="followcaster.html">
+									<div class="lists">
+										<div class="icon_left"><img
+												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
+												alt=""></div>
+										<div class="label">구독하는 인플루언서<span class="lists_count">0</span></div> <!-- bind : count:followcaster.casterpkey -->
+										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+									</div>
+								</a>
+								</li>
+								<li><a href="likevideo.html">
+									<div class="lists">
+										<div class="icon_left"><img
+												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
+												alt=""></div>
+										<div class="label">좋아요 표시한 에피소드<span class="lists_count">0</span></div> <!-- bind : count:likevideo.casterpkey -->
+										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+									</div>
+								</li></a>
+								<li><a href="likeproduct.html">
+									<div class="lists">
+										<div class="icon_left"><img
+												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
+												alt=""></div>
+										<div class="label">찜한 상품<span class="lists_count">0</span></div> <!-- bind : count:likeproduct.casterpkey -->
+										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+									</div>
+								</a>
+								</li>
+							</ul>
+
+                                <ul>
+                                        <li><a href="notice.html">
+                                                <div class="lists">
+                                                        <div class="icon_left"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                        <div class="label">공지사항</div>
+														<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+												</div>
+											</a>
+                                        </li>
+                                        <li><a href="faq.html">
+                                                <div class="lists">
+                                                        <div class="icon_left"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                        <div class="label">자주 묻는 질문</div>
+                                                        <div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+												</div>
+											</a>
+                                        </li>
+                                        <li><a href="terms-policy.html">
+                                                <div class="lists">
+                                                        <div class="icon_left"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                        <div class="label">약관 및 정책</div>
+                                                        <div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+												</div>
+											</a>
+                                        </li>
+								</ul>
+								<!-- login -->
+								<ul class="login">
+									<li><a href="editaccout.html">
+											<div class="lists">
+													<div class="icon_left" style="display:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+													<div class="label">회원정보 변경</div>
+													<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+											</div>
+										</a>
+									</li>
+									<li><a href="changepassword.html">
+											<div class="lists">
+													<div class="icon_left" style="display:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+													<div class="label">비밀번호 변경</div>
+													<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+											</div>
+										</a>
+									</li>
+									<li><a href="withdrawal.html">
+											<div class="lists">
+													<div class="icon_left" style="display:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+													<div class="label">회원 탈퇴</div>
+													<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+											</div>
+										</a>
+									</li>
+									<li><a onclick="logout()"> <!-- after logout -->
+											<div class="lists">
+													<div class="icon_left" style="display:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+													<div class="label">로그아웃</div>
+													<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+											</div>
+										</a>
+									</li>
+							</ul>
+                                <div class="lists" style="background-color:#1a1a1a; border-radius:5px; height:48px; line-height:48px; color:#fff; margin-top:20px; position:relative;">
+                                        <div class="label" style="margin-left:10px;">버전</div>
+                                        <div class="icon_right" style="position:absolute; top:0; right:15px;">1.0.0</div>
+                                </div>
+                        </div>
                 </div>
-            </div>
-            <div class="config active">
-                <a href="javascript:void(0)"><i class="fas fa-cog"></i></a>
-            </div>
-
         </section>
 
-        <section class="mylist active">
 
-        </section>
 
-        <section class="help_center">
-            <div class="help_box">
-                <a href="notice.html">
-                    <div class="help notice">
-
-                        <div class="icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <div class="title">공지사항</div>
-                        <div class="chev">
-                            <i class="material-icons">chevron_right</i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="faq.html">
-                    <div class="help faq">
-                        <div class="icon">
-                            <i class="fas fas fa-question"></i>
-                        </div>
-                        <div class="title">자주 묻는 질문</div>
-                        <div class="chev">
-                            <i class="material-icons">chevron_right</i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="policy.html">
-
-                    <div class="help policy">
-                        <div class="icon">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <div class="title">약관 및 정책</div>
-                        <div class="chev">
-                            <i class="material-icons">chevron_right</i>
-                        </div>
-                    </div>
-
-                </a>
-            </div>
-        </section>
-
-        <section class="ver">
-            <div class="version">
-                <div class="title">앱 버전</div>
-                <div class="info">1.0</div>
-            </div>
-        </section>
-
+        
         <div class="page_footer">
-            <ul>
-                    <li><a href="index.html"><img src="img/icon-home.svg"></a></li>
-                    <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
-                    <li><a href="explore.html"><img src="img/icon_collabo.svg"></a></li>
-                    <li><img src="img/icon-mypage-on.svg"></li>
-            </ul>
+                <ul>
+                        <li><a href="index.html"><img src="img/icon_home.svg"></a></li>
+                        <li><a href="store.html"><img src="img/icon_store.svg"></a></li>
+                        <li><a href="explore.html"><img src="img/icon_collabo.svg"></a></li>
+                        <li><img src="img/icon_mypage_on.svg"></li>
+                </ul>
         </div>
-    </div>
 
+</div>
 </body>
+
+<script>
+var loggedinuser = {};
+$.ajax({
+  method: "POST",
+  url: "api.php?c=user&m=getuser",
+  dataType:"jsonp"
+
+})
+  .done(function( data ) {
+		
+	  var head = data.HEAD;
+	  var body = data.BODY;
+	  try{
+		  if(body.loggedinuser.userpkey){
+				loggedinuser = body.loggedinuser;
+				showLoggedUser(true);
+			  return;
+		  }else{
+				showLoggedUser(false);
+			  }
+	  }catch(e){
+			showLoggedUser(false);
+	  }
+  });
+
+
+function showLoggedUser(a){
+
+	if(a){
+		$(".titlebox").hide();
+		$(".login").show();
+		$("#loggedinuser").text(loggedinuser.name);
+	}else{
+		$(".login").hide();
+		$(".titlebox").show();
+	}
+}
+
+function logout(){
+ loggedinuser = {};
+	$.ajax({
+	  method: "POST",
+	  url: "api.php?c=user&m=logout",
+	  dataType:"jsonp"
+
+	})
+	  .done(function( data ) {
+			
+		  var head = data.HEAD;
+		  var body = data.BODY;
+		  if(body=="OK"){
+			   window.location.href="/";
+			  return;
+		  }
+	  });
+}
+</script>
 </html>

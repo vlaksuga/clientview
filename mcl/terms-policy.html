@@ -1,0 +1,391 @@
+
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
+<meta name="keywords" content="">			
+<meta name="description" content="">				
+<title></title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<style>
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000; color: white;}
+div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none;}
+ul, ol {list-style:none;}
+
+.page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
+.page_header h1 {text-align:center;}
+.page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
+.page_header i {color:#fff; font-size:17px;}
+.page_header a {color:#fff;}
+.page_header a.icon_search {position:absolute; top:13px; left:15px;}
+.page_header a.icon_alarms {position:absolute; top:13px; right:15px;}
+
+.page_body .titlebar {position:relative; margin:50px 0 0 15px;}
+.page_body .titlebar h2 {color:#fff; font-size:16px;}
+.page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
+</style>
+</head>
+<body>
+<div style="max-width:320px; margin:0 auto;">
+        <div class="page_header" style="display:none;">
+                <h1><a href="./"><img src="data:image/png;base64,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" alt="MCL"></a></h1>
+                <a href="javascript:void(0);" class="icon_search"><img style=" width:1.3em;height:1.3em" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAQAAABLCVATAAABPElEQVR4Ae3QAUSccRjH8TebO+NgMGaDmTFsISWUAgGCQwVBUFCAJAKCqigSRCgQUiCVKAgEdJBARF24iAr11icUuO71fy8C7gvw4+PxRO+tlpwO/YZ1+/9+pN6OGACXxmSqRTKmPXrbsaZqmKxDQOzIimm7SoBYV3poGbDvZ/SaOgNuwJ1/6ZhGwJS6suWPM7CdDtoEGxW3BjFoDDNfxXjwPWGfB7NhKA8OEvcOUAhDg2Ahcf8GSmFoBEwm7l/AfRjqA6uJ+19wFoaawWXiPgDWo3DOQU/F7ZMC6I3CGQVXflXY5kBJNgonpwiK2svevAAYjNKlzSN4sijvt5xWQ04BJ1H65F2rXBFsyaSlflhT3o0ZnwlTZWkx4cCFWwVLOl9ebAthKpysvRpVNTUWhQtT4YvSUeNhptYH9QzDmstiBLQWNgAAAABJRU5ErkJggg=="></a>
+                <a href="javascript:void(0);" class="icon_alarms"><img  style=" width:1.3em;height:1.3em" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAQAAAD/5HvMAAABs0lEQVR4Ae3Os5peURiG4XfMKuYZxK5i1bFtG02cKjiKvwmOIDb6QRfbdvJEM7PWeO+5vj1cd/3hURAEQQMwlg1sYKyaA9pzhnJn6KCmxgl8x9W06E1VfdSUWE5Vy9WU2ENVe0LQfxQynRN8oqqPnGQmhWpM5LCNd9TlLTvJVeNgHPeI4iETlTyW8oOofrJUyWI3cR1UcphPdV84R4rDHCbFOb5Q3Uolg1H8oLIbTKVAHgqZyg0q+8kY2SOLO/jesYw01YA0lvEO322yZI2N+D4yVHVgGB/xbZYtcnmF85MRqgcj+InzllxZYg6+A4qAg/jmyRKncUrJVARkUoJzRnboxC+chYqIRTi/6CwrTMZ5QbYiIofnOJNlhaM4KcVACuewrHARZ6liYCnORVmhBGegYmAATqms8Binp2KgJ84TWeEXTr5ioADnl6zgkPhuCApBISgEhaAQFIJCELutgthtkbMFzIJgi2mOQRBsMc0xscU4x8CWJs8xSCJhiiAEBQEfqMkHNRVuUJObaiosoiaL1VRI5xpVXSNdTYduFOMrppuaFjms5g4Ad1hNjpq5IAh+A+EbYnMvHiJAAAAAAElFTkSuQmCC"></a>
+        </div>
+
+
+
+
+
+
+<!-- 2019-12-26 수정 및 추가 -->
+<style>
+.page_header .page_title {text-align:center; margin:13px 0 0 0; font-weight:bold; font-size:12px;}
+.page_header a.icon_arrowback {position:absolute; top:13px; left:15px;}
+
+.tab {border-top: 1px solid #282828; padding-top: 45px; display: flex; border-bottom:1px solid #282828 ;}
+.tab .tab_item {width: 50%; height: 45px; display: flex; justify-content: center;align-items: center; font-size: 10px;}
+.tab .tab_item.active{color: #ff545c; border-bottom: 1px #ff545c solid;}
+.tab_view{padding: 18px;}
+pre {white-space: pre-line; font-size: 10px;}
+</style>
+
+
+        <!-- 각 상세 페이지 헤더 -->
+        <div class="page_header">
+                <div class="page_title">약관 및 정책</div>
+                <a href="javascript:history.back();" class="icon_arrowback"><img style="width:1.3em; height:1.3em" src="img/icon_arrow_back.png"></a>
+        </div>
+        <div class="tab">
+                <div class="tab_item active">이용약관</div>
+                <div class="tab_item">개인정보 처리방침</div>
+        </div>
+        <div class="page_body">
+                <section class="viewcontent">
+                        <div id="tab1" class="tab_view">
+                                <pre>총칙
+
+[뷰티콜라보]는 (이하 '회사'는) 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
+회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
+회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는 개별공지)을 통하여 공지할 것입니다.
+본 방침은 : 2012 년 12 월 24 일 부터 시행됩니다.
+
+수집하는 개인정보 항목
+
+
+회사는 회원가입, 상담, 서비스 신청 등등을 위해 아래와 같은 개인정보를 수집하고 있습니다.
+- 수집항목 : 회원가입시 필수항목으로 지정된 정보, 서비스 이용기록, 접속 로그, 쿠키, 접속 IP 정보, 결제기록
+- 개인정보 수집방법 : 홈페이지(회원가입)
+
+개인정보의 수집 및 이용목적
+
+
+회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+- 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산콘텐츠 제공, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송, 금융거래 본인 인증 및 금융 서비스
+- 회원 관리: 회원제 서비스 이용에 따른 본인확인, 개인 식별, 가입 의사 확인, 연령확인, 불만처리 등 민원처리
+- 마케팅 및 광고에 활용 : 신규 서비스(제품) 개발 및 특화, 이벤트 등 광고성 정보 전달, 인구통계학적 특성에 따른 서비스 제공 및 광고 게재, 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+
+개인정보의 보유 및 이용기간
+
+
+회사는 개인정보 수집 및 이용목적이 달성된 후에는 예외 없이 해당 정보를 지체 없이 파기합니다.
+
+개인정보의 파기절차 및 방법
+
+
+회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.
+- 파기절차 : 회원님이 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기되어집니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되어지는 이외의 다른 목적으로 이용되지 않습니다.
+- 파기방법 : 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.
+
+개인정보 제공
+
+
+회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.
+- 이용자들이 사전에 동의한 경우
+- 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우
+
+수집한 개인정보의 위탁
+
+
+회사는 서비스 이행을 위해 아래와 같이 외부 전문업체에 위탁하여 운영하고 있습니다.
+- 위탁 대상자 : (주)한국사이버결제,(주)스마일서브, 로젠 택배, 서비스 및 제품 판매 제휴 업체
+- 위탁업무 내용 : 물품배송 또는 청구지 등 발송, 금융거래 본인 인증 및 금융 서비스, 회원관리 회원제 서비스 이용에 따른 본인확인, 웹사이트 및 시스템 관리
+
+이용자 및 법정대리인의 권리와 그 행사방법
+
+
+이용자 및 법정 대리인은 언제든지 등록되어 있는 자신 혹은 당해 만 14세 미만 아동의 개인정보를 조회하거나 수정할 수 있으며 가입해지를 요청할 수도 있습니다. 이용자 혹은 만 14세 미만 아동의 개인정보 조회,수정을 위해서는'개인정보변경'(또는 '회원정보수정' 등)을 가입해지(동의철회)를 위해서는 "회원탈퇴"를 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다. 혹은, 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체없이 조치하겠습니다. 귀하가 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한 잘못된 개인정보를 제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체없이 통지하여 정정이이루어지도록 하겠습니다. 회사는 이용자 혹은 법정 대리인의 요청에 의해 해지 또는 삭제된 개인정보는 "회사가 수집하는 개인정보의 보유 및 이용기간"에 명시된 바에 따라 처리하고 그 외의용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.
+
+
+개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항
+
+
+회사는 귀하의 정보를 수시로 저장하고 찾아내는 '쿠키(cookie)' 등을 운용합니다.
+쿠키란 회사의 웹사이트를 운영하는데 이용되는 서버가 귀하의 브라우저에 보내는 아주 작은 텍스트 파일로서 귀하의 컴퓨터 하드디스크에 저장됩니다.
+회사는 다음과 같은 목적을 위해 쿠키를 사용합니다.
+- 쿠키 등 사용 목적
+- 회원과 비회원의 접속 빈도나 방문 시간 등을 분석, 이용자의 취향과 관심분야를 파악 및 자취 추적, 각종 이벤트 참여 정도 및 방문 회수 파악 등을 통한 타겟 마케팅 및 개인 맞춤 서비스 제공
+귀하는 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 귀하는 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.
+- 쿠키 설정 거부 방법 예: 쿠키 설정을 거부하는 방법으로는 회원님이 사용하시는 웹 브라우저의 옵션을 선택함으로서, 쿠키를 허용하거나 쿠키를 저장할 때마다 확인을 거치거나 쿠키의 저장을 거부할 수 있습니다.
+설정방법 예(인터넷 익스플로어의 경우) : 웹 브라우저 상단의 도구 &gt; 인터넷 옵션 &gt; 개인정보
+단, 귀하께서 쿠키 설치를 거부하였을 경우 서비스 제공에 어려움이 있을 수 있습니다.
+
+개인정보에 관한 민원서비스
+
+
+회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다.
+
+▶ 고객서비스담당 부서 : 송민성
+▶ 전화번호 : 1899-5548
+▶ 이메일 :info@beautycollabo.com
+
+귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다.
+회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.
+기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.
+
+1.개인정보침해신고센터 (www.1336.or.kr/국번없이 118)
+2.정보보호마크인증위원회 (www.eprivacy.or.kr/02-580-0533~4)
+3.대검찰청 인터넷범죄수사센터 (http://icic.sppo.go.kr/02-3480-3600)
+4.경찰청 사이버테러대응센터 (www.ctrc.go.kr/02-392-0330)
+
+비 회원 주문시 개인정보 취급방침
+
+
+회사는 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
+
+개인정보의 수집 및 이용목적
+
+
+회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+- 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산, 콘텐츠 제공, 구매 및 요금 결제 물품배송 또는 청구지 등 발송, 금융거래 본인 인증 및 금융 서비스
+- 회원 관리 : 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 연령확인 불만처리 등 민원처리, 고지사항 전달
+- 마케팅 및 광고에 활용 : 이벤트 등 광고성 정보 전달 , 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+
+개인정보의 보유 및 이용기간
+
+
+원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.
+단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다.
+
+보존 항목 : 회원가입시 필수입력으로 지정된 항목에 한함.
+보존 근거 : 전자상거래등에서의 소비자보호에 관한 법률
+보존 기간 : 5년
+
+표시/광고에 관한 기록 : 6개월 (전자상거래등에서의 소비자보호에 관한 법률)
+계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래등에서의 소비자보호에 관한 법률)
+대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래등에서의 소비자보호에 관한 법률)
+소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래등에서의 소비자보호에 관한 법률)
+신용정보의 수집/처리 및 이용 등에 관한 기록 : 3년 (신용정보의 이용 및 보호에 관한 법률)
+
+개인정보의 파기절차 및 방법
+
+
+회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다.
+파기절차 및 방법은 다음과 같습니다.
+- 파기절차 : 회원님이 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기되어집니다. 별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되어지는 이외의 다른 목적으로 이용되지 않습니다.
+- 파기방법 : 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.
+"몰"과 이용자간에 제기된 전자거래 소송에는 한국법을 적용합니다.
+
+                                </pre>
+                        </div>
+                        <div id="tab2" class="tab_view" style="display: none;">
+                                <pre>
+                                        제1조(목적)
+
+
+이 약관은 [(주)마이콜라보라이프](전자거래 사업자)에서 운영하는 뷰티콜라보(이하 "몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+※ 「PC통신등을 이용하는 전자거래에 대해서도 그 성질에 반하지 않는한 이 약관을 준용합니다」
+
+제2조(정의)
+
+
+① "몰" 이란 회사가 재화 또는 용역을 이용자에게 제공하기 위하여 컴퓨터등 정보통신설비를 이용하여 재화 또는 용역을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
+② "이용자"란 "몰"에 접속하여 이 약관에 따라 "몰"이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
+③ 회원'이라 함은 "몰"에 개인정보를 제공하여 회원등록을 한 자로서, "몰"의 정보를 지속적으로 제공받으며, "몰"이 제공하는 서비스를 계속적으로 이용할 수 있는 자를 말합니다.
+④ 비회원'이라 함은 회원에 가입하지 않고 "몰"이 제공하는 서비스를 이용하는 자를 말합니다.
+
+제3조 (약관의 명시와 개정)
+
+
+① "몰"은 이 약관의 내용과 상호, 영업소 소재지, 대표자의 성명, 사업자등록번호, 연락처(전화, 팩스, 전자우편 주소 등) 등을 이용자가 알 수 있도록 사이버몰의 초기 서비스화면(전면)에 게시합니다.
+② "몰"은 약관의규제에관한법률, 전자거래기본법, 전자서명법, 정보통신망이용촉진등에관한법률, 방문판매등에관한법률, 소비자보호법 등 관련법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
+③ "몰"이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일이전부터 적용일자 전일까지 공지합니다.
+④ "몰"이 약관을 개정할 경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간내에 '몰"에 송신하여 "몰"의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.
+⑤ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 정부가 제정한 전자거래소비자보호지침 및 관계법령 또는 상관례에 따릅니다.
+
+제4조(서비스의 제공 및 변경)
+
+
+① "몰"은 다음과 같은 업무를 수행합니다.
+- 재화 또는 용역에 대한 정보 제공 및 구매계약의 체결
+- 구매계약이 체결된 재화 또는 용역의 배송
+- 기타 "몰"이 정하는 업무
+② "몰"은 재화의 품절 또는 기술적 사양의 변경 등의 경우에는 장차 체결되는 계약에 의해 제공할 재화·용역의 내용을 변경할 수 있습니다. 이 경우에는 변경된 재화·용역의 내용 및 제공일자를 명시하여 현재의 재화·용역의 내용을 게시한 곳에 그 제공일자 이전 7일부터 공지합니다.
+
+제5조(서비스의 중단)
+
+
+① "몰"은 컴퓨터 등 정보통신설비의 보수점검·교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.
+② 제1항에 의한 서비스 중단의 경우에는 "몰"은 제8조에 정한 방법으로 이용자에게 통지합니다.
+
+제6조(회원가입)
+
+
+① 이용자는 "몰"이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.
+② "몰"은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각호에 해당하지 않는 한 회원으로 등록합니다.
+- 가입신청자가 이 약관 제7조 제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조 제3항에 의한 회원자격 상실후 3년이 경과한 자로서 "몰"의 회원재가입 승낙을 얻은 경우에는 예외로 한다.
+- 등록 내용에 허위, 기재누락, 오기가 있는 경우
+- 기타 회원으로 등록하는 것이 "몰"의 기술상 현저히 지장이 있다고 판단되는 경우
+③ 회원가입계약의 성립시기는 "몰"의 승낙이 회원에게 도달한 시점으로 합니다.
+④ 회원은 제15조제1항에 의한 등록사항에 변경이 있는 경우, 즉시 전자우편이나 기타 방법으로 "몰"에 대하여 그 변경사항을 알려야 합니다.
+
+제7조(회원 탈퇴 및 자격 상실 등)
+
+
+① 회원은 "몰"에 언제든지 탈퇴를 요청할 수 있으며 "몰"은 즉시 회원탈퇴를 처리합니다.
+② 회원이 다음 각호의 사유에 해당하는 경우, "몰"은 회원자격을 제한 및 정지시킬 수 있습니다.
+- 가입 신청시에 허위 내용을 등록한 경우
+- "몰"을 이용하여 구입한 재화·용역 등의 대금, 기타 "몰"이용에 관련하여 회원이 부담하는 채무를 기일에 지급하지 않는 경우
+- 다른 사람의 "몰" 이용을 방해하거나 그 정보를 도용하는 등 전자거래질서를 위협하는 경우
+- "몰"을 이용하여 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우
+③ "몰"이 회원 자격을 제한·정지 시킨후, 동일한 행위가 2회이상 반복되거나 30일이내에 그 사유가 시정되지 아니하는 경우 "몰"은 회원자격을 상실시킬 수 있습니다.
+④ "몰"이 회원자격을 상실시키는 경우에는 회원등록을 말소합니다. 이 경우 회원에게 이를 통지하고, 회원등록 말소전에 소명할 기회를 부여합니다.
+
+제8조(회원에 대한 통지)
+
+
+① "몰"이 회원에 대한 통지를 하는 경우, 회원이 "몰"에 제출한 전자우편 주소 또는 기타 방법으로 할 수 있습니다.
+② "몰"은 불특정다수 회원에 대한 통지의 경우 1주일이상 "몰" 게시판에 게시함으로서 개별 통지에 갈음할 수 있습니다.
+
+제9조(구매신청)
+
+
+"몰"이용자는 "몰"상에서 이하의 방법에 의하여 구매를 신청합니다.
+- 구매를 위해 필요한 최소한의 정보 (성명, 주소, 전화번호 입력등)
+- 재화 또는 용역의 선택
+- 결제방법의 선택
+- 이 약관에 동의한다는 표시(예, 마우스 클릭)
+
+제10조 (계약의 성립)
+
+
+① "몰"은 제9조와 같은 구매신청에 대하여 다음 각호에 해당하지 않는 한 승낙합니다.
+- 신청 내용에 허위, 기재누락, 오기가 있는 경우
+- 미성년자가 담배, 주류등 청소년보호법에서 금지하는 재화 및 용역을 구매하는 경우
+- 기타 구매신청에 승낙하는 것이 "몰" 기술상 현저히 지장이 있다고 판단하는 경우
+- "몰"이 판단하여 판매가 부적합 하다고 판단되는 구매자의 경우
+- "몰"이 준비한 수량이상으로 구매하여 재화 또는 용역을 제공하지 못한다고 판단하는 경우
+② "몰"의 승낙이 제12조제1항의 수신확인통지형태로 이용자에게 도달한 시점에 계약이 성립한 것으로 봅니다.
+
+제11조(지급방법)
+
+
+몰"에서 구매한 재화 또는 용역에 대한 대금지급방법은 다음 각호의 하나로 할 수 있습니다.
+- 신용카드결제
+- 계좌이체
+- 무통장입금
+
+제12조(수신확인통지·구매신청 변경 및 취소)
+
+
+① "몰"은 이용자의 구매신청이 있는 경우 이용자에게 수신확인통지를 합니다.
+② 수신확인통지를 받은 이용자는 의사표시의 불일치등이 있는 경우에는 수신확인통지를 받은 후 즉시 구매신청 변경 및 취소를 요청할 수 있습니다.
+③ "몰"은 배송전 이용자의 구매신청 변경 및 취소 요청이 있는 때에는 지체없이 그 요청에 따라 처리합니다.
+
+제13조(배송)
+
+
+① "몰"은 이용자와 재화등의 공급시기에 관하여 별도의 약정이 없는 이상, 이용자가 청약을 한 날부터 7일 이내에 재화 등을 배송할 수 있도록 주문제작, 포장 등 기타의 필요한 조치를 취합니다.
+다만, "몰"이 이미 재화 등의 대금의 전부 또는 일부를 받은 경우에는 대금의 전부 또는 일부를 받은 날부터 3영업일 이내에 조치를 취합니다.
+이때 "몰"은 이용자가 재화등의 공급 절차 및 진행 사항을 확인할 수 있도록 적절한 조치를 합니다.
+② "몰"은 이용자가 구매한 재화에 대해 배송수단, 수단별 배송비용 부담자, 수단별 배송기간 등을 명시합니다. 만약 "몰"이 약정 배송기간을 초과한 경우에는 그로 인한 이용자의 손해를 배상 하여야 합니다. 다만 "몰"이 고의·과실이 없음을 입증한 경우에는 그러하지 아니합니다.
+
+제14조(환급, 반품 및 교환)
+
+
+① "몰"은 이용자가 구매신청한 재화 또는 용역이 품절등의 사유로 재화의 인도 또는 용역의 제공을 할 수 없을 때에는 지체없이 그 사유를 이용자에게 통지하고, 사전에 재화 또는 용역의 대금을 받은 경우에는 대금을 받은 날부터 영업3일이내에, 그렇지 않은 경우에는 그 사유발생일로부터 영업3일이내에 계약해제 및 환급절차를 취합니다.
+② 다음 각호의 경우에는 "몰"은 배송된 재화일지라도 재화를 반품받은 다음 영업3일 이내에 이용자의 요구에 따라 즉시 환급, 반품 및 교환 조치를 합니다. 다만 그 요구기한은 배송된 날로부터 20일 이내로 합니다.
+- 배송된 재화가 주문내용과 상이하거나 "몰"이 제공한 정보와 상이할 경우
+- 배송된 재화가 파손, 손상되었거나 오염되었을 경우
+- 재화가 광고에 표시된 배송기간보다 늦게 배송된 경우
+- 방문판매등에관한법률 제18조에 의하여 광고에 표시하여야 할 사항을 표시하지 아니한 상태에서 이용자의 청약이 이루어진 경우
+
+제15조(개인정보보호)
+
+
+① "몰"은 이용자의 정보수집시 구매계약 이행에 필요한 최소한의 정보를 수집합니다.
+회원가입시 필수항목으로 지정된 정보 이외의 사항은 선택사항으로 합니다.
+② "몰"이 이용자의 개인식별이 가능한 개인정보를 수집하는 때에는 반드시 당해 이용자의 동의를 받습니다.
+③ 제공된 개인정보는 당해 이용자의 동의없이 목적외의 이용이나 제3자에게 제공할 수 없으며, 이에 대한 모든 책임은 "몰"이 집니다. 다만, 다음의 경우에는 예외로 합니다.
+- 배송업무상 배송업체에게 배송에 필요한 최소한의 이용자의 정보(성명, 주소, 전화번호)를 알려주는 경우
+- 통계작성, 학술연구 또는 시장조사를 위하여 필요한 경우로서 특정 개인을 식별할 수 없는 형태로 제공하는 경우
+④ "몰"이 제2항과 제3항에 의해 이용자의 동의를 받아야 하는 경우에는 개인정보관리 책임자의 신원(소속, 성명 및 전화번호 기타 연락처), 정보의 수집목적 및 이용목적, 제3자에 대한 정보제공 관련사항(제공받는자, 제공목적 및 제공할 정보의 내용)등 정보통신망이용촉진등에관한법률 제16조제3항이 규정한 사항을 미리 명시하거나 고지해야 하며 이용자는 언제든지 이 동의를 철회할 수 있습니다.
+⑤ 이용자는 언제든지 "몰"이 가지고 있는 자신의 개인정보에 대해 열람 및 오류정정을 요구할 수 있으며 "몰"은 이에 대해 지체없이 필요한 조치를 취할 의무를 집니다. 이용자가 오류의 정정을 요구한 경우에는 "몰"은 그 오류를 정정할 때까지 당해 개인정보를 이용하지 않습니다.
+⑥ "몰"은 개인정보 보호를 위하여 관리자를 한정하여 그 수를 최소화하며 신용카드, 은행계좌 등을 포함한 이용자의 개인정보의 분실, 도난, 유출, 변조 등으로 인한 이용자의 손해에 대하여 모든 책임을 집니다.
+⑦ "몰" 또는 그로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한 때에는 당해 개인정보를 지체없이 파기합니다.
+
+제16조("몰"의 의무)
+
+
+① "몰은 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 이 약관이 정하는 바에 따라 지속적이고, 안정적으로 재화·용역을 제공하는 데 최선을 다하여야 합니다.
+② "몰"은 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 이용자의 개인정보(신용정보 포함)보호를 위한 보안 시스템을 갖추어야 합니다.
+③ "몰"이 상품이나 용역에 대하여 「표시·광고의공정화에관한법률」 제3조 소정의 부당한 표시·광고행위를 함으로써 이용자가 손해를 입은 때에는 이를 배상할 책임을 집니다.
+④ "몰"은 이용자가 원하지 않는 영리목적의 광고성 전자우편을 발송하지 않습니다.
+
+제17조( 회원의 ID 및 비밀번호에 대한 의무)
+
+
+① 제15조의 경우를 제외한 ID와 비밀번호에 관한 관리책임은 회원에게 있습니다.
+② 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안됩니다.
+③ 회원이 자신의 ID 및 비밀번호를 도난당하거나 제3자가 사용하고 있음을 인지한 경우에는 바로 "몰"에 통보하고 "몰"의 안내가 있는 경우에는 그에 따라야 합니다.
+
+제18조(이용자의 의무)
+
+
+이용자는 다음 행위를 하여서는 안됩니다.
+- 신청 또는 변경시 허위내용의 등록
+- "몰"에 게시된 정보의 변경
+- "몰"이 정한 정보 이외의 정보(컴퓨터 프로그램 등)의 송신 또는 게시
+- "몰" 기타 제3자의 저작권 등 지적재산권에 대한 침해
+- "몰" 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위
+- 외설 또는 폭력적인 메시지·화상·음성 기타 공서양속에 반하는 정보를 몰에 공개 또는 게시하는 행위
+
+제19조(연결"몰"과 피연결"몰" 간의 관계)
+
+
+① 상위 "몰"과 하위 "몰"이 하이퍼 링크(예: 하이퍼 링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 "몰"(웹 사이트)이라고 하고 후자를 피연결 "몰"(웹사이트)이라고 합니다.
+② 연결 "몰"은 피연결 "몰"이 독자적으로 제공하는 재화·용역에 의하여 이용자와 행하는 거래에 대해서 보증책임을지지 않는다는 뜻을 연결 "몰"의 사이트에서 명시한 경우에는 그 거래에 대한 보증책임을지지 않습니다.
+
+제20조(저작권의 귀속 및 이용제한)
+
+
+① "몰"이 작성한 저작물에 대한 저작권 기타 지적재산권은 "몰"에 귀속합니다.
+② 이용자는 "몰"을 이용함으로써 얻은 정보를 "몰"의 사전 승낙없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안됩니다.
+
+제21조(분쟁해결)
+
+
+① "몰"은 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를 보상처리하기 위하여 피해보상처리기구를 설치·운영합니다.
+② "몰"은 이용자로부터 제출되는 불만사항 및 의견은 우선적으로 그 사항을 처리합니다. 다만, 신속한 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보해 드립니다.
+③ "몰"과 이용자간에 발생한 분쟁은 전자거래기본법 제28조 및 동 시행령 제15조에 의하여 설치된 전자거래분쟁조정위원회의 조정에 따를 수 있습니다.
+
+제22조(재판권 및 준거법)
+
+
+① "몰"과 이용자간에 발생한 전자거래 분쟁에 관한 소송은 민사소송법상의 관할법원에 제기합니다.
+② "몰"과 이용자간에 제기된 전자거래 소송에는 한국법을 적용합니다.
+
+                                </pre>
+                        </div>
+                </section>
+        </div>
+
+        
+
+</div>
+</body>
+</html>

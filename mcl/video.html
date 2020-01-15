@@ -1,4 +1,3 @@
-
 <!doctype html>
 <head>
 <meta charset="utf-8">
@@ -12,10 +11,6 @@
  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <title></title>
 <script src="js/jquery-3.4.1.min.js"></script>
-
-<!-- css -->
-<link rel="stylesheet" href="./css/default.css">
-
 <style>
 body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
 div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
@@ -181,8 +176,6 @@ ul, ol {list-style:none;}
 .sub_episodes_header .btn_subscribe {font-size:11px; margin-top:0; border-radius:10px; padding:3px 8px 3px 8px; color:#fff; border:0; background-color:#000; box-shadow:0 0 0 1px #fff;}
 .sub_episodes_header .ep_controls_top .icon_volume {position:relative;}
 
-.sub_episodes_header .subcribe_on {height: 40px; background-color: red; width: 100%; z-index: 9999; display: block;}
-
 .mute_infowrap {position:absolute; top:40px; left:-30px;display:none}
 .mute_infowrap .mute_infomation {background-color:#fff; border-radius:5px; width:110px; height:50px; padding:10px 7px 0 7px; position:relative; font-size:10px; text-align:center; line-height:130%;}
 .mute_infowrap .mute_infomation:before {position:absolute; display:block; top:0; left:55px; right:0; margin:auto; content:""; width:0; height:0; top:-.5rem; border-bottom:.5rem solid #fff; border-left:.5rem solid transparent; border-right:.5rem solid transparent;}
@@ -193,8 +186,6 @@ ul, ol {list-style:none;}
 .sub_episodes_footer {border:0px solid yellow; position:relative; height:50px;width:310px;margin-bottom:5px}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem {position:absolute; bottom:0; left:0; width:35px; height:35px; text-align:center; display:inline-block; border-radius:50%; background-image:linear-gradient(135deg,#ff545c,#837aff);}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem img {width:20px; height:20px;}
-.sub_episodes_footer .ep_controls_bottom .icon_comment {position: absolute; right: 50px; bottom: 10px; font-size: 20px;}
-.sub_episodes_footer .ep_controls_bottom .icon_comment .c_count {color: #fff; font-weight: bold; display: block; text-align: center; font-size: 10px;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart {position:absolute; top:0; right:0;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart img {width:25px; height:25px;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart .f_count {color:#fff; font-weight:bold; display:block; text-align:center; font-size:10px;}
@@ -212,35 +203,33 @@ ul, ol {list-style:none;}
 .product_infomation .information .icon {display:none;}
 .product_infomation .information .icon img {display:none;}
 
-/* COMMENT CONTAINER */
-.comment_page {display: none;}
-.comment_page.com_pop.active{display: block; z-index: 9999; position: fixed; bottom: 0; width: 100%; height: 60vh; background-color: white; border-top-left-radius: 10px; border-top-right-radius: 10px; color: black;}
-.comment_header {padding: 10px 0; border-bottom: 1px solid #eeeeee;}
-.comment_header .title {text-align: center; font-weight: 700;}
-.comment_header .title .c_count {color: red;}
-.comment_header .close {position: absolute; right: 10px; top:10px;}
-.comment_header .close i {font-size: 18px;}
-
-.comment_body {padding: 0 10px; overflow-y: auto; height: 90%;}
-.comment_body .list_wrapper {display: flex; flex-direction: row; width: 100%; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #efefef;}
-.comment_body .list_wrapper .photo {width: 50px; text-align: center;}
-.comment_body .list_wrapper .photo img {width: 30px; height: 30px; border-radius: 50%; border: 1px solid red;}
-.comment_body .list_wrapper .information .info {font-size: 8px; color: #777777;}
-.comment_body .list_wrapper .information .info .badge {display: none;}
-.comment_body .list_wrapper .information .info .badge.active {color: #FB57A7; margin-right: 5px; font-weight: 700; display: inline;}
-.comment_body .list_wrapper .information .info .name {font-size: 12px; color: black;}
-.comment_body .list_wrapper .information .comment {font-size: 12px; line-height: 140%;}
-
-.comment_footer.active {position: fixed; bottom:0; height: 30px; background-color: #eeeeee; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; padding:0 10px;}
-.comment_footer input[type="text"] {background-color: #eeeeee; border: none; font-size: 10px; width: 85%;}
-.comment_footer input[type="text"]:focus {border: none; outline: none;}
-.comment_footer .btn {display: none;}
-.comment_footer .btn.active {display: block; color: #FB57A7; font-size: 10px; font-weight: 700;}
-
-.subscribe_on {height: 50px; background-image: linear-gradient(to right bottom, #9375f4, #d767d2, #fa65aa, #ff7385, #ff8b6a); z-index: 9999; width: 100%; top:0; position: fixed; display: flex; align-items: center; padding-left: 25px;}
-}
-
 </style>
+<script>
+	function close1(){
+		history.back();
+	}
+
+	function reqSubscribe(){
+		var orid = $("<div class='popopopop'></div>");
+
+		orid.css({"position":"fixed","width":"320px","height":"100vh","top":"0px"});
+		
+		orid.load( "tiles/reqLogin.html");
+		$("body").append(orid);
+	}
+
+	function reqLike(){
+		var orid = $("<div class='popopopop'></div>");
+
+		orid.css({"position":"fixed","width":"320px","height":"100vh","top":"0px"});
+		
+		orid.load( "tiles/reqLogin.html");
+		$("body").append(orid);
+	}
+	function closePop(){
+		$(".popopopop").remove();
+	}
+</script>
 </head>
 <body>
 <div id="safari" style="position:fixed;width:320px;height:100vh"> 
@@ -250,6 +239,7 @@ ul, ol {list-style:none;}
 
 	</div>
 </div>
+
 	<section id="templ" style="display:none;position:absolute">
 		<div class="video_page" style="top:0vh;margin:0px 0 0px 0;height:100vh;width:320px;overflow:hidden;position:relative;">
 			<div class="video" style="background-color:#666;width:100%;height:100vh;z-index:0;position:absolute;top:0px;left:0px">
@@ -269,20 +259,14 @@ ul, ol {list-style:none;}
 											</div>
 									</div>
 									<div class="ep_controls_top">
-                                            <span class="icon_more" style="display:none">
-                                                <img src="img/icon_more.png"></span>
-                                                <span class="icon_volume">
-                                                    <img src="img/icon_volume_off.png"></span>
-                                                    <span class="icon_close">
-                                                    <img src="img/icon_close.png"></span>
+											<span class="icon_more" style="display:none"><img src="img/icon_more.png"></span><span class="icon_volume"><img src="img/icon_volume_off.png"></span><span class="icon_close" ><img src="img/icon_close.png" onclick="close1();"></span>
 											<div class="mute_infowrap">
 													<div class="mute_infomation">소리가 들리지 않을 때 클릭하여 활성화 해주세요.</div>
 											</div>
 									</div>
 									<div class="subscribe_group">
-											<button class="btn_subscribe">+ 구독하기</button><span class="icon_star_white" style=""><img src="img/icon_star_white.png"></span>
-                                    </div>
-
+											<button class="btn_subscribe" onclick="reqSubscribe()">+ 구독하기</button><span class="icon_star_white" style=""><img src="img/icon_star_white.png" onclick="reqLike()"></span>
+									</div>
 							</div>
 						</div>
 
@@ -296,15 +280,10 @@ ul, ol {list-style:none;}
 
 							<div class="sub_episodes_footer">
 									<div class="ep_controls_bottom">
-                                            <span class="icon_redeem"><img src="img/icon_redeem.png" style="margin-top:8px;"></span>
-                                            <span class="icon_comment">
-                                                <span class="c_count">117</span>
-                                                <a onclick="replytoggle();"><i class="far fa-comment-dots"></i></a></span> <!-- 댓글 아이콘 추가 -->
-                                            <span class="icon_heart">
-                                                <span class="f_count">92</span>
-                                                <img src="img/icon_heart.png">
-                                            </span>
+
+											<span class="icon_redeem"><img src="img/icon_redeem.png" style="margin-top:8px;"></span><span class="icon_heart"><span class="f_count" id="f_count">92</span><a onclick="addhearts();"><img src="img/icon_heart.png"></a></span>
 									</div>
+									
 									<div class="product_infowrap">
 											<div class="product_infomation">
 													<div class="information">
@@ -315,61 +294,12 @@ ul, ol {list-style:none;}
 													</div>
 											</div>
 									</div>
-                            </div>
+							</div>
 						</div>
 					</div>
 			</section>
 		</div>
-    </section>
-    
-    <!-- comment -->
-    </section>
-
-    <section id="comment_container" class="comment_page com_pop">
-            <div class="comment_header">
-                <div class="title">댓글 <span class="c_count">1</span></div> <!-- 댓글 수 -->
-                <div class="close"><a onclick="replytoggle();"><i class="material-icons">close</i></a></div> <!-- 댓글창 닫기 -->
-            </div>
-
-            <div class="comment_body">
-
-                <div class="list_wrapper"> <!-- templete -->
-                    <div class="photo">
-                        <img src="img/banner-05.jpg">
-                    </div>
-                    <div class="information">
-                        <div class="info">
-                            <span class="badge"><i class="fas fa-crown"></i></span><span class="name">이재정</span> <span class="time">39</span>분 전
-                        </div>
-                        <div class="comment">이번 라이브는 종료되었습니다. 이제 자유롭게 댓글을 남겨주세요!</div>
-                    </div>
-                    
-                </div>
-
-            </div>
-
-            <div class="comment_footer com_pop">
-                <input type="text" name="comment" placeholder="댓글을 남겨주세요" onfocus="$('.btn').addClass('active');">
-                <a class="btn">전송</a>
-            </div>
-    </section>
-
-    <!-- 구독하기 -->
-    <section class="subscribe_on" id="subfade" style="display: none;">
-        <div class="subcase"><span class="name">이재정</span>님을 구독하였습니다.</div>
-    </section>
-
-    <script>
-        function replytoggle() {
-            $(".com_pop").toggleClass('active');
-        }     
-    </script>
-    <script>
-        function subon() {
-            
-        }
-    </script>
-    
+	</section>
 </body>
 
 <script>
@@ -477,7 +407,7 @@ isGoing = false;
 		removed.animate({
 			"top": "-=100vh"
 		  }, {
-			duration: 200,
+			duration: 100,
 			specialEasing: {
 			  top: "linear"
 			},
@@ -493,7 +423,7 @@ isGoing = false;
 		  page.animate({
 			"top": "-=100vh"
 		  }, {
-			duration: 200,
+			duration: 100,
 			specialEasing: {
 			  top: "linear"
 			},
@@ -569,21 +499,35 @@ function setVideo(ele,step){
 		}
 	});
 
-	$("div video",ele).get(0).src = item.vurl;
-	$("div video",ele).get(0).poster = item.poster;
-	$("div video",ele).get(0).load();
-	$("div video",ele).get(0).play();
+	$(".profile img",ele).attr("src","//mcl2static.mycollabolife.com"+item.profileurl);
+	$(".titlebox .title",ele).text(item.title);
+	$(".titlebox .name",ele).text(item.name);
+	$(".titlebox .view",ele).text(0);
+	
 
+	$("div video",ele).get(0).src = "//mcl2static.mycollabolife.com"+item.videourl;
+	$("div video",ele).get(0).poster = "//mcl2static.mycollabolife.com"+item.posterurl;
+	$("div video",ele).get(0).load();
+	;
+	var playPromise = $("div video",ele).get(0).play();
+	 
+	  if (playPromise !== undefined) {
+		playPromise.then(_ => {
+		})
+		.catch(error => {
+		});
+	  }
 
 }
 
 var cd = 0;
+var curvolumeico = "img/icon_volume_off.png";
 
 function makePage(){
 	var page = $("#templ").clone();
 
 	page.removeAttr("id");
-
+	$(".icon_volume img",page).attr("src",curvolumeico);
 	$(".icon_volume img",page).on("click",function(){
 		var fr = $("#container div.video video").get(0).muted;
 
@@ -591,29 +535,47 @@ function makePage(){
 		$("#container div.video video").get(0).muted=!fr;
 		if(fr){
 			$(this).attr("src","img/icon_volume_up.png");
+			curvolumeico = "img/icon_volume_up.png";
 		}else{
 			$(this).attr("src","img/icon_volume_off.png");
-			}
+			curvolumeico = "img/icon_volume_off.png";
+		}
 	});
 
 
 	return page;
 }
 
+var data = [];
 
-var data = [{"vurl":"https://s3.ap-northeast-2.amazonaws.com/s3.mcl/predev/sample/sample_01.mp4"},{"vurl":"../mp4/b.mp4"},{"vurl":"../mp4/c.mp4"},{"vurl":"../mp4/d.mp4"}];
-data = [{"vurl":"https://s3.ap-northeast-2.amazonaws.com/s3.mcl/predev/sample/sample_01_720p.mp4","poster":"https://s3.ap-northeast-2.amazonaws.com/s3.mcl/predev/sample/sample_02.jpg"},{"vurl":"../mp4/c3.mp4","poster":"../mp4/blur3.jpg"},{"vurl":"../mp4/c2.mp4","poster":"../mp4/blur4.jpg"},{"vurl":"../mp4/c1.mp4","poster":"../mp4/blur2.jpg"}];
+function drawFirst(d){
+	data = d;
+	setVideo($("#container section"),0);
+
+}
+
+
 
 
 $(function(){
-	var page = makePage();
-	setVideo(page,0);
-	page.show();
-	$("#container").append(page);
+	
 
 });
+$(window).on('load', function() {
+	var page = makePage();
+	page.show();
+	$("#container").append(page);
+    if($.getP("epi")){
+		$.wcall({
+			url: domain + "?m=epi",
+			type: "GET",
+			data:{"epi":$.getP("epi")},
+			ok: function(head,body){drawFirst(body);}
+		});
+	}
+})
 
-
+/*
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function connectToMixer(stream){
@@ -626,7 +588,7 @@ function connectToMixer(stream){
         log(ee);
     }
 
-}
+}*/
 /*
  $("#userVideo").get(0).srcObject = curSelectMedia.stream;
         try{

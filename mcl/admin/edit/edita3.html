@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>MCL Edit</title>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.596.0.min.js"></script>
+	<script src="../../js/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="admin.js"></script>
+	<link rel="stylesheet" href="../css/edit.css">
+	<link rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+
+	<nav>
+		<ul class="nav-bar">
+			<li class="menu"><a href="../index.html">에피소드</a></li>
+			<li class="menu"><a href="../listProduct.html">상품</a></li>
+			<li class="menu"><a href="../listCaster.html">인플루언서</a></li>
+			<li class="menu dropdown active"><a href="./edita1.html">EDIT</a>
+				<div class="dropdown-content">
+					<a href="./edita1.html">메인 배너</a>
+					<a href="./edita2.html">라이브 미리보기</a>
+					<a href="./edita3.html">추천 상품</a>
+					<a href="./edita4.html">추천 에피소드</a>
+					<a href="./edita7.html">화제의 스타</a>
+				</div>
+			</li>
+			<li class="menu logout"><a href="login.html">LOGOUT</a></li>
+		</ul>
+	</nav>
+
+	<h3>EDIT : 추천 상품</h3>
+	<h4>진행중인 추천상품</h4>
+	<main style="width:1280px;background-color:black;padding-top:5px;margin-bottom: 30px;">
+
+		<div class="a3">
+			<!-- products -->
+
+			<div class="products" bind="list:sel_product">
+				<div class="item_wrapper template" style="display:none">
+					<a bind="d:url" admkey="url">
+						<div class="thumbnail">
+							<div class="mask"></div>
+							<div class="centered"><img
+									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
+									alt="" bind="img:productthumb,d:productthumb" admkey="productthumb"></div>
+							<div class="caption">
+
+							</div>
+						</div>
+						<div class="information">
+							<div class="title" bind="text:productname,d:productname" admkey="productname">[닥터플로라] 로즈꽃물
+								레드크림</div>
+							<div class="price"><del bind="text:xprice,d:xprice" admkey="xprice">145,000</del><span
+									class="total" bind="text:price,d:price" admkey="price">120,500원</span></div>
+							<div class="flags" bind="ak:badge:doBadge">
+								<span class="icon_flags free" style="display:none">무료배송</span><span
+									class="icon_flags recommend" style="display:none">뷰콜추천</span><span
+									class="icon_flags best" style="display:none">베스트</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+			</div>
+			<div class="bullets" style="display:none">
+			</div>
+		</div>
+	</main>
+
+	<button class="editsendbtn" onclick="save()">변경내용 적용하기</button>
+
+	<panel class="panelclass" style="display: block;">
+		<h4>선택된 상품</h4>
+		<img style="display: block; max-width: 300px;">
+		<hr>
+		<h6>권장 사이즈 : 300*300</h6>
+		<input type="file" onchange="startupload(this)" />
+		<br />
+		<label>URL</label><input id="pan_txt1" type="text" onkeyup="admchangeN('url','#pan_txt1')"><br />
+		<label>상품명</label><input id="pan_txt2" type="text" onkeyup="admchange('productname','#pan_txt2')"><br />
+		<label>기존가</label><input id="pan_txt3" type="text" style="color: gray;"
+			onkeyup="admchange('xprice','#pan_txt3')"><br />
+		<label>할인가</label><input id="pan_txt4" type="text" onkeyup="admchange('price','#pan_txt4')">
+	</panel>
+
+	<div class="howto">
+		<ol>
+			<li>추천 상품 입니다.</li>
+			<li>이미지를 드래그하여 순서를 변경할 수 있습니다.</li>
+			<li>변경을 원하는 이미지를 선택하면 선택된 라이브 미리보기의 내용이 나옵니다.</li>
+			<li>업로드할 이미지 파일을 선택합니다. 권장이미지 사이즈 300*300</li>
+			<li>epi://에피소드번호를 입력합니다. 예)epi://16</li>
+			<li>예정 방송 일자를 입력합니다. 예)오늘</li>
+			<li>예정 방송 시간을 입력합니다. 예)17:00</li>
+			<li>라이브할 상품 또는 라이브 제목 등을 입력합니다.</li>
+			<li>인플루언서 이름을 입력합니다.</li>
+			<li>변경 사항을 실시간으로 확인하면서 글자 길이등을 조절합니다.</li>
+			<li>적용하기 버튼을 누르면 적용됩니다.</li>
+		</ol>
+	</div>
+</body>
+
+</html>
+
+
+
+<script>
+	var curEle = null;
+	var a1 = ".a3";
+	var livepreview = ".products";
+	var editkind = "sel_product";
+	function select(ele) {
+
+		curEle = ele;
+		var panel = $("panel");
+
+
+		var a = $("[admkey=" + "url" + "]", ele).attr("d");
+		var txt2 = $("[admkey=" + "productname" + "]", ele).attr("d");
+		var txt3 = $("[admkey=" + "xprice" + "]", ele).attr("d");
+		var txt4 = $("[admkey=" + "price" + "]", ele).attr("d");
+		var txt5 = $("[admkey=" + "name" + "]", ele).attr("d");
+
+		var img = $("[admkey=" + "productthumb" + "]", ele).attr("d");
+
+
+		$("img", panel).attr("src", img);
+		$("#pan_txt1", panel).val(a);
+		$("#pan_txt2", panel).val(txt2);
+		$("#pan_txt3", panel).val(txt3);
+		$("#pan_txt4", panel).val(txt4);
+		$("#pan_txt5", panel).val(txt5);
+
+	}
+
+	function admchange(key, txt) {
+		var val = $(txt).val();
+		$("[admkey=" + key + "]", curEle).attr("d", val);
+		$("[admkey=" + key + "]", curEle).text(val);
+
+	}
+
+
+	function admchangeN(key, txt) {
+		var val = $(txt).val();
+		$("[admkey=" + key + "]", curEle).attr("d", val);
+
+
+	}
+
+	function drawFirst(d) {
+
+		wmap(d, $(a1));
+		$(".item_wrapper.template").remove();
+		$("a", $(a1)).attr("href", "javascript:void(0)");
+		$(".item_wrapper", $(a1)).on("click", function () {
+			select($(this));
+			return false;
+
+		});
+
+		$(livepreview).sortable({
+			revert: true
+		});
+		$("#draggable").draggable({
+			connectToSortable: livepreview,
+			helper: "clone",
+			revert: "invalid"
+		});
+
+	}
+
+
+	function save() {
+		var a18 = $(".item_wrapper");
+
+		var ret = new Array();
+		for (var i = 0; i < a18.length; i++) {
+			var keys = $("[admkey]", a18.get(i));
+			var cobj = {};
+			ret[ret.length] = cobj;
+			for (var ii = 0; ii < keys.length; ii++) {
+				var item = $(keys.get(ii));
+				var key = item.attr("admkey");
+				var val = item.attr("d")
+				cobj[key] = val;
+			}
+		}
+
+		var txt = JSON.stringify(ret); 
+		$.ajax({
+			url: "https://mcl2.mycollabolife.com/admin.php?c=edit&m=saveEdit",
+			type: "POST",
+			data: { "kind": editkind,"txt":txt },
+			dataType: "jsonp",
+			success: function(data) {
+				var head = data.HEAD;
+				var body = data.BODY;
+
+				if (head.STATUS == "error") {
+					this.errfn(data.HEAD,data.BODY);
+				} else {
+					alert(data.BODY);
+				}
+			}
+		});
+
+	}
+
+	function startupload(e) {
+
+		uploadFile(e.files, "test/edit/a1", function (d, l) {
+			$("[admkey=productthumb]", curEle).attr("src", l).attr("d", l);
+			$("img", $("panel")).attr("src", l);
+		});
+	}
+
+	$.wcall({
+		url: "https://mcl2.mycollabolife.com/api.php?m=videolist",
+		type: "GET",
+		data: { "pkey": "3" },
+		ok: function (head, body) { drawFirst(body); }
+	});
+
+
+</script>
+<script>
+	var albumBucketName = "s3.mcl";
+	var bucketRegion = "ap-northeast-2";
+
+	AWS.config.region = 'ap-northeast-2'; // 리전
+	AWS.config.credentials = new AWS.Credentials({
+		accessKeyId: 'AKIAZO5VA5G3JGFTX5EA', secretAccessKey: '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'
+	});
+
+	var s3 = new AWS.S3({
+		apiVersion: "2006-03-01",
+		params: { Bucket: albumBucketName }
+	});
+
+
+	function uploadFile(files, filepath, uploaddone) {
+
+		var donefn = uploaddone;
+
+		if (!files.length) {
+			return alert("파일선택.");
+		}
+		var file = files[0];
+		var fileName = file.name;
+
+
+		var upload = new AWS.S3.ManagedUpload({
+			params: {
+				Bucket: albumBucketName,
+				Key: filepath + "/" + fileName,
+				Body: file,
+				ACL: "public-read"
+			}
+		});
+
+		var promise = upload.promise();
+		promise.then(
+			function (data) {
+				donefn(data.Key, data.Location)
+			},
+			function (err) {
+				return alert("업로드 실패: ", err.message);
+			}
+		);
+
+
+	}
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.596.0.min.js"></script>
+  <link rel="stylesheet" href="./css/common.css">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+	<nav>
+    <ul class="nav-bar">
+        <li class="menu"><a href="index.html">에피소드</a></li>
+        <li class="menu active"><a href="listProduct.html">상품</a></li>
+        <li class="menu"><a href="listCaster.html">인플루언서</a></li>
+  <li class="menu dropdown"><a href="./edit/edita1.html">EDIT</a>
+    <div class="dropdown-content">
+      <a href="./edit/edita1.html">메인 배너</a>
+      <a href="./edit/edita2.html">라이브 미리보기</a>
+      <a href="./edit/edita3.html">추천 상품</a>
+      <a href="./edit/edita4.html">추천 에피소드</a>
+      <a href="./edit/edita7.html">화제의 스타</a>
+    </div>
+  </li>
+        <li class="menu logout"><a href="login.html">LOGOUT</a></li>
+    </ul>
+</nav>
+
+  <main>
+    <h3>상품 등록</h3>
+    <div class="container">
+    <section class="productform" style="width:700px; padding: 5px;">
+      <form class="forminput">
+        <table>
+          <colgroup>
+            <col width="30%">
+            <col width="70%">
+          </colgroup>
+          <tr>
+            <td>상품이름</td>
+            <td>
+              <input type="text">
+            </td>
+          </tr>
+            <td>카테고리</td>
+            <td>
+              <input type="checkbox" value="be">뷰티
+              <input type="checkbox" value="fo">푸드
+              <input type="checkbox" value="fa">패션
+              <input type="checkbox" value="ba">베이비
+              <input type="checkbox" value="li">리빙
+            </td>
+          </tr>
+          <tr>
+            <td>상품 이미지</td>
+            <td><input type="file"></td>
+          </tr>
+          <tr>
+            <td>기존가</td>
+            <td><input type="text" placeholder="숫자만입력하세요"></td>
+          </tr>
+          <tr>
+            <td>할인가</td>
+            <td><input type="text" placeholder="숫자만입력하세요"></td>
+          </tr>
+          <tr>
+            <td>상품코드</td>
+            <td><input type="text" placeholder="XXXXX-XXXXX-XXXXX"></td>
+          </tr>
+          <tr>
+            <td>플래그</td>
+            <td>
+              <input type="checkbox" value="free">무료배송
+              <input type="checkbox" value="select">뷰콜추천
+              <input type="checkbox" value="best">베스트
+            </td>
+          </tr>
+        </table>
+        <button>업로드</button>
+      </form>
+    </section>
+
+
+</div>
+</main>
+
+</body>
+
+</html>

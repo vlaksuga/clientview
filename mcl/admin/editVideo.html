@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.596.0.min.js"></script>
+  <link rel="stylesheet" href="./css/common.css">
+  <script src="../js/jquery-3.4.1.min.js"></script>
+  <script>
+    var albumBucketName = "s3.mcl";
+    var bucketRegion = "ap-northeast-2";
+    var albumName = "preview/test";
+
+    AWS.config.region = 'ap-northeast-2'; // 리전
+    AWS.config.credentials = new AWS.Credentials({
+      accessKeyId: 'AKIAZO5VA5G3JGFTX5EA', secretAccessKey: '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'
+    });
+
+    var s3 = new AWS.S3({
+      apiVersion: "2006-03-01",
+      params: { Bucket: albumBucketName }
+    });
+
+
+    function addPhoto(albumName) {
+      var files = document.getElementById("photoupload").files;
+      if (!files.length) {
+        return alert("파일선택.");
+      }
+      var file = files[0];
+      var fileName = file.name;
+      var albumPhotosKey = albumName + "/";
+
+      var photoKey = albumPhotosKey + fileName;
+
+      var upload = new AWS.S3.ManagedUpload({
+        params: {
+          Bucket: albumBucketName,
+          Key: photoKey,
+          Body: file,
+          ACL: "public-read"
+        }
+      });
+
+      var promise = upload.promise();
+      promise.then(
+        function (data) {
+          alert(data);
+          viewMedia(data.Key, data.Location)
+        },
+        function (err) {
+          return alert("업로드 실패: ", err.message);
+        }
+      );
+      $("button").remove();
+      $("#Frefreffre").text("업로드중임니다");
+
+    }
+
+    function viewMedia(key, src) {
+      $("video").get(0).src = src;
+    }
+
+
+    function check(ddd) {
+      $('#preview').attr('src', URL.createObjectURL(ddd.files[0]));
+    }
+
+  </script>
+</head>
+
+<body>
+  <nav>
+    <ul class="nav-bar">
+      <li class="menu active"><a href="index.html">에피소드</a></li>
+      <li class="menu"><a href="listProduct.html">상품</a></li>
+      <li class="menu"><a href="listCaster.html">인플루언서</a></li>
+      <li class="menu dropdown"><a href="./edit/edita1.html">EDIT</a>
+        <div class="dropdown-content">
+          <a href="./edit/edita1.html">메인 배너</a>
+          <a href="./edit/edita2.html">라이브 미리보기</a>
+          <a href="./edit/edita3.html">추천 상품</a>
+          <a href="./edit/edita4.html">추천 에피소드</a>
+          <a href="./edit/edita7.html">화제의 스타</a>
+        </div>
+      </li>
+      <li class="menu logout"><a href="login.html">LOGOUT</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h3>에피소드 편집</h3>
+    
+    <div class="controlbox">
+      <button onclick="addPhoto(albumName)">적용하기</button>
+      <div id="Frefreffre"></div>
+    </div>
+    <div class="container">
+      <section class="videoform" style="width:535px; padding: 5px;">
+        <form class="forminput">
+          <table>
+            <colgroup>
+              <col width="30%">
+              <col width="70%">
+            </colgroup>
+            <tr>
+              <td>NO</td>
+              <td bind="text:video.videopkey">1</td>
+            </tr>
+            <tr>
+              <td>인플루언서</td>
+              <td>
+                <select bind="list:caster,val:video.casterpkey">
+                  <option class="template" style="display:none" bind="val:casterpkey,text:name">김태경</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>에피소드 제목</td>
+              <td><input type="text" placeholder="원래 있었던 제목" bind="val:video.title"></td>
+            </tr>
+            <tr>
+              <td>썸네일 이미지</td>
+              <td><input type="file"></td>
+            </tr>
+            <tr>
+              <td>블러 이미지</td>
+              <td><input type="file"></td>
+            </tr>
+            <tr>
+              <td>5초 비디오</td>
+              <td><input type="file"></td>
+            </tr>
+            <tr>
+              <td>전체 비디오</td>
+              <td><input id="photoupload" type="file" accept="*" onchange="check(this)"></td>
+            </tr>
+          </table>
+        </form>
+      </section>
+      <section class="preview_container">
+        <img style="background-color:red;width:180px;height:180px" bind="src:video.thumburl:adddomain" /> <!-- 썸네일 -->
+        <img style="background-color:red;width:180px;height:320px" bind="src:video.posterurl:adddomain" /> <!-- 블러 -->
+        <video style="background-color:red;width:180px;height:320px" bind="src:video.previewurl:adddomain"></video>
+        <!-- 5초 -->
+        <video style="background-color:red;width:180px;height:320px" id="preview"
+          bind="src:video.videourl:adddomain"></video> <!-- 전체 비디오 -->
+        <div class="comment" style="display: flex; justify-content: space-between; text-align: center;">
+          <div style="width: 180px;">썸네일 이미지</div>
+          <div style="width: 180px;">블러 이미지</div>
+          <div style="width: 180px;">5초 비디오</div>
+          <div style="width: 180px;">전체 비디오</div>
+        </div>
+      </section>
+
+    </div>
+
+    <hr />
+    <script>
+      function searchForRel() {
+        $("#search111 .item").each(function () {
+          if ($(this).hasClass("template")) return; $(this).remove()
+        });
+        $.wcall({
+          url: admindomain + "?m=searchProduct",
+          type: "GET",
+          data: { "q": $("#searchword").val() },
+          ok: function (head, body) {
+            $("#search111").show();
+            wmap(body, $("#search111"));
+          }
+        });
+
+
+
+      }
+      function closeSearch() {
+        $("#search111 item").each(function () { if ($(this).hasClass("template")) return; $(this).remove() });
+        $("#search111").hide();
+      }
+
+      function addRelVP(ele) {
+        var productpkey = $(ele).attr("d");
+
+        $.ajax({
+          url: "https://mcl2.mycollabolife.com/admin.php?&m=addRelVP",
+          type: "POST",
+          data: { "productpkey": productpkey, "videopkey": $.getP("videopkey") },
+          dataType: "jsonp",
+          success: function (data) {
+            var head = data.HEAD;
+            var body = data.BODY;
+
+            if (head.STATUS == "error") {
+              this.errfn(data.HEAD, data.BODY);
+            } else {
+              $("#relProduct li").each(function () { if ($(this).hasClass("template")) return; $(this).remove() });
+              getList(function (d) { wmap(d, $("#relProductcont")); });
+            }
+          }
+        });
+        return false;
+      }
+    </script>
+    <h3>상품 연결하기</h3>
+
+      <h4>연결된상품</h4>
+          <div class="videorelproduct" id="relProductcont">
+            <!-- 해당비디오와 연결된 상품에 체크된 전체 상품리스트 불러오는 버튼-->
+            <script>
+              function removeRel(ele) {
+                var productpkey = $(ele).attr("d");
+                var videopkey = $(ele).attr("dd");
+
+                $.ajax({
+                  url: "https://mcl2.mycollabolife.com/admin.php?&m=removeRelVP",
+                  type: "POST",
+                  data: { "productpkey": productpkey, "videopkey": videopkey },
+                  dataType: "jsonp",
+                  success: function (data) {
+                    var head = data.HEAD;
+                    var body = data.BODY;
+
+                    if (head.STATUS == "error") {
+                      this.errfn(data.HEAD, data.BODY);
+                    } else {
+                      $("#relProduct li").each(function () { if ($(this).hasClass("template")) return; $(this).remove() });
+                      alert(data.BODY);
+                      getList(draw);
+                    }
+                  }
+                });
+                return false;
+              }
+            </script>
+
+            <ul id="relProduct" style="margin-top: 10px;" bind="list:product">
+              <li class="selectedlist template" style="display:none"><span bind="text:productname">[BLITHE] 인비트윈 하이드로
+                  프라이밍 크림 (수분결보정)</span><span style="margin-left: 5px;"><button bind="d:productpkey,dd:videopkey"
+                    onclick="return removeRel(this)">삭제</button></span></li>
+
+            </ul>
+          </div>
+
+
+          <input type="text" id="searchword" placeholder="검색" style="width:300px; padding: 5px; margin:10px 10px 10px 0;"><button onclick="searchForRel()">추가할상품검색</button>
+            <div class="wrap" id="search111" style="display:none">
+              <button onclick="closeSearch();">검색결과닫기</button>
+              <table class="listtable" bind="list:listproduct">
+                <colgroup>
+                  <col width="5%">
+                  <col width="5%">
+                  <col width="10%">
+                  <col width="60%">
+                  <col width="20%">
+                  <col width="10%">
+                </colgroup>
+                <thead>
+                  <th>선택</th>
+                  <th>NO</th>
+                  <th style="text-align: left;">사진</th>
+                  <th>상품명</th>
+                  <th>상품코드</th>
+                </thead>
+
+                <tr class="item template" style="display:none">
+                  <td><button bind="d:productpkey" onclick="return addRelVP(this)">추가</button></td>
+                  <td bind="text:productpkey">1</td>
+                  <td>
+                    <div class="product_img" style="width: 30px; height: 30px;"><img style="width: 30px; height: 30px;"
+                        bind="img:productthumb:productdomain"
+                        src="https://mcl2static.mycollabolife.com/predev/product/N9651-N7632-S6731.jpg"></div>
+                  </td>
+                  <td style="text-align: left;" bind="text:productname">[24초 가루식초] 바나나 1set/2set/3set</td>
+                  <td bind="text:beautycollabolink">N9651-N7632-S6731</td>
+                </tr>
+              </table>
+            </div>
+
+
+  </main>
+
+</body>
+
+<script>
+
+
+  function gocasteredit(v) {
+    return "./editCaster.html?casterpkey=" + v;
+
+  }
+
+  function productdomain(v) {
+
+return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+}
+
+  function adddomain(v) {
+
+    return "https://mcl2static.mycollabolife.com" + v;
+  }
+  var admindomain = "https://mcl2.mycollabolife.com/admin.php";
+  function getList(fn) {
+    $.wcall({
+      url: admindomain + "?m=getvideo",
+      type: "GET",
+      data: { "videopkey": $.getP("videopkey") },
+      ok: function (head, body) { fn(body); }
+    });
+  }
+
+  function draw(d) {
+    wmap(d, $("main"));
+  }
+
+  getList(draw);
+</script>
+
+</html>

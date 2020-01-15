@@ -1,0 +1,81 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=320,minimum-scale=1.0,maximum-scale=4.0,user-scalable=no">
+<meta name="keywords" content="">			
+<meta name="description" content="">				
+<title></title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<meta name="apple-itunes-app" content="app-id=??"> <!-- ids -->
+<meta name="google-play-app" content="app-id=??"> <!-- ids -->
+
+<meta name="title" content="이곳은 방송의 제목입니다"> <!-- 방송제목 -->
+<meta name="description" content="XXX님의 방송을 MLC 앱에서 만나보세요!" /> <!-- XXX = caster : name -->
+
+<style>
+    
+body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000; color: white;}
+div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
+img {border:0;}
+a {text-decoration:none; color: inherit;}
+ul, ol {list-style:none;}
+
+.page_body {margin-top:60px;}
+
+
+
+.titlebox {text-align: center;  margin: 60px auto 30px auto; width: 70px;}
+.titlebox img{width: 100%; display: block;}
+
+.media {position: relative; width: 250px; height: 250px; margin: 0 auto; border-radius: 20px; display: flex; justify-content: center; align-items: center;}
+.media .icon_container {position: absolute;}
+.media img {width: 100%; border-radius: 10px; object-fit: cover;}
+.media i {font-size: 50px; color: #FB57A7;}
+
+.comment {text-align: center;}
+.comment p {font-size: 12px; color: #777777;}
+.comment p .influencer_name {color: #FB57A7; font-weight: 700;}
+.comment button {margin-top: 15px; color: white; background-color: black; border: none; padding: 5px 12px; border-radius: 15px; font-size: 12px; background-image:linear-gradient(110deg,#9375F4,#FB57A7,#FF8B6A);}
+
+</style>
+</head>
+<body>
+<div style="max-width:320px; margin:0 auto;" id="proposal_page">
+
+        <section class="page_body">
+
+				<div class="titlebox">
+					<a href="javascript:void(0)"><img src="./img/logotype-colored.png"></a> <!-- 앱에서 보기 앱이 없으면 앱설치 -->
+				</div>
+
+				<div class="media">
+					<a href="javascript:void(0)"><img src="img/banner-05.jpg"></a> <!-- 앱에서 보기 앱이 없으면 앱설치 -->
+					<div class="icon_container">
+					<i class="material-icons">play_circle_outline</i>
+					</div>
+				</div>
+
+				<div class="comment">
+					<h3>방송 제목이 들어가는 곳이에요!</h3>
+					<p><span class="influencer_name">심은진</span>의 방송을 MCL에서 만나보세요!</p>
+					<button>APP에서 보기</button> <!-- 앱에서 보기 앱이 없으면 앱설치 -->
+				</div>
+				
+        </section>
+
+</div>
+</body>
+<script>
+$('input, textarea').focus(function () {
+    $('html, body').animate({ scrollTop: ($('input, textarea').offset().top - 10) }, 1);
+    return false;
+});
+</script>
+
+
+</html>
