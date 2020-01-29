@@ -172,7 +172,9 @@ ul, ol {list-style:none;}
 
 .sub_episodes_header .ep_controls_top {position:absolute; top:10px; right:0;}
 .sub_episodes_header .ep_controls_top span img, .subscribe_group span img {width:20px; height:20px; margin-left:15px; vertical-align:middle;}
-.sub_episodes_header .subscribe_group {position:absolute; top:60px; left:0;}
+.sub_episodes_header .subscribe_group {position:absolute; top:60px; left:5px;}
+.sub_episodes_header .subscribe_group .icon_star {display: none;}
+.sub_episodes_header .subscribe_group .icon_star.active {display: inline-block;}
 .sub_episodes_header .btn_subscribe {font-size:11px; margin-top:0; border-radius:10px; padding:3px 8px 3px 8px; color:#fff; border:0; background-color:#000; box-shadow:0 0 0 1px #fff;}
 .sub_episodes_header .ep_controls_top .icon_volume {position:relative;}
 
@@ -183,9 +185,11 @@ ul, ol {list-style:none;}
 .sub_episodes_body {border:0px solid red; max-height:300px;}
 .sub_episodes_body .enter_messages {color:#fff; font-size:10px;}
 
-.sub_episodes_footer {border:0px solid yellow; position:relative; height:50px;width:310px;margin-bottom:5px}
+.sub_episodes_footer {border:0px solid yellow; position:relative; height:50px;width:310px; margin-bottom:5px}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem {position:absolute; bottom:0; left:0; width:35px; height:35px; text-align:center; display:inline-block; border-radius:50%; background-image:linear-gradient(135deg,#ff545c,#837aff);}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem img {width:20px; height:20px;}
+.sub_episodes_footer .ep_controls_bottom .icon_reply {position:absolute; bottom:0; right:40px;}
+.sub_episodes_footer .ep_controls_bottom .icon_reply img {width:25px; height:25px;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart {position:absolute; top:0; right:0;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart img {width:25px; height:25px;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart .f_count {color:#fff; font-weight:bold; display:block; text-align:center; font-size:10px;}
@@ -205,36 +209,104 @@ ul, ol {list-style:none;}
 
 </style>
 <script>
+var loggedinuser = false;
 	function close1(){
 		history.back();
 	}
 
-	function reqSubscribe(){
-		var orid = $("<div class='popopopop'></div>");
 
-		orid.css({"position":"fixed","width":"320px","height":"100vh","top":"0px"});
-		
-		orid.load( "tiles/reqLogin.html");
-		$("body").append(orid);
+	function reqSubscribe(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
+			if(body=="follow"){
+				$(".btn_subscribe",ele).hide();
+			}
+		}
+
+		var v = data[cd].casterpkey;
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=followCaster",
+			type: "GET",
+			data:{casterpkey:v},
+			ok: fn
+		});
 	}
 
-	function reqLike(){
-		var orid = $("<div class='popopopop'></div>");
 
-		orid.css({"position":"fixed","width":"320px","height":"100vh","top":"0px"});
-		
-		orid.load( "tiles/reqLogin.html");
-		$("body").append(orid);
+	function checkLogin(){
+		try{
+		if(loggedinuser.userpkey>0) return true;
+		}catch(e){}
+		return false;
+
+	}
+
+	function showLoginPop(){
+		var orid = $(".popopopop");
+		orid.show();
+	}
+
+
+	function setUserLike(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$("img",ele).attr("src","img/icon_star_fill.png");
+		}
+
+	}
+	function reqLike(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+
+		var v = data[cd].videopkey;
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			if(body=="like"){
+				$("img",ele).attr("src","img/icon_star_fill.png");
+			}
+			if(body=="unlike"){
+				$("img",ele).attr("src","img/icon_star.png");
+			}
+		}
+
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=likeVideo",
+			type: "GET",
+			data:{videopkey:v},
+			ok: fn
+		});
 	}
 	function closePop(){
-		$(".popopopop").remove();
+		$(".popopopop").hide();
 	}
+
+
+
+	function addhearts(){
+		event.stopPropagation();
+		var frfr = $("#f_count").text();
+		
+		frfr = parseInt(frfr) +1;
+		$("#f_count").text(frfr);
+
+	}
+
+
 </script>
 </head>
 <body>
 <div id="safari" style="position:fixed;width:320px;height:100vh"> 
 	<div style="height:100vh;position:relative;width:320px;overflow:hidden;margin:0 auto;background-color:black; -webkit-overflow-scrolling: touch;" id="container">
-			
+
 
 
 	</div>
@@ -242,7 +314,7 @@ ul, ol {list-style:none;}
 
 	<section id="templ" style="display:none;position:absolute">
 		<div class="video_page" style="top:0vh;margin:0px 0 0px 0;height:100vh;width:320px;overflow:hidden;position:relative;">
-			<div class="video" style="background-color:#666;width:100%;height:100vh;z-index:0;position:absolute;top:0px;left:0px">
+			<div class="video" style="background-color:#666;width:100%;height:100vh;z-index:0;position:fixed;top:0px;left:0px">
 				<video playsinline="" muted="" class="" width="320px" height="100%" style="object-fit:fill;" autoplay="" preload="metadata" loop="" data-loaded-metadata="true" src="" ></video>
 			</div>
 
@@ -255,7 +327,7 @@ ul, ol {list-style:none;}
 											<span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
 											<div class="titlebox">
 													<div class="title">털러#</div>
-													<div class="count"><span class="name">이재정</span><span class="view">273,717</span></div>
+													<div class="count"><span class="name">이재정</span><span class="view">0</span></div>
 											</div>
 									</div>
 									<div class="ep_controls_top">
@@ -265,14 +337,14 @@ ul, ol {list-style:none;}
 											</div>
 									</div>
 									<div class="subscribe_group">
-											<button class="btn_subscribe" onclick="reqSubscribe()">+ 구독하기</button><span class="icon_star_white" style=""><img src="img/icon_star_white.png" onclick="reqLike()"></span>
+											<button class="btn_subscribe" onclick="reqSubscribe()">구독하기</button> <span class="icon_star active"><img src="img/icon_star_white.png" onclick="reqLike()"></span> 
 									</div>
 							</div>
 						</div>
 
 						<div class="video_bottom_layer" style="position:absolute;bottom:0px;left:0px;width:320px">
-							<div class="sub_episodes_body">
-									<div class="chat">
+							<div class="sub_episodes_body uselive">
+									<div class="chat"  style="max-height:8em;overflow-y:scroll">
 											<p class="enter_messages">guest1572542333842님이 입장하셨습니다.</p>
 									</div>
 							</div>
@@ -280,18 +352,40 @@ ul, ol {list-style:none;}
 
 							<div class="sub_episodes_footer">
 									<div class="ep_controls_bottom">
-
-											<span class="icon_redeem"><img src="img/icon_redeem.png" style="margin-top:8px;"></span><span class="icon_heart"><span class="f_count" id="f_count">92</span><a onclick="addhearts();"><img src="img/icon_heart.png"></a></span>
+											<span class="icon_redeem"><img src="img/icon_redeem.png" style="margin-top:8px;"></span>
+											<span class="icon_reply"><a onclick="togglereply();"><img src="img/icon_reply.png"></a></span>
+											<div class="chat_input_box uselive" >
+												<input id="chattxt" type="text" onfocus="clearInput()" style="border: none; background: transparent; width:200px; padding: 5px;" placeholder="메세지...">
+											</div>
+											<span class="icon_heart"><span class="f_count" id="f_count">92</span>
+											<a onclick="addhearts();"><img src="img/icon_heart.png"></a></span>
 									</div>
+									<style>
+
+										.chat_input_box {position:absolute; left:50px; bottom:5px; background-color:none; border:1px solid white; width:200px; height: 30px; border-radius: 8%/50%; display:flex;}
+										.chat_input_box.fo {left: 0; bottom:0; background-color: #eeeeee; width: 100%; border: none; height: 30px; border-radius: 0px; margin-bottom: -5px; margin-left: -5px;}
+										#chattxt:focus {outline: none; border:none; color: white;}
+										.uselive { display:none !important;}
+									</style>
+									<script>
+										function clearInput() {
+
+										}
+										function resetInput() {
+											
+										}
+									</script>
 									
-									<div class="product_infowrap">
+									<div class="product_infowrap" bind="list:">
 											<div class="product_infomation">
+												<a bind="href:product[0].productpkey:getProductUrl">
 													<div class="information">
-															<div class="title">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
-															<div class="price"><span class="discount">17%</span><del>145,000</del><span class="total">120,500원</span></div>
-															<div class="flags"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+															<div class="title" bind="text:productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
+															<div class="price"><del bind="text:xprice:price">145,000</del><span class="total" bind="text:price:price">120,500원</span></div>
+															<div class="flags"><img bind="img:productthumb:productdomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
 															<span class="icon"><img src="img/icon_star.png"></span>
 													</div>
+												</a>
 											</div>
 									</div>
 							</div>
@@ -300,6 +394,171 @@ ul, ol {list-style:none;}
 			</section>
 		</div>
 	</section>
+
+	<!-- reply starts -->
+	<style>
+		.reply-container {position: fixed; bottom: 0; width: 100vw; height: 400px; z-index: 99999; background-color: #fff; border-top-right-radius: 5px; border-top-left-radius: 5px; font-size: 10px;}
+		.reply-container .rep-header {width: 100%; height: 40px; display: flex; align-items: center; justify-content: center;  border-bottom: 1px solid #efefef;}
+		.reply-container .rep-header .title {font-weight: 700; font-size: 12px; margin-right: 3px;}
+		.reply-container .rep-header .repcnt {font-weight: 700; color:#ff545c; font-size: 12px;}
+		.reply-container .rep-header .icon_close {position: absolute; top: 5px; right: 5px;}
+		.reply-container .rep-header .icon_close img {width: 20px; height: 20px;}
+
+		.reply-container .rep-body {overflow-y: auto; padding: 0 5px; height: 320px;}
+		.reply-container .rep-body .item_wrapper {border-bottom: 1px solid #efefef; position: relative; padding: 5px 0;}
+		.reply-container .rep-body .item_wrapper .information {display: flex; justify-content: flex-start; align-items: flex-start;}
+		.reply-container .rep-body .item_wrapper .information .flags {padding: 5px;}
+		.reply-container .rep-body .item_wrapper .information .flags img {width: 40px; height: 40px; object-fit: cover; border-radius: 50%;}
+		.reply-container .rep-body .item_wrapper .information .caption .title .username{font-weight: 700; margin-right: 5px;}
+		.reply-container .rep-body .item_wrapper .information .caption .title .wdate{color: #cccccc;}
+
+		.reply-container .rep-footer {position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background-color: #eeeeee;  display: flex; justify-content:center; align-items: center;}
+		.reply-container .rep-footer input[type="text"] {width: 100%; border: none; font-size: 10px; padding: 4px; height: 20px; background-color: #eeeeee;}
+		.reply-container .rep-footer input[type="text"]:focus {outline: none;}
+		.reply-container .rep-footer input[type="text"]::placeholder {color: #777777;}
+		.reply-container .rep-footer input[type="text"]::-webkit-input-placeholder {color: #777777;}
+		.reply-container .rep-footer input[type="text"]:-ms-input-placeholder {color: #777777;}
+	</style>
+
+	<div class="reply-container" style="display: none;">
+		<div class="rep-header">
+			<span class="title">댓글</span><span class="repcnt" >1</span><span class="icon_close"><a onclick="togglereply()"><img src="img/icon_close_black.png"></a></span>
+		</div>
+		<div class="rep-body"  bind="list:,d:d:countRep">
+
+			<div class="item_wrapper template" style="display:none">
+				<div class="information">
+					<div class="flags"><img src="img/default.jpg" bind="src:profileimg"></div>
+					<div class="caption">
+						<div class="title"><span class="badge" style="display: none;"><img src=""></span></span><span class="username"  bind="text:nick"> 김흑43r당</span><span class="wdate"  bind="text:wdate">2020년 1월 22일</span></div>
+						<div class="comment"  bind="text:txt">이번 라이브는 종료되었습니다. 이제 자유롭게 댓글을 남겨주세요!</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="rep-footer">
+			<input id="replyinput" type="text" placeholder="댓글을 남겨주세요." onfocus="replytotop()" onblur="replytobottom()">
+		</div>
+	</div>
+	<script>
+	function countRep(v,e,d){
+		$(".repcnt").text(d.length);
+	}
+	$("#replyinput").keydown(function (e) {
+			if (e.keyCode  == 13){
+				if(!checkLogin()){
+					showLoginPop();
+					return;
+				}
+
+				var v = data[cd].videopkey;
+				var ele = $(e).parent();
+				
+				
+				var txt = $("#replyinput").val();
+				$("#replyinput").val("");
+
+				$.ajax({
+					  url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=addReply",
+					  type: "POST",
+					  data: {videopkey:v,txt:txt},
+					  dataType: "jsonp",
+					  success: function (data) {
+						var head = data.HEAD;
+						var body = data.BODY;
+
+						if (head.STATUS == "error") {
+						  this.errfn(data.HEAD, data.BODY);
+						} else {
+							if(body=="ok"){
+								getListReply();
+								return;
+							}
+							alert(body);
+						}
+					  }
+					});
+				
+
+		    }
+		
+
+		});
+		function getListReply(){
+			$(".reply-container .item_wrapper").each(function(){
+				if($(this).hasClass("template")){
+					return;
+				}
+				$(this).remove();
+			});
+			var v = data[cd].videopkey;
+
+			var fn = function(head,body){
+				wmap(body,$(".reply-container"));
+			}
+
+
+			$.wcall({
+				url: "https://mcl2.mycollabolife.com/api.php?m=listReply",
+				type: "GET",
+				data:{videopkey:v},
+				ok: fn
+			});
+
+		}
+
+		function replytotop() {
+			var rep = document.getElementsByClassName('reply-container')[0];
+			rep.style.removeProperty('bottom');
+			rep.style.top = "0";
+			rep.style.height ="100vh";
+		}
+
+		function replytobottom() {
+			var rep = document.getElementsByClassName('reply-container')[0];
+			rep.style.removeProperty('top');
+			rep.style.bottom = "0";
+			rep.style.height ="400px";
+		}
+
+		function togglereply() {
+			$(".reply-container").animate({height: "toggle"},300);
+		}
+
+
+	</script>
+	
+<div class='popopopop' style="position:fixed;width:320px;height:100vh;top:0px;z-index:99999999;display:none">
+	<style>
+	.pop-container {margin: 0 auto; width: 90%; height: 200px; background-color: #FFF; border-radius: 5px;margin-top:30vh}
+        .pop-container .pop-header {display: flex; flex-direction: column; justify-content: center; align-items: center; height: 160px; font-size: 12px; font-weight: 700; color: black; border-bottom: 1px #eeeeee solid; line-height: 30px;} 
+        .pop-container .pop-body {display: flex; height: 38px; flex-direction: row;}
+        .pop-container .pop-body .parts {display: flex; width: 33%; justify-content: center; align-items: center; font-size: 12px;}
+        .pop-container .pop-body .parts:first-child {color: red; font-weight: 700;}
+        .pop-container .pop-body .parts:nth-child(2) {border-left: 1px #eeeeee solid; border-right: 1px #eeeeee solid; color: red; font-weight: 700;}
+        .pop-container .pop-body .parts a {text-decoration: none; color: inherit;}
+</style>
+
+    <div class="pop-container">
+        <div class="pop-header">
+            <p>이 기능을 사용하시기 전에</p>
+            <p>마이콜라보라이프의 회원이</p>
+            <p>되어주세요!</p>
+        </div>
+        <div class="pop-body">
+            <div class="parts regi-go">
+                <a href="register.html">회원가입하기</a>
+            </div>
+            <div class="parts login-go">
+                <a href="login.html">로그인하기</a>
+            </div>
+            <div class="parts exit-go">
+                <a href="javascript:closePop()">다음에</a>
+            </div>
+        </div>
+	</div>
+</div>
 </body>
 
 <script>
@@ -378,21 +637,22 @@ var dragmover = function(elementid,movefn,endFn) {
 	});
 
 	function up(){
+
 		/*
-isGoing = false;
-	var ele = $("#container");
-	cd=cd+1;
+			isGoing = false;
+			var ele = $("#container");
+			cd=cd+1;
 
-	if(cd<0) cd = data.length-1;
-	else if(cd>=data.length) cd = 0;
+			if(cd<0) cd = data.length-1;
+			else if(cd>=data.length) cd = 0;
 
-	var item = data[cd];
+			var item = data[cd];
 
-	$("div video",ele).get(0).src = item.vurl;
-	$("div video",ele).get(0).poster = item.poster;
-	$("div video",ele).get(0).load();
-	$("div video",ele).get(0).play();
-	*/
+			$("div video",ele).get(0).src = item.vurl;
+			$("div video",ele).get(0).poster = item.poster;
+			$("div video",ele).get(0).load();
+			$("div video",ele).get(0).play();
+		*/
 
 		var page = makePage();
 		setVideo(page,1);
@@ -412,8 +672,11 @@ isGoing = false;
 			  top: "linear"
 			},
 			complete: function() {
+				$("div.video video",removed).get(0).pause();
 				$("div.video video",removed).get(0).src=$(".video video",page).get(0).src;
 				$("div.video video",removed).get(0).poster=$(".video video",page).get(0).poster;
+				$("div.video video",removed).get(0).play();
+				$("div.video video",page).get(0).src="";
 				$("div.video video",page).remove();
 				$("div.video video",removed).detach().appendTo($("div.video",page));
 				removed.remove();
@@ -437,6 +700,7 @@ isGoing = false;
 	}
 
 	function down(){
+
 		var page = makePage();
 		setVideo(page,-1);
 		page.css("top","-100vh");
@@ -444,7 +708,6 @@ isGoing = false;
 
 		var removed = $("#container .video_page");
 		$("#container").prepend(page);
-
 
 
 		removed.animate({
@@ -455,11 +718,13 @@ isGoing = false;
 			  top: "linear"
 			},
 			complete: function() {
+				$("div.video video",removed).get(0).pause();
 				$("div.video video",removed).get(0).src=$(".video video",page).get(0).src;
 				$("div.video video",removed).get(0).poster=$(".video video",page).get(0).poster;
+				$("div.video video",removed).get(0).play();
+				$("div.video video",page).get(0).src="";
 				$("div.video video",page).remove();
 				$("div.video video",removed).detach().appendTo($("div.video",page));
-
 				removed.remove();
 			}
 		  });
@@ -478,9 +743,8 @@ isGoing = false;
 			}
 		  });
 
-
 	}
-
+var taptime = 0;
 function setVideo(ele,step){
 	cd=cd+step;
 
@@ -508,7 +772,12 @@ function setVideo(ele,step){
 	$("div video",ele).get(0).src = "//mcl2static.mycollabolife.com"+item.videourl;
 	$("div video",ele).get(0).poster = "//mcl2static.mycollabolife.com"+item.posterurl;
 	$("div video",ele).get(0).load();
-	;
+
+
+	getListReply();
+
+
+	wmap(item.product[0],$(".product_infomation"));
 	var playPromise = $("div video",ele).get(0).play();
 	 
 	  if (playPromise !== undefined) {
@@ -558,12 +827,34 @@ function drawFirst(d){
 
 
 $(function(){
-	
+	$.ajax({
+	  method: "POST",
+	  url: "api.php?c=user&m=getuser",
+	  dataType:"jsonp"
+
+	})
+	  .done(function( data ) {
+			
+		  var head = data.HEAD;
+		  var body = data.BODY;
+		  try{
+			  if(body.loggedinuser.userpkey){
+					loggedinuser = body.loggedinuser;
+					return;
+			  }else{
+				  }
+		  }catch(e){
+		  }
+	  });
+
 
 });
 $(window).on('load', function() {
 	var page = makePage();
 	page.show();
+	
+	
+
 	$("#container").append(page);
     if($.getP("epi")){
 		$.wcall({
@@ -573,7 +864,26 @@ $(window).on('load', function() {
 			ok: function(head,body){drawFirst(body);}
 		});
 	}
+	$("#chattxt").keydown(function (e) {
+        if (e.keyCode  == 13){
+			writeUserData($("#chattxt").val());
+			$("#chattxt").val("");
+        }
+	});
 })
+function productdomain(v) {
+
+return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+}
+
+
+function getProductUrl(val,e,d){
+	if(d.beautycollabolink){
+		return "http://www.beautycollabo.com/product.view/"+d.beautycollabolink;
+	}
+	return "/product.html?p="+val;
+
+}
 
 /*
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -599,5 +909,52 @@ function connectToMixer(stream){
 
         }catch(e){log("getting audio is failed in my stream;");log(e);}
 		*/
+
+		
+	$("#container").on("click",function(e){
+		var d = new Date();
+		var n = d.getTime()
+		if(n-taptime < 1000){
+			var dt = 0;
+			if(e.offsetX<100){
+				dt=-10;
+			}
+			if(e.offsetX>200){
+				dt=10;
+			}
+			
+			if(dt!=0){
+				var vid = $("#container .video_page video").get(0);
+				vid.currentTime = vid.currentTime +dt;
+				}
+
+		}else{
+			taptime = n;
+		}
+
+	});
+</script>
+
+
+
+<script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+
+<script defer src="js/firebaseinit.js"></script>
+
+<script>
+
+ const firebaseConfig = {
+	  apiKey: "AIzaSyDf8a1YKk1a4IakApo24dcvmSKy_CuuUNQ",
+	  authDomain: "mcl2-vlsg.firebaseapp.com",
+	  databaseURL: "https://mcl2-vlsg.firebaseio.com",
+	  projectId: "mcl2-vlsg",
+	  storageBucket: "mcl2-vlsg.appspot.com",
+	  messagingSenderId: "125739768932",
+	  appId: "1:125739768932:web:6a7320341b664f134d1371",
+	  measurementId: "G-P0D7W9PNJ7"
+	};
+
+
 </script>
 </html>

@@ -21,11 +21,23 @@
     });
 
 
-    function addPhoto(albumName) {
-      var files = document.getElementById("photoupload").files;
-      if (!files.length) {
-        return alert("파일선택.");
+
+
+	var f_b1 = {};
+
+
+
+
+
+    function addPhoto(albumName,filesi,barid,nextfn,setvalkey) {
+
+	  var files = document.getElementById(filesi).files;
+      
+	  if (!files.length) {
+			nextfn();
+			return;
       }
+
       var file = files[0];
       var fileName = file.name;
       var albumPhotosKey = albumName + "/";
@@ -41,11 +53,20 @@
         }
       });
 
+
+	upload.on('httpUploadProgress', function(evt) {
+		$(barid).css("width",(evt.loaded*100/evt.total)+"%");
+		$(barid).css("backgroundcolor","red");
+	});
+
+
       var promise = upload.promise();
       promise.then(
         function (data) {
-          alert(data);
-          viewMedia(data.Key, data.Location)
+          console.log(data.Key +":"+ data.Location);
+		  thisObj[setvalkey] = "/"+data.Key;
+	  	  nextfn();
+		  return;
         },
         function (err) {
           return alert("업로드 실패: ", err.message);
@@ -65,10 +86,75 @@
       $('#preview').attr('src', URL.createObjectURL(ddd.files[0]));
     }
 
+	 function checkVideo(ddd,id) {
+		 $('#'+id).attr('src', URL.createObjectURL(ddd.files[0]));
+    }
+   function checkImg(ddd,id) {
+      $('#'+id+"p").attr('src', URL.createObjectURL(ddd.files[0]));
+    }
+	function upupup(){
+		var f4 = function(){
+			addPhoto(albumName,"photoupload","#b4",function(){ 
+				var doe={}; doe["video"] = thisObj; 
+				
+				thisObj.casterpkey = $("#adkfcaster").val();
+				thisObj.title = $("#adkftitle").val();
+				thisObj.videopkey = $("#adkfvideopkey").attr("d");;
+
+
+				console.log(thisObj); 
+
+				save(thisObj);
+				//wmap(doe, $(".preview_container"));
+				},"videourl");			
+		};
+		var f3 = function(){
+			addPhoto(albumName,"f3","#b3",f4,"previewurl");			
+		};
+		var f2 = function(prev){
+			addPhoto(albumName,"f2","#b2",f3,"posterurl");			
+		};
+
+		addPhoto(albumName,"f1","#b1",f2,"thumburl");
+	}
+
+
+
+	function save(obj){
+
+        $.ajax({
+          url: "https://mcl2.mycollabolife.com/admin.php?&m=modifyEpi",
+          type: "POST",
+          data: obj,
+          dataType: "jsonp",
+          success: function (data) {
+            var head = data.HEAD;
+            var body = data.BODY;
+
+            if (head.STATUS == "error") {
+              this.errfn(data.HEAD, data.BODY);
+            } else {
+				if(body=="ok"){
+					window.location.href="/admin";
+				}else{
+
+					alert(body);
+				}
+            }
+          }
+        });
+
+	}
   </script>
+
 </head>
 
 <body>
+  <!-- 1	새로운 비디오를 생성한다	1. 새로운 비디오 레코드를 생성한다	ADMIN
+		2. 파일을 업로드 한다(posterurl, thumbrul,videourl,previewurl)	ADMIN
+		3. 내용을 입력한다.	ADMIN
+		4. 내용을 적용한다.	ADMIN
+ -->
   <nav>
     <ul class="nav-bar">
       <li class="menu active"><a href="index.html">에피소드</a></li>
@@ -91,7 +177,7 @@
     <h3>에피소드 편집</h3>
     
     <div class="controlbox">
-      <button onclick="addPhoto(albumName)">적용하기</button>
+      <button onclick="upupup();">적용하기</button>
       <div id="Frefreffre"></div>
     </div>
     <div class="container">
@@ -104,44 +190,54 @@
             </colgroup>
             <tr>
               <td>NO</td>
-              <td bind="text:video.videopkey">1</td>
+              <td  id="adkfvideopkey" bind="text:video.videopkey,d:video.videopkey">1</td>
             </tr>
             <tr>
               <td>인플루언서</td>
               <td>
-                <select bind="list:caster,val:video.casterpkey">
+                <select bind="list:caster,val:video.casterpkey"  id="adkfcaster">
                   <option class="template" style="display:none" bind="val:casterpkey,text:name">김태경</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td>에피소드 제목</td>
-              <td><input type="text" placeholder="원래 있었던 제목" bind="val:video.title"></td>
+              <td><input type="text" id="adkftitle" placeholder="원래 있었던 제목" bind="val:video.title"></td>
             </tr>
             <tr>
               <td>썸네일 이미지</td>
-              <td><input type="file"></td>
+              <td><input type="file" id="f1" onchange="checkImg(this,'f1')">
+			  <br/><div id="b1" style="height:20px;background-color:red;width:0px"></div></td>
             </tr>
             <tr>
               <td>블러 이미지</td>
-              <td><input type="file"></td>
+              <td><input type="file"  id="f2" onchange="checkImg(this,'f2')">
+			  <br/><div id="b2" style="height:20px;background-color:red;width:0px"></div></td>
             </tr>
             <tr>
               <td>5초 비디오</td>
-              <td><input type="file"></td>
+              <td><input type="file" id="f3" onchange="checkVideo(this,'preview5')">
+			  <br/><div id="b3" style="height:20px;background-color:red;width:0px"></div></td>
             </tr>
             <tr>
               <td>전체 비디오</td>
-              <td><input id="photoupload" type="file" accept="*" onchange="check(this)"></td>
+              <td><input id="photoupload" type="file" accept="*" onchange="check(this)">
+			  <br/><div id="b4" style="height:20px;background-color:red;width:0px"></div></td>
+            </tr>
+            <tr>
+              <td>상태</td>
+              <td>
+                <input type="radio" name="status" checked><label>NORMAL</label>
+                <input type="radio" name="status"><label>STOP</label>
+              </td>
             </tr>
           </table>
         </form>
       </section>
       <section class="preview_container">
-        <img style="background-color:red;width:180px;height:180px" bind="src:video.thumburl:adddomain" /> <!-- 썸네일 -->
-        <img style="background-color:red;width:180px;height:320px" bind="src:video.posterurl:adddomain" /> <!-- 블러 -->
-        <video style="background-color:red;width:180px;height:320px" bind="src:video.previewurl:adddomain"></video>
-        <!-- 5초 -->
+        <img style="background-color:red;width:180px;height:180px" bind="src:video.thumburl:adddomain"  id="f1p" /> <!-- 썸네일 -->
+        <img style="background-color:red;width:180px;height:320px" bind="src:video.posterurl:adddomain"  id="f2p"/> <!-- 블러 -->
+        <video style="background-color:red;width:180px;height:320px" bind="src:video.previewurl:adddomain" id="preview5"></video>
         <video style="background-color:red;width:180px;height:320px" id="preview"
           bind="src:video.videourl:adddomain"></video> <!-- 전체 비디오 -->
         <div class="comment" style="display: flex; justify-content: space-between; text-align: center;">
@@ -308,7 +404,9 @@ return "https://mcl2static.mycollabolife.com/predev/product/" + v;
     });
   }
 
+var thisObj = null;
   function draw(d) {
+	  thisObj = d.video;
     wmap(d, $("main"));
   }
 

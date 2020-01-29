@@ -30,6 +30,31 @@ ul, ol {list-style:none;}
 .page_body .titlebar a.more {color:#ff545c; font-size:10px; position:absolute; top:0; right:15px;}
 
 </style>
+<style>
+        .page_header .page_title {text-align:center; margin:13px 0 0 0; font-weight:bold; font-size:12px;}
+        .page_header a.icon_arrowback {position:absolute; top:13px; left:15px;}
+        .like_video .total {background-color:rgba(255,255,255,0.1); color:#f2f2f7; font-size:10px; padding:12px 0;}
+        .like_video .item_wrapper {width:290px; margin:0 auto;}
+        .like_video .total .total_count {color:#ff545c; font-size:10px; margin-left:5px;}
+        .like_video .information {margin-top:20px; text-align:left; position:relative;}
+        .like_video .information .profile img {width:40px; height:40px; border-radius:50%; object-fit:cover;}
+        .like_video .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
+        .like_video .information a.title {display:block; position:absolute; top:2px; left:50px;}
+        .like_video .information .subcount {color:#ff545c; font-weight:normal; margin:0 3px; font-style:normal;}
+        .like_video .information .btn_subscribe {display:none;}
+        
+        
+        .video_xs .item_wrapper {padding:20px 15px; position:relative; border-bottom:1px solid rgba(255,255,255,0.1);}
+        .video_xs .item_wrapper a .thumbnail .centered img {width:45px; height:45px; object-fit:cover; border-radius:5px;}
+        .video_xs .item_wrapper a .thumbnail .mask {display:none;}
+        .video_xs .item_wrapper a .thumbnail .caption {z-index:2; position:absolute; top:30px; right:15px;}
+        .video_xs .item_wrapper a .thumbnail .caption .icon img {width:17px; height:17px;}
+        .video_xs .item_wrapper a .information {position:absolute; top:0; left:70px;}
+        .video_xs .item_wrapper a .information .title {color:#fff; font-size:10px; font-weight:bold; white-space:normal;}
+        .video_xs .item_wrapper a .information .caster {color:#fff; font-size:10px; font-weight:bold; white-space:normal;}
+        .video_xs .item_wrapper a .information .caster .name {background-color:transparent; padding:0; display:inline-block;}
+        </style>
+        
 </head>
 <body>
 <div style="max-width:320px; margin:0 auto;">
@@ -45,30 +70,6 @@ ul, ol {list-style:none;}
 
 
 <!-- 2019-12-26 수정 및 추가 -->
-<style>
-.page_header .page_title {text-align:center; margin:13px 0 0 0; font-weight:bold; font-size:12px;}
-.page_header a.icon_arrowback {position:absolute; top:13px; left:15px;}
-.like_video .total {background-color:rgba(255,255,255,0.1); color:#f2f2f7; font-size:10px; padding:12px 0;}
-.like_video .item_wrapper {width:290px; margin:0 auto;}
-.like_video .total .total_count {color:#ff545c; font-size:10px; margin-left:5px;}
-.like_video .information {margin-top:20px; text-align:left; position:relative;}
-.like_video .information .profile img {width:40px; height:40px; border-radius:50%; object-fit:cover;}
-.like_video .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
-.like_video .information a.title {display:block; position:absolute; top:2px; left:50px;}
-.like_video .information .subcount {color:#ff545c; font-weight:normal; margin:0 3px; font-style:normal;}
-.like_video .information .btn_subscribe {display:none;}
-
-
-.video_xs .item_wrapper {padding:20px 15px; position:relative; border-bottom:1px solid rgba(255,255,255,0.1);}
-.video_xs .item_wrapper .thumbnail .centered img {width:45px; height:45px; object-fit:cover; border-radius:5px;}
-.video_xs .item_wrapper .thumbnail .mask {display:none;}
-.video_xs .item_wrapper .thumbnail .caption {z-index:2; position:absolute; top:30px; right:15px;}
-.video_xs .item_wrapper .thumbnail .caption .icon img {width:17px; height:17px;}
-.video_xs .item_wrapper .information {position:absolute; top:0; left:70px;}
-.video_xs .item_wrapper .information .title {color:#fff; font-size:10px; font-weight:bold; white-space:normal;}
-.video_xs .item_wrapper .information .caster {color:#fff; font-size:10px; font-weight:bold; white-space:normal;}
-.video_xs .item_wrapper .information .caster .name {background-color:transparent; padding:0; display:inline-block;}
-</style>
 
 
         <!-- 각 상세 페이지 헤더 -->
@@ -81,27 +82,172 @@ ul, ol {list-style:none;}
                <!-- 좋아요 표시한 에피소드 -->
         <section class="page_like_video" style="margin:45px 0 100px 0;">
                         <div class="like_video">
+                      
+                             
                                 <div class="total">
-                                        <div class="item_wrapper">전체<span class="total_count">1</span></div>
+                                        <div class="item_wrapper">전체<span class="total_count" id="epicnt">1</span></div>
                                 </div>
                                 <div class="video_xs">
-                                        <div class="item_wrapper">
+                                        <div class="item_wrapper template" style="display: none;">
+                                                <a bind="href:videopkey:videourl">
                                                 <div class="thumbnail">
                                                         <div class="mask"></div>
-                                                        <div class="centered"><img src="https://mcl2static.mycollabolife.com/predev/video/v_1_thumb.jpg"></div>
+                                                        <div class="centered"><img bind="img:thumburl:adddomain" src="https://mcl2static.mycollabolife.com/predev/video/v_1_thumb.jpg"></div>
                                                         <div class="caption">
                                                                 <!-- for delete. later <span class="icon"><img src="img/icon_star.png"></span>  -->
                                                         </div>
                                                 </div>
                                                 <div class="information">
-                                                        <div class="title">MCL리뷰맛집 1회</div> <!-- bind="text:video.title" -->
-                                                        <div class="caster"><span class="name">이재정</span></div> <!-- bind="text:caster.name" -->
+                                                        <div class="title" bind="text:title">MCL리뷰맛집 1회</div> <!-- bind="text:video.title" -->
+                                                        <div class="caster" bind="text:castername"><span class="name">이재정</span></div> <!-- bind="text:caster.name" -->
                                                 </div>
+                                        </a>
                                         </div>
                                 </div>
+                       
                         </div>
                 </section>
 
 </div>
 </body>
+<script>
+        var loggedinuser = {};
+        $.ajax({
+          method: "POST",
+          url: "api.php?c=user&m=getuser",
+          dataType:"jsonp"
+        
+        })
+          .done(function( data ) {
+                        
+                  var head = data.HEAD;
+                  var body = data.BODY;
+                  try{
+                          if(body.loggedinuser.userpkey){
+                                        loggedinuser = body.loggedinuser;
+                                        showLoggedUser(true);
+                                  return;
+                          }else{
+                                        showLoggedUser(false);
+                                  }
+                  }catch(e){
+                                showLoggedUser(false);
+                  }
+          });
+        
+        
+        function showLoggedUser(a){
+        
+                if(a){
+                        $("#epicnt").text(loggedinuser.likevideo.cnt);
+                        $("#followcnt").text(loggedinuser.follow.cnt);
+        
+                }else{
+                        $(".login").hide();
+                        $(".titlebox").show();
+                }
+        }
+
+
+        loadData();
+
+function casterurl(v){
+
+return "https://mcl2.mycollabolife.com/influencer.html?casterpkey="+v;
+}
+
+function adddomain(v) {
+
+return "https://mcl2static.mycollabolife.com" + v;
+}
+
+function videourl(v){
+
+return "epi://"+v;
+}
+var isDataLoading = false;
+function loadData(){
+	if(isDataLoading) return;
+	isDataLoading = true;
+	ele = $(".video_xs");
+
+	$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=user&m=getEpiList",
+			type: "GET",
+			ok: function(head,body){
+				try{
+					if(body.loggedinuser.userpkey>0){
+						loggedinuser = body.loggedinuser;
+					}
+				}catch(e){}
+				
+				var templete = $(".template",ele);
+				for(var i = 0;i<body["likeepilist"].length;i++){
+					var curEle = templete.clone();
+					curEle.css("display","");
+					curEle.removeClass("template");
+
+					wmap(body["likeepilist"][i],curEle);
+					
+					ele.append(curEle);
+				}
+
+
+			isDataLoading = false;
+			}
+		});
+
+
+	
+}
+
+function setUserSubscribe(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$(".btn_subscribe",ele).text("구독중");
+			$(".subcount",ele).text(cnt+1);
+		}
+
+	}
+	function reqSubscribe(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
+			if(body=="follow"){
+				$(".btn_subscribe",ele).text("구독중");
+				$(".subcount",ele).text(cnt+1);
+			}
+			if(body=="unfollow"){
+				$(".btn_subscribe",ele).text("+ 구독하기");
+				$(".subcount",ele).text(cnt-1);
+			}
+
+		}
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=followCaster",
+			type: "GET",
+			data:{casterpkey:v},
+			ok: fn
+		});
+	}
+
+	function checkLogin(){
+		try{
+		if(loggedinuser.userpkey>0) return true;
+		}catch(e){}
+		return false;
+
+	}
+
+	function showLoginPop(){
+		var orid = $(".popopopop");
+		orid.show();
+	}
+        
+</script>
 </html>

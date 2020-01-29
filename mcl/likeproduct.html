@@ -87,21 +87,23 @@ ul, ol {list-style:none;}
         <section class="page_like_products" style="margin:45px 0 100px 0;">
                 <div class="like_products">
                         <div class="total">
-                                <div class="item_wrapper">전체<span class="total_count">1</span></div>
+                                <div class="item_wrapper">전체<span class="total_count" id="productcnt">1</span></div>
                         </div>
                         <div class="products_xs">
-                                <div class="item_wrapper">
+                                <div class="item_wrapper template" style="display: none;">
+                                        <a bind="href:productpkey:getProductUrl">
                                         <div class="thumbnail">
                                                 <div class="mask"></div>
-                                                <div class="centered"><img src="https://mcl2static.mycollabolife.com/predev/product/N9651-N7632-S6731.jpg" alt=""></div>
+                                                <div class="centered"><img bind="img:productthumb:productthumb" src="https://mcl2static.mycollabolife.com/predev/product/N9651-N7632-S6731.jpg" alt=""></div>
                                                 <div class="caption">
                                                         <!-- <span class="icon"><img src="img/icon_star.png"></span> -->
                                                 </div>
                                         </div>
                                         <div class="information">
-                                                <div class="title">[닥터플로라] 로즈꽃물 레드크림</div>
-                                                <div class="price"><del>145,000</del><span class="total">120,500원</span></div>
+                                                <div class="title" bind="text:productname">[닥터플로라] 로즈꽃물 레드크림</div>
+                                                <div class="price"><del bind="text:xprice">145,000</del><span class="total" bind="text:price">120,500원</span></div>
                                         </div>
+                                </a>
                                 </div>
                         </div>
                 </div>
@@ -109,4 +111,152 @@ ul, ol {list-style:none;}
 
 </div>
 </body>
+<script>
+        var loggedinuser = {};
+        $.ajax({
+          method: "POST",
+          url: "api.php?c=user&m=getuser",
+          dataType:"jsonp"
+        
+        })
+          .done(function( data ) {
+                        
+                  var head = data.HEAD;
+                  var body = data.BODY;
+                  try{
+                          if(body.loggedinuser.userpkey){
+                                        loggedinuser = body.loggedinuser;
+                                        showLoggedUser(true);
+                                  return;
+                          }else{
+                                        showLoggedUser(false);
+                                  }
+                  }catch(e){
+                                showLoggedUser(false);
+                  }
+          });
+        
+        
+        function showLoggedUser(a){
+        
+                if(a){
+                        $("#productcnt").text(loggedinuser.likeproduct.cnt);
+        
+                }else{
+                        $(".login").hide();
+                        $(".titlebox").show();
+                }
+        }
+
+
+        loadData();
+
+function casterurl(v){
+
+return "https://mcl2.mycollabolife.com/influencer.html?casterpkey="+v;
+}
+
+function adddomain(v) {
+
+return "https://mcl2static.mycollabolife.com" + v;
+}
+
+function getProductUrl(val,e,d){
+	if(d.beautycollabolink){
+		return "http://www.beautycollabo.com/product.view/"+d.beautycollabolink;
+	}
+	return "/product.html?p="+val;
+
+}
+
+function productthumb(v){
+	return "https://mcl2static.mycollabolife.com/predev/product/"+v;
+
+}
+
+var isDataLoading = false;
+function loadData(){
+	if(isDataLoading) return;
+	isDataLoading = true;
+	ele = $(".products_xs");
+
+	$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=user&m=getLikeProductList",
+			type: "GET",
+			ok: function(head,body){
+				try{
+					if(body.loggedinuser.userpkey>0){
+						loggedinuser = body.loggedinuser;
+					}
+				}catch(e){}
+				
+				var templete = $(".template",ele);
+				for(var i = 0;i<body["likeproductlist"].length;i++){
+					var curEle = templete.clone();
+					curEle.css("display","");
+					curEle.removeClass("template");
+
+					wmap(body["likeproductlist"][i],curEle);
+					
+					ele.append(curEle);
+				}
+
+
+			isDataLoading = false;
+			}
+		});
+
+
+	
+}
+
+function setUserSubscribe(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$(".btn_subscribe",ele).text("구독중");
+			$(".subcount",ele).text(cnt+1);
+		}
+
+	}
+	function reqSubscribe(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
+			if(body=="follow"){
+				$(".btn_subscribe",ele).text("구독중");
+				$(".subcount",ele).text(cnt+1);
+			}
+			if(body=="unfollow"){
+				$(".btn_subscribe",ele).text("+ 구독하기");
+				$(".subcount",ele).text(cnt-1);
+			}
+
+		}
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=followCaster",
+			type: "GET",
+			data:{casterpkey:v},
+			ok: fn
+		});
+	}
+
+	function checkLogin(){
+		try{
+		if(loggedinuser.userpkey>0) return true;
+		}catch(e){}
+		return false;
+
+	}
+
+	function showLoginPop(){
+		var orid = $(".popopopop");
+		orid.show();
+	}
+        
+</script>
 </html>

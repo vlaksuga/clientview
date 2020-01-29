@@ -52,8 +52,10 @@ ul, ol {list-style:none;}
 .tab_programs .item_wrapper .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
 .tab_programs .item_wrapper .information .name {font-size:14px;}
 .tab_programs .item_wrapper .information .subcount {color:#ff545c; font-weight:normal; margin:0 3px; font-style:normal;}
-.tab_programs .item_wrapper .information .btn_subscribe_off {font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-color:black; border:1px white solid;}
-.tab_programs .item_wrapper .information .btn_subscribe_on {font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-image: linear-gradient(-30deg, rgb(255, 139, 106), rgb(255, 84, 92), rgb(131, 122, 255)); border:none;}
+.tab_programs .item_wrapper .information .btn_subscribe.off {display: none; font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-color:black; border:1px white solid;}
+.tab_programs .item_wrapper .information .btn_subscribe.off.active {display: inline-block;}
+.tab_programs .item_wrapper .information .btn_subscribe.on {display: none; font-size:11px; margin-top:10px; border-radius:10px; padding:2px 7px 3px 7px; color:#fff; background-image: linear-gradient(-30deg, rgb(255, 139, 106), rgb(255, 84, 92), rgb(131, 122, 255)); border:none;}
+.tab_programs .item_wrapper .information .btn_subscribe.on.active  {display: inline-block;}
 
 
 .tab_hashtags {width:290px; margin:0 auto 10px auto; text-align:center;}
@@ -102,9 +104,9 @@ ul, ol {list-style:none;}
                                                 <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
                                         </div>
                                         <div class="information">
-                                                <a class="title"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount" bind="text:cnt">1</em>명</span></a>
-												<button class="btn_subscribe_off">+ 구독하기</button>
-												<!--button class="btn_subscribe_on">구독중</button-->
+                                                <a class="title"  bind="dd:isS:setUserSubscribe"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount" bind="text:cnt">1</em>명</span></a>
+												<button class="btn_subscribe off active"  bind="d:casterpkey:reqSub">+ 구독하기</button>
+												<button class="btn_subscribe on">구독중</button>
                                         </div>
 									</a>
                                 </div>
@@ -182,7 +184,11 @@ function loadData(){
 			url: "https://mcl2.mycollabolife.com/api.php?m=explore",
 			type: "GET",
 			ok: function(head,body){
-
+				try{
+					if(body.loggedinuser.userpkey>0){
+						loggedinuser = body.loggedinuser;
+					}
+				}catch(e){}
 				var topbannsr = body["collabotop"];
 				$("#topbanner").attr("src",topbannsr[0].img).on("click",function(){window.location.href=topbannsr[0].url});
 
@@ -251,6 +257,110 @@ $(function(){
 		
 	});	
 });
+
+
+
+</script>
+
+
+
+<script>
+
+var loggedinuser = false;
+	function reqSub(v,e,d){
+		e.on("click",function(){reqSubscribe(v,e);});
+	}
+	function reqLikeProduct(v,e,d){
+		e.on("click",function(){reqLike(v,e);});
+	}
+
+	function close1(){
+		history.back();
+	}
+
+
+	function setUserSubscribe(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$(".btn_subscribe",ele).text("구독중");
+			$(".subcount",ele).text(cnt+1);
+		}
+
+	}
+	function reqSubscribe(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
+			if(body=="follow"){
+				$(".btn_subscribe",ele).text("구독중");
+				$(".subcount",ele).text(cnt+1);
+			}
+			if(body=="unfollow"){
+				$(".btn_subscribe",ele).text("+ 구독하기");
+				$(".subcount",ele).text(cnt-1);
+			}
+
+		}
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=followCaster",
+			type: "GET",
+			data:{casterpkey:v},
+			ok: fn
+		});
+	}
+
+	function checkLogin(){
+		try{
+		if(loggedinuser.userpkey>0) return true;
+		}catch(e){}
+		return false;
+
+	}
+
+	function showLoginPop(){
+		var orid = $(".popopopop");
+		orid.show();
+	}
+
+
+	function setUserLike(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$("img",ele).attr("src","img/icon_star_fill.png");
+		}
+
+	}
+	function reqLike(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			if(body=="like"){
+				$("img",ele).attr("src","img/icon_star_fill.png");
+			}
+			if(body=="unlike"){
+				$("img",ele).attr("src","img/icon_star.png");
+			}
+		}
+
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=likeProduct",
+			type: "GET",
+			data:{productpkey:v},
+			ok: fn
+		});
+	}
+	function closePop(){
+		$(".popopopop").hide();
+	}
 
 
 

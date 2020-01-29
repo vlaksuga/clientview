@@ -30,7 +30,7 @@
         <div class="wrap">
         <h3>에피소드</h3>
         <div class="topbox">
-            <div class="btn"><button onclick="location.href='uploadVideo.html'">등록하기</button></div>
+            <div class="btn"><button onclick="addNewVideo()">등록하기</button></div>
             <div class="search"  style="display: none;"><input type="text" placeholder="인플루언서 또는 제목"><button>검색</button></div> <!-- 검색 대상 : caster.name, video.title 1글자이상-->
         </div>
         <table class="listtable" bind="list:listvideo">
@@ -84,6 +84,14 @@
 
 	function goedit(v){
 		return "./editVideo.html?videopkey=" + v;
+	}
+
+	function addNewVideo(v){
+		$.wcall({
+            url: admindomain + "?m=addNewVideo",
+            type: "GET",
+            ok: function (head, body) { window.location.href=goedit(body.id); }
+        });
 	}
 
     function adddomain(v) {

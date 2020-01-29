@@ -81,8 +81,15 @@
               <input type="checkbox" value="best">베스트
             </td>
           </tr>
+          <tr>
+            <td>상태</td>
+            <td>
+              <input type="radio" name="status" checked><label>NORMAL</label>
+              <input type="radio" name="status"><label>STOP</label>
+            </td>
+          </tr>
         </table>
-        <button>적용하기</button>
+        <a onclick="save()">적용하기</a>
       </form>
     </section>
     <section class="imagesec"  style="width:500px; display: flex; justify-content: center; align-items: center; flex-direction: column;">
@@ -102,18 +109,18 @@
 //https://mcl2.mycollabolife.com/admin.php?m=getProduct&productpkey=1
 
     function adddomain(v) {
-
         return "https://mcl2static.mycollabolife.com" + v;
     }
 
 
     function productdomain(v) {
+		return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+	}
 
-    return "https://mcl2static.mycollabolife.com/predev/product/" + v;
-}
 
     var admindomain = "https://mcl2.mycollabolife.com/admin.php";
-    function getList() {
+
+	function getList() {
         $.wcall({
             url: admindomain + "?m=getProduct",
             type: "GET",
@@ -122,10 +129,30 @@
         });
     }
 
+
     function draw(d) {
         wmap(d, $("main"));
     }
 
-    getList();
+    
+	getList();
+
+
+	function save(){
+		 $.wcall({
+            url: admindomain + "?m=modifyProduct",
+            type: "POST",
+            data: { "productpkey": $.getP("productpkey"),
+//					"":
+					
+			},
+            ok: function (head, body) { draw(body); }
+        });
+		alert( $.getP("productpkey"));
+
+	}
+
+
+
 </script>
 </html>

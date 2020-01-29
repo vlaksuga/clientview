@@ -112,7 +112,10 @@ input[type=submit] {-webkit-appearance:none;}
 					  var head = data.HEAD;
 					  var body = data.BODY;
 					  if(body=="OK"){
-						  window.location.href="/";
+						  $("[name=login_id]",$("#sso")).val(email);
+						  $("[name=login_password]",$("#sso")).val(password);
+						  $("#sso").submit();
+
 						  return;
 					  }
 					alert(body);
@@ -123,6 +126,13 @@ input[type=submit] {-webkit-appearance:none;}
 			}
 
 		</script>
+
+	<form  id="sso" method="post" action="http://www.beautycollabo.com/program/member.login.pro.php" style="display:none">
+		<input type="text" name="_mode" value="llo">
+		<input type="text" name="login_id" value="page1@vlaksuga.com">
+		<input type="text" name="login_password" value="kim31010">
+
+	</form>
                 <div class="edit_account">
                         <form  method="post" action="/api.php?c=user&m=signin" onSubmit="return checkForm()">
                                 <div class="form_list">

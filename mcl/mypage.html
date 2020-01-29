@@ -107,7 +107,7 @@ ul, ol {list-style:none;}
 										<div class="icon_left"><img
 												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
 												alt=""></div>
-										<div class="label">구독하는 인플루언서<span class="lists_count">0</span></div> <!-- bind : count:followcaster.casterpkey -->
+										<div class="label">구독하는 인플루언서<span class="lists_count" id="followcnt">0</span></div> <!-- bind : count:followcaster.casterpkey -->
 										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
 									</div>
 								</a>
@@ -117,7 +117,7 @@ ul, ol {list-style:none;}
 										<div class="icon_left"><img
 												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
 												alt=""></div>
-										<div class="label">좋아요 표시한 에피소드<span class="lists_count">0</span></div> <!-- bind : count:likevideo.casterpkey -->
+										<div class="label">좋아요 표시한 에피소드<span class="lists_count" id="epicnt">0</span></div> <!-- bind : count:likevideo.casterpkey -->
 										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
 									</div>
 								</li></a>
@@ -126,7 +126,17 @@ ul, ol {list-style:none;}
 										<div class="icon_left"><img
 												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
 												alt=""></div>
-										<div class="label">찜한 상품<span class="lists_count">0</span></div> <!-- bind : count:likeproduct.casterpkey -->
+										<div class="label">찜한 상품<span class="lists_count"  id="productcnt">0</span></div> <!-- bind : count:likeproduct.casterpkey -->
+										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
+									</div>
+								</a>
+								</li>
+								<li><a href="http://www.beautycollabo.com/?pn=mypage.order.list"> <!-- 동일한 유저의 뷰티콜라보 구매내역 페이지 -->
+									<div class="lists">
+										<div class="icon_left"><img
+												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
+												alt=""></div>
+										<div class="label">구매 내역 보기</div>
 										<div class="icon_right"><img src="img/chevron_right.png" alt=""></div>
 									</div>
 								</a>
@@ -249,6 +259,11 @@ function showLoggedUser(a){
 		$(".titlebox").hide();
 		$(".login").show();
 		$("#loggedinuser").text(loggedinuser.name);
+
+		$("#productcnt").text(loggedinuser.likeproduct.cnt);
+		$("#epicnt").text(loggedinuser.likevideo.cnt);
+		$("#followcnt").text(loggedinuser.follow.cnt);
+
 	}else{
 		$(".login").hide();
 		$(".titlebox").show();

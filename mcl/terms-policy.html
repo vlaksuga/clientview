@@ -53,7 +53,20 @@ ul, ol {list-style:none;}
 .tab_view{padding: 18px;}
 pre {white-space: pre-line; font-size: 10px;}
 </style>
+<script>
 
+	$(function(){
+		$(".tab_item").on("click",function(){
+			$(".tab_item").removeClass("active");
+			$(this).addClass("active");
+			var rfrfr = $(this).attr("tab");
+			$(".tab_view").hide();
+			$(rfrfr).show();
+
+		});
+	});
+
+</script>
 
         <!-- 각 상세 페이지 헤더 -->
         <div class="page_header">
@@ -61,8 +74,8 @@ pre {white-space: pre-line; font-size: 10px;}
                 <a href="javascript:history.back();" class="icon_arrowback"><img style="width:1.3em; height:1.3em" src="img/icon_arrow_back.png"></a>
         </div>
         <div class="tab">
-                <div class="tab_item active">이용약관</div>
-                <div class="tab_item">개인정보 처리방침</div>
+                <div class="tab_item active" tab="#tab1">이용약관</div>
+                <div class="tab_item" tab="#tab2">개인정보 처리방침</div>
         </div>
         <div class="page_body">
                 <section class="viewcontent">

@@ -223,8 +223,7 @@ ul, ol {list-style:none;}
                                                 <div class="mask"></div>
                                                 <div class="centered" style="width:140px;height:140px"><img bind="img:productthumb:productthumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
                                                 <div class="caption">
-													<a><span class="icon active"><img src="img/icon_star.png"></span></a>
-													<a><span class="icon"><img src="img/icon_star_fill.png"></span></a>
+													<a><span class="icon active" bind="d:productpkey:reqLikeProduct"><img src="img/icon_star.png" bind="d:isS:setUserLike"></span></a>
                                                 </div>
                                         </div>
                                         <div class="information">
@@ -293,7 +292,10 @@ $(window).on('load', function() {
 		url: domain + "?m=product",
 		type: "GET",
 		data: {"pkey":lastpkey},
-		ok: function(head,body){
+		ok: function(head,a){
+			var body = a.product;
+			loggedinuser = a.loggedinuser;
+
 			var templete = $(".template",ele);
 				for(var i = 0;i<body.length;i++){
 					lastpkey = body[i].productpkey
@@ -325,7 +327,8 @@ function loadData(cccc,first){
 		url: url,
 		type: "GET",
 		data: {"pkey":lastpkey,"cate":cccc},
-		ok: function(head,body){
+		ok: function(head,a){
+			var body = a.product;
 			var templete = $(".template",ele);
 				for(var i = 0;i<body.length;i++){
 					lastpkey = body[i].productpkey
@@ -382,6 +385,107 @@ $(function(){
 		$(this).addClass("active");
 	});	
 });
+
+</script>
+<script>
+
+var loggedinuser = false;
+	function reqSub(v,e,d){
+		e.on("click",function(){reqSubscribe(v,e);});
+	}
+	function reqLikeProduct(v,e,d){
+		e.on("click",function(){reqLike(v,e);});
+	}
+
+	function close1(){
+		history.back();
+	}
+
+
+	function setUserSubscribe(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$(".btn_subscribe",ele).text("구독중");
+			$(".subcount",ele).text(cnt+1);
+		}
+
+	}
+	function reqSubscribe(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
+			if(body=="follow"){
+				$(".btn_subscribe",ele).text("구독중");
+				$(".subcount",ele).text(cnt+1);
+			}
+			if(body=="unfollow"){
+				$(".btn_subscribe",ele).text("+ 구독하기");
+				$(".subcount",ele).text(cnt-1);
+			}
+
+		}
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=followCaster",
+			type: "GET",
+			data:{casterpkey:v},
+			ok: fn
+		});
+	}
+
+	function checkLogin(){
+		try{
+		if(loggedinuser.userpkey>0) return true;
+		}catch(e){}
+		return false;
+
+	}
+
+	function showLoginPop(){
+		var orid = $(".popopopop");
+		orid.show();
+	}
+
+
+	function setUserLike(v,e,d){
+		var ele = $(e).parent();
+		if(v=="Y"){
+			$("img",ele).attr("src","img/icon_star_fill.png");
+		}
+
+	}
+	function reqLike(v,e){
+		if(!checkLogin()){
+			showLoginPop();
+			return;
+		}
+		var ele = $(e).parent();
+		var fn = function(head,body){
+			if(body=="like"){
+				$("img",ele).attr("src","img/icon_star_fill.png");
+			}
+			if(body=="unlike"){
+				$("img",ele).attr("src","img/icon_star.png");
+			}
+		}
+
+
+		$.wcall({
+			url: "https://mcl2.mycollabolife.com/api.php?c=ser&m=likeProduct",
+			type: "GET",
+			data:{productpkey:v},
+			ok: fn
+		});
+	}
+	function closePop(){
+		$(".popopopop").hide();
+	}
+
+
 
 </script>
 </html>
