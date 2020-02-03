@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<head>
+    <title>이름궁합</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #222222;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        section {
+            text-align: center;
+        }
+
+        button {
+            width: 80%;
+            height: 30px;
+            margin: 10px;
+            border: none;
+            background-color: tomato;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .app {
+            width: 320px;
+            margin: 0 auto;
+        }
+
+        .element {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        label {
+            font-size: 30px;
+            display: block;
+            margin: 5px 0;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            text-align: center;
+            font-size: 18px;
+        }
+        #result, #korstrarr {
+            font-size: 40px;
+        }
+
+        #korstrarr {
+            letter-spacing: 5px;
+        }
+        .resss {
+            line-height: 50px;
+        }
+        #step1, #step2, #step3, #step4{
+            font-size: 38px;
+            letter-spacing: 5px;
+        }
+
+        #final {
+            color: tomato;
+            font-size: 50px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <header>이대로 단일화 괜찮은가?</header>
+        <section>
+            <div class="insertbox">
+                <div class="element">
+                    <label>TOP</label>
+                    <input type="text" id="name1" value="김태경">
+                </div>
+                <div class="element">
+                    <label>BOTTOM</label>
+                    <input type="text" id="name2" value="강지형">
+                </div>
+            </div>
+
+            <button onclick="dodo();">ARABOZA</button>
+
+        </section>
+        <section>
+            <div id="result"></div>
+            <div id="koralpha"></div>
+            <div id="korstrarr"></div>
+            <div id="countstroke"></div>
+            <div class="resss">
+                <div id="step1"></div>
+                <div id="step2"></div>
+                <div id="step3"></div>
+                <div id="step4"></div>
+            </div>
+            <div id="final"></div>
+            <div id="opi"></div>
+        </section>
+    </div>
+</body>
+<script>
+
+    var viewCombi = document.getElementById('result');
+    var viewKorAlpha = document.getElementById('koralpha');
+    var viewStrokes = document.getElementById('korstrarr');
+    var viewStep1 = document.getElementById('step1');
+    var viewStep2 = document.getElementById('step2');
+    var viewStep3 = document.getElementById('step3');
+    var viewStep4 = document.getElementById('step4');
+    var viewFinal = document.getElementById('final');
+    var viewOpi = document.getElementById('opi');
+
+    function dodo() {
+
+        var n1 = document.getElementById('name1').value;
+        var n2 = document.getElementById('name2').value;
+        var i;
+        var resChar = [];
+        var resCharName1 = [];
+        var resCharName2 = [];
+        var resCharName3 = [];
+
+        for (i = 0; i < 3; i++) {
+            resChar.push(n1.slice(i, i + 1));
+            resChar.push(n2.slice(i, i + 1));
+            resCharName1.push(n1.slice(i, i + 1));
+            resCharName2.push(n2.slice(i, i + 1));
+        };
+
+
+        console.log(resCharName1);
+        console.log(resCharName2);
+
+
+        // hangul alphabet const
+        const f = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+        const s = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
+        const t = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+
+        // strokes
+        const strokesf = [2, 4, 2, 3, 6, 5, 4, 4, 8, 2, 4, 1, 3, 6, 4, 3, 4, 4, 3];
+        const strokesS = [2, 3, 3, 4, 2, 3, 3, 4, 2, 4, 5, 3, 3, 2, 4, 5, 3, 3, 1, 2, 1];
+        const strokesT = [0, 2, 4, 4, 2, 5, 5, 3, 5, 7, 9, 9, 7, 9, 9, 8, 4, 4, 6, 2, 4, 1, 3, 4, 3, 4, 4, 3];
+
+        const ga = 44032; // static ex '가'
+        var strokesSum = [];
+
+        for (i = 0; i < resChar.length; i++) {
+            var e = resChar[i];
+            let uni = e.charCodeAt(0);
+            uni = uni - ga;
+            let fnum = parseInt(uni / 588);
+            let snum = parseInt((uni - (fnum * 588)) / 28);
+            let tnum = parseInt(uni % 28);
+            let Sumorigin = strokesf[fnum] + strokesS[snum] + strokesT[tnum];
+            if (Sumorigin < 10) {
+                strokesSum.push(Sumorigin);
+            } else {
+                strokesSum.push(Sumorigin - 10);
+            };
+        };
+
+        var SumStep1 = [];
+        var SumStep2 = [];
+        var SumStep3 = [];
+        var SumStep4 = [];
+
+        for (i = 0; i < strokesSum.length - 1; i++) {
+            Step1SumOrigin = strokesSum[i] + strokesSum[i + 1];
+            if (Step1SumOrigin < 10) {
+                SumStep1.push(Step1SumOrigin);
+            } else {
+                SumStep1.push(Step1SumOrigin - 10);
+            }
+        }
+        for (i = 0; i < SumStep1.length - 1; i++) {
+            Step2SumOrigin = SumStep1[i] + SumStep1[i + 1];
+            if (Step2SumOrigin < 10) {
+                SumStep2.push(Step2SumOrigin);
+            } else {
+                SumStep2.push(Step2SumOrigin - 10);
+            }
+        }
+        for (i = 0; i < SumStep2.length - 1; i++) {
+            Step3SumOrigin = SumStep2[i] + SumStep2[i + 1];
+            if (Step3SumOrigin < 10) {
+                SumStep3.push(Step3SumOrigin);
+            } else {
+                SumStep3.push(Step3SumOrigin - 10);
+            }
+        }
+        for (i = 0; i < SumStep3.length - 1; i++) {
+            Step4SumOrigin = SumStep3[i] + SumStep3[i + 1];
+            if (Step4SumOrigin < 10) {
+                SumStep4.push(Step4SumOrigin);
+            } else {
+                SumStep4.push(Step4SumOrigin - 10);
+            }
+        }
+
+        var fine = SumStep4[0]*10 + SumStep4[1];
+
+        var opires = "";
+        if (Number(fine)<25) {
+            opires = "이쯤되면 막가자는거지요?";
+        } else if (Number(fine)<50) {
+            opires = "하~ 뺐습니다."
+        } else if (Number(fine)<75) {
+            opires = "못하는게 없는데~"
+        } else if (Number(fine)<99) {
+            opires = "야~ 기분좋다~ 쓰웩!"
+        } else {
+            opires = "딲!"
+        }
+        console.log(Number(fine));
+        viewCombi.innerHTML = resChar.join(" ");
+        viewStrokes.innerHTML = strokesSum.join(" ");
+        viewStep1.innerHTML = SumStep1.join(" ");
+        viewStep2.innerHTML = SumStep2.join(" ");
+        viewStep3.innerHTML = SumStep3.join(" ");
+        viewStep4.innerHTML = SumStep4.join(" ");
+        viewFinal.innerHTML = fine + "%";
+        viewOpi.innerHTML = opires;
+    }
+
+
+</script>
+
+</html>
