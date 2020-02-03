@@ -331,7 +331,7 @@ var loggedinuser = false;
 											</div>
 									</div>
 									<div class="ep_controls_top">
-											<span class="icon_more" style="display: none;"><img src="img/icon_share.png"></span><span class="icon_volume"><img src="img/icon_volume_off.png"></span><span class="icon_close" ><img src="img/icon_close.png" onclick="close1();"></span>
+											<span class="icon_more" style="display:none"><img src="img/icon_more.png"></span><span class="icon_volume"><img src="img/icon_volume_off.png"></span><span class="icon_close" ><img src="img/icon_close.png" onclick="close1();"></span>
 											<div class="mute_infowrap">
 													<div class="mute_infomation">소리가 들리지 않을 때 클릭하여 활성화 해주세요.</div>
 											</div>
@@ -659,12 +659,8 @@ var dragmover = function(elementid,movefn,endFn) {
 		page.css("top","100vh");
 		page.show();
 
-		$(".video_page .video",page).css("position","absolute");
-
-		var removed = $("#container section");
+		var removed = $("#container .video_page");
 		$("#container").append(page);
-
-		$(".video_page .video",removed).css("position","absolute");
 
 
 
@@ -710,12 +706,8 @@ var dragmover = function(elementid,movefn,endFn) {
 		page.css("top","-100vh");
 		page.show();
 
-		$(".video_page .video",page).css("position","absolute");
-
-		var removed = $("#container section");
-		$("#container").append(page);
-
-		$(".video_page .video",removed).css("position","absolute");
+		var removed = $("#container .video_page");
+		$("#container").prepend(page);
 
 
 		removed.animate({

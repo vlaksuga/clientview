@@ -286,19 +286,17 @@ var ele = $(".promotions",$(".a1"));
                                 <a href="explore.html" class="more">더보기</a>
                         </div>
                         <div class="hotinfluencers" bind="list:hotcaster">
-                                <div class="item_wrapper template" style="display:none"><a href="" bind="href:casterpkey:casterurl">
+                                <div class="item_wrapper template" style="display:none">
                                         <div class="thumbnail">
                                                 <div class="mask"></div>
-                                                <div class="centered"><img bind="img:profileurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="centered"><img bind="img:img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
                                                 <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
-                                        </div></a>
-                                        <div class="information" bind="d-hot:casterpkey">
-                                                <a href="javascript:void(0);" class="title"  bind="href:casterpkey:casterurl"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount" bind="text:cnt">1</em>명</span></a>
-<!--                                                <button class="btn_subscribe active" style="border: 1px solid white;" bind="d:casterpkey:reqSub">+ 구독하기</button>
-                                                <button class="btn_subscribe" style="border: 1px solid white;">구독중</button>
-												-->
                                         </div>
-										
+                                        <div class="information" bind="d-hot:casterpkey">
+                                                <a href="javascript:void(0);" class="title" bind="dd:isS:setUserSubscribe"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount">1</em>명</span></a>
+                                                <button class="btn_subscribe active" style="border: 1px solid white;" bind="d:casterpkey:reqSub">+ 구독하기</button>
+                                                <button class="btn_subscribe" style="border: 1px solid white;">구독중</button>
+                                        </div>
                                 </div>
                                
                         </div>
@@ -307,35 +305,37 @@ var ele = $(".promotions",$(".a1"));
                         </div>
                 </div>
 
-                <div class="a4"><!-- episodes -->
+                <div class="a4" style="display: none;"><!-- episodes -->
                         <div class="titlebar">
                                 <h2>추천 에피소드</h2>
                                 <a href="javascript:void(0);" class="more" style="display:none;">더보기</a>
                         </div>
-						<div class="episodes" bind="list:sel_epi">
-                                <div class="item_wrapper  template" style="display:none"  bind="d:videopkey">
-								<a bind="href:videopkey:videourl">
+                        <div class="episodes" bind="list:sel_epi">
+                                <div class="item_wrapper  template" style="display:none">
+								<a bind="href:videourl">
                                         <div class="thumbnail ">
                                                 <div class="mask"></div>
-                                                <div class="centered"><img bind="img:thumburl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" bind="img:thumbnail" alt=""></div>
                                                 <div class="caption">
-                                                        <span class="profile"><img bind="img:profileurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
+                                                        <span class="profile"><img  bind="img:profileurl" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" bind="img:casterpkey" alt=""></span>
                                                         <div class="titlebox">
                                                                 <div class="title" bind="text:title">11월 05일</div>
-                                                                <div class="count"><span class="icon_view"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB1klEQVR4Ae3Ws57dYRDG8VkbbWxb1xAndexqt94bCNvoCsIyts1mzS62sfqt5vCdz9l3zW/7HPw580i/MGzYMCazgUPcpZjX/OMvbyjmLofZyBTpGlLYSRWxlLOLZOkMkijgAz4+UECSdAyrqQH8VbNWfJHJOTrjHJnSPsZQhusfp9nMfHLJZT6bOc0/XGWMkdhYzCdc1xgnURjHVVyfWCLKwAy+4dovJuLYi+srs8TGBD7g2isxsA/XeyaKi1QqcF0jTvMU8qkBoIZ8UoJncQ1XOakSjaO4/jFa05GUEa6MkZqM4R+uo6IUy7Ac1zSOR0R7TJymx7Esl3AUY1mv6XYsOzRdj6VIQliJbZrmT7A81XQatpUSwEtsWZr/xvJL0yxszyWAB9iyNf8V8w+ysT2QAFZhm+l1iWZiWxX+TpZ3+02uIE5CWIHlpKbxPCbaY+I1PYllud+LNkHTUZQQroRRmkywXzRrVJTjuhE2KvLQUUFe2Ki4gauCVHExkffes1RxwG/YKWbx1X+eEsce/3GtWOK9cCZyzX/h+K7MeeSSw7zWlVnbqZWpS/8inXFWl74P1nSwttSwth8Ur85Uxwqtjl0uv4eD5fdfa/m9o+V32LBh/UETNAtXpnQ7CMsAAAAASUVORK5CYII="></span><span class="view">0</span><span class="icon_like"><img src="img/icon_heart.png"></span><span class="like">0</span></div>
+                                                                <div class="count"><span class="view" bind="text:viewcount">272,706</span><span class="like" bind="text:likecount">0</span></div>
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div class="information" style="display:none" bind="fn:product[0]:show123">
+								</a>
+								<a bind="href:product[0].producturl">
+                                        <div class="information">
                                                 <div class="title" bind="text:product[0].productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
-                                                <div class="price"><del bind="text:product[0].xprice:price">145,000</del><span class="total" bind="text:product[0].price:price">120,500원</span></div>
-                                                <div class="flags"><img bind="img:product[0].productthumb:productdomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <!-- <span class="icon"><img src="img/icon_star.png"></span> -->
+                                                <div class="price"><del bind="text:product[0].xprice:price">>145,000</del><span class="total" bind="text:product[0].price:price">>120,500원</span></div>
+                                                <div class="flags"><img bind="img:product[0].productthumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <span class="icon"></span>
                                         </div>
-									</a>
+								</a>
                                 </div>
-										
-                                 <div class="a5" style="display:none"><!-- products_sm -->
+
+								 <div class="a5" style="display:none"><!-- products_sm -->
 										<div class="titlebar">
 												<h2>이 브랜드의 다른 상품</h2>
 												<a href="javascript:void(0);" class="more">더보기</a>
@@ -364,8 +364,8 @@ var ele = $(".promotions",$(".a1"));
 										</div>
 										
 								</div>
+                                
                         </div>
-
                 </div>
 
                 <div class="a3"><!-- products -->
@@ -613,11 +613,6 @@ var loggedinuser = false;
 		$(".popopopop").hide();
 	}
 
-
-function casterurl(v){
-
-	return "https://mcl2.mycollabolife.com/influencer.html?casterpkey="+v;
-}
 
 
 </script>

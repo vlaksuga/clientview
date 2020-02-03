@@ -38,6 +38,9 @@ td {padding: 10px 0;}
 .caster_poster_img img {width: 100px; display: block;}
 button {padding: 5px 10px; background-color: red; color: white; border: none;}
 
+.imagesec .product_img {width:300px; height: 300px; background-color: red; margin: 0 auto;}
+.imagesec .product_img img {width:300px; display: block;}
+
 .container {display: flex;}
 .listtable {text-align: center;}
 .flag span::after {
@@ -50,14 +53,13 @@ button {padding: 5px 10px; background-color: red; color: white; border: none;}
 .forminput input[type="text"],
 .forminput input[type="password"] {width: 95%; padding:3px;}
 select {padding: 3px;}
-.forminput a{padding: 5px 10px; background-color: red; color: white; border: none;}
 
-.admin_login {width: 300px; height: 300px; margin: 0 auto; padding-top: 300px;}
+.admin_login {width: 300px; height: 300px; margin: 0 auto;}
 .logo {text-align: center; margin-bottom: 30px;}
 .logo img{width: 110px;}
 .logininput li {margin: 10px 0; width: 100%;}
-.logininput li input {width: 300px; height: 25px; padding: 10px;}
-.logininput li button {margin: 0 auto; display: block;}
+.logininput li input {width: 250px; height: 25px; padding: 10px;}
+.logininput li button {margin: 30px auto; display: block;}
 
 .videorelproduct li {font-size: 12px; line-height: 30px; color: #777777;}
 
