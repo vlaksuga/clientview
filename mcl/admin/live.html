@@ -2,7 +2,8 @@
 
 <head>
   <meta charset="utf-8">
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.596.0.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.616.0.min.js"></script>
+    <script src="./aws-sdk-2.616.0.min.js"></script>
   <link rel="stylesheet" href="./css/common.css">
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script>
@@ -14,12 +15,15 @@
     AWS.config.credentials = new AWS.Credentials({
       accessKeyId: 'AKIAZO5VA5G3JGFTX5EA', secretAccessKey: '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'
     });
+	AWS.config.apiVersions = {
+		 medialive: '2017-10-14',
+		 s3: "2006-03-01"
+
+	};
 
     var s3 = new AWS.S3({
-      apiVersion: "2006-03-01",
       params: { Bucket: albumBucketName }
     });
-
 
 
 
@@ -119,11 +123,67 @@
 	}
 
 
+	function stoplive(){
+		$.ajax({
+          url: "https://mcl2.mycollabolife.com/admin.php?&m=stopLive",
+          type: "POST",
+          data: {livepkey:1},
+          dataType: "jsonp",
+          success: function (data) {
+            var head = data.HEAD;
+            var body = data.BODY;
 
-	function save(obj){
+            if (head.STATUS == "error") {
+              this.errfn(data.HEAD, data.BODY);
+            } else {
+				if(body=="ok"){
+					window.location.href="/admin/live.html";
+				}else{
 
+					alert(body);
+				}
+            }
+          }
+        });
+	}
+	function startlive(){
+		var fn = function(d){
+			if(d!="RUNNING") {alert("서버가 시작되지 않았습니다.");return;}
+
+			$.ajax({
+			  url: "https://mcl2.mycollabolife.com/admin.php?&m=startLive",
+			  type: "POST",
+			  data: {livepkey:1},
+			  dataType: "jsonp",
+			  success: function (data) {
+				var head = data.HEAD;
+				var body = data.BODY;
+
+				if (head.STATUS == "error") {
+				  this.errfn(data.HEAD, data.BODY);
+				} else {
+					if(body=="ok"){
+						window.location.href="/admin/live.html";
+					}else{
+
+						alert(body);
+					}
+				}
+			  }
+			});
+
+		};
+	
+		 acheckLiveServer("STATE",fn);
+		
+	}
+
+
+	function save(){
+		obj = {livepkey:1};
+		obj.casterpkey = $("#adkfcaster").val();
         $.ajax({
-          url: "https://mcl2.mycollabolife.com/admin.php?&m=modifyEpi",
+          url: "https://mcl2.mycollabolife.com/admin.php?&m=modifyLive",
           type: "POST",
           data: obj,
           dataType: "jsonp",
@@ -135,7 +195,7 @@
               this.errfn(data.HEAD, data.BODY);
             } else {
 				if(body=="ok"){
-					window.location.href="/admin";
+					window.location.href="/admin/live.html";
 				}else{
 
 					alert(body);
@@ -156,98 +216,50 @@
 		4. 내용을 적용한다.	ADMIN
  -->
   <nav>
-    <ul class="nav-bar">
-      <li class="menu"><a href="live.html">라이브</a></li>
-      <li class="menu active"><a href="index.html">에피소드</a></li>
-      <li class="menu"><a href="listProduct.html">상품</a></li>
-      <li class="menu"><a href="listCaster.html">인플루언서</a></li>
-      <li class="menu dropdown"><a href="./edit/edita1.html">EDIT</a>
-        <div class="dropdown-content">
-          <a href="./edit/edita1.html">메인 배너</a>
-          <a href="./edit/edita2.html">라이브 미리보기</a>
-          <a href="./edit/edita3.html">추천 상품</a>
-          <a href="./edit/edita4.html">추천 에피소드</a>
-          <a href="./edit/edita7.html">화제의 스타</a>
-        </div>
-      </li>
-      <li class="menu logout"><a href="login.html">LOGOUT</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <h3>에피소드 편집</h3>
     
+  </nav>
+	<script>
+	var activemenu = "live";
+		$("nav").load("t/nav.html");
+	</script>
+  <main>
+    <h3>라이브</h3>
+
+<div><span>서버상태<span><span id="Serverstatus"></span></div>
+	<div style="width:100%;height:200px;display:none;background-color:green" id="onair">라이브중입니다!!!</div>	
     <div class="controlbox">
-      <button onclick="upupup();">적용하기</button>
+	  <button onclick="stoplive();">라이브중단</button>
+	  <button onclick="startlive();">라이브시작</button>
+
+	  <button onclick="stopServer();">서버중단</button>
+	  <button onclick="startServer();">서버시작</button>
+
       <div id="Frefreffre"></div>
     </div>
     <div class="container">
       <section class="videoform" style="width:535px; padding: 5px;">
-        <form class="forminput">
+
           <table>
             <colgroup>
               <col width="30%">
               <col width="70%">
             </colgroup>
             <tr>
-              <td>NO</td>
-              <td  id="adkfvideopkey" bind="text:video.videopkey,d:video.videopkey">1</td>
-            </tr>
-            <tr>
               <td>인플루언서</td>
               <td>
                 <select bind="list:caster,val:video.casterpkey"  id="adkfcaster">
                   <option class="template" style="display:none" bind="val:casterpkey,text:name">김태경</option>
                 </select>
+				<button onclick="save();">인플루언서변경하기</button>
               </td>
             </tr>
-            <tr>
-              <td>에피소드 제목</td>
-              <td><input type="text" id="adkftitle" placeholder="원래 있었던 제목" bind="val:video.title"></td>
-            </tr>
-            <tr>
-              <td>썸네일 이미지</td>
-              <td><input type="file" id="f1" onchange="checkImg(this,'f1')">
-			  <br/><div id="b1" style="height:20px;background-color:red;width:0px"></div></td>
-            </tr>
-            <tr>
-              <td>블러 이미지</td>
-              <td><input type="file"  id="f2" onchange="checkImg(this,'f2')">
-			  <br/><div id="b2" style="height:20px;background-color:red;width:0px"></div></td>
-            </tr>
-            <tr>
-              <td>5초 비디오</td>
-              <td><input type="file" id="f3" onchange="checkVideo(this,'preview5')">
-			  <br/><div id="b3" style="height:20px;background-color:red;width:0px"></div></td>
-            </tr>
-            <tr>
-              <td>전체 비디오</td>
-              <td><input id="photoupload" type="file" accept="*" onchange="check(this)">
-			  <br/><div id="b4" style="height:20px;background-color:red;width:0px"></div></td>
-            </tr>
-            <tr>
-              <td>상태</td>
-              <td>
-                <input type="radio" name="status" checked><label>NORMAL</label>
-                <input type="radio" name="status"><label>STOP</label>
-              </td>
-            </tr>
+          
+           
           </table>
-        </form>
+
+
       </section>
-      <section class="preview_container">
-        <img style="background-color:red;width:180px;height:180px" bind="src:video.thumburl:adddomain"  id="f1p" /> <!-- 썸네일 -->
-        <img style="background-color:red;width:180px;height:320px" bind="src:video.posterurl:adddomain"  id="f2p"/> <!-- 블러 -->
-        <video style="background-color:red;width:180px;height:320px" bind="src:video.previewurl:adddomain" id="preview5"></video>
-        <video style="background-color:red;width:180px;height:320px" id="preview"
-          bind="src:video.videourl:adddomain"></video> <!-- 전체 비디오 -->
-        <div class="comment" style="display: flex; justify-content: space-between; text-align: center;">
-          <div style="width: 180px;">썸네일 이미지</div>
-          <div style="width: 180px;">블러 이미지</div>
-          <div style="width: 180px;">5초 비디오</div>
-          <div style="width: 180px;">전체 비디오</div>
-        </div>
-      </section>
+     
 
     </div>
 
@@ -279,9 +291,9 @@
         var productpkey = $(ele).attr("d");
 
         $.ajax({
-          url: "https://mcl2.mycollabolife.com/admin.php?&m=addRelVP",
+          url: "https://mcl2.mycollabolife.com/admin.php?&m=addRelLive",
           type: "POST",
-          data: { "productpkey": productpkey, "videopkey": $.getP("videopkey") },
+          data: { "productpkey": productpkey, "livepkey": 1 },
           dataType: "jsonp",
           success: function (data) {
             var head = data.HEAD;
@@ -309,9 +321,9 @@
                 var videopkey = $(ele).attr("dd");
 
                 $.ajax({
-                  url: "https://mcl2.mycollabolife.com/admin.php?&m=removeRelVP",
+                  url: "https://mcl2.mycollabolife.com/admin.php?&m=removeRelLive",
                   type: "POST",
-                  data: { "productpkey": productpkey, "videopkey": videopkey },
+                  data: { "productpkey": productpkey, "livepkey": 1 },
                   dataType: "jsonp",
                   success: function (data) {
                     var head = data.HEAD;
@@ -398,9 +410,9 @@ return "https://mcl2static.mycollabolife.com/predev/product/" + v;
   var admindomain = "https://mcl2.mycollabolife.com/admin.php";
   function getList(fn) {
     $.wcall({
-      url: admindomain + "?m=getvideo",
+      url: admindomain + "?m=getLive",
       type: "GET",
-      data: { "videopkey": $.getP("videopkey") },
+      data: { "livepkey": 1 },
       ok: function (head, body) { fn(body); }
     });
   }
@@ -408,10 +420,98 @@ return "https://mcl2static.mycollabolife.com/predev/product/" + v;
 var thisObj = null;
   function draw(d) {
 	  thisObj = d.video;
+	  if(thisObj.status == "LIVE"){ $("#onair").show()}
     wmap(d, $("main"));
   }
 
   getList(draw);
+
+
+
+  function checkLiveServer(cmd){
+		acheckLiveServer("STATE",function(d){$("#Serverstatus").text(d);});
+	}
+
+
+	function acheckLiveServer(cmd,fn){
+
+		$.ajax({
+          url: "https://mcl2.mycollabolife.com/aws.php",
+          type: "get",
+          data: {"cmd":cmd},
+          dataType: "jsonp",
+          success: fn
+        });
+	}
+	checkLiveServer("STATE");
+
+
+
+	
+  function stopServer(){
+
+		$.ajax({
+          url: "https://mcl2.mycollabolife.com/aws.php?cmd=STOP",
+          type: "get",
+          dataType: "jsonp",
+          success: function (data) {
+            $("#Serverstatus").text(data);
+			stopServerCheck();
+          }
+        });
+	}
+
+
+	
+  function startServer(){
+
+		$.ajax({
+          url: "https://mcl2.mycollabolife.com/aws.php?cmd=START",
+          type: "get",
+          dataType: "jsonp",
+          success: function (data) {
+            $("#Serverstatus").text(data);
+			startServerCheck();
+          }
+        });
+	}
+
+
+	var serverStatusChecker = null;
+	function startServerCheck(){
+		
+		acheckLiveServer("STATE",function(d){
+			$("#Serverstatus").text(d);
+			if(d=="RUNNING"){
+				window.clearTimeout(serverStatusChecker);
+				serverStatusChecker = null;
+				return;
+			}
+
+			serverStatusChecker = window.setTimeout(startServerCheck,1000);
+		});
+
+
+
+	}
+
+	function stopServerCheck(){
+
+		
+		acheckLiveServer("STATE",function(d){
+			$("#Serverstatus").text(d);
+			if(d=="IDLE"){
+				window.clearTimeout(serverStatusChecker);
+				serverStatusChecker = null;
+				return;
+			}
+
+			serverStatusChecker = window.setTimeout(stopServerCheck,1000);
+		});
+
+
+	}
+
 </script>
 
 </html>

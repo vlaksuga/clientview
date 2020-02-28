@@ -9,11 +9,13 @@
 	<script src="admin.js"></script>
 	<link rel="stylesheet" href="../css/edit.css">
 	<link rel="stylesheet" href="../css/common.css">
+	
 </head>
 
 <body>
 	<nav>
 		<ul class="nav-bar">
+			<li class="menu"><a href="../live.html">라이브</a></li>
 			<li class="menu"><a href="../index.html">에피소드</a></li>
 			<li class="menu"><a href="../listProduct.html">상품</a></li>
 			<li class="menu"><a href="../listCaster.html">인플루언서</a></li>
@@ -26,7 +28,7 @@
 					<a href="./edita7.html">화제의 스타</a>
 				</div>
 			</li>
-			<li class="menu logout"><a href="login.html">LOGOUT</a></li>
+			<li class="menu logout"><a href="../login.html">LOGOUT</a></li>
 		</ul>
 	</nav>
 
@@ -41,82 +43,39 @@
 
 			<div class="a4">
 				<div class="episodes" bind="list:sel_epi">
-					<div class="item_wrapper  template" style="display:none">
-						<a bind="href:videourl">
-							<div class="thumbnail ">
-								<div class="mask"></div>
-								<div class="centered"><img
-										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-										bind="img:thumbnail" alt=""></div>
-								<div class="caption">
-									<span class="profile"><img bind="img:profileurl"
-											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-											bind="img:casterpkey" alt=""></span>
-									<div class="titlebox">
-										<div class="title" bind="text:title">11월 05일</div>
-										<div class="count"><span class="view" bind="text:viewcount">272,706</span><span
-												class="like" bind="text:likecount">0</span></div>
-									</div>
-								</div>
-							</div>
-						</a>
-						<a bind="href:product[0].producturl">
-							<div class="information">
-								<div class="title" bind="text:product[0].productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물
-									레드크림로즈꽃물 레드크림</div>
-								<div class="price"><del bind="text:product[0].xprice:price">>145,000</del><span
-										class="total" bind="text:product[0].price:price">>120,500원</span></div>
-								<div class="flags"><img bind="img:product[0].productthumb"
-										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-										alt=""></div>
-								<span class="icon"></span>
-							</div>
-						</a>
-					</div>
-	
-					<div class="a5" style="display:none">
-						<!-- products_sm -->
-						<div class="titlebar">
-							<h2>이 브랜드의 다른 상품</h2>
-							<a href="javascript:void(0);" class="more">더보기</a>
-						</div>
-						<div class="products_sm">
-							<div class="item_wrappe">
-								<div class="thumbnai">
-									<div class="mask"></div>
-									<div class="centered"><img
-											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg=="
-											alt=""></div>
-									<div class="caption">
-										<span class="icon">
-											<i class="far fa-star"></i>
-											<!--찜(?)했을때--><i class="fas fa-star" style="display:none;"></i>
-										</span>
-									</div>
-								</div>
-								<div class="informatio">
-									<div class="title">[닥터플로라] 로즈꽃물 레드크림</div>
-									<div class="price"><del>145,000</del><span class="total">120,500원</span></div>
-									<div class="flags" bind="ak:badge:doBadge">
-										<span class="icon_flags free" style="display:none">무료배송</span><span
-											class="icon_flags recommend" style="display:none">뷰콜추천</span><span
-											class="icon_flags best" style="display:none">베스트</span>
-									</div>
-								</div>
-							</div>
-	
-						</div>
-	
-					</div>
-	
-				</div>
+                                <div class="item_wrapper  template" style="display:none"  bind="d:videopkey">
+								<a bind="href:videopkey:videourl">
+                                        <div class="thumbnail ">
+                                                <div class="mask"></div>
+                                                <div class="centered"><img bind="img:thumburl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="caption">
+                                                        <span class="profile"><img bind="img:profileurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
+                                                        <div class="titlebox">
+                                                                <div class="title" bind="text:title">11월 05일</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="information" style="display:none" bind="fn:product[0]:show123">
+                                                <div class="title" bind="text:product[0].productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
+                                                <div class="price"><del bind="text:product[0].xprice:price">145,000</del><span class="total" bind="text:product[0].price:price">120,500원</span></div>
+                                                <div class="flags"><img bind="img:product[0].productthumb:productdomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <!-- <span class="icon"><img src="img/icon_star.png"></span> -->
+                                        </div>
+									</a>
+                                </div>
+										
+                                
+                        </div>
 			</div>
 		</main>
 
 		<div class="rightpad"  style="width: 860px; margin: 0;">
 		<h4>추천에피소드 선택</h4>
-		<panel class="panelclass" style="width: 860px;">
-			<label>에피소드 번호</label><input id="pan_txt1" type="text" style="width:600px" onkeyup="admchangeN('url','#pan_txt1')"><br/>
+		<panel class="panelclass" style="width: 860px;position:relative">
+			<label>에피소드 검색</label><input id="pan_txt1" type="text" style="width:600px" onkeyup="search()"><br/>
+			<ul id="searchresult" style="width:400px;background-color:gray">
+				
+			</ul>
 		</panel>
 
 		 <div class="howto">
@@ -144,24 +103,53 @@
 	function select(ele) {
 
 		curEle = ele;
-		var panel = $("panel");
+		
 
 
-		var a = $("[admkey=" + "url" + "]", ele).attr("d");
-		var txt2 = $("[admkey=" + "productname" + "]", ele).attr("d");
-		var txt3 = $("[admkey=" + "xprice" + "]", ele).attr("d");
-		var txt4 = $("[admkey=" + "price" + "]", ele).attr("d");
-		var txt5 = $("[admkey=" + "name" + "]", ele).attr("d");
-
-		var img = $("[admkey=" + "productthumb" + "]", ele).attr("d");
+	}
 
 
-		$("img", panel).attr("src", img);
-		$("#pan_txt1", panel).val(a);
-		$("#pan_txt2", panel).val(txt2);
-		$("#pan_txt3", panel).val(txt3);
-		$("#pan_txt4", panel).val(txt4);
-		$("#pan_txt5", panel).val(txt5);
+	
+	function search(){
+
+		var q = $("#pan_txt1").val();
+		if(q=="") return;
+		$.ajax({
+			url: "https://mcl2.mycollabolife.com/admin.php?c=admin&m=searchEpi",
+			type: "GET",
+			data: { "q": $("#pan_txt1").val()},
+			dataType: "jsonp",
+			success: function(data) {
+				var head = data.HEAD;
+				var body = data.BODY;
+				if (head.STATUS == "error") {
+				} else {
+					$("#searchresult").empty();
+				
+					if(body.listvideo.length==0){
+						$("#searchresult").empty().append("<li>결과없음</li>");
+					}else{
+
+						for(var i = 0;i<body.listvideo.length;i++){
+							var item = body.listvideo[i];
+							var frfr=$("<li d='"+item.videopkey+"'>"+item.title+"<img src='//mcl2static.mycollabolife.com"+item.thumburl+"' style='width:50px;height:50px'/></li>");
+
+							frfr.attr("src",item.thumburl);
+
+							frfr.on("click",function(){
+								var videopkey = $(this).attr("d");
+								var thumburl = $(this).attr("src");
+								curEle.attr("d",videopkey);
+								$(".thumbnail .centered img",curEle).attr("src","//mcl2static.mycollabolife.com"+thumburl);
+								$(".caption",curEle).hide();
+								$(".title,.price,.total,.flags",curEle).hide();
+							});
+							$("#searchresult").append(frfr);
+						}
+					}
+				}
+			}
+		});
 
 	}
 
@@ -186,6 +174,8 @@
 		$(".item_wrapper.template").remove();
 		$("a", $(a1)).attr("href", "javascript:void(0)");
 		$(".item_wrapper", $(a1)).on("click", function () {
+			$(".item_wrapper").css("border","0px");
+			$(this).css("border","1px solid red");
 			select($(this));
 			return false;
 
@@ -208,19 +198,13 @@
 
 		var ret = new Array();
 		for (var i = 0; i < a18.length; i++) {
-			var keys = $("[admkey]", a18.get(i));
-			var cobj = {};
-			ret[ret.length] = cobj;
-			for (var ii = 0; ii < keys.length; ii++) {
-				var item = $(keys.get(ii));
-				var key = item.attr("admkey");
-				var val = item.attr("d")
-				cobj[key] = val;
-			}
+				var val = $(a18.get(i)).attr("d");
+				ret[i] = val;
 		}
 	var txt = JSON.stringify(ret); 
+
 		$.ajax({
-			url: "https://mcl2.mycollabolife.com/admin.php?c=edit&m=saveEdit",
+			url: "https://mcl2.mycollabolife.com/admin.php?c=edit&m=saveA4",
 			type: "POST",
 			data: { "kind": editkind,"txt":txt },
 			dataType: "jsonp",
@@ -231,7 +215,7 @@
 				if (head.STATUS == "error") {
 					this.errfn(data.HEAD,data.BODY);
 				} else {
-					alert(data.BODY);
+					window.location.reload();
 				}
 			}
 		});
@@ -304,6 +288,25 @@
 	}
 
 
+function adddomain(v){
+
+	return "https://mcl2static.mycollabolife.com"+v;
+}
+function productdomain(v) {
+
+return "https://mcl2static.mycollabolife.com/predev/product/" + v;
+}
+function doBadge(v,ele){
+	for(i=0;i<v.length;i++){
+		if(v[i].tag=="free"){$(".free",ele).show()}	
+		if(v[i].tag=="best"){$(".best",ele).show()}
+		if(v[i].tag=="select"){$(".recommend",ele).show()}
+	}
+}
+
+function show123(v,ele,d){
+	$(ele).show();
+}
 
 </script>
 

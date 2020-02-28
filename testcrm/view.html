@@ -1,0 +1,247 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>기사형</title>
+    <link href="http://static.adand.co.kr/crm.adand/admin5p.css" rel="stylesheet" type="text/css" />
+
+    <link href="http://static.adand.co.kr/crm.adand/css/style.css" rel="stylesheet" type="text/css">
+    <link href="http://static.adand.co.kr/crm.adand/admin5.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.min.css"
+        rel="stylesheet" type="text/css" />
+
+    <script src="js/common.js"></script>
+    <script src="js/func.js"></script>
+    <script>
+        var user = checkLogin();
+        var code = $.getP("code");
+
+
+    </script>
+
+    <style>
+        img.ui-datepicker-trigger {
+            margin-left: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        #ui-datepicker-div {
+            display: none
+        }
+    </style>
+
+    <!--엑셀-->
+    <script language="javascript">
+        function xsd() {
+
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#boardP').html()));
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="logoee"><a onclick="logout()" chref="#">Logout</a></p>
+    </div>
+    <div id="title">광고주명: <span id="aaaname"></span></div>
+    <div id="total">
+        <p>total:<span id="tttto"></span></p>
+    </div>
+    <input type="text" id="ddddd" style='display:none' /><input type="button" value="전체보기"
+        onclick="getlist(altid,null)" />
+
+    <input type="button" value="recent100" onclick="getlist(altid,null,100)" />
+    <div id="excel_btn"><a href="javascript:xsd()"><input type="image" value="엑셀다운"
+                src="http://static.adand.co.kr/crm.adand/css/img/excel_btn.png"></a> <A
+            HREF="javascript:print(document)"><input type="image" value="인쇄"
+                src="http://static.adand.co.kr/crm.adand/css/img/print_btn.png" /></A></div>
+    <div id="loading">자료를 가져오고있습니다.</div>
+
+
+    <div id='dididi'></div>
+    <div id="boardP">
+        <table style="width:100%">
+
+
+            <thead>
+                <tr id="listtr">
+
+                </tr>
+            </thead>
+
+
+            <tbody id="list">
+                <tr class="listtemplate" style="display:none">
+
+                </tr>
+
+
+            </tbody>
+
+
+        </table>
+    </div>
+
+
+
+
+
+
+    <script>
+        var altid = 0;
+        function detail(dd, ele) {
+            ele.data(dd);
+
+        }
+
+        function detailview(dd) {
+            var data = dd.data();
+
+            var msg = "";
+            for (var k in data) {
+                if (k == "Y" || k == "X" || k == "CODE")
+                    continue;
+
+                msg += k + ":" + data[k] + "\n";
+            }
+            alert(msg);
+
+
+        }
+        function get() {
+            var bcode = $.getP("id");
+
+
+            $.ajax({
+                url: domain + "/a/get.j?formid=" + bcode,
+                type: "GET",
+                dataType: "jsonp",
+                success: function (data) {
+                    var list = data.BODY;
+                    $("#aaaname").text(list.NAME);
+
+                    var o = list.DESCRIPT;
+                    var u = list.CUSTOMSCRIPT;
+                    if (u) {
+                        try {
+                            $.globalEval(u);
+
+
+
+                        } catch (Except) {
+                            alert("스크립트에 오타가 있음.");
+                        }
+                    }
+
+                    var obj = $.parseJSON(o);
+
+
+
+                    for (var ii = 0; ii < obj.length; ii++) {
+                        try {
+                            var iiii = $("<td style=\"mso-number-format:'\@';width:" + obj[ii].width + "\"></td>");
+                            iiii.attr("wbind", "text:" + obj[ii].wbind);
+                            $("#listtr").append($("<td></td>").text(obj[ii].name).css("width", obj[ii].width));
+                            $(".listtemplate").append(iiii);
+                        } catch (e) {
+                        }
+
+                    }
+
+                    altid = list.ALTID;
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1;
+                    var yyyy = today.getFullYear();
+
+                    if (dd < 10) {
+                        dd = '0' + dd
+                    }
+
+                    if (mm < 10) {
+                        mm = '0' + mm
+                    }
+
+                    today = yyyy + "" + mm + "" + dd;
+                    getlist(list.ALTID, today);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+
+            });
+
+        }
+
+        function getlist(id, d, cnt) {
+            $("#list .item").remove();
+            $("#loading").text("자료를 가져오고 있습니다.").show();
+            var url = domain + "/a/get44.j?altid=" + id + "&d=" + d;
+            if (d) {
+                url = domain + "/a/get44.j?altid=" + id + "&d=" + d;
+            } else {
+                url = domain + "/a/get44.j?altid=" + id;
+            }
+            if (!cnt) cnt = 100000;
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "jsonp",
+                success: function (data) {
+                    $("#loading").text("자료를 배치하고있습니다.");
+                    var list = data.BODY;
+                    var total = list.length;
+                    $("#tttto").text(total);
+
+                    for (jj = 0; jj < list.length && jj < cnt; jj++) {
+                        var k = $(".listtemplate").clone();
+                        try {
+                            k.css("display", "");
+                            k.removeClass("listtemplate").addClass("item");
+                            var ii = list[jj];
+
+                            ii.d = $.parseJSON(ii.DAT);
+
+                            wmap(ii, k);
+                        } catch (eded) {
+                            k.text('loading error');
+                        }
+                        k.appendTo("#list");
+                    }
+                    $("#loading").hide();
+                },
+                error: function (data) {
+                    alert(data);
+                }
+
+            });
+
+        }
+
+
+        get();
+        $("#ddddd").datepicker(clareCalendar2);
+        $("#ddddd").datepicker({ buttonImage: "" });
+        $('#ddddd').datepicker("option", "onSelect", function () { getlist(altid, $('#ddddd').val()) });
+        $('#dididi').datepicker(clareCalendar2);
+        $('#dididi').datepicker("option", "onSelect", function () { getlist(altid, $('#dididi').datepicker().val()) });
+    </script>
+    <style>
+        .ui-datepicker-trigger {
+            display: none !important
+        }
+    </style>
+
+</body>
+
+</html>

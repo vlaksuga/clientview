@@ -8,7 +8,7 @@
 <meta name="description" content="">		
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-status-bar-style" content="black" />			
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />			
 <title>MCL</title>
 <script src="/js/jquery-3.4.1.min.js"></script>
 
@@ -39,7 +39,7 @@ ul, ol {list-style:none;}
 .page_footer ul li img {width:auto; display:inline-block; height:24px; margin-top:9px;}
 
 
-.promotions {overflow:auto; white-space:nowrap;width:320px; height:300px;height:305px}
+.promotions {overflow:hidden; white-space:nowrap;width:320px; height:300px;height:305px}
 .promotions .item_wrapper {width:300px;height:305px;display:inline-block; margin:0 4px;}
 .promotions .thumbnail .centered img {width:300px; height:300px; object-fit:cover; border-radius:5px;}
 
@@ -185,6 +185,7 @@ ul, ol {list-style:none;}
 
 var loggedinuser = false;
 function drawFirst(d){
+
 	wmap(d,$(".a1"));
 	wmap(d,$(".a2"));
 	wmap(d,$(".a3"));
@@ -197,6 +198,12 @@ function drawFirst(d){
 			loggedinuser = d.loggedinuser;
 		}
 	}catch(e){}
+	if(d["live"].length>0) {
+
+		if(document.referrer.indexOf("video2.html")==-1){
+			window.location.href="/video2.html";
+		}
+	}
 }
 
 
@@ -244,7 +251,8 @@ var ele = $(".promotions",$(".a1"));
         <section class="page_body">
 
                 <div class="a1"><!-- promotions -->
-                        <div class="promotions" bind="list:maintop">
+                        <div class="promotions" style="position:relative">
+							<div bind="list:maintop" id="a1a18" style="position:absolute">
                                 <div class="item_wrapper template" style="display:none">
                                         <div class="thumbnail">
                                                 <div class="centered">
@@ -252,11 +260,121 @@ var ele = $(".promotions",$(".a1"));
                                                 </div>
                                         </div>
                                 </div>
+							</div>
                                
                         </div>
                         <div class="bullets">
                         </div>
                 </div>
+
+<script>
+
+
+var dragmover = function(elementid,movefn,endFn) {
+	  document.getElementById(elementid).addEventListener('touchstart', function(evt) {
+				this.xstart = evt.touches[0].clientX;
+				this.ystart = evt.touches[0].clientY;
+				this.xprevstart = xstart;
+				this.yprevstart = ystart;
+				
+				}.bind(this), false);
+
+        this.xprevstart = null;
+        this.yprevstart = null;
+        this.xstart = null;
+        this.ystart = null;
+		this.ele = elementid;
+
+        this.handleTouchMove  = function(evt) {
+
+                if ( ! this.xstart ) return;
+                if ( ! this.ystart ) return;
+
+
+
+				var xx = this.xprevstart - evt.touches[0].clientX;
+                var xDelta = this.xstart - evt.touches[0].clientX;
+                this.xprevstart = evt.touches[0].clientX;
+
+
+				var yy = this.yprevstart - evt.touches[0].clientY;
+                var yDelta = this.ystart - evt.touches[0].clientY;
+                this.yprevstart = evt.touches[0].clientY;
+
+
+
+
+				if(movefn) movefn(xDelta,yDelta,xx,yy);
+				
+
+        }
+        this.handleTouchEnd  = function(evt) {
+			if ( ! this.xstart ) return;
+             if ( ! this.ystart ) return;
+
+			var xDelta = this.xstart - this.xprevstart;
+			var yDelta = this.ystart - this.yprevstart;
+			
+			if(endFn)  endFn(xDelta,yDelta);
+		
+            this.xstart = null;
+			this.ystart = null;
+            this.xprevstart = null;
+			this.yprevstart = null;
+
+
+
+        }
+
+        document.getElementById(elementid).addEventListener('touchmove', function(evt) { 
+            try{
+                this.handleTouchMove(evt).bind(this);
+            }catch(E){}
+        }.bind(this), false);
+        
+        document.getElementById(elementid).addEventListener('touchend', function(evt) { 
+            try{
+                this.handleTouchEnd(evt).bind(this);
+            }catch(E){}
+        }.bind(this), false);
+    }
+
+	var isGoing = false;
+	$("#a1a18").css("position","absolute");
+    dragmover("a1a18",function(xd,yd,xx,yy){
+		var pos = $("#a1a18").position();
+		var left = pos.left;
+		$("#a1a18").css("left",left-xx);
+    },function(xd,yd){
+
+		if(isGoing) return;
+		isGoing=true;
+		var pos = $("#a1a18").position();
+		
+
+		var frfr = Math.floor(pos.left/308);
+		var frf = pos.left%308;
+
+		if(Math.abs(frf)<160) frfr++;
+
+		if($("#a1a18 .item_wrapper").length+frfr <2){
+			frfr++;
+		}
+		var t = 308*(frfr);
+
+		var tt = ($("#a1a18 .item_wrapper").length-1) *-308;
+
+		if(t>0) t = 0;
+		if(t < tt+308) t = tt+308;
+
+
+		$("#a1a18").stop().animate({left: t}, 500, 'swing', function() {   isGoing=false;	});
+
+	});
+
+
+
+</script>
 
                 <div class="a2"><!-- livepreview -->
                         <div class="titlebar">
@@ -286,17 +404,19 @@ var ele = $(".promotions",$(".a1"));
                                 <a href="explore.html" class="more">더보기</a>
                         </div>
                         <div class="hotinfluencers" bind="list:hotcaster">
-                                <div class="item_wrapper template" style="display:none">
+                                <div class="item_wrapper template" style="display:none"><a href="" bind="href:casterpkey:casterurl">
                                         <div class="thumbnail">
                                                 <div class="mask"></div>
-                                                <div class="centered"><img bind="img:img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <div class="centered"><img bind="img:profileurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
                                                 <div class="caption"><span class="date">11월 05일</span><span class="time">오후 4시 03분</span></div>
-                                        </div>
+                                        </div></a>
                                         <div class="information" bind="d-hot:casterpkey">
-                                                <a href="javascript:void(0);" class="title" bind="dd:isS:setUserSubscribe"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount">1</em>명</span></a>
-                                                <button class="btn_subscribe active" style="border: 1px solid white;" bind="d:casterpkey:reqSub">+ 구독하기</button>
+                                                <a href="javascript:void(0);" class="title"  bind="href:casterpkey:casterurl"><span class="name" bind="text:name">임지은</span><span class="subscribe">구독자<em class="subcount" bind="text:cnt">1</em>명</span></a>
+<!--                                                <button class="btn_subscribe active" style="border: 1px solid white;" bind="d:casterpkey:reqSub">+ 구독하기</button>
                                                 <button class="btn_subscribe" style="border: 1px solid white;">구독중</button>
+												-->
                                         </div>
+										
                                 </div>
                                
                         </div>
@@ -305,37 +425,35 @@ var ele = $(".promotions",$(".a1"));
                         </div>
                 </div>
 
-                <div class="a4" style="display: none;"><!-- episodes -->
+                <div class="a4"><!-- episodes -->
                         <div class="titlebar">
                                 <h2>추천 에피소드</h2>
                                 <a href="javascript:void(0);" class="more" style="display:none;">더보기</a>
                         </div>
-                        <div class="episodes" bind="list:sel_epi">
-                                <div class="item_wrapper  template" style="display:none">
-								<a bind="href:videourl">
+						<div class="episodes" bind="list:sel_epi">
+                                <div class="item_wrapper  template" style="display:none"  bind="d:videopkey">
+								<a bind="href:videopkey:videourl">
                                         <div class="thumbnail ">
                                                 <div class="mask"></div>
-                                                <div class="centered"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" bind="img:thumbnail" alt=""></div>
+                                                <div class="centered"><img bind="img:thumburl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
                                                 <div class="caption">
-                                                        <span class="profile"><img  bind="img:profileurl" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" bind="img:casterpkey" alt=""></span>
+                                                        <span class="profile"><img bind="img:profileurl:adddomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span>
                                                         <div class="titlebox">
                                                                 <div class="title" bind="text:title">11월 05일</div>
-                                                                <div class="count"><span class="view" bind="text:viewcount">272,706</span><span class="like" bind="text:likecount">0</span></div>
+                                                                <div class="count"><span class="icon_view"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB1klEQVR4Ae3Ws57dYRDG8VkbbWxb1xAndexqt94bCNvoCsIyts1mzS62sfqt5vCdz9l3zW/7HPw580i/MGzYMCazgUPcpZjX/OMvbyjmLofZyBTpGlLYSRWxlLOLZOkMkijgAz4+UECSdAyrqQH8VbNWfJHJOTrjHJnSPsZQhusfp9nMfHLJZT6bOc0/XGWMkdhYzCdc1xgnURjHVVyfWCLKwAy+4dovJuLYi+srs8TGBD7g2isxsA/XeyaKi1QqcF0jTvMU8qkBoIZ8UoJncQ1XOakSjaO4/jFa05GUEa6MkZqM4R+uo6IUy7Ac1zSOR0R7TJymx7Esl3AUY1mv6XYsOzRdj6VIQliJbZrmT7A81XQatpUSwEtsWZr/xvJL0yxszyWAB9iyNf8V8w+ysT2QAFZhm+l1iWZiWxX+TpZ3+02uIE5CWIHlpKbxPCbaY+I1PYllud+LNkHTUZQQroRRmkywXzRrVJTjuhE2KvLQUUFe2Ki4gauCVHExkffes1RxwG/YKWbx1X+eEsce/3GtWOK9cCZyzX/h+K7MeeSSw7zWlVnbqZWpS/8inXFWl74P1nSwttSwth8Ur85Uxwqtjl0uv4eD5fdfa/m9o+V32LBh/UETNAtXpnQ7CMsAAAAASUVORK5CYII="></span><span class="view">0</span><span class="icon_like"><img src="img/icon_heart.png"></span><span class="like">0</span></div>
                                                         </div>
                                                 </div>
                                         </div>
-								</a>
-								<a bind="href:product[0].producturl">
-                                        <div class="information">
+                                        <div class="information" style="display:none" bind="fn:product[0]:show123">
                                                 <div class="title" bind="text:product[0].productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
-                                                <div class="price"><del bind="text:product[0].xprice:price">>145,000</del><span class="total" bind="text:product[0].price:price">>120,500원</span></div>
-                                                <div class="flags"><img bind="img:product[0].productthumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
-                                                <span class="icon"></span>
+                                                <div class="price"><del bind="text:product[0].xprice:price">145,000</del><span class="total" bind="text:product[0].price:price">120,500원</span></div>
+                                                <div class="flags"><img bind="img:product[0].productthumb:productdomain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></div>
+                                                <!-- <span class="icon"><img src="img/icon_star.png"></span> -->
                                         </div>
-								</a>
+									</a>
                                 </div>
-
-								 <div class="a5" style="display:none"><!-- products_sm -->
+										
+                                 <div class="a5" style="display:none"><!-- products_sm -->
 										<div class="titlebar">
 												<h2>이 브랜드의 다른 상품</h2>
 												<a href="javascript:void(0);" class="more">더보기</a>
@@ -364,8 +482,8 @@ var ele = $(".promotions",$(".a1"));
 										</div>
 										
 								</div>
-                                
                         </div>
+
                 </div>
 
                 <div class="a3"><!-- products -->
@@ -613,6 +731,11 @@ var loggedinuser = false;
 		$(".popopopop").hide();
 	}
 
+
+function casterurl(v){
+
+	return "https://mcl2.mycollabolife.com/influencer.html?casterpkey="+v;
+}
 
 
 </script>

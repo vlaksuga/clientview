@@ -8,16 +8,21 @@
 <meta name="description" content="">		
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
- <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title></title>
 <script src="js/jquery-3.4.1.min.js"></script>
+ <script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/browse/@videojs/http-streaming@1.11.2/dist/videojs-http-streaming.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/video.js@7.0.0/dist/video-js.css"/>
+
 <style>
 body {width:100%; height:100%; min-width:320px; -webkit-text-size-adjust:none; font-size:small; line-height:1.5em; padding:0; margin:0; background-color:#000;}
 div,dl,dt,dd,ul,ol,li,h1,p,img {margin:0; padding:0;}
 img {border:0;}
 a {text-decoration:none;}
 ul, ol {list-style:none;}
-/* .shadow {text-shadow: 0.1px 0.1px 0.1px black;} */
+
 .page_header {height:45px; background-color:#000; border-bottom:1px solid #282828; color:#fff; overflow:hidden; position:fixed; top:0; width:320px; z-index:10;}
 .page_header h1 {text-align:center;}
 .page_header h1 img {display:inline-block; height:14px; margin:16px 0 0 0;}
@@ -114,7 +119,10 @@ ul, ol {list-style:none;}
 .products_sm .item_wrapper .information .price del {margin:0 5px; color:#a0a0a5;}
 .products_sm .item_wrapper .information .price .total {display:block;}
 .products_sm .item_wrapper .information .flags {display:none;}
-
+.products_sm .item_wrapper .information .flags .icon_flags {}
+.products_sm .item_wrapper .information .flags .free {}
+.products_sm .item_wrapper .information .flags .recommend {}
+.products_sm .item_wrapper .information .flags .best {}
 
 
 .hotinfluencers {overflow:auto; white-space:nowrap; margin:15px 0 0 15px;}
@@ -126,6 +134,7 @@ ul, ol {list-style:none;}
 .hotinfluencers .thumbnail .caption span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:140%;}
 .hotinfluencers .item_wrapper .information {margin-top:5px; text-align:center;}
 .hotinfluencers .item_wrapper .information span {display:block; color:#fff; font-size:10px; font-weight:bold; line-height:170%;}
+.hotinfluencers .item_wrapper .information .subcount {color:#ff545c; font-weight:normal; margin:0 3px; font-style:normal;}
 .hotinfluencers .item_wrapper .information .btn_subscribe {font-size:9px; margin-top:5px; border-radius:10px; padding:2px 7px 3px 7px; color:#ff545c; background-color:rgba(255,84,92,0.2); border:0; box-shadow:0 0 0 1px #ff545c;}
 
 
@@ -136,8 +145,11 @@ ul, ol {list-style:none;}
 .programs .thumbnail .mask {display:none;}
 .programs .thumbnail .caption {z-index:2; position:absolute; bottom:20px; left:50%; margin-left:-20px;}
 .programs .thumbnail .caption .inner_profile img {width:40px; height:40px; border-radius:50%; object-fit:cover;}
+.programs .thumbnail .caption span {}
 .programs .item_wrapper .information {display:none;}
-
+.programs .item_wrapper .information span {}
+.programs .item_wrapper .information .subcount {}
+.programs .item_wrapper .information .btn_subscribe {}
 
 
 .bullets {text-align:center; margin-top:15px;}
@@ -161,7 +173,7 @@ ul, ol {list-style:none;}
 .sub_episodes_header .caption .profile img {width:40px; height:40px; object-fit:cover; border-radius:50%;}
 .sub_episodes_header .caption .titlebox {position:absolute; top:0; left:50px; width:170px; color:#fff; font-size:10px; font-weight:bold;}
 .sub_episodes_header .caption .titlebox .title {font-size: 14px; font-weight: 900;}
-.sub_episodes_header .caption .titlebox .title.ellipsis {overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.sub_episodes_header .caption .titlebox .title.ellipsis {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .sub_episodes_header .caption .titlebox .count {display:inline-block;}
 .sub_episodes_header .caption .titlebox .count .name {margin-right:15px;}
 
@@ -169,7 +181,6 @@ ul, ol {list-style:none;}
 .sub_episodes_header .ep_controls_top span img, .subscribe_group span img {width:23px; height:23px; margin-left:15px; vertical-align:middle; margin-bottom: 2px;}
 .sub_episodes_header .subscribe_group {position:absolute; top:50px; left:2px;}
 .sub_episodes_header .subscribe_group .icon_star {display: none;}
-.sub_episodes_header .subscribe_group .icon_star.active {display: inline-block;}
 .sub_episodes_header .btn_subscribe {font-size:12px; margin-top:0; border-radius:50px; padding:3px 12px; color:#fff; border:2px solid white; background-color: transparent; font-weight: 700;}
 .sub_episodes_header .btn_like {font-size:12px; margin-top:0; border-radius:50px; padding:3px 12px; color:#fff; border:2px solid white; background-color: transparent; font-weight: 700;}
 .sub_episodes_header .ep_controls_top .icon_volume {position:relative;}
@@ -181,7 +192,7 @@ ul, ol {list-style:none;}
 .sub_episodes_body {border:0px solid red; max-height:300px;}
 .sub_episodes_body .enter_messages {color:#fff; font-size:10px;}
 
-.sub_episodes_footer {border:0px solid yellow; position:relative; height:50px; width:300px; margin-bottom:10px}
+.sub_episodes_footer {border:0px solid yellow; position:relative; height:50px;width:300px; margin-bottom:10px}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem {position:absolute; bottom:8px; left:8px; width:32px; height:32px; text-align:center; display:inline-block; border-radius:50%; border:2px solid white;}
 .sub_episodes_footer .ep_controls_bottom .icon_redeem img {width:20px; height:20px;}
 .sub_episodes_footer .ep_controls_bottom .icon_reply {position:absolute; bottom:0; right:40px;}
@@ -190,7 +201,7 @@ ul, ol {list-style:none;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart img {width:30px; height:30px;}
 .sub_episodes_footer .ep_controls_bottom .icon_heart .f_count {color:#fff; font-weight:bold; display:block; text-align:center; font-size:10px;}
 
-.product_infowrap {position:absolute; bottom: 60px; left:10px}
+.product_infowrap {position:absolute; bottom:60px; left:10px;display:none}
 .product_infowrap .product_infomation {background-color:#fff; border-top-left-radius:5px; border-top-right-radius:5px; border-bottom-right-radius:5px; width:220px; height:60px; position:relative;}
 .product_infowrap .product_infomation:before {content:""; position:absolute; top:0; left:0; display:block; top:100%; border-top:.25rem solid #fff; border-left:.25rem solid #fff; border-right:.25rem solid transparent; border-bottom:.25rem solid transparent;}
 
@@ -207,9 +218,8 @@ ul, ol {list-style:none;}
 <script>
 var loggedinuser = false;
 	function close1(){
-		history.back();
+		window.location.href="/index.html";
 	}
-
 
 
 	function reqSubscribe(v,e){
@@ -217,11 +227,11 @@ var loggedinuser = false;
 			showLoginPop();
 			return;
 		}
-		var ele = $(e);
+		var ele = $(e).parent();
 		var fn = function(head,body){
+			var cnt = parseInt($(".subcount",ele).text(),10);
 			if(body=="follow"){
-				$(ele).hide();
-
+				$(".btn_subscribe",ele).hide();
 			}
 		}
 
@@ -294,6 +304,7 @@ var loggedinuser = false;
 		
 		frfr = parseInt(frfr) +1;
 		$("#f_count").text(frfr);
+
 	}
 
 
@@ -311,7 +322,7 @@ var loggedinuser = false;
 	<section id="templ" style="display:none;position:absolute">
 		<div class="video_page" style="top:0vh;margin:0px 0 0px 0;height:100vh;width:320px;overflow:hidden;position:relative;">
 			<div class="video" style="background-color:#666;width:100%;height:100vh;z-index:0;position:fixed;top:0px;left:0px">
-				<video playsinline="" muted="" class="" width="320px" height="100%" style="object-fit:cover;" autoplay="" preload="metadata" loop="" data-loaded-metadata="true" src="" ></video>
+				<video-js playsinline="" muted="" class="" width="320px" height="100%" style="object-fit:cover;width:320px;height:100vh" autoplay="" preload="metadata" loop="" data-loaded-metadata="true" src="" ></video-js>
 			</div>
 			<!-- VIDEOMASK -->
 			<div class="videomask" onclick="titleMask()" style="top:0vh;margin:0px 0 0px 0;height:100vh;width:320px;overflow:hidden;position:relative; background-color: rgba(0, 0, 0, 0.5); display: none; z-index:9999;">
@@ -319,14 +330,13 @@ var loggedinuser = false;
 			<div class="videodefalutmask" style="top:0vh;margin:0px 0 0px 0;height:100vh;width:320px;overflow:hidden;position:relative; background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent, rgba(0, 0, 0, 0.5));">
 			</div>
 
-			<!-- SUB EPISODES -->
 			<section class="page_episodes" style="margin:0px 10px;width:300px;height:100vh;z-index:9999;position:absolute;top:0px;left:0px;overflow:hidden">
-				<div class="sub_episodes">
+					<div class="sub_episodes">
 					
-						<div class="video_header_layer" style="position:absolute;top:15px;left:5px;width:295px;">
+						<div class="video_header_layer" style="position:absolute;top:15px;left:5px;width:295px;z-index:9999">
 							<div class="sub_episodes_header">
 									<div class="caption">
-											<a class="casterlink"><span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span></a>
+										<a class="casterlink"><span class="profile"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8de5HPQAICwMRMij0YwAAAABJRU5ErkJggg==" alt=""></span></a>
 											<a onclick="titleMask()"><div class="titlebox">
 													<div class="title ellipsis">털러#</div>
 													<div class="count">
@@ -337,7 +347,7 @@ var loggedinuser = false;
 														<span class="viewcur">0</span>
 													</div>
 											</div>
-											</a>
+										</a>
 									</div>
 									<div class="ep_controls_top">
 											<span class="icon_more" style="display: none;"><img src="img/icon_share.png"></span><span class="icon_volume"><img src="img/icon_volume_off.png"></span><span class="icon_close" ><img src="img/icon_close.png" onclick="close1();"></span>
@@ -346,38 +356,42 @@ var loggedinuser = false;
 											</div>
 									</div>
 									<div class="subscribe_group">
-											<button class="btn_subscribe" style="display:none">FOLLOW</button> <button class="btn_like" onclick="reqLike()">LIKE</button> <span class="icon_star active" style="display: none;"><img src="img/icon_star_white.png" onclick="reqLike()"></span> 
-									</div>
+										<button class="btn_subscribe" style="display:none">FOLLOW</button> <button class="btn_like" onclick="reqLike()">LIKE</button> 
+								</div>
 							</div>
 						</div>
 
 						<div class="video_bottom_layer" style="position:absolute;bottom:0px;left:0px;width:300px">
-							<div class="sub_episodes_body uselive">
-									<div class="chat"  style="max-height:8em;overflow-y:scroll">
-											<p class="enter_messages">guest1572542333842님이 입장하셨습니다.</p>
+							<div class="sub_episodes_body uselive useliveoff" style="position:relative">
+									<div class="chat"  style="max-height:8em;overflow-y:scroll;position:absolute;bottom:70px">
+											<p class="enter_messages"></p>
 									</div>
 							</div>
 
 
 							<div class="sub_episodes_footer">
 									<div class="ep_controls_bottom">
-											<span class="icon_redeem"><a onclick="toggleproductlist()"><img src="img/icon_redeem.png" style="margin-top:6px;"></a></span>
-											<span class="icon_reply"><a onclick="togglereply();"><img src="img/icon_reply.png"></a></span>
-											<div class="chat_input_box uselive" >
+										<span class="icon_redeem"><a onclick="toggleproductlist()"><img src="img/icon_redeem.png" style="margin-top:6px;"></a></span>
+											<span class="icon_reply" style="display:none"><a onclick="togglereply();"><img src="img/icon_reply.png"></a></span>
+											<div class="chat_input_box uselive useliveoff" >
 												<input id="chattxt" type="text" onfocus="clearInput()" style="border: none; background: transparent; width:200px; padding: 5px;" placeholder="메세지...">
 											</div>
 											<span class="icon_heart"><span class="f_count" id="f_count">92</span>
 											<a onclick="addhearts();"><img src="img/icon_heart.png"></a></span>
 									</div>
 									<style>
-										.hearts_panel {border: 1px solid red; width: 60px; height: 250px; position: fixed; bottom: 20px; right: 10px;}
+
 										.chat_input_box {position:absolute; left:50px; bottom:5px; background-color:none; border:1px solid white; width:200px; height: 30px; border-radius: 8%/50%; display:flex;}
 										.chat_input_box.fo {left: 0; bottom:0; background-color: #eeeeee; width: 100%; border: none; height: 30px; border-radius: 0px; margin-bottom: -5px; margin-left: -5px;}
 										#chattxt:focus {outline: none; border:none; color: white;}
-										.uselive { display:none !important;}
+										.useliveoff { display:none !important;}
 									</style>
 									<script>
 										function clearInput() {
+											if(!checkLogin()){
+												showLoginPop();
+												return false;
+											}
 
 										}
 										function resetInput() {
@@ -395,7 +409,7 @@ var loggedinuser = false;
 											if(m.style.display == "none") {
 												m.style.display = "";
 												tb.style.width = "240px";
-												pe.style.height = "90px";
+												pe.style.height = "85px";
 												ep.style.display = "none";
 												ff.style.display = "none";
 											} else {
@@ -408,9 +422,9 @@ var loggedinuser = false;
 										}
 									</script>
 									
-									<div class="product_infowrap">
+									<div class="product_infowrap" bind="list:">
 											<div class="product_infomation">
-												<a bind="href:productpkey:getProductUrl">
+												<a bind="href:product[0].productpkey:getProductUrl">
 													<div class="information">
 															<div class="title" bind="text:productname">[닥터플로라] 로즈꽃물 레드크림 로즈꽃물 레드크림로즈꽃물 레드크림로즈꽃물 레드크림</div>
 															<div class="price"><del bind="text:xprice:price">145,000</del><span class="total" bind="text:price:price">120,500원</span></div>
@@ -422,78 +436,61 @@ var loggedinuser = false;
 									</div>
 							</div>
 						</div>
-				</div>
+					</div>
 			</section>
 
-			<!-- VIDEO CONTROLLER -->
-			<style>
-				.video_controller {width:320px;height:100vh;z-index:9999;position:fixed;top:0px;left:0px;overflow:hidden; background-color:rgba(0, 0, 0, 0.7); display: none;}
-				.video_controller .sec_left {position: absolute; top: 0; left: 0; width: 50%; height:100vh;}
-				.video_controller .sec_left .sec10 {color: white; font-size: 10px; position: absolute; top:52%; left: 55px; display: none;}
-				.video_controller .sec_left .moveicons {position:absolute; left:50px; top: 48%;}
-				.video_controller .sec_left .moveicons img {display: none;}
+						<!-- VIDEO CONTROLLER -->
+						<style>
+							.video_controller {width:320px;height:100vh;z-index:9999;position:fixed;top:0px;left:0px;overflow:hidden; background-color:rgba(0, 0, 0, 0.7); }
+							.video_controller .sec_left {position: absolute; top: 0; left: 0; width: 50%; height:100vh;}
+							.video_controller .sec_left .sec10 {color: white; font-size: 10px; position: absolute; top:52%; left: 55px; display: none;}
+							.video_controller .sec_left .moveicons {position:absolute; left:50px; top: 48%;}
+							.video_controller .sec_left .moveicons img {display: none;}
+			
+							.video_controller .sec_right {position: absolute; top: 0; right: 0; width: 50%; height:100vh;  text-align: center;}
+							.video_controller .sec_right .sec10 {color: white; font-size: 10px; position: absolute; top:52%; right: 55px; display: none;}
+							.video_controller .sec_right .moveicons {position:absolute; right:50px; top: 48%;}
+							.video_controller .sec_right .moveicons img {display: none;}
+			
+							.video_controller .moveicons img {display: inline-block; width: 10px; height: 10px;}
+							.video_controller .btnbox {display: flex; justify-content: space-around; align-items: center; width: 320px;}
+							.video_controller .btnbox .icon_prev, .video_controller .btnbox .icon_next {width: 35px; height: 35px;}
+							.video_controller .btnbox .icon_play, .video_controller .btnbox .icon_stop {width: 50px; height: 50px;}
+							.video_controller .rtbar {position: absolute; bottom: 0; width: 320px; height: 60px;}
+							.video_controller .rtbar .time {font-size: 8px; width: 40px; color: white;}
+							.video_controller .rtbar .time.current {position: absolute; bottom: 20px; left: 10px; display: none;}
+							.video_controller .rtbar .time.total {position: absolute; bottom: 20px; right: 10px; display: none;}
+							.video_controller .rtbar .bar {position: absolute;  bottom: 26px; left: 60px; width: 200px; height: 5px; background-color: white; display: none;}
+							.video_controller .rtbar .bar .timeline {position: relative; width: 30%; height: 100%; background-color: red;}
+							.video_controller .rtbar .bar .timeline .circlehandler {position: absolute; top:-2px; right: -6px; width: 10px; height: 10px; border-radius: 50%; background-color: red;}
+						</style>
+			
+						<div class="video_controller" style="display: none;">
 
-				.video_controller .sec_right {position: absolute; top: 0; right: 0; width: 50%; height:100vh;  text-align: center;}
-				.video_controller .sec_right .sec10 {color: white; font-size: 10px; position: absolute; top:52%; right: 55px; display: none;}
-				.video_controller .sec_right .moveicons {position:absolute; right:50px; top: 48%;}
-				.video_controller .sec_right .moveicons img {display: none;}
-
-				.video_controller .moveicons img {display: inline-block; width: 10px; height: 10px;}
-				.video_controller .btnbox {display: flex; justify-content: space-around; align-items: center; width: 320px;}
-				.video_controller .btnbox .icon_prev, .video_controller .btnbox .icon_next {width: 35px; height: 35px;}
-				.video_controller .btnbox .icon_play, .video_controller .btnbox .icon_stop {width: 50px; height: 50px;}
-				.video_controller .rtbar {position: absolute; bottom: 0; width: 320px; height: 60px;}
-				.video_controller .rtbar .time {font-size: 8px; width: 40px; color: white;}
-				.video_controller .rtbar .time.current {position: absolute; bottom: 20px; left: 10px;}
-				.video_controller .rtbar .time.total {position: absolute; bottom: 20px; right: 10px;}
-				.video_controller .rtbar .bar {position: absolute;  bottom: 26px; left: 60px; width: 200px; height: 5px; background-color: white;}
-				.video_controller .rtbar .bar .timeline {position: relative; width: 0%; height: 100%; background-color: red;}
-				.video_controller .rtbar .bar .timeline .circlehandler {position: absolute; top:-2px; right: -6px; width: 10px; height: 10px; border-radius: 50%; background-color: red;}
-			</style>
-
-			<div class="video_controller">
-				<section class="sec_left">
-					<span class="sec10">10초</span>
-					<span class="moveicons">
-						<img class="left10sec" src="img/icon_10left.png">
-						<img class="left10sec" src="img/icon_10left.png">
-						<img class="left10sec" src="img/icon_10left.png">
-					</span>
-				</section>
-				
-				
-				<section class="sec_right">
-					<span class="sec10">10초</span>
-					<span class="moveicons">
-						<img class="right10sec" src="img/icon_10right.png">
-						<img class="right10sec" src="img/icon_10right.png">
-						<img class="right10sec" src="img/icon_10right.png">
-					</span>
-				</section>
-				
-
-				<section class="btnbox" style="width: 320px; height: 100vh; text-align: center;">
-					<a onclick="up()"><img class="icon_prev" src="img/icon_skip_prev.png"></a>
-					<a><img class="icon_play" src="img/icon_pause.png"></a><!-- onclick() => this.src="img/icon_play" -->
-					<a onclick="down()"><img class="icon_next" src="img/icon_skip_next.png"></a>
-				</section>
-
-				<section class="rtbar">
-					<span class="time current">00:07:06</span>
-					<div class="bar"><div class="timeline" id="timeindi"><a><div class="circlehandler"></div></a></div></div>
-					<span class="time total">01:23:45</span>
-				</section>
-			</div>
+							
+			
+							<section class="btnbox" style="width: 320px; height: 100vh; text-align: center;z-index:9">
+								<a onclick="up()"><img class="icon_prev" src="img/icon_skip_prev.png"></a>
+								<img class="icon_play" src="img/icon_pause.png" onclick="pauseToggle(event);" style="width: 50px; height: 50px;">
+								<a onclick="down()"><img class="icon_next" src="img/icon_skip_next.png""></a>
+							</section>
+			
+							<section class="rtbar" >
+								<span class="time current">00:07:06</span>
+								<div class="bar" style="border:1px solid green"><div class="timeline" style="border:3px solid white"><a><div class="circlehandler"></div></a></div></div>
+								<span class="time total">01:23:45</span>
+							</section>
+						</div>
 		</div>
 	</section>
 
-	<!-- REPLY -->		
+	<!-- reply starts -->
 	<style>
 		.reply-container {position: fixed; bottom: 0; width: 100vw; height: 400px; z-index: 99999; background-color: #fff; border-top-right-radius: 5px; border-top-left-radius: 5px; font-size: 10px;}
 		.reply-container .rep-header {width: 100%; height: 40px; display: flex; align-items: center; justify-content: center;  border-bottom: 1px solid #efefef;}
 		.reply-container .rep-header .title {font-weight: 700; font-size: 12px; margin-right: 3px;}
 		.reply-container .rep-header .repcnt {font-weight: 700; color:#ff545c; font-size: 12px;}
-		.reply-container .rep-header .icon_close {position: absolute; top: 10px; right: 10px;}
+		.reply-container .rep-header .icon_close {position: absolute; top: 5px; right: 5px;}
 		.reply-container .rep-header .icon_close img {width: 20px; height: 20px;}
 
 		.reply-container .rep-body {overflow-y: auto; padding: 0 5px; height: 320px;}
@@ -504,14 +501,13 @@ var loggedinuser = false;
 		.reply-container .rep-body .item_wrapper .information .caption .title .username{font-weight: 700; margin-right: 5px;}
 		.reply-container .rep-body .item_wrapper .information .caption .title .wdate{color: #cccccc;}
 
-		.reply-container .rep-footer {position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background-color: #eeeeee;  display: flex; justify-content:center; align-items: center;}
+		.reply-container .rep-footer {position: absolute; bottom: 0; left: 0; width: 100%; height: 40px; background-color: #eeeeee;  display: flex; justify-content:center; align-items: center;}
 		.reply-container .rep-footer input[type="text"] {width: 100%; border: none; font-size: 10px; padding: 4px; height: 20px; background-color: #eeeeee;}
 		.reply-container .rep-footer input[type="text"]:focus {outline: none;}
 		.reply-container .rep-footer input[type="text"]::placeholder {color: #777777;}
 		.reply-container .rep-footer input[type="text"]::-webkit-input-placeholder {color: #777777;}
 		.reply-container .rep-footer input[type="text"]:-ms-input-placeholder {color: #777777;}
 	</style>
-
 
 <div class="replybgmask" style="position:fixed;width:320px;height:100vh;top:0px;z-index:99999;display:none">
 	<div class="reply-container" style="display: none;">
@@ -590,6 +586,7 @@ var loggedinuser = false;
 
 		});
 		function getListReply(){
+			showReply();
 			$(".reply-container .item_wrapper").each(function(){
 				if($(this).hasClass("template")){
 					return;
@@ -611,6 +608,20 @@ var loggedinuser = false;
 			});
 
 		}
+
+
+	function showReply(){
+			$(".icon_reply,.icon_star").show();
+			$(".uselive").addClass("useliveoff");
+		}
+
+		function startchat(){
+
+			$(".icon_reply , .icon_star").hide();
+			$(".uselive").removeClass("useliveoff");
+			$(".chat").empty();
+		}
+
 
 		function replytotop() {
 			var rep = document.getElementsByClassName('reply-container')[0];
@@ -634,6 +645,7 @@ var loggedinuser = false;
 			$(".replybgmask").animate({height: "toggle"},300);
 			$(".reply-container").animate({height: "toggle"},300);
 		}
+		
 
 	</script>
 
@@ -660,7 +672,7 @@ var loggedinuser = false;
 		.productlist-container .productlist-body .item_wrapper .information .wishlist img {display: block; width: 20px; height: 20px; margin: 0 auto; padding-top: 5px;}
 
 	</style>
-<div class="productlistbgmask" style="position:fixed;width:320px;height:100vh;top:0px;z-index:99998;display:none">
+	<div class="productlistbgmask" style="position:fixed;width:320px;height:100vh;top:0px;z-index:99998;display:none">
 		<div style="position:fixed;bottom:400px;height:4040px;display:block;width:100vw" onclick=" toggleproductlist()" >
 
 		</div>
@@ -694,11 +706,9 @@ var loggedinuser = false;
 		}
 		</script>
 
-		<!-- LOGINPOP -->
-	
 <div class='popopopop' style="position:fixed;width:320px;height:100vh;top:0px;z-index:99999999;display:none">
 	<style>
-	.pop-container {margin: 0 auto; width: 90%; height: 200px; background-color: #FFF; border-radius: 5px; margin-top:30vh; border: 1px solid #eeeeee;}
+	.pop-container {margin: 0 auto; width: 90%; height: 200px; background-color: #FFF; border-radius: 5px;margin-top:30vh}
         .pop-container .pop-header {display: flex; flex-direction: column; justify-content: center; align-items: center; height: 160px; font-size: 12px; font-weight: 700; color: black; border-bottom: 1px #eeeeee solid; line-height: 30px;} 
         .pop-container .pop-body {display: flex; height: 38px; flex-direction: row;}
         .pop-container .pop-body .parts {display: flex; width: 33%; justify-content: center; align-items: center; font-size: 12px;}
@@ -805,19 +815,17 @@ var dragmover = function(elementid,movefn,endFn) {
 
 	function up(){
 
-
 		var page = makePage();
 		setVideo(page,1);
 		page.css("top","100vh");
 		page.show();
+		var removed = $("#container section");
+
 
 		$(".video_page .video",page).css("position","absolute");
-
-		var removed = $("#container section");
 		$("#container").append(page);
-
 		$(".video_page .video",removed).css("position","absolute");
-
+		var item = data[cd];
 
 
 		removed.animate({
@@ -828,14 +836,28 @@ var dragmover = function(elementid,movefn,endFn) {
 			  top: "linear"
 			},
 			complete: function() {
-//				$("div.video video",removed).get(0).pause();
-				$("div.video video",removed).get(0).src=$(".video video",page).get(0).src;
-				$("div.video video",removed).get(0).poster=$(".video video",page).get(0).poster;
-				$("div.video video",removed).get(0).play();
-				$("div.video video",page).get(0).src="";
-				$("div.video video",page).remove();
-				$("div.video video",removed).detach().appendTo($("div.video",page));
+				var player = videojs($("video-js",removed).get(0));
+				var player2 = videojs($("video-js",page).get(0));
+
+				player.pause();
+				player.src(player2.src());
+				player.poster(player2.poster());
+				player.play();
+
+
+				player2.dispose();
+			
+
+
+				$("video-js",removed).detach().appendTo($("div.video",page));
+
 				removed.remove();
+				if(item["livepkey"]>0){
+					startchat();
+				}else{
+					showReply();
+				}
+				$(".product_infowrap").show(300);
 			}
 		  });
 
@@ -861,47 +883,61 @@ var dragmover = function(elementid,movefn,endFn) {
 		setVideo(page,-1);
 		page.css("top","-100vh");
 		page.show();
+		var removed = $("#container section");
+		var item = data[cd];
 
 		$(".video_page .video",page).css("position","absolute");
-
-		var removed = $("#container section");
 		$("#container").append(page);
-
 		$(".video_page .video",removed).css("position","absolute");
 
 
+		
 		removed.animate({
 			"top": "+=100vh"
 		  }, {
-			duration: 200,
+			duration: 100,
 			specialEasing: {
 			  top: "linear"
 			},
 			complete: function() {
-//				$("div.video video",removed).get(0).pause();
-				$("div.video video",removed).get(0).src=$(".video video",page).get(0).src;
-				$("div.video video",removed).get(0).poster=$(".video video",page).get(0).poster;
-				$("div.video video",removed).get(0).play();
-				$("div.video video",page).get(0).src="";
-				$("div.video video",page).remove();
-				$("div.video video",removed).detach().appendTo($("div.video",page));
+				var player = videojs($("video-js",removed).get(0));
+				var player2 = videojs($("video-js",page).get(0));
+
+				player.pause();
+				player.src(player2.src());
+				player.poster(player2.poster());
+				player.play();
+
+
+				player2.dispose();
+
+				$("video-js",removed).detach().appendTo($("div.video",page));
+
 				removed.remove();
+				if(item["livepkey"]>0){
+					startchat();
+				}else{
+					showReply();
+
+				}
+				$(".product_infowrap").show(300);
 			}
 		  });
 
 		  page.animate({
 			"top": "+=100vh"
 		  }, {
-			duration: 200,
+			duration: 100,
 			specialEasing: {
 			  top: "linear"
 			},
 			complete: function() {
 				$(this).css("top","0vh");
-				//$("video .video",removed).detach().appendTo(page);
 				isGoing = false;
 			}
 		  });
+
+
 
 	}
 var taptime = 0;
@@ -913,33 +949,55 @@ function setVideo(ele,step){
 
 	var item = data[cd];
 
+	psuedocntup(item.videopkey);
+
+	$(".icon_redeem",ele).on("click",function(){
+		var cele = $(".product_infowrap",ele);
+		if(cele.is(":visible") ){
+			cele.hide(100);
+		}else{
+			cele.show(200);
+		}
+	});
+	$(".product_infowrap",ele).show(300);
 
 
 	$(".profile img",ele).attr("src","//mcl2static.mycollabolife.com"+item.profileurl);
 	$(".casterlink",ele).attr("href","//mcl2.mycollabolife.com/influencer.html?casterpkey="+item.casterpkey);
 	$(".titlebox .title",ele).text(item.title);
 	$(".titlebox .name",ele).text(item.name);
+	$(".titlebox .view",ele).text(0);
 	$(".titlebox .view",ele).text(item.vcnt);
 	
+	var player = videojs($("div video-js",ele).get(0));
+	if(item.livepkey>=0){
+		player.src({
+		  src: item.videourl,
+		  type: 'application/x-mpegURL',
+		  overrideNative: true
+		});
+		player.poster("//mcl2static.mycollabolife.com"+item.posterurl);
+		player.load();
+			startchat();
+	}else{
+		player.src("https://mcl2static.mycollabolife.com"+item.videourl);
+		player.poster("//mcl2static.mycollabolife.com"+item.posterurl);
+		player.load();
+		getListReply();
+	}
 
-	$("div video",ele).get(0).src = "//mcl2static.mycollabolife.com"+item.videourl;
-	$("div video",ele).get(0).poster = "//mcl2static.mycollabolife.com"+item.posterurl;
-	$("div video",ele).get(0).load();
+	
+
 	var v = item.isfollow;
 
 	if(v!="Y"){
-		var e = $(".btn_subscribe");
+		var e = $(".btn_subscribe",ele);
 		e.show();
 		v = item.casterpkey;
-		$(".btn_subscribe").on("click",function(){reqSubscribe(v,e);});
+		$(".btn_subscribe",ele).on("click",function(){reqSubscribe(v,e);});
 	}
 
 
-
-	getListReply();
-
-
-	psuedocntup(item.videopkey);
 
 	wmap(item.product[0],$(".product_infomation",ele));
 
@@ -950,8 +1008,8 @@ function setVideo(ele,step){
 		}
 		$(this).remove();
 	});
-
-	wmap(item,$(".productlistbgmask"));
+	wmap(item,$(".productlist-container"));
+	
 	var playPromise = $("div video",ele).get(0).play();
 	 
 	  if (playPromise !== undefined) {
@@ -995,6 +1053,8 @@ function drawFirst(d){
 	data = d;
 	setVideo($("#container section"),0);
 
+
+
 }
 
 
@@ -1030,14 +1090,12 @@ $(window).on('load', function() {
 	
 
 	$("#container").append(page);
-    if($.getP("epi")){
-		$.wcall({
-			url: domain + "?m=epi",
-			type: "GET",
-			data:{"epi":$.getP("epi")},
-			ok: function(head,body){drawFirst(body);}
-		});
-	}
+	$.wcall({
+		url: domain + "?m=live",
+		type: "GET",
+		ok: function(head,body){drawFirst(body);}
+	});
+
 	$("#chattxt").keydown(function (e) {
         if (e.keyCode  == 13){
 			writeUserData($("#chattxt").val());
@@ -1060,27 +1118,66 @@ function getProductUrl(val,e,d){
 }
 
 
+
+var clickmode = "seek";
+var clickmodeTimer = null;
+
+var clickmodedelay = 500;
+
+function startVideoControlMode(){
+	$(".video_controller").show();
+	clickmode = "videocontrol";
+	startTiemoutVideoMode();
+	
+}
+function startTiemoutVideoMode(){
+	if(clickmodeTimer != null){
+		window.clearTimeout(clickmodeTimer);
+		clickmodeTimer = null;
+	}
+
+
+	clickmodeTimer = window.setTimeout(function(){
+		clickmodeTimer = null;
+		$(".video_controller").hide();
+		clickmode = "seek";
+	},2000);
+}
 	$("#container").on("click",function(e){
+		if(clickmode!="seek") return;
 		var d = new Date();
 		var n = d.getTime()
-		if(n-taptime < 500){
-			var dt = 0;
-			if(e.offsetX<100){
-				dt=-10;
-			}
-			if(e.offsetX>200){
-				dt=10;
-			}
-			
-			if(dt!=0){
-				var vid = $("#container .video_page video").get(0);
-				vid.currentTime = vid.currentTime +dt;
-				}
 
-		}else{
-			taptime = n;
+
+		if(clickmodeTimer!=null){
+			window.clearTimeout(clickmodeTimer);
+			clickmodeTimer = null;
 		}
 
+		if(clickmode =="seek"){
+			if(n-taptime < clickmodedelay){
+				var dt = 0;
+				if(e.offsetX<100){
+					dt=-10;
+				}
+				if(e.offsetX>200){
+					dt=10;
+				}
+				
+				if(dt!=0){
+					var vid = $("#container .video_page video").get(0);
+					vid.currentTime = vid.currentTime +dt;
+					return;
+				}
+				
+			}else{
+				taptime = n;
+			}
+			clickmodeTimer = window.setTimeout(startVideoControlMode,clickmodedelay+50);
+		}
+
+		
+		
 	});
 </script>
 
@@ -1088,8 +1185,8 @@ function getProductUrl(val,e,d){
 
 <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 <script defer src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
-
 <script defer src="js/firebaseinit.js"></script>
+
 
 <script>
 
@@ -1105,7 +1202,6 @@ function psuedocntup(d){
 
 	  });
 }
-
  const firebaseConfig = {
 	  apiKey: "AIzaSyDf8a1YKk1a4IakApo24dcvmSKy_CuuUNQ",
 	  authDomain: "mcl2-vlsg.firebaseapp.com",
@@ -1116,6 +1212,35 @@ function psuedocntup(d){
 	  appId: "1:125739768932:web:6a7320341b664f134d1371",
 	  measurementId: "G-P0D7W9PNJ7"
 	};
+window.scrollTo(0,1);
+	
+</script>
+
+
+
+
+<script>
+function pauseToggle(event){
+
+	var player = videojs($("video-js",$("#container .video_page").get(0)).get(0));
+
+
+	var ele = $(event.target);
+	
+	if(player.paused()){
+		ele.attr("src","img/icon_pause.png");
+		player.play();
+		startTiemoutVideoMode()
+
+	}else{
+		ele.attr("src","img/icon_play.png");
+		player.pause();
+		if(clickmodeTimer!=null){
+			window.clearTimeout(clickmodeTimer);
+			clickmodeTimer = null;
+		}
+	}
+}
 
 
 </script>
