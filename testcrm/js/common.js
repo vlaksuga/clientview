@@ -1,4 +1,4 @@
-var domain = "/crm/";
+var domain = "/testcrm/";
 var paging = 0;
 $.ajaxSetup({
     cache: false
